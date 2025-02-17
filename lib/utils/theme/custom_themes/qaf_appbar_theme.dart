@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QafAppbarTheme {
   QafAppbarTheme._();
@@ -12,10 +11,10 @@ class QafAppbarTheme {
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
-    iconTheme: IconThemeData(color: Colors.black, size: 24.sp),
-    actionsIconTheme: IconThemeData(color: Colors.black, size: 24.sp),
+    iconTheme: IconThemeData(color: Colors.black, size: 24),
+    actionsIconTheme: IconThemeData(color: Colors.black, size: 24),
     titleTextStyle: TextStyle(
-        fontSize: 18.sp, color: Colors.black, fontWeight: FontWeight.w600),
+        fontSize: 18, color: Colors.black, fontWeight: FontWeight.w600),
   );
 
   /// Customizable Light App Bar Theme
@@ -26,9 +25,9 @@ class QafAppbarTheme {
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
-    iconTheme: IconThemeData(color: Colors.black, size: 24.sp),
-    actionsIconTheme: IconThemeData(color: Colors.white, size: 24.sp),
+    iconTheme: IconThemeData(color: Colors.black, size: 24),
+    actionsIconTheme: IconThemeData(color: Colors.white, size: 24),
     titleTextStyle: TextStyle(
-        fontSize: 18.sp, color: Colors.white, fontWeight: FontWeight.w600),
+        fontSize: 18, color: Colors.white, fontWeight: FontWeight.w600),
   );
 }
