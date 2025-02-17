@@ -13,6 +13,10 @@ class QafStrings {
       'For Seamless Transactions, Choose your Pyment path - Your Convinience, Our Priority!';
   static const String onBoardingSubTitle3 =
       'From our Doorstep to Yours - Swift, Secure, and Contactless Delivery!';
+<<<<<<< HEAD
+=======
+static const String skip = 'Skip';
+>>>>>>> onboarding
 
   /// ---- Home Strings
   static const String goodDayForShopping = 'Good Day for Shopping';

@@ -5,14 +5,36 @@ allprojects {
     }
 }
 
+<<<<<<< HEAD
 rootProject.buildDir = "../build"
+=======
+dependencies {
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = '../build'
+>>>>>>> onboarding
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
 subprojects {
+<<<<<<< HEAD
     project.evaluationDependsOn(":app")
+=======
+    project.evaluationDependsOn(':app')
+>>>>>>> onboarding
 }
 
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> onboarding

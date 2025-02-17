@@ -22,6 +22,14 @@ class QafSizes {
   /// Appbar Height
   static double appBarHeight = 56.h;
 
+<<<<<<< HEAD
+=======
+  // Default spacing between sections
+  static const double defaultSpace = 24;
+  static const double spaceBtwItems = 16.0;
+  static const double spaceBtwSections = 32.0;
+
+>>>>>>> onboarding
   /// Image Sizes
   static double imageSize = 80.w;
 
@@ -51,6 +59,10 @@ class QafSizes {
   /// Loading Indicator Size
   static double loadingIndicatorSize = 36.r;
 
+<<<<<<< HEAD
   /// Grid View Spacing 
+=======
+  /// Grid View Spacing
+>>>>>>> onboarding
   static double gridViewSpacing = 16.w;
 }

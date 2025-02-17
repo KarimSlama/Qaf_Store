@@ -26,4 +26,8 @@ Qaf Store is a robust and scalable e-commerce application designed to provide a 
 Qaf Store is built to grow and evolve, offering a feature-rich and efficient shopping experience. Stay tuned for updates!  
 
 
+<<<<<<< HEAD
 ## 🎨 Cover Design
+=======
+## 🎨 Cover Design
+>>>>>>> onboarding

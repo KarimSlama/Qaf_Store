@@ -17,6 +17,25 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.3.0"
+<<<<<<< HEAD
+=======
+  ansicolor:
+    dependency: transitive
+    description:
+      name: ansicolor
+      sha256: "50e982d500bc863e1d703448afdbf9e5a72eb48840a4f766fa361ffd6877055f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
+  archive:
+    dependency: transitive
+    description:
+      name: archive
+      sha256: "6199c74e3db4fbfbd04f66d739e72fe11c8a8957d5f219f1f4482dbde6420b5a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.2"
+>>>>>>> onboarding
   args:
     dependency: transitive
     description:
@@ -57,6 +76,41 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.2"
+<<<<<<< HEAD
+=======
+  build_daemon:
+    dependency: transitive
+    description:
+      name: build_daemon
+      sha256: "8e928697a82be082206edb0b9c99c5a4ad6bc31c9e9b8b2f291ae65cd4a25daa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.4"
+  build_resolvers:
+    dependency: transitive
+    description:
+      name: build_resolvers
+      sha256: b9e4fda21d846e192628e7a4f6deda6888c36b5b69ba02ff291a01fd529140f0
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.4"
+  build_runner:
+    dependency: "direct main"
+    description:
+      name: build_runner
+      sha256: "058fe9dce1de7d69c4b84fada934df3e0153dd000758c4d65964d0166779aa99"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.15"
+  build_runner_core:
+    dependency: transitive
+    description:
+      name: build_runner_core
+      sha256: "22e3aa1c80e0ada3722fe5b63fd43d9c8990759d0a2cf489c8c5d7b2bdebc021"
+      url: "https://pub.dev"
+    source: hosted
+    version: "8.0.0"
+>>>>>>> onboarding
   built_collection:
     dependency: transitive
     description:
@@ -113,6 +167,17 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.0"
+<<<<<<< HEAD
+=======
+  color:
+    dependency: transitive
+    description:
+      name: color
+      sha256: ddcdf1b3badd7008233f5acffaf20ca9f5dc2cd0172b75f68f24526a5f5725cb
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
+>>>>>>> onboarding
   convert:
     dependency: transitive
     description:
@@ -129,6 +194,17 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.6"
+<<<<<<< HEAD
+=======
+  csslib:
+    dependency: transitive
+    description:
+      name: csslib
+      sha256: "09bad715f418841f976c77db72d5398dc1253c21fb9c0c7f0b0b985860b2d58e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
+>>>>>>> onboarding
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -145,6 +221,17 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+<<<<<<< HEAD
+=======
+  dartx:
+    dependency: transitive
+    description:
+      name: dartx
+      sha256: "8b25435617027257d43e6508b5fe061012880ddfdaa75a71d607c3de2a13d244"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0"
+>>>>>>> onboarding
   dio:
     dependency: "direct main"
     description:
@@ -198,6 +285,25 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+<<<<<<< HEAD
+=======
+  flutter_gen_core:
+    dependency: transitive
+    description:
+      name: flutter_gen_core
+      sha256: "53890b653738f34363d9f0d40f82104c261716bd551d3ba65f648770b6764c21"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.9.0"
+  flutter_gen_runner:
+    dependency: "direct main"
+    description:
+      name: flutter_gen_runner
+      sha256: de70b42eb5329f712c8b041069d081ad5fb5109f32d6d1ea9c1b39596786215d
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.9.0"
+>>>>>>> onboarding
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -206,6 +312,17 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
+<<<<<<< HEAD
+=======
+  flutter_native_splash:
+    dependency: "direct main"
+    description:
+      name: flutter_native_splash
+      sha256: "7062602e0dbd29141fb8eb19220b5871ca650be5197ab9c1f193a28b17537bc7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.4"
+>>>>>>> onboarding
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -288,6 +405,17 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.4"
+<<<<<<< HEAD
+=======
+  frontend_server_client:
+    dependency: transitive
+    description:
+      name: frontend_server_client
+      sha256: f64a0333a82f30b0cca061bc3d143813a486dc086b574bfb233b7c1372427694
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
+>>>>>>> onboarding
   get:
     dependency: "direct main"
     description:
@@ -304,6 +432,49 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.3"
+<<<<<<< HEAD
+=======
+  graphs:
+    dependency: transitive
+    description:
+      name: graphs
+      sha256: "741bbf84165310a68ff28fe9e727332eef1407342fca52759cb21ad8177bb8d0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.2"
+  hashcodes:
+    dependency: transitive
+    description:
+      name: hashcodes
+      sha256: "80f9410a5b3c8e110c4b7604546034749259f5d6dcca63e0d3c17c9258f1a651"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
+  html:
+    dependency: transitive
+    description:
+      name: html
+      sha256: "1fc58edeaec4307368c60d59b7e15b9d658b57d7f3125098b6294153c75337ec"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.15.5"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      sha256: fe7ab022b76f3034adc518fb6ea04a82387620e19977665ea18d30a1cf43442f
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.0"
+  http_multi_server:
+    dependency: transitive
+    description:
+      name: http_multi_server
+      sha256: aa6199f908078bb1c5efb8d8638d4ae191aac11b311132c3ef48ce352fb52ef8
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.2"
+>>>>>>> onboarding
   http_parser:
     dependency: transitive
     description:
@@ -320,6 +491,25 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.8"
+<<<<<<< HEAD
+=======
+  image:
+    dependency: transitive
+    description:
+      name: image
+      sha256: "8346ad4b5173924b5ddddab782fc7d8a6300178c8b1dc427775405a01701c4a6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.5.2"
+  image_size_getter:
+    dependency: transitive
+    description:
+      name: image_size_getter
+      sha256: "9a299e3af2ebbcfd1baf21456c3c884037ff524316c97d8e56035ea8fdf35653"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.0"
+>>>>>>> onboarding
   intl:
     dependency: "direct main"
     description:
@@ -328,6 +518,17 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.20.2"
+<<<<<<< HEAD
+=======
+  io:
+    dependency: transitive
+    description:
+      name: io
+      sha256: dfd5a80599cf0165756e3181807ed3e77daf6dd4137caaad72d0b7931597650b
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.5"
+>>>>>>> onboarding
   js:
     dependency: transitive
     description:
@@ -424,6 +625,17 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.15.0"
+<<<<<<< HEAD
+=======
+  mime:
+    dependency: transitive
+    description:
+      name: mime
+      sha256: "41a20518f0cb1256669420fdba0cd90d21561e560ac240f26ef8322e45bb7ed6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
+>>>>>>> onboarding
   package_config:
     dependency: transitive
     description:
@@ -440,6 +652,17 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
+<<<<<<< HEAD
+=======
+  path_parsing:
+    dependency: transitive
+    description:
+      name: path_parsing
+      sha256: "883402936929eac138ee0a45da5b0f2c80f89913e6dc3bf77eb65b84b409c6ca"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
+>>>>>>> onboarding
   path_provider:
     dependency: transitive
     description:
@@ -488,6 +711,17 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+<<<<<<< HEAD
+=======
+  petitparser:
+    dependency: transitive
+    description:
+      name: petitparser
+      sha256: c15605cd28af66339f8eb6fbe0e541bfe2d1b72d5825efc6598f3e0a31b9ad27
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.2"
+>>>>>>> onboarding
   platform:
     dependency: transitive
     description:
@@ -504,6 +738,25 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+<<<<<<< HEAD
+=======
+  pool:
+    dependency: transitive
+    description:
+      name: pool
+      sha256: "20fe868b6314b322ea036ba325e6fc0711a22948856475e2c2b6306e8ab39c2a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.5.1"
+  posix:
+    dependency: transitive
+    description:
+      name: posix
+      sha256: a0117dc2167805aa9125b82eee515cc891819bac2f538c83646d355b16f58b9a
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.1"
+>>>>>>> onboarding
   pretty_dio_logger:
     dependency: "direct main"
     description:
@@ -608,11 +861,41 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
+<<<<<<< HEAD
+=======
+  shelf:
+    dependency: transitive
+    description:
+      name: shelf
+      sha256: e7dd780a7ffb623c57850b33f43309312fc863fb6aa3d276a754bb299839ef12
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.4.2"
+  shelf_web_socket:
+    dependency: transitive
+    description:
+      name: shelf_web_socket
+      sha256: "3632775c8e90d6c9712f883e633716432a27758216dfb61bd86a8321c0580925"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
+>>>>>>> onboarding
   sky_engine:
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
+<<<<<<< HEAD
+=======
+  smooth_page_indicator:
+    dependency: "direct main"
+    description:
+      name: smooth_page_indicator
+      sha256: "3b28b0c545fa67ed9e5997d9f9720d486f54c0c607e056a1094544e36934dff3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.0+3"
+>>>>>>> onboarding
   source_gen:
     dependency: transitive
     description:
@@ -653,6 +936,17 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+<<<<<<< HEAD
+=======
+  stream_transform:
+    dependency: transitive
+    description:
+      name: stream_transform
+      sha256: ad47125e588cfd37a9a7f86c7d6356dde8dfe89d071d293f80ca9e9273a33871
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
+>>>>>>> onboarding
   string_scanner:
     dependency: transitive
     description:
@@ -677,6 +971,25 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.3"
+<<<<<<< HEAD
+=======
+  time:
+    dependency: transitive
+    description:
+      name: time
+      sha256: "370572cf5d1e58adcb3e354c47515da3f7469dac3a95b447117e728e7be6f461"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.5"
+  timing:
+    dependency: transitive
+    description:
+      name: timing
+      sha256: "62ee18aca144e4a9f29d212f5a4c6a053be252b895ab14b5821996cff4ed90fe"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
+>>>>>>> onboarding
   typed_data:
     dependency: transitive
     description:
@@ -685,6 +998,17 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+<<<<<<< HEAD
+=======
+  universal_io:
+    dependency: transitive
+    description:
+      name: universal_io
+      sha256: "1722b2dcc462b4b2f3ee7d188dad008b6eb4c40bbd03a3de451d82c78bba9aad"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.2"
+>>>>>>> onboarding
   url_launcher:
     dependency: "direct main"
     description:
@@ -749,6 +1073,25 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.4"
+<<<<<<< HEAD
+=======
+  vector_graphics_codec:
+    dependency: transitive
+    description:
+      name: vector_graphics_codec
+      sha256: "99fd9fbd34d9f9a32efd7b6a6aae14125d8237b10403b422a6a6dfeac2806146"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.13"
+  vector_graphics_compiler:
+    dependency: transitive
+    description:
+      name: vector_graphics_compiler
+      sha256: "1b4b9e706a10294258727674a340ae0d6e64a7231980f9f9a3d12e4b42407aad"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.16"
+>>>>>>> onboarding
   vector_math:
     dependency: transitive
     description:
@@ -781,6 +1124,25 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+<<<<<<< HEAD
+=======
+  web_socket:
+    dependency: transitive
+    description:
+      name: web_socket
+      sha256: "3c12d96c0c9a4eec095246debcea7b86c0324f22df69893d538fcc6f1b8cce83"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.6"
+  web_socket_channel:
+    dependency: transitive
+    description:
+      name: web_socket_channel
+      sha256: "0b8e2457400d8a859b7b2030786835a28a8e80836ef64402abef392ff4f1d0e5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.2"
+>>>>>>> onboarding
   win32:
     dependency: transitive
     description:
@@ -797,6 +1159,17 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+<<<<<<< HEAD
+=======
+  xml:
+    dependency: transitive
+    description:
+      name: xml
+      sha256: b015a8ad1c488f66851d762d3090a21c600e479dc75e68328c52774040cf9226
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.5.0"
+>>>>>>> onboarding
   yaml:
     dependency: transitive
     description:
