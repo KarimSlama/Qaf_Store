@@ -12,20 +12,12 @@ class QafApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-<<<<<<< HEAD
-      designSize: Size(375, 812),
-=======
       designSize: const Size(375, 812),
->>>>>>> onboarding
       minTextAdapt: true,
       child: MaterialApp(
         title: QafStrings.appTitle,
         debugShowCheckedModeBanner: false,
-<<<<<<< HEAD
-        initialRoute: Routes.loginScreen,
-=======
         initialRoute: Routes.onboardingScreen,
->>>>>>> onboarding
         onGenerateRoute: appRouter.generateRoute,
         theme: QafTheme.lightTheme,
         darkTheme: QafTheme.darkTheme,
