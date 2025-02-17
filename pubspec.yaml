@@ -1,0 +1,87 @@
+name: qaf_store
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+
+  # Packages
+dependencies:
+  flutter:
+    sdk: flutter
+
+  dio: ^5.8.0+1
+  intl: ^0.20.2
+  logger: ^2.5.0
+  url_launcher: ^6.3.1
+  # Pretty Dio logger is a Dio interceptor that logs network calls in a pretty, easy to read format.
+  pretty_dio_logger: ^1.4.0
+  # Code generation for immutable classes that has a simple syntax/API (mainly used with Cubit & Retrofit)
+  freezed: ^2.4.7
+  # Annotations for the freezed code-generator.
+  freezed_annotation: ^2.4.1
+  # Automatically generate code for converting to and from JSON by annotating Dart classes.
+  json_serializable: ^6.7.1
+  # Annotations for the JSON code-generator.
+  json_annotation: ^4.9.0
+  # retrofit.dart is an dio client generator using source_gen and inspired by Chopper and Retrofit.
+  retrofit: ^4.0.3
+  # Retrofit generator is an dio client generator using source_gen and inspired by Chopper and Retrofit.
+  retrofit_generator: ^9.1.2
+  # Reading and Writing simple key-value pairs.
+  shared_preferences: ^2.3.2
+  # provides API to store data in secure storage. Keychain is used in iOS, KeyStore based solution is used in Android.
+  flutter_secure_storage: ^9.2.2
+
+  # Icons
+  cupertino_icons: ^1.0.8
+  iconsax: ^0.0.8
+
+  # Sizing
+  flutter_screenutil: ^5.9.3
+
+  # State Management
+  get: ^4.6.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+
+  uses-material-design: true
+
+
+  # Assets
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/logos/
+
+
+  # Fonts
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Poppins-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 800
+        
