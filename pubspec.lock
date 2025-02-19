@@ -17,8 +17,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.3.0"
-<<<<<<< HEAD
-=======
   ansicolor:
     dependency: transitive
     description:
@@ -35,7 +33,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
->>>>>>> onboarding
   args:
     dependency: transitive
     description:
@@ -76,8 +73,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.2"
-<<<<<<< HEAD
-=======
   build_daemon:
     dependency: transitive
     description:
@@ -110,7 +105,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "8.0.0"
->>>>>>> onboarding
   built_collection:
     dependency: transitive
     description:
@@ -167,8 +161,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.0"
-<<<<<<< HEAD
-=======
   color:
     dependency: transitive
     description:
@@ -177,7 +169,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
->>>>>>> onboarding
   convert:
     dependency: transitive
     description:
@@ -194,8 +185,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.6"
-<<<<<<< HEAD
-=======
   csslib:
     dependency: transitive
     description:
@@ -204,7 +193,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
->>>>>>> onboarding
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -221,8 +209,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
-<<<<<<< HEAD
-=======
   dartx:
     dependency: transitive
     description:
@@ -231,7 +217,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
->>>>>>> onboarding
   dio:
     dependency: "direct main"
     description:
@@ -285,8 +270,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
-=======
   flutter_gen_core:
     dependency: transitive
     description:
@@ -303,7 +286,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.9.0"
->>>>>>> onboarding
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -312,8 +294,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
-<<<<<<< HEAD
-=======
   flutter_native_splash:
     dependency: "direct main"
     description:
@@ -322,7 +302,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.4"
->>>>>>> onboarding
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -405,8 +384,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.4"
-<<<<<<< HEAD
-=======
   frontend_server_client:
     dependency: transitive
     description:
@@ -415,7 +392,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
->>>>>>> onboarding
   get:
     dependency: "direct main"
     description:
@@ -432,8 +408,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.3"
-<<<<<<< HEAD
-=======
   graphs:
     dependency: transitive
     description:
@@ -474,7 +448,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.2"
->>>>>>> onboarding
   http_parser:
     dependency: transitive
     description:
@@ -491,8 +464,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.8"
-<<<<<<< HEAD
-=======
   image:
     dependency: transitive
     description:
@@ -509,7 +480,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.0"
->>>>>>> onboarding
   intl:
     dependency: "direct main"
     description:
@@ -518,8 +488,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.20.2"
-<<<<<<< HEAD
-=======
   io:
     dependency: transitive
     description:
@@ -528,7 +496,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
->>>>>>> onboarding
   js:
     dependency: transitive
     description:
@@ -625,8 +592,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.15.0"
-<<<<<<< HEAD
-=======
   mime:
     dependency: transitive
     description:
@@ -635,7 +600,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
->>>>>>> onboarding
   package_config:
     dependency: transitive
     description:
@@ -652,8 +616,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
-<<<<<<< HEAD
-=======
   path_parsing:
     dependency: transitive
     description:
@@ -662,7 +624,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
->>>>>>> onboarding
   path_provider:
     dependency: transitive
     description:
@@ -711,8 +672,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
-<<<<<<< HEAD
-=======
   petitparser:
     dependency: transitive
     description:
@@ -721,7 +680,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.2"
->>>>>>> onboarding
   platform:
     dependency: transitive
     description:
@@ -738,8 +696,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
-<<<<<<< HEAD
-=======
   pool:
     dependency: transitive
     description:
@@ -756,7 +712,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.1"
->>>>>>> onboarding
   pretty_dio_logger:
     dependency: "direct main"
     description:
@@ -861,8 +816,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
-<<<<<<< HEAD
-=======
   shelf:
     dependency: transitive
     description:
@@ -879,14 +832,11 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
->>>>>>> onboarding
   sky_engine:
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
-=======
   smooth_page_indicator:
     dependency: "direct main"
     description:
@@ -895,7 +845,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0+3"
->>>>>>> onboarding
   source_gen:
     dependency: transitive
     description:
@@ -936,8 +885,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
-<<<<<<< HEAD
-=======
   stream_transform:
     dependency: transitive
     description:
@@ -946,7 +893,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
->>>>>>> onboarding
   string_scanner:
     dependency: transitive
     description:
@@ -971,8 +917,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.3"
-<<<<<<< HEAD
-=======
   time:
     dependency: transitive
     description:
@@ -989,7 +933,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.2"
->>>>>>> onboarding
   typed_data:
     dependency: transitive
     description:
@@ -998,8 +941,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
-<<<<<<< HEAD
-=======
   universal_io:
     dependency: transitive
     description:
@@ -1008,7 +949,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.2"
->>>>>>> onboarding
   url_launcher:
     dependency: "direct main"
     description:
@@ -1073,8 +1013,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.4"
-<<<<<<< HEAD
-=======
   vector_graphics_codec:
     dependency: transitive
     description:
@@ -1091,7 +1029,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.16"
->>>>>>> onboarding
   vector_math:
     dependency: transitive
     description:
@@ -1124,8 +1061,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
-<<<<<<< HEAD
-=======
   web_socket:
     dependency: transitive
     description:
@@ -1142,7 +1077,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
->>>>>>> onboarding
   win32:
     dependency: transitive
     description:
@@ -1159,8 +1093,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
-<<<<<<< HEAD
-=======
   xml:
     dependency: transitive
     description:
@@ -1169,7 +1101,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.5.0"
->>>>>>> onboarding
   yaml:
     dependency: transitive
     description:

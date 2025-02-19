@@ -36,15 +36,12 @@ dependencies:
   shared_preferences: ^2.3.2
   # provides API to store data in secure storage. Keychain is used in iOS, KeyStore based solution is used in Android.
   flutter_secure_storage: ^9.2.2
-<<<<<<< HEAD
-=======
   flutter_native_splash: ^2.3.5
   # A build system for Dart code generation and modular compilation.
   build_runner: ^2.4.14
   # The Flutter code generator for your assets, fonts, colors.
   flutter_gen_runner: ^5.8.0
   smooth_page_indicator: ^1.1.0
->>>>>>> onboarding
 
   # Icons
   cupertino_icons: ^1.0.8

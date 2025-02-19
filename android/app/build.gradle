@@ -1,24 +1,4 @@
 plugins {
-<<<<<<< HEAD
-    id "com.android.application"
-    id "kotlin-android"
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
-    id "dev.flutter.flutter-gradle-plugin"
-}
-
-android {
-    namespace = "com.example.qaf_store"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
-=======
     id "com.android.application"    // START: FlutterFire Configuration
     id "com.google.gms.google-services" version "4.4.1" apply false
     // END: FlutterFire Configuration
@@ -61,51 +41,30 @@ android {
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
->>>>>>> onboarding
     }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-<<<<<<< HEAD
-        applicationId = "com.example.qaf_store"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
-    }
-
-=======
         applicationId "com.example.qaf_store"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
-        versionCode flutterVersionCode.toInteger()
-        versionName flutterVersionName
+        versionCode 1
+        versionName "1.0.0"
     }
 
 
->>>>>>> onboarding
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-<<<<<<< HEAD
-            signingConfig = signingConfigs.debug
-=======
             signingConfig signingConfigs.debug
->>>>>>> onboarding
         }
     }
 }
 
 flutter {
-<<<<<<< HEAD
-    source = "../.."
-}
-=======
     source '../..'
 }
 
@@ -113,4 +72,3 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.20"
     implementation 'androidx.appcompat:appcompat:1.1.0'
 }
->>>>>>> onboarding

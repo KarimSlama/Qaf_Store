@@ -7,7 +7,7 @@ class QafSizes {
   static double iconXs = 12.sp;
   static double iconSm = 16.sp;
   static double iconMd = 24.sp;
-  static double iconLg = 23.sp;
+  static double iconLg = 32;
 
   /// Font Sizes
   static double fontSizeSm = 14.sp;
@@ -22,14 +22,11 @@ class QafSizes {
   /// Appbar Height
   static double appBarHeight = 56.h;
 
-<<<<<<< HEAD
-=======
   // Default spacing between sections
   static const double defaultSpace = 24;
-  static const double spaceBtwItems = 16.0;
-  static const double spaceBtwSections = 32.0;
+  static const double spaceBtwItems = 16;
+  static const double spaceBtwSections = 32;
 
->>>>>>> onboarding
   /// Image Sizes
   static double imageSize = 80.w;
 
@@ -59,10 +56,6 @@ class QafSizes {
   /// Loading Indicator Size
   static double loadingIndicatorSize = 36.r;
 
-<<<<<<< HEAD
-  /// Grid View Spacing 
-=======
   /// Grid View Spacing
->>>>>>> onboarding
   static double gridViewSpacing = 16.w;
 }

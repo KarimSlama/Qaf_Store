@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class QafElevatedButtonTheme {
   QafElevatedButtonTheme._();
@@ -17,7 +16,7 @@ class QafElevatedButtonTheme {
       side: const BorderSide(color: Colors.blue),
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: TextStyle(
-          fontSize: 16.sp, fontWeight: FontWeight.w600, color: Colors.white),
+          fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusDirectional.circular(12)),
     ),
@@ -35,7 +34,7 @@ class QafElevatedButtonTheme {
       side: const BorderSide(color: Colors.blue),
       padding: const EdgeInsets.symmetric(vertical: 18),
       textStyle: TextStyle(
-          fontSize: 16.sp, fontWeight: FontWeight.w600, color: Colors.white),
+          fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusDirectional.circular(12)),
     ),
