@@ -23,9 +23,9 @@ class QafCheckBoxTheme {
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
     checkColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.values))
-        return Colors.white;
-      else
         return Colors.black;
+      else
+        return Colors.white;
     }),
     fillColor: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected))
