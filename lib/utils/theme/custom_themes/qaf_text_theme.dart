@@ -1,66 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:qaf_store/utils/constants/qaf_colors.dart';
 
+/// Custom Class for Light & Dark Text Themes
 class QafTextTheme {
-  QafTextTheme._();
-
+  QafTextTheme._(); // To avoid creating instances
 
   /// Customizable Light Text Theme
-  static TextTheme lightTextTheme = TextTheme(
-    headlineLarge: TextStyle().copyWith(
-        fontSize: 32, fontWeight: FontWeight.bold, color: Colors.black),
-    headlineMedium: TextStyle().copyWith(
-        fontSize: 24, fontWeight: FontWeight.w600, color: Colors.black),
-    headlineSmall: TextStyle().copyWith(
-        fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
-    titleLarge: TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black),
-    titleMedium: TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black),
-    titleSmall: TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),
-    bodyLarge: TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w500, color: Colors.black),
-    bodyMedium: TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.normal, color: Colors.black),
-    bodySmall: TextStyle().copyWith(
-        fontSize: 16,
+  static TextTheme lighTextTheme = TextTheme(
+    headlineLarge: const TextStyle().copyWith(
+        fontSize: 32, fontWeight: FontWeight.bold, color: QafColors.dark),
+    headlineMedium: const TextStyle().copyWith(
+        fontSize: 24, fontWeight: FontWeight.w600, color: QafColors.dark),
+    headlineSmall: const TextStyle().copyWith(
+        fontSize: 18, fontWeight: FontWeight.w600, color: QafColors.dark),
+    titleLarge: const TextStyle().copyWith(
+        fontSize: 16, fontWeight: FontWeight.w600, color: QafColors.dark),
+    titleMedium: const TextStyle().copyWith(
+        fontSize: 16, fontWeight: FontWeight.w500, color: QafColors.dark),
+    titleSmall: const TextStyle().copyWith(
+        fontSize: 16, fontWeight: FontWeight.w400, color: QafColors.dark),
+    bodyLarge: const TextStyle().copyWith(
+        fontSize: 14, fontWeight: FontWeight.w500, color: QafColors.dark),
+    bodyMedium: const TextStyle().copyWith(
+        fontSize: 12, fontWeight: FontWeight.normal, color: QafColors.dark),
+    bodySmall: const TextStyle().copyWith(
+        fontSize: 12,
         fontWeight: FontWeight.w500,
-        color: Colors.black.withValues(alpha: .3)),
-    labelLarge: TextStyle().copyWith(
-        fontSize: 12, fontWeight: FontWeight.normal, color: Colors.black),
-    labelMedium: TextStyle().copyWith(
+        color: QafColors.dark.withOpacity(0.5)),
+    labelLarge: const TextStyle().copyWith(
+        fontSize: 12, fontWeight: FontWeight.normal, color: QafColors.dark),
+    labelMedium: const TextStyle().copyWith(
         fontSize: 12,
         fontWeight: FontWeight.normal,
-        color: Colors.black.withValues(alpha: .3)),
+        color: QafColors.dark.withOpacity(0.5)),
   );
 
   /// Customizable Dark Text Theme
   static TextTheme darkTextTheme = TextTheme(
-    headlineLarge: TextStyle().copyWith(
-        fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
-    headlineMedium: TextStyle().copyWith(
-        fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
-    headlineSmall: TextStyle().copyWith(
-        fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-    titleLarge: TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
-    titleMedium: TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
-    titleSmall: TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white),
-    bodyLarge: TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
-    bodyMedium: TextStyle().copyWith(
-        fontSize: 16, fontWeight: FontWeight.normal, color: Colors.white),
-    bodySmall: TextStyle().copyWith(
-        fontSize: 16,
+    headlineLarge: const TextStyle().copyWith(
+        fontSize: 32, fontWeight: FontWeight.bold, color: QafColors.light),
+    headlineMedium: const TextStyle().copyWith(
+        fontSize: 24, fontWeight: FontWeight.w600, color: QafColors.light),
+    headlineSmall: const TextStyle().copyWith(
+        fontSize: 18, fontWeight: FontWeight.w600, color: QafColors.light),
+    titleLarge: const TextStyle().copyWith(
+        fontSize: 16, fontWeight: FontWeight.w600, color: QafColors.light),
+    titleMedium: const TextStyle().copyWith(
+        fontSize: 16, fontWeight: FontWeight.w500, color: QafColors.light),
+    titleSmall: const TextStyle().copyWith(
+        fontSize: 16, fontWeight: FontWeight.w400, color: QafColors.light),
+    bodyLarge: const TextStyle().copyWith(
+        fontSize: 14, fontWeight: FontWeight.w500, color: QafColors.light),
+    bodyMedium: const TextStyle().copyWith(
+        fontSize: 12, fontWeight: FontWeight.normal, color: QafColors.light),
+    bodySmall: const TextStyle().copyWith(
+        fontSize: 12,
         fontWeight: FontWeight.w500,
-        color: Colors.white.withValues(alpha: .3)),
-    labelLarge: TextStyle().copyWith(
-        fontSize: 12, fontWeight: FontWeight.normal, color: Colors.white),
-    labelMedium: TextStyle().copyWith(
+        color: QafColors.light.withOpacity(0.5)),
+    labelLarge: const TextStyle().copyWith(
+        fontSize: 12, fontWeight: FontWeight.normal, color: QafColors.light),
+    labelMedium: const TextStyle().copyWith(
         fontSize: 12,
         fontWeight: FontWeight.normal,
-        color: Colors.white.withValues(alpha: .3)),
+        color: QafColors.light.withOpacity(0.5)),
   );
 }

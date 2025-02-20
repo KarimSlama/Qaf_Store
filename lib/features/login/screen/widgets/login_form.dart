@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:qaf_store/features/sign_up/screen/sign_up_screen.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
 
@@ -55,7 +57,8 @@ class LoginForm extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: OutlinedButton(
-                  onPressed: () {}, child: Text(QafStrings.createNewAccount)),
+                  onPressed: () => Get.to(() => SignUpScreen()),
+                  child: Text(QafStrings.createAccount)),
             ),
           ],
         ),
