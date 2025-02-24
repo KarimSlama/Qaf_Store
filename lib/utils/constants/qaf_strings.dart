@@ -34,14 +34,19 @@ class QafStrings {
   static const String and = 'and';
   static const String termsOfUse = 'Terms of use';
   static const String verficationCode = 'Verfication Code';
+  static const String resendEmail = 'Resend Email';
   static const String resendEmailIn = 'Resend Email in';
+  static const String continue_ = 'Continue';
+  static const String submit = 'Submit';
+  static const String done = 'Done';
 
   /// ---- Auth Heading Text Strings
   static const String loginTitle = 'Welcome Back,';
   static const String loginSubTitle =
       'Discover limities Choices and Unmatched Convenience';
   static const String signUpTitle = 'Let\'s create your account';
-  static const String forgotPasswordTitle =
+  static const String forgotPasswordTitle = 'Forgot Password';
+  static const String forgotPasswordSubTitle =
       'Enter your email and we will send you a password reset link.';
   static const String changePasswordTitle = 'Password Reset Email Sent';
   static const String changePasswordSubTitle =
@@ -55,4 +60,12 @@ class QafStrings {
       'Your Account successfully created';
   static const String yourAccountCreatedSubTitle =
       'Welcome to Your Ultimate Shopping Destination; Your Account is created, Unleash the Joy of Seamless Online Shopping!';
+
+  /// Home
+  static const String homeAppbarTitle = 'Good day for shopping!';
+  static const String homeAppbarSubTitle = 'Karim Slama';
+  static const String searchInStore = 'Search in store';
+  static const String popularCategories = 'Popular Categories';
+  static const String viewAll = 'View All';
+  static const String popularProducts = 'Popular Products';
 }

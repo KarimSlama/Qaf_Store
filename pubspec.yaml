@@ -42,6 +42,7 @@ dependencies:
   # The Flutter code generator for your assets, fonts, colors.
   flutter_gen_runner: ^5.8.0
   smooth_page_indicator: ^1.1.0
+  carousel_slider: ^5.0.0
 
   # Icons
   cupertino_icons: ^1.0.8
@@ -66,9 +67,16 @@ flutter:
 
   # Assets
   assets:
-    - assets/images/
-    - assets/icons/
     - assets/logos/
+    - assets/icons/brands/
+    - assets/images/content/
+    - assets/images/banners/
+    - assets/images/reviews/
+    - assets/images/products/
+    - assets/icons/categories/
+    - assets/images/animations/
+    - assets/icons/payment_methods/
+    - assets/images/on_boarding_images/
 
 
   # Fonts

@@ -9,12 +9,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:qaf_store/qaf_app.dart';
-import 'package:qaf_store/utils/routing/app_router.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(QafApp(appRouter: AppRouter(),));
+    await tester.pumpWidget(QafApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

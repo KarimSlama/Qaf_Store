@@ -23,7 +23,7 @@ class SocialButtons extends StatelessWidget {
             icon: Image.asset(
                 width: QafSizes.iconLg,
                 height: QafSizes.iconLg,
-                Assets.icons.facebookIcon.path),
+                Assets.images.content.facebookIcon.path),
           ),
         ),
         Container(
@@ -36,7 +36,7 @@ class SocialButtons extends StatelessWidget {
             icon: Image.asset(
                 width: QafSizes.iconLg,
                 height: QafSizes.iconLg,
-                Assets.icons.googleIcon.path),
+                Assets.images.content.googleIcon.path),
           ),
         ),
       ],
