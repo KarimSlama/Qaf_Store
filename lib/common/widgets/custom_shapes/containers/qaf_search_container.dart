@@ -4,16 +4,17 @@ import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 
 class QafSearchContainer extends StatelessWidget {
   final String text;
-  const QafSearchContainer({
-    super.key,
-    required this.text,
-  });
+  final EdgeInsetsDirectional padding;
+  const QafSearchContainer(
+      {super.key,
+      required this.text,
+      this.padding = const EdgeInsetsDirectional.symmetric(
+          horizontal: QafSizes.defaultSpace)});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          EdgeInsetsDirectional.symmetric(horizontal: QafSizes.defaultSpace),
+      padding: padding,
       child: TextFormField(
         decoration: InputDecoration(
           prefixIcon: Icon(Iconsax.search_normal),

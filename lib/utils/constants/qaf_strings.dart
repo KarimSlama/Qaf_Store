@@ -68,4 +68,6 @@ class QafStrings {
   static const String popularCategories = 'Popular Categories';
   static const String viewAll = 'View All';
   static const String popularProducts = 'Popular Products';
+  static const String featuredBrands = 'Featured Brands';
+  static const String youMightLike = 'You might like';
 }
