@@ -70,4 +70,8 @@ class QafStrings {
   static const String popularProducts = 'Popular Products';
   static const String featuredBrands = 'Featured Brands';
   static const String youMightLike = 'You might like';
+  static const String home = 'Home';
+  static const String store = 'Store';
+  static const String wishlist = 'Wishlist';
+  static const String profile = 'Profile';
 }
