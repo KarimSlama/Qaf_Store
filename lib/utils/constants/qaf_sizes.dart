@@ -4,10 +4,10 @@ class QafSizes {
   QafSizes._();
 
   /// Icon Sizes
-  static double iconXs = 12.sp;
-  static double iconSm = 16.sp;
-  static double iconMd = 24.sp;
-  static double iconLg = 32;
+  static const double iconXs = 12;
+  static const double iconSm = 16;
+  static const double iconMd = 24;
+  static const double iconLg = 32;
 
   /// Font Sizes
   static double fontSizeSm = 14.sp;
@@ -33,7 +33,7 @@ class QafSizes {
   /// Border Radius
   static double borderRadiusSm = 4.r;
   static double borderRadiusMd = 8.r;
-  static double borderRadiusLg = 12.r;
+  static const double borderRadiusLg = 12;
 
   /// Product Item Dimensions
   static double productImageSize = 120.w;

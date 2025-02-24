@@ -60,4 +60,12 @@ class QafStrings {
       'Your Account successfully created';
   static const String yourAccountCreatedSubTitle =
       'Welcome to Your Ultimate Shopping Destination; Your Account is created, Unleash the Joy of Seamless Online Shopping!';
+
+  /// Home
+  static const String homeAppbarTitle = 'Good day for shopping!';
+  static const String homeAppbarSubTitle = 'Karim Slama';
+  static const String searchInStore = 'Search in store';
+  static const String popularCategories = 'Popular Categories';
+  static const String viewAll = 'View All';
+  static const String popularProducts = 'Popular Products';
 }

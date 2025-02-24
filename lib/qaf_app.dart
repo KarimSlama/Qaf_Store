@@ -17,7 +17,7 @@ class QafApp extends StatelessWidget {
         title: QafStrings.appTitle,
         debugShowCheckedModeBanner: false,
         home: OnboardingScreen(),
-        theme: QafTheme.lightTheme,
+        theme: QafTheme.lightTheme, 
         darkTheme: QafTheme.darkTheme,
         themeMode: ThemeMode.system,
       ),
