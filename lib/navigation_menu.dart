@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/features/store/screens/home/home_screens.dart';
+import 'package:qaf_store/features/store/screens/store/store_screen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
 
@@ -43,7 +44,7 @@ class NavigationController extends GetxController {
 
   final screens = [
     HomeScreens(),
-    Container(color: Colors.blue),
+    StoreScreen(),
     Container(color: Colors.green),
     Container(color: Colors.amber),
   ];

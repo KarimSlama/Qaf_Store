@@ -5,6 +5,7 @@ import 'package:qaf_store/common/styles/shadow_style.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:qaf_store/common/widgets/icons/circular_icon.dart';
 import 'package:qaf_store/common/widgets/images/rounded_image.dart';
+import 'package:qaf_store/common/widgets/texts/brand_title_text_with_verification_icon.dart';
 import 'package:qaf_store/common/widgets/texts/product_price_text.dart';
 import 'package:qaf_store/common/widgets/texts/product_title_text.dart';
 import 'package:qaf_store/gen/assets.gen.dart';
@@ -78,19 +79,8 @@ class VerticalProductCard extends StatelessWidget {
                 children: [
                   ProductTitleText(
                       title: 'Red Nike Air shoes', smallSize: true),
-                  Row(
-                    spacing: 10.w,
-                    children: [
-                      Text('Nike',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                          style: Theme.of(context).textTheme.labelMedium),
-                      Icon(
-                        Iconsax.verify,
-                        size: QafSizes.iconXs,
-                        color: QafColors.primary,
-                      ),
-                    ],
+                  BrandTitleTextWithVerificationIcon(
+                    title: 'Nike',
                   ),
                 ],
               ),
