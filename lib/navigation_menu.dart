@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:qaf_store/features/store/screens/favorite/wishlist_screen.dart';
 import 'package:qaf_store/features/store/screens/home/home_screens.dart';
 import 'package:qaf_store/features/store/screens/store/store_screen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
+import 'package:qaf_store/utils/constants/qaf_strings.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
 
 class NavigationMenu extends StatelessWidget {
@@ -27,11 +29,14 @@ class NavigationMenu extends StatelessWidget {
                 ? QafColors.white.withValues(alpha: .1)
                 : QafColors.black.withValues(alpha: .1),
             destinations: [
-              NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
-              NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),
               NavigationDestination(
-                  icon: Icon(Iconsax.heart), label: 'Favorite'),
-              NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
+                  icon: Icon(Iconsax.home), label: QafStrings.home),
+              NavigationDestination(
+                  icon: Icon(Iconsax.shop), label: QafStrings.store),
+              NavigationDestination(
+                  icon: Icon(Iconsax.heart), label: QafStrings.wishlist),
+              NavigationDestination(
+                  icon: Icon(Iconsax.user), label: QafStrings.profile),
             ]),
       ),
       body: Obx(() => controller.screens[controller.currentIndex.value]),
@@ -45,7 +50,7 @@ class NavigationController extends GetxController {
   final screens = [
     HomeScreens(),
     StoreScreen(),
-    Container(color: Colors.green),
+    WishlistScreen(),
     Container(color: Colors.amber),
   ];
 }

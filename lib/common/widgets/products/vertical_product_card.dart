@@ -50,7 +50,7 @@ class VerticalProductCard extends StatelessWidget {
                       backgroundColor:
                           QafColors.secendary.withValues(alpha: .8),
                       padding: EdgeInsetsDirectional.symmetric(
-                          horizontal: 8, vertical: 4),
+                          horizontal: QafSizes.sm, vertical: QafSizes.xs),
                       child: Text(
                         '25%',
                         style: Theme.of(context)
@@ -60,7 +60,7 @@ class VerticalProductCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     top: 0,
                     right: 0,
                     child: CircularIcon(
