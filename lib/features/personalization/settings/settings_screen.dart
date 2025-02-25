@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:qaf_store/common/widgets/list_tiles/setting_menu_tile.dart';
 import 'package:qaf_store/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
+import 'package:qaf_store/features/personalization/profile/profile_screen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
@@ -30,7 +32,9 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: QafSizes.spaceBtwSections),
-                  const UserProfileTile(),
+                  UserProfileTile(
+                    onPressed: () => Get.to(() => ProfileScreen()),
+                  ),
                   SizedBox(height: QafSizes.spaceBtwSections)
                 ],
               ),
@@ -93,7 +97,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   SettingMenuTile(
                     icon: Iconsax.image,
-                    title: QafStrings.HDImageQuality,
+                    title: QafStrings.hDImageQuality,
                     subTitle: QafStrings.setImageQualityToBeSeen,
                     trailing: Switch(value: false, onChanged: (value) {}),
                   ),

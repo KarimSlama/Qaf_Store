@@ -104,9 +104,22 @@ class QafStrings {
   static const String uploadDataToYourCloudFirebase =
       'Upload Data to your Cloud Firebase';
   static const String geolocation = 'Geolocation';
-  static const String setRecommendationBasedOnLocation = 'Set recommendation based on location';
+  static const String setRecommendationBasedOnLocation =
+      'Set recommendation based on location';
   static const String safeMode = 'Safe Mode';
-  static const String searchResultIsSafeForAllAges = 'Search result is safe for all ages';
-  static const String HDImageQuality = 'HD Image Quality';
+  static const String searchResultIsSafeForAllAges =
+      'Search result is safe for all ages';
+  static const String hDImageQuality = 'HD Image Quality';
   static const String setImageQualityToBeSeen = 'Set image quality to be seen';
+
+  /// Profile
+  static const String changeProfilePicture = 'Change Profile Picture';
+  static const String profileInformation = 'Profile Information';
+  static const String personalInformation = 'Personal Information';
+  static const String name = 'Name';
+  static const String userID = 'User ID';
+  static const String phoneNumber = 'Phone Number';
+  static const String gender = 'Gender';
+  static const String dateOfBirth = 'Date of Birth';
+  static const String closeAccount = 'Close Account';
 }

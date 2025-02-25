@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
+import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
 
 class QafAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? title;
@@ -11,7 +13,7 @@ class QafAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
 
-  const QafAppBar( 
+  const QafAppBar(
       {super.key,
       required this.title,
       this.showBackArrow = false,
@@ -27,7 +29,13 @@ class QafAppBar extends StatelessWidget implements PreferredSizeWidget {
         automaticallyImplyLeading: false,
         leading: showBackArrow
             ? IconButton(
-                onPressed: () => Get.back(), icon: Icon(Iconsax.arrow_left))
+                onPressed: () => Get.back(),
+                icon: Icon(
+                  Iconsax.arrow_left_24,
+                  color: QafHelperFunctions.isDark(context)
+                      ? QafColors.white
+                      : QafColors.black,
+                ))
             : leadingIcon != null
                 ? IconButton(
                     onPressed: leadingOnPressed, icon: Icon(leadingIcon))

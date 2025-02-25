@@ -6,7 +6,8 @@ import 'package:qaf_store/gen/assets.gen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 
 class UserProfileTile extends StatelessWidget {
-  const UserProfileTile({super.key});
+  final VoidCallback onPressed;
+  const UserProfileTile({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,8 @@ class UserProfileTile extends StatelessWidget {
             ),
       ),
       trailing: IconButton(
-          onPressed: () {}, icon: Icon(Iconsax.edit4, color: QafColors.white)),
+          onPressed: onPressed,
+          icon: Icon(Iconsax.edit4, color: QafColors.white)),
     );
   }
 }
