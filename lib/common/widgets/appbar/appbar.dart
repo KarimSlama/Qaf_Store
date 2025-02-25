@@ -11,9 +11,9 @@ class QafAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final VoidCallback? leadingOnPressed;
 
-  const QafAppBar(
+  const QafAppBar( 
       {super.key,
-      this.title,
+      required this.title,
       this.showBackArrow = false,
       this.leadingIcon,
       this.actions,

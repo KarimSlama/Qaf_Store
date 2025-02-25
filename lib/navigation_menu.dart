@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/features/store/screens/favorite/wishlist_screen.dart';
 import 'package:qaf_store/features/store/screens/home/home_screens.dart';
+import 'package:qaf_store/features/personalization/profile/settings_screen.dart';
 import 'package:qaf_store/features/store/screens/store/store_screen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
@@ -51,6 +52,6 @@ class NavigationController extends GetxController {
     HomeScreens(),
     StoreScreen(),
     WishlistScreen(),
-    Container(color: Colors.amber),
+    SettingsScreen(),
   ];
 }
