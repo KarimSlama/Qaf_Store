@@ -1,6 +1,6 @@
 # Qaf Store 🛒 – A Complete E-Commerce Solution
 
-Qaf Store is a robust and scalable e-commerce application designed to provide a seamless online shopping experience. Built with **Flutter** for a smooth cross-platform UI ,it ensures high performance, security, and flexibility for both customers and sellers.
+Qaf Store is a robust and scalable e-commerce application designed to provide a seamless online shopping experience. Built with **Flutter** for a smooth cross-platform UI, it ensures high performance, security, and flexibility for both customers and sellers.
 
 ## ✨ Key Features
 - 🖌 **Modern & Intuitive UI** – A clean, user-friendly interface for a great shopping experience.
@@ -15,7 +15,7 @@ Qaf Store is a robust and scalable e-commerce application designed to provide a 
 - **Frontend:** Flutter (Dart)
 - **Database:** PostgreSQL / Firebase
 - **State Management:** GetX
-- **APIs:** RESTful APIs, Retrofilt with Dio for seamless communication
+- **APIs:** RESTful APIs, Retrofit with Dio for seamless communication
 
 ## 🚀 Future Enhancements
 - AI-powered recommendations
@@ -26,8 +26,7 @@ Qaf Store is a robust and scalable e-commerce application designed to provide a 
 Qaf Store is built to grow and evolve, offering a feature-rich and efficient shopping experience. Stay tuned for updates!  
 
 
-<<<<<<< HEAD
 ## 🎨 Cover Design
-=======
+
+
 ## 🎨 Cover Design
->>>>>>> onboarding
