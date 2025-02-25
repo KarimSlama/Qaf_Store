@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/curved_edges/curved_edge_widget.dart';
 import 'package:qaf_store/common/widgets/qaf_circular_container.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
@@ -14,9 +13,7 @@ class PrimaryHeaderWidget extends StatelessWidget {
       child: Container(
         color: QafColors.primary,
         padding: EdgeInsets.all(0),
-        child: SizedBox(
-          height: 380.h,
-          child: Stack(
+        child: Stack(
             children: [
               PositionedDirectional(
                 top: -150,
@@ -33,7 +30,6 @@ class PrimaryHeaderWidget extends StatelessWidget {
               child,
             ],
           ),
-        ),
       ),
     );
   }

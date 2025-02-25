@@ -40,6 +40,7 @@ class HomeScreens extends StatelessWidget {
                           isActionButton: false,
                         ),
                         HorizontalHomeCategories(),
+                        SizedBox(height: QafSizes.spaceBtwSections),
                       ],
                     ),
                   ),

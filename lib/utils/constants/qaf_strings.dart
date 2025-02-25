@@ -74,4 +74,39 @@ class QafStrings {
   static const String store = 'Store';
   static const String wishlist = 'Wishlist';
   static const String profile = 'Profile';
+
+  /// Settings
+  static const String account = 'Account';
+  static const String accountSettings = 'Account Settings';
+  static const String myAddress = 'My Address';
+  static const String setShoppingDeliverAddress =
+      'Set shopping deliver address';
+  static const String myCart = 'My Cart';
+  static const String addRemoveProductsAndMoveToCheckout =
+      'Add, remove products and move to checkout';
+  static const String myOrders = 'My Orders';
+  static const String inProgressAndCompletedOrders =
+      'In-progress and Completed Orders';
+  static const String bankAccount = 'Bank Account';
+  static const String withdrawBalanceToRegisterdBankAccount =
+      'Withdraw balance to registerd bank account';
+  static const String myCoupons = 'My Coupons';
+  static const String listOfAllTheDiscountedCoupons =
+      'List of all the discounted coupons';
+  static const String notifications = 'Notifications';
+  static const String setAnyKindOfNotificationMessage =
+      'Set any kind of notification message';
+  static const String accountPrivacy = 'Account Privacy';
+  static const String manageDataUsageAndConnectedAccounts =
+      'Manage data usage and connected accounts';
+  static const String appSettings = 'App Settings';
+  static const String loadData = 'Load Data';
+  static const String uploadDataToYourCloudFirebase =
+      'Upload Data to your Cloud Firebase';
+  static const String geolocation = 'Geolocation';
+  static const String setRecommendationBasedOnLocation = 'Set recommendation based on location';
+  static const String safeMode = 'Safe Mode';
+  static const String searchResultIsSafeForAllAges = 'Search result is safe for all ages';
+  static const String HDImageQuality = 'HD Image Quality';
+  static const String setImageQualityToBeSeen = 'Set image quality to be seen';
 }
