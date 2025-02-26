@@ -21,6 +21,11 @@ class QafStrings {
   static const String userName = 'User Name';
   static const String email = 'E-Mail';
   static const String phone = 'Phone';
+  static const String street = 'Street';
+  static const String postalCode = 'Postal Code';
+  static const String city = 'City';
+  static const String country = 'Country';
+  static const String state = 'State';
   static const String password = 'Password';
   static const String newPassword = 'New Password';
   static const String rememberMe = 'Remember Me';
@@ -80,6 +85,7 @@ class QafStrings {
   static const String account = 'Account';
   static const String accountSettings = 'Account Settings';
   static const String myAddress = 'My Address';
+  static const String addresses = 'Addresses';
   static const String setShoppingDeliverAddress =
       'Set shopping deliver address';
   static const String myCart = 'My Cart';
@@ -138,4 +144,7 @@ class QafStrings {
   static const String
       ratingsAndReviewsAreVerifiedAndFromPeopleWhoUseTheSameTypeOfDeviceThatYouUse =
       'Ratings and reviews are verified and from people who use the same type of device that you use.';
+
+  /// Address
+  static const String addNewAddress = 'Add New Address';
 }
