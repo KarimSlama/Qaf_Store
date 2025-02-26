@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
-import 'package:qaf_store/common/widgets/products/cart_counter_icon.dart';
+import 'package:qaf_store/common/widgets/products/cart/cart_counter_icon.dart';
+import 'package:qaf_store/features/store/screens/cart/cart_screen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
 
@@ -34,7 +36,7 @@ class QafHomeAppbar extends StatelessWidget {
       actions: [
         CartCounterIcon(
           iconColor: QafColors.white,
-          onPressed: () {},
+          onPressed: () => Get.to(() => CartScreen()),
         )
       ],
     );

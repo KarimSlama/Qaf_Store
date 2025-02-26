@@ -5,7 +5,7 @@ import 'package:qaf_store/common/widgets/appbar/tabbar.dart';
 import 'package:qaf_store/common/widgets/cards/brand_card.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/qaf_search_container.dart';
 import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
-import 'package:qaf_store/common/widgets/products/cart_counter_icon.dart';
+import 'package:qaf_store/common/widgets/products/cart/cart_counter_icon.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
 import 'package:qaf_store/features/store/screens/store/widgets/category_tab.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
