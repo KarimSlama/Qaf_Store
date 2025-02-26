@@ -45,7 +45,7 @@ class VerticalProductCard extends StatelessWidget {
                         Assets.images.products.nikeAirJordonwhiteMagenta.path,
                     applyImageRadius: true,
                   ),
-                  Positioned(
+                  PositionedDirectional(
                     top: 12,
                     child: RoundedContainer(
                       radius: QafSizes.sm,
@@ -62,9 +62,9 @@ class VerticalProductCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Positioned(
+                  const PositionedDirectional(
                     top: 0,
-                    right: 0,
+                    end: 0,
                     child: CircularIcon(
                       icon: Iconsax.heart5,
                       color: Colors.red,
