@@ -24,21 +24,19 @@ class CircularIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = QafHelperFunctions.isDark(context);
-    return Positioned(
-      child: Container(
-        width: width,
-        height: height,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100.r),
-          color: backgroundColor != null
-              ? backgroundColor!
-              : dark
-                  ? QafColors.black.withValues(alpha: .9)
-                  : QafColors.white.withValues(alpha: .9),
-        ),
-        child: IconButton(
-            onPressed: onPressed, icon: Icon(icon, color: color, size: size)),
+    return Container(
+      width: width,
+      height: height,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100.r),
+        color: backgroundColor != null
+            ? backgroundColor!
+            : dark
+                ? QafColors.black.withValues(alpha: .9)
+                : QafColors.white.withValues(alpha: .9),
       ),
+      child: IconButton(
+          onPressed: onPressed, icon: Icon(icon, color: color, size: size)),
     );
   }
 }

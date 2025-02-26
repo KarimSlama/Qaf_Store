@@ -128,8 +128,14 @@ class QafStrings {
   static const String status = 'Status';
   static const String inStock = 'In Stock';
   static const String description = 'Description';
-  static const String showMore = 'Show More';
-  static const String less = 'Less';
+  static const String showMore = ' Show More';
+  static const String showLess = ' Show Less';
   static const String reviews = 'Reviews';
   static const String addToCart = 'Add to Cart';
+
+  /// Reviews and Ratings
+  static const String ratingReviews = 'Rating & Reviews';
+  static const String
+      ratingsAndReviewsAreVerifiedAndFromPeopleWhoUseTheSameTypeOfDeviceThatYouUse =
+      'Ratings and reviews are verified and from people who use the same type of device that you use.';
 }
