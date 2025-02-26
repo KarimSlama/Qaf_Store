@@ -67,6 +67,7 @@ class QafStrings {
   static const String searchInStore = 'Search in store';
   static const String popularCategories = 'Popular Categories';
   static const String viewAll = 'View All';
+  static const String checkout = 'Checkout';
   static const String popularProducts = 'Popular Products';
   static const String featuredBrands = 'Featured Brands';
   static const String youMightLike = 'You might like';
@@ -122,4 +123,13 @@ class QafStrings {
   static const String gender = 'Gender';
   static const String dateOfBirth = 'Date of Birth';
   static const String closeAccount = 'Close Account';
+
+  /// Product
+  static const String status = 'Status';
+  static const String inStock = 'In Stock';
+  static const String description = 'Description';
+  static const String showMore = 'Show More';
+  static const String less = 'Less';
+  static const String reviews = 'Reviews';
+  static const String addToCart = 'Add to Cart';
 }

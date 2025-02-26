@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/styles/shadow_style.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/rounded_container.dart';
@@ -8,6 +9,7 @@ import 'package:qaf_store/common/widgets/images/rounded_image.dart';
 import 'package:qaf_store/common/widgets/texts/brand_title_text_with_verification_icon.dart';
 import 'package:qaf_store/common/widgets/texts/product_price_text.dart';
 import 'package:qaf_store/common/widgets/texts/product_title_text.dart';
+import 'package:qaf_store/features/store/screens/product_details/product_details_screen.dart';
 import 'package:qaf_store/gen/assets.gen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
@@ -20,7 +22,7 @@ class VerticalProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = QafHelperFunctions.isDark(context);
     return GestureDetector(
-      onTap: () {},
+      onTap: () => Get.to(() => ProductDetailsScreen()),
       child: Container(
         width: 180.w,
         padding: EdgeInsets.all(1),
@@ -46,7 +48,7 @@ class VerticalProductCard extends StatelessWidget {
                   Positioned(
                     top: 12,
                     child: RoundedContainer(
-                      radius: 8.r,
+                      radius: QafSizes.sm,
                       backgroundColor:
                           QafColors.secendary.withValues(alpha: .8),
                       padding: EdgeInsetsDirectional.symmetric(

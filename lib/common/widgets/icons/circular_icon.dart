@@ -30,9 +30,11 @@ class CircularIcon extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100.r),
-          color: dark
-              ? QafColors.black.withValues(alpha: .9)
-              : QafColors.white.withValues(alpha: .9),
+          color: backgroundColor != null
+              ? backgroundColor!
+              : dark
+                  ? QafColors.black.withValues(alpha: .9)
+                  : QafColors.white.withValues(alpha: .9),
         ),
         child: IconButton(
             onPressed: onPressed, icon: Icon(icon, color: color, size: size)),

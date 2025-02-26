@@ -15,7 +15,7 @@ class QafAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   const QafAppBar(
       {super.key,
-      required this.title,
+      this.title,
       this.showBackArrow = false,
       this.leadingIcon,
       this.actions,
