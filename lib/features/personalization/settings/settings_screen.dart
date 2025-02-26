@@ -6,6 +6,7 @@ import 'package:qaf_store/common/widgets/custom_shapes/containers/primary_header
 import 'package:qaf_store/common/widgets/list_tiles/setting_menu_tile.dart';
 import 'package:qaf_store/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
+import 'package:qaf_store/features/personalization/address/user_address_screen.dart';
 import 'package:qaf_store/features/personalization/profile/profile_screen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
@@ -47,9 +48,11 @@ class SettingsScreen extends StatelessWidget {
                   SectionHeading(
                       text: QafStrings.accountSettings, isActionButton: false),
                   SettingMenuTile(
-                      icon: Iconsax.safe_home,
-                      title: QafStrings.myAddress,
-                      subTitle: QafStrings.setShoppingDeliverAddress),
+                    icon: Iconsax.safe_home,
+                    title: QafStrings.myAddress,
+                    subTitle: QafStrings.setShoppingDeliverAddress,
+                    onTap: () => Get.to(() => UserAddressScreen()),
+                  ),
                   SettingMenuTile(
                       icon: Iconsax.shopping_cart,
                       title: QafStrings.myCart,

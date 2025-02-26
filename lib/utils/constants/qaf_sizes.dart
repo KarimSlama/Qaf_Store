@@ -49,6 +49,7 @@ class QafSizes {
 
   /// Input Fields
   static double inputFieldRadius = 12.r;
+  static const double spaceBtwInputFields = 16;
 
   /// Card Sizes
   static double cardRadiusLg = 16.r;
