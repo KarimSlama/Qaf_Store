@@ -80,6 +80,7 @@ class QafStrings {
   static const String store = 'Store';
   static const String wishlist = 'Wishlist';
   static const String profile = 'Profile';
+  static const String cart = 'Cart';
 
   /// Settings
   static const String account = 'Account';
