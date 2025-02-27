@@ -5,6 +5,7 @@ import 'package:qaf_store/common/widgets/texts/section_heading.dart';
 import 'package:qaf_store/gen/assets.gen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
+import 'package:qaf_store/utils/constants/qaf_strings.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
 
 class BillingPaymentSection extends StatelessWidget {
@@ -17,8 +18,8 @@ class BillingPaymentSection extends StatelessWidget {
       spacing: QafSizes.spaceBtwItems / 2,
       children: [
         SectionHeading(
-          text: 'Payment Method',
-          buttonText: 'Change',
+          text: QafStrings.paymentMethod,
+          buttonText: QafStrings.change,
           isActionButton: true,
           onPressed: () {},
         ),
@@ -33,7 +34,8 @@ class BillingPaymentSection extends StatelessWidget {
               child: Image.asset(Assets.icons.paymentMethods.paypal.path,
                   fit: BoxFit.contain),
             ),
-            Text('Paypal', style: Theme.of(context).textTheme.bodyLarge),
+            Text(QafStrings.paypal,
+                style: Theme.of(context).textTheme.bodyLarge),
           ],
         ),
       ],

@@ -3,6 +3,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
+import 'package:qaf_store/utils/constants/qaf_strings.dart';
 
 class BillingAddressSection extends StatelessWidget {
   const BillingAddressSection({super.key});
@@ -14,8 +15,8 @@ class BillingAddressSection extends StatelessWidget {
       spacing: QafSizes.sm,
       children: [
         SectionHeading(
-          text: 'Shipping Address',
-          buttonText: 'Change',
+          text: QafStrings.shippingAddress,
+          buttonText: QafStrings.change,
           isActionButton: true,
           onPressed: () {},
         ),

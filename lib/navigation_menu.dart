@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:qaf_store/features/store/screens/favorite/wishlist_screen.dart';
+import 'package:qaf_store/features/store/screens/wishlist/wishlist_screen.dart';
 import 'package:qaf_store/features/store/screens/home/home_screens.dart';
 import 'package:qaf_store/features/personalization/settings/settings_screen.dart';
 import 'package:qaf_store/features/store/screens/store/store_screen.dart';

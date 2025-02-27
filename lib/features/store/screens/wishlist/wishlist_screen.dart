@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
-import 'package:qaf_store/common/widgets/products/vertical_product_card.dart';
+import 'package:qaf_store/common/widgets/products/product_cards/vertical_product_card.dart';
 import 'package:qaf_store/features/store/screens/home/home_screens.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';

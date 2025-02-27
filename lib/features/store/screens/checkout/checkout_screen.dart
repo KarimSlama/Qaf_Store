@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:qaf_store/common/widgets/products/coupon/coupon_widget.dart';
@@ -62,8 +61,8 @@ class CheckoutScreen extends StatelessWidget {
             bottom: QafSizes.defaultSpace),
         child: ElevatedButton(
             onPressed: () => Get.to(() => SuccessScreen(
-                  title: 'Payment Successful!',
-                  subTitle: 'You item will be shipping soon!',
+                  title: QafStrings.paymentSuccessful,
+                  subTitle: QafStrings.yourItemWillBeShippingSoon,
                   image: Assets.icons.paymentMethods.successfulPaymentIcon.path,
                   onPressed: () => Get.to(() => NavigationMenu()),
                 )),
