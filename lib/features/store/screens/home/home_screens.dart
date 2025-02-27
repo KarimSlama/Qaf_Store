@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/qaf_search_container.dart';
 import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
-import 'package:qaf_store/common/widgets/products/vertical_product_card.dart';
+import 'package:qaf_store/common/widgets/products/product_cards/vertical_product_card.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
 import 'package:qaf_store/features/store/screens/home/widgets/horizontal_categories.dart';
 import 'package:qaf_store/features/store/screens/home/widgets/promo_sliders.dart';

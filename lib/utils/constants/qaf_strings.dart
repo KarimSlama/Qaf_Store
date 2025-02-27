@@ -152,4 +152,21 @@ class QafStrings {
 
   /// Coupon
   static const String haveAPromoCodeEnterHere = 'Have a promo code? Enter here';
+
+  /// Checkout
+  static const String paymentSuccessful = 'Payment Successful!';
+  static const String yourItemWillBeShippingSoon = 'Your item will be shipping soon!';
+  static const String subtotal = 'Subtotal';
+  static const String shippingFee = 'Shipping Fee';
+  static const String taxFee = 'Tax Fee';
+  static const String orderTotal = 'Order Total';
+  static const String paymentMethod = 'Payment Method';
+  static const String shippingAddress = 'Shipping Address';
+  static const String change = 'Change';
+  static const String paypal = 'Paypal';
+
+  /// Orders
+  static const String processing = 'Processing';
+  static const String order = 'Order';
+  static const String shippingDate = 'Shipping Date';
 }

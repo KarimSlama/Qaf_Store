@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qaf_store/common/widgets/cards/brand_show_case.dart';
 import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
-import 'package:qaf_store/common/widgets/products/vertical_product_card.dart';
+import 'package:qaf_store/common/widgets/products/product_cards/vertical_product_card.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
 import 'package:qaf_store/gen/assets.gen.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
