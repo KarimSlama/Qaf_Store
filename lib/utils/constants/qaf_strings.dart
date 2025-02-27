@@ -81,6 +81,7 @@ class QafStrings {
   static const String wishlist = 'Wishlist';
   static const String profile = 'Profile';
   static const String cart = 'Cart';
+  static const String apply = 'Apply';
 
   /// Settings
   static const String account = 'Account';
@@ -148,4 +149,7 @@ class QafStrings {
 
   /// Address
   static const String addNewAddress = 'Add New Address';
+
+  /// Coupon
+  static const String haveAPromoCodeEnterHere = 'Have a promo code? Enter here';
 }

@@ -8,6 +8,7 @@ import 'package:qaf_store/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
 import 'package:qaf_store/features/personalization/address/user_address_screen.dart';
 import 'package:qaf_store/features/personalization/profile/profile_screen.dart';
+import 'package:qaf_store/features/store/screens/order/order_screen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
@@ -58,9 +59,11 @@ class SettingsScreen extends StatelessWidget {
                       title: QafStrings.myCart,
                       subTitle: QafStrings.addRemoveProductsAndMoveToCheckout),
                   SettingMenuTile(
-                      icon: Iconsax.bag_tick,
-                      title: QafStrings.myOrders,
-                      subTitle: QafStrings.inProgressAndCompletedOrders),
+                    icon: Iconsax.bag_tick,
+                    title: QafStrings.myOrders,
+                    subTitle: QafStrings.inProgressAndCompletedOrders,
+                    onTap: () => Get.to(() => OrderScreen()),
+                  ),
                   SettingMenuTile(
                       icon: Iconsax.bank,
                       title: QafStrings.bankAccount,
