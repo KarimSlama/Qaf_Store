@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
-import 'package:qaf_store/common/widgets/custom_shapes/containers/qaf_search_container.dart';
 import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
 import 'package:qaf_store/common/widgets/products/product_cards/vertical_product_card.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
-import 'package:qaf_store/utils/constants/qaf_strings.dart';
 
 class AllProductsScreen extends StatelessWidget {
   const AllProductsScreen({super.key});
