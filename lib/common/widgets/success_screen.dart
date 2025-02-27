@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qaf_store/common/styles/qaf_spacing_style.dart';
+import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
 
@@ -21,7 +22,7 @@ class SuccessScreen extends StatelessWidget {
         child: Padding(
           padding: QafSpacingStyle.paddingWithAppBarHeight,
           child: Column(
-            spacing: 18.h,
+            spacing: QafSizes.spaceBtwItems,
             children: [
               Image.asset(
                   width: QafHelperFunctions.screenWidth(context) * .6, image),

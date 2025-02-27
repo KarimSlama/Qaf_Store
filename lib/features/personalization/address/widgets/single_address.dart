@@ -49,8 +49,7 @@ class SingleAddress extends StatelessWidget {
               ),
               Text('+20 1095856941',
                   maxLines: 1, overflow: TextOverflow.ellipsis),
-              Text('95622 Timmy Coves, South Liana, Maine, 77493, USA',
-                  maxLines: 1, softWrap: true)
+              Text('56 St., Cairo, Egypt', maxLines: 1, softWrap: true)
             ],
           )
         ],
