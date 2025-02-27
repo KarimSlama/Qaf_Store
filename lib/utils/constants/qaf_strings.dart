@@ -169,4 +169,7 @@ class QafStrings {
   static const String processing = 'Processing';
   static const String order = 'Order';
   static const String shippingDate = 'Shipping Date';
+
+  /// Brand
+  static const String brands = 'Brands';
 }
