@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:qaf_store/common/widgets/products/coupon/coupon_widget.dart';
@@ -9,11 +8,12 @@ import 'package:qaf_store/features/store/screens/checkout/widgets/billing_addres
 import 'package:qaf_store/features/store/screens/checkout/widgets/billing_amount_section.dart';
 import 'package:qaf_store/features/store/screens/checkout/widgets/billing_payment_section.dart';
 import 'package:qaf_store/gen/assets.gen.dart';
-import 'package:qaf_store/navigation_menu.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
+import 'package:qaf_store/utils/helper/extensions.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
+import 'package:qaf_store/utils/routings/routes.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
@@ -60,12 +60,20 @@ class CheckoutScreen extends StatelessWidget {
             end: QafSizes.defaultSpace,
             bottom: QafSizes.defaultSpace),
         child: ElevatedButton(
-            onPressed: () => Get.to(() => SuccessScreen(
-                  title: QafStrings.paymentSuccessful,
-                  subTitle: QafStrings.yourItemWillBeShippingSoon,
-                  image: Assets.icons.paymentMethods.successfulPaymentIcon.path,
-                  onPressed: () => Get.to(() => NavigationMenu()),
-                )),
+            onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SuccessScreen(
+                      image: Assets
+                          .icons.paymentMethods.successfulPaymentIcon.path,
+                      title: QafStrings.paymentSuccessful,
+                      subTitle: QafStrings.yourItemWillBeShippingSoon,
+                      onPressed: () => context.pushNamed(
+                        Routes.navigationMenu,
+                      ),
+                    ),
+                  ),
+                ),
             child: Text('${QafStrings.checkout}  \$240')),
       ),
     );

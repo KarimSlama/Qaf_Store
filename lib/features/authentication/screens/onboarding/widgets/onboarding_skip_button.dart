@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qaf_store/features/authentication/controllers/onboarding_controller.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qaf_store/features/authentication/screens/onboarding/controller/cubit/onboarding_cubit.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
 import 'package:qaf_store/utils/devices/qaf_device_utility.dart';
@@ -13,7 +14,7 @@ class OnboardingSkipButton extends StatelessWidget {
       top: QafDeviceUtility.getAppbarHeight(),
       end: QafSizes.defaultSpace,
       child: TextButton(
-        onPressed: () => OnboardingController.instance.skipPage(),
+        onPressed: () => context.read<OnboardingCubit>().skipPage(),
         child: Text(QafStrings.skip),
       ),
     );

@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class QafDeviceUtility {
@@ -32,19 +31,19 @@ class QafDeviceUtility {
   }
 
   static double getScreenHeight(context) {
-    return MediaQuery.of(Get.context!).size.height;
+    return MediaQuery.of(context).size.height;
   }
 
   static double getScreenWidth(context) {
-    return MediaQuery.of(Get.context!).size.width;
+    return MediaQuery.of(context).size.width;
   }
 
-  static double getPixelRatio() {
-    return MediaQuery.of(Get.context!).devicePixelRatio;
+  static double getPixelRatio(context) {
+    return MediaQuery.of(context).devicePixelRatio;
   }
 
-  static double getStatusBarHeight() {
-    return MediaQuery.of(Get.context!).padding.top;
+  static double getStatusBarHeight(context) {
+    return MediaQuery.of(context).padding.top;
   }
 
   static double getBottomNavigationBarHeight() {
@@ -55,13 +54,13 @@ class QafDeviceUtility {
     return kToolbarHeight;
   }
 
-  static double getKeyboardHeight() {
-    final viewInsets = View.of(Get.context!).viewInsets;
+  static double getKeyboardHeight(context) {
+    final viewInsets = View.of(context).viewInsets;
     return viewInsets.bottom;
   }
 
-  static Future<bool> isKeyboardVisible() async {
-    final viewInsets = View.of(Get.context!).viewInsets;
+  static Future<bool> isKeyboardVisible(context) async {
+    final viewInsets = View.of(context).viewInsets;
     return viewInsets.bottom > 0;
   }
 

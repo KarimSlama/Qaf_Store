@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
 import 'package:qaf_store/features/store/screens/product_details/widget/bottom_add_to_cart.dart';
 import 'package:qaf_store/features/store/screens/product_details/widget/product_attribute.dart';
 import 'package:qaf_store/features/store/screens/product_details/widget/product_image_slider.dart';
 import 'package:qaf_store/features/store/screens/product_details/widget/product_meta_data.dart';
 import 'package:qaf_store/features/store/screens/product_details/widget/product_rating_and_share.dart';
-import 'package:qaf_store/features/store/screens/product_reivews/product_reviews_screen.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
+import 'package:qaf_store/utils/helper/extensions.dart';
+import 'package:qaf_store/utils/routings/routes.dart';
 import 'package:readmore/readmore.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -57,7 +57,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   Divider(),
                   SectionHeading(
                       text: '${QafStrings.reviews} (200)',
-                      onPressed: () => Get.to(() => ProductReviewsScreen())),
+                      onPressed: () => context.pushNamed(Routes.productReviewScreen)),
                 ],
               ),
             )

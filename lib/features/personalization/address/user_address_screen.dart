@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
-import 'package:qaf_store/features/personalization/address/add_new_address_screen.dart';
 import 'package:qaf_store/features/personalization/address/widgets/single_address.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
+import 'package:qaf_store/utils/helper/extensions.dart';
+import 'package:qaf_store/utils/routings/routes.dart';
 
 class UserAddressScreen extends StatelessWidget {
   const UserAddressScreen({super.key});
@@ -15,7 +15,7 @@ class UserAddressScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(() => AddNewAddressScreen()),
+        onPressed: () => context.pushNamed(Routes.addNewScreen),
         backgroundColor: QafColors.primary,
         child: Icon(Iconsax.add, color: QafColors.white),
       ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/features/store/screens/cart/widgets/cart_items.dart';
-import 'package:qaf_store/features/store/screens/checkout/checkout_screen.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
+import 'package:qaf_store/utils/helper/extensions.dart';
+import 'package:qaf_store/utils/routings/routes.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -27,7 +27,7 @@ class CartScreen extends StatelessWidget {
             end: QafSizes.defaultSpace,
             bottom: QafSizes.defaultSpace),
         child: ElevatedButton(
-            onPressed: () => Get.to(() => CheckoutScreen()),
+            onPressed: () => context.pushNamed(Routes.checkoutScreen),
             child: Text('${QafStrings.checkout}  \$240')),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qaf_store/features/authentication/controllers/onboarding_controller.dart';
+import 'package:qaf_store/features/authentication/screens/onboarding/controller/cubit/onboarding_cubit.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/devices/qaf_device_utility.dart';
@@ -12,15 +13,14 @@ class OnboardingSmoothPageIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = OnboardingController.instance;
     final dark = QafHelperFunctions.isDark(context);
 
     return PositionedDirectional(
       bottom: QafDeviceUtility.getBottomNavigationBarHeight(),
       start: QafSizes.defaultSpace,
       child: SmoothPageIndicator(
-          controller: controller.pageController,
-          onDotClicked: controller.dotNavigationClick,
+          controller: context.read<OnboardingCubit>().pageController,
+          onDotClicked: context.read<OnboardingCubit>().dotNavigationClick,
           effect: ExpandingDotsEffect(
               activeDotColor: dark ? QafColors.light : QafColors.dark,
               dotHeight: 6.h),
