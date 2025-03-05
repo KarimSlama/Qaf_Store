@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/cards/brand_card.dart';
 import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
-import 'package:qaf_store/features/store/screens/brands/brand_products.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
+import 'package:qaf_store/utils/helper/extensions.dart';
+import 'package:qaf_store/utils/routings/routes.dart';
 
 class AllBrandsScreen extends StatelessWidget {
   const AllBrandsScreen({super.key});
@@ -31,7 +31,7 @@ class AllBrandsScreen extends StatelessWidget {
                   itemCount: 12,
                   itemBuilder: (_, index) => BrandCard(
                         showBorder: true,
-                        onTap: () => Get.to(() => BrandProducts()),
+                        onTap: () =>context.pushNamed(Routes.brandProductsScreen),
                       )),
             ],
           ),

@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:qaf_store/common/widgets/list_tiles/setting_menu_tile.dart';
 import 'package:qaf_store/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
-import 'package:qaf_store/features/personalization/address/user_address_screen.dart';
-import 'package:qaf_store/features/personalization/profile/profile_screen.dart';
-import 'package:qaf_store/features/store/screens/order/order_screen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
+import 'package:qaf_store/utils/helper/extensions.dart';
+import 'package:qaf_store/utils/routings/routes.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -35,7 +33,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   SizedBox(height: QafSizes.spaceBtwSections),
                   UserProfileTile(
-                    onPressed: () => Get.to(() => ProfileScreen()),
+                    onPressed: () => context.pushNamed(Routes.profileScreen),
                   ),
                   SizedBox(height: QafSizes.spaceBtwSections)
                 ],
@@ -52,7 +50,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.safe_home,
                     title: QafStrings.myAddress,
                     subTitle: QafStrings.setShoppingDeliverAddress,
-                    onTap: () => Get.to(() => UserAddressScreen()),
+                    onTap: () => context.pushNamed(Routes.userAddressScreen),
                   ),
                   SettingMenuTile(
                       icon: Iconsax.shopping_cart,
@@ -62,7 +60,7 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.bag_tick,
                     title: QafStrings.myOrders,
                     subTitle: QafStrings.inProgressAndCompletedOrders,
-                    onTap: () => Get.to(() => OrderScreen()),
+                    onTap: () => context.pushNamed(Routes.orderScreen),
                   ),
                   SettingMenuTile(
                       icon: Iconsax.bank,

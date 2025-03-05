@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
 
@@ -22,7 +21,7 @@ class QafDividerWidget extends StatelessWidget {
             endIndent: 4,
           ),
         ),
-        Text(dividerText.capitalize!,
+        Text(dividerText,
             style: Theme.of(context).textTheme.labelMedium),
         Flexible(
           child: Divider(

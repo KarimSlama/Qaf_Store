@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/appbar/tabbar.dart';
 import 'package:qaf_store/common/widgets/cards/brand_card.dart';
@@ -8,12 +7,13 @@ import 'package:qaf_store/common/widgets/custom_shapes/containers/qaf_search_con
 import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
 import 'package:qaf_store/common/widgets/products/cart/cart_counter_icon.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
-import 'package:qaf_store/features/store/screens/brands/all_brands_screen.dart';
 import 'package:qaf_store/features/store/screens/store/widgets/category_tab.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
+import 'package:qaf_store/utils/helper/extensions.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
+import 'package:qaf_store/utils/routings/routes.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -56,7 +56,7 @@ class StoreScreen extends StatelessWidget {
                         SizedBox(height: QafSizes.spaceBtwSections),
                         SectionHeading(
                           text: QafStrings.featuredBrands,
-                          onPressed: () => Get.to(() => AllBrandsScreen()),
+                          onPressed: () => context.pushNamed(Routes.allBrandsScreen),
                         ),
                         SizedBox(height: QafSizes.spaceBtwItems / 1.5),
                         GridViewLayout(

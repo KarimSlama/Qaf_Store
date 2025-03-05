@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:qaf_store/utils/helper/extensions.dart';
 
@@ -30,15 +29,15 @@ class QafHelperFunctions {
     }
   }
 
-  static void showSnackBar(String message) {
-    ScaffoldMessenger.of(Get.context!).showSnackBar(
+  static void showSnackBar(String message, context) {
+    ScaffoldMessenger.of(context!).showSnackBar(
       SnackBar(content: Text(message)),
     );
   }
 
-  static void showAlertDialog(String title, String message) {
+  static void showAlertDialog(String title, String message, context) {
     showDialog(
-        context: Get.context!,
+        context: context,
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(title),

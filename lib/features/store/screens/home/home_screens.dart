@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/qaf_search_container.dart';
 import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
 import 'package:qaf_store/common/widgets/products/product_cards/vertical_product_card.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
-import 'package:qaf_store/features/store/screens/all_products/all_products_screen.dart';
 import 'package:qaf_store/features/store/screens/home/widgets/horizontal_categories.dart';
 import 'package:qaf_store/features/store/screens/home/widgets/promo_sliders.dart';
 import 'package:qaf_store/features/store/screens/home/widgets/qaf_home_appbar.dart';
@@ -15,6 +12,8 @@ import 'package:qaf_store/gen/assets.gen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
+import 'package:qaf_store/utils/helper/extensions.dart';
+import 'package:qaf_store/utils/routings/routes.dart';
 
 class HomeScreens extends StatelessWidget {
   const HomeScreens({super.key});
@@ -64,7 +63,8 @@ class HomeScreens extends StatelessWidget {
                   ),
                   SectionHeading(
                       text: QafStrings.popularProducts,
-                      onPressed: () => Get.to(() => AllProductsScreen())),
+                      onPressed: () =>
+                          context.pushNamed(Routes.allProductsScreen)),
                   GridViewLayout(
                     itemCount: 4,
                     itemBuilder: (_, index) => VerticalProductCard(),

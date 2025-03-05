@@ -65,6 +65,16 @@ class QafStrings {
       'Your Account successfully created';
   static const String yourAccountCreatedSubTitle =
       'Welcome to Your Ultimate Shopping Destination; Your Account is created, Unleash the Joy of Seamless Online Shopping!';
+  static const String congratulations = 'Congratulations!';
+  static const String yourAccountHasBeenCreatedVerifyEmailToContinue = 'Congratulations!';
+  static const String youAreLoggedInPerfectlyNowShopWhteverYouWant =
+      'You are logged in perfectly, now shop whtever you want!';
+  static const String yourPasswordResetEmailHasBeenCheckYourEmails = 'Your Password Reset Email has been check your Emails';
+  static const String error = 'Error';
+  static const String ohSnap = 'Oh Snap!';
+    static const String acceptPrivacyPolicy = 'Accept Privacy Policy';
+  static const String inOrderToCreateAccountYouHaveToReadAndAcceptThePrivacyTermsOfUse = 'In order to create account, you have to read and accept the Privacy & Terms of Use.';
+
 
   /// Home
   static const String homeAppbarTitle = 'Good day for shopping!';
@@ -155,7 +165,8 @@ class QafStrings {
 
   /// Checkout
   static const String paymentSuccessful = 'Payment Successful!';
-  static const String yourItemWillBeShippingSoon = 'Your item will be shipping soon!';
+  static const String yourItemWillBeShippingSoon =
+      'Your item will be shipping soon!';
   static const String subtotal = 'Subtotal';
   static const String shippingFee = 'Shipping Fee';
   static const String taxFee = 'Tax Fee';

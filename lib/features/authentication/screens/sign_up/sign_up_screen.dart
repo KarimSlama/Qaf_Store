@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qaf_store/common/widgets/qaf_divider_widget.dart';
 import 'package:qaf_store/common/widgets/social_buttons.dart';
+import 'package:qaf_store/features/authentication/screens/sign_up/widgets/sign_up_bloc_listener.dart';
 import 'package:qaf_store/features/authentication/screens/sign_up/widgets/sign_up_form.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
@@ -27,6 +28,7 @@ class SignUpScreen extends StatelessWidget {
               verticalSpace(16),
               QafDividerWidget(dividerText: QafStrings.orSignUpWith),
               SocialButtons(),
+              RegisterBlocListener(),
             ],
           ),
         ),

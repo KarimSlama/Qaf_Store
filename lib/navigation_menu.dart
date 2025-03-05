@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:qaf_store/features/store/screens/wishlist/wishlist_screen.dart';
-import 'package:qaf_store/features/store/screens/home/home_screens.dart';
-import 'package:qaf_store/features/personalization/settings/settings_screen.dart';
-import 'package:qaf_store/features/store/screens/store/store_screen.dart';
+import 'package:qaf_store/features/store/screens/navigation_menu/cubit/navigation_cubit.dart';
+import 'package:qaf_store/features/store/screens/navigation_menu/cubit/navigation_state.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(NavigationController());
     final dark = QafHelperFunctions.isDark(context);
     return Scaffold(
-      bottomNavigationBar: Obx(
-        () => NavigationBar(
+      bottomNavigationBar: BlocBuilder<NavigationCubit, NavigationState>(
+        builder: (context, state) {
+          return NavigationBar(
             elevation: 0,
             height: 80.h,
-            selectedIndex: controller.currentIndex.value,
+            selectedIndex: context.read<NavigationCubit>().currentIndex,
             onDestinationSelected: (index) =>
-                controller.currentIndex.value = index,
+                context.read<NavigationCubit>().changeNavigationScreen(index),
             backgroundColor: dark ? QafColors.black : QafColors.white,
             indicatorColor: dark
                 ? QafColors.white.withValues(alpha: .1)
@@ -38,20 +36,17 @@ class NavigationMenu extends StatelessWidget {
                   icon: Icon(Iconsax.heart), label: QafStrings.wishlist),
               NavigationDestination(
                   icon: Icon(Iconsax.user), label: QafStrings.profile),
-            ]),
+            ],
+          );
+        },
       ),
-      body: Obx(() => controller.screens[controller.currentIndex.value]),
+      body: BlocBuilder<NavigationCubit, NavigationState>(
+        builder: (context, state) {
+          return context
+              .read<NavigationCubit>()
+              .screens[context.read<NavigationCubit>().currentIndex];
+        },
+      ),
     );
   }
-}
-
-class NavigationController extends GetxController {
-  final Rx<int> currentIndex = 0.obs;
-
-  final screens = [
-    HomeScreens(),
-    StoreScreen(),
-    WishlistScreen(),
-    SettingsScreen(),
-  ];
 }
