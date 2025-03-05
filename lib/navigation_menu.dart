@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:qaf_store/features/store/screens/navigation_menu/cubit/navigation_cubit.dart';
-import 'package:qaf_store/features/store/screens/navigation_menu/cubit/navigation_state.dart';
+import 'package:qaf_store/features/screens/navigation_menu/cubit/navigation_cubit.dart';
+import 'package:qaf_store/features/screens/navigation_menu/cubit/navigation_state.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
