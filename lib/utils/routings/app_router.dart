@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qaf_store/features/screens/change_name/change_name_screen.dart';
 import 'package:qaf_store/features/screens/forgot_password/controller/cubit/reset_password_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/forgot_password_screen.dart';
 import 'package:qaf_store/features/screens/login/controller/cubit/login_cubit.dart';
 import 'package:qaf_store/features/screens/login/login_screen.dart';
 import 'package:qaf_store/features/screens/onboarding/controller/cubit/onboarding_cubit.dart';
 import 'package:qaf_store/features/screens/onboarding/onboarding_screen.dart';
+import 'package:qaf_store/features/screens/profile/profile_screen.dart';
+import 'package:qaf_store/features/screens/profile/widgets/reauth_form.dart';
 import 'package:qaf_store/features/screens/reset_password/reset_password_screen.dart';
 import 'package:qaf_store/features/screens/sign_up/controller/cubit/sign_up_cubit.dart';
 import 'package:qaf_store/features/screens/sign_up/sign_up_screen.dart';
@@ -62,6 +65,21 @@ class AppRouter {
         final email = settings.arguments as String;
         return MaterialPageRoute(
           builder: (_) => ResetPasswordScreen(email: email),
+        );
+
+      case Routes.reAuthScreen:
+        return MaterialPageRoute(
+          builder: (_) => ReAuthForm(),
+        );
+
+         case Routes.profileScreen:
+        return MaterialPageRoute(
+          builder: (_) => ProfileScreen(),
+        );
+
+         case Routes.changeNameScreen:
+        return MaterialPageRoute(
+          builder: (_) => ChangeNameScreen(),
         );
 
       case Routes.navigationMenu:

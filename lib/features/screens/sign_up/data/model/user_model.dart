@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:qaf_store/utils/formaters/qaf_formaters.dart';
 
 class UserModel {
@@ -78,5 +79,23 @@ class UserModel {
       'Phone': phone,
       'ProfilePicture': profilePicture,
     };
+  }
+
+  factory UserModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() != null) {
+      final data = document.data()!;
+      return UserModel(
+        firstName: data['FirstName'] ?? '',
+        id: data['Id'] ?? '',
+        lastName: data['LastName'] ?? '',
+        phone: data['Phone'] ?? '',
+        profilePicture: data['ProfilePicture'] ?? '',
+        userName: data['Username'] ?? '',
+        email: data['Email'] ?? '',
+      );
+    } else {
+      return UserModel.empty();
+    }
   }
 }
