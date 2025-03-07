@@ -1,10 +1,13 @@
 import 'package:get_it/get_it.dart';
 import 'package:qaf_store/features/screens/forgot_password/controller/cubit/reset_password_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/data/repository/reset_password_email_repository.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/home_cubit.dart';
 import 'package:qaf_store/features/screens/login/controller/cubit/login_cubit.dart';
 import 'package:qaf_store/features/screens/login/data/repository/login_repository.dart';
 import 'package:qaf_store/features/screens/login/data/repository/login_social_repository.dart';
 import 'package:qaf_store/features/screens/onboarding/controller/cubit/onboarding_cubit.dart';
+import 'package:qaf_store/features/screens/profile/controller/cubit/user_cubit.dart';
+import 'package:qaf_store/features/screens/profile/data/repository/user_repository.dart';
 import 'package:qaf_store/features/screens/sign_up/controller/cubit/sign_up_cubit.dart';
 import 'package:qaf_store/features/screens/sign_up/data/repo/register_repository.dart';
 import 'package:qaf_store/features/screens/verfiy_email/controller/cubit/verify_email_cubit.dart';
@@ -39,10 +42,16 @@ Future<void> setupGetIt() async {
       () => VerifyEmailRepository(getIt()));
   getIt.registerLazySingleton<LoginRepository>(() => LoginRepository(getIt()));
 
+  getIt.registerLazySingleton<UserRepository>(() => UserRepository(getIt()));
+
   getIt.registerFactory<OnboardingCubit>(() => OnboardingCubit());
   getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt()));
   getIt.registerFactory<VerifyEmailCubit>(() => VerifyEmailCubit(getIt()));
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt(), getIt()));
   getIt.registerFactory<ResetPasswordCubit>(() => ResetPasswordCubit(getIt()));
   getIt.registerFactory<NavigationCubit>(() => NavigationCubit());
+
+  getIt.registerFactory<UserCubit>(() => UserCubit(getIt(), getIt()));
+
+  getIt.registerFactory<HomeCubit>(() => HomeCubit());
 }

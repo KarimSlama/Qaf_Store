@@ -78,7 +78,6 @@ class QafStrings {
 
   /// Home
   static const String homeAppbarTitle = 'Good day for shopping!';
-  static const String homeAppbarSubTitle = 'Karim Slama';
   static const String searchInStore = 'Search in store';
   static const String popularCategories = 'Popular Categories';
   static const String viewAll = 'View All';
