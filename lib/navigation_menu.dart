@@ -18,8 +18,8 @@ class NavigationMenu extends StatelessWidget {
     final dark = QafHelperFunctions.isDark(context);
     return BlocProvider(
       create: (context) => getIt<HomeCubit>()
-        ..fetchAllCategories(),
-        // ..fetchAllProducts(),
+        ..fetchAllCategories()
+        ..fetchAllBanners(),
       child: Scaffold(
         bottomNavigationBar: BlocBuilder<NavigationCubit, NavigationState>(
           builder: (context, state) {

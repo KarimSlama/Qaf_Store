@@ -4,8 +4,8 @@ import 'package:qaf_store/common/widgets/cards/brand_card.dart';
 import 'package:qaf_store/common/widgets/products/sort/sortable_products.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 
-class BrandProducts extends StatelessWidget {
-  const BrandProducts({super.key});
+class BrandProductsScreen extends StatelessWidget {
+  const BrandProductsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
