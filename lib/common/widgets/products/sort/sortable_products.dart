@@ -29,7 +29,7 @@ class SortableProducts extends StatelessWidget {
         ),
         GridViewLayout(
           itemCount: 16,
-          itemBuilder: (_, index) => VerticalProductCard(),
+          itemBuilder: (_, index) => VerticalProductCard(index: index),
         ),
       ],
     );
