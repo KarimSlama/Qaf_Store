@@ -15,7 +15,7 @@ class UserAddressScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.pushNamed(Routes.addNewScreen),
+        onPressed: () => context.pushNamed(Routes.addNewAddressScreen),
         backgroundColor: QafColors.primary,
         child: Icon(Iconsax.add, color: QafColors.white),
       ),

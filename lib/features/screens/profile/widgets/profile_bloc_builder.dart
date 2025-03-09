@@ -18,7 +18,9 @@ class ProfileBlocBuilder extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           loading: () => QafShimmerEffect(width: 200, height: 200),
-          success: (user) => ProfileDetails(user: user),
+          success: (user) {
+            return ProfileDetails(user: user);
+          },
           error: (error) => Center(child: Text(error)),
           deleteLoading: () => const SizedBox.shrink(),
           deleteGoogleSuccess: () {
@@ -43,6 +45,19 @@ class ProfileBlocBuilder extends StatelessWidget {
                 title: QafStrings.ohSnap,
                 message: error.toString(),
               );
+            });
+            return const SizedBox.shrink();
+          },
+          uploadImageLoading: () => Center(child: CircularProgressIndicator()),
+          uploadImageError: (error) {
+            Future.microtask(() {
+              if (!context.mounted) return;
+              Loaders.errorSnackBar(
+                context: context,
+                title: QafStrings.ohSnap,
+                message: error.toString(),
+              );
+              context.pushNamed(Routes.settingsScreen);
             });
             return const SizedBox.shrink();
           },

@@ -32,6 +32,8 @@ mixin _$UserState {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +52,8 @@ mixin _$UserState {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,6 +72,8 @@ mixin _$UserState {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -88,6 +94,8 @@ mixin _$UserState {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -106,6 +114,8 @@ mixin _$UserState {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -124,6 +134,8 @@ mixin _$UserState {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -204,6 +216,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return initial();
   }
@@ -225,6 +239,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return initial?.call();
   }
@@ -246,6 +262,8 @@ class _$InitialImpl implements _Initial {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -272,6 +290,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return initial(this);
   }
@@ -293,6 +313,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return initial?.call(this);
   }
@@ -314,6 +336,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -382,6 +406,8 @@ class _$LoadingImpl implements Loading {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return loading();
   }
@@ -403,6 +429,8 @@ class _$LoadingImpl implements Loading {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return loading?.call();
   }
@@ -424,6 +452,8 @@ class _$LoadingImpl implements Loading {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -450,6 +480,8 @@ class _$LoadingImpl implements Loading {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return loading(this);
   }
@@ -471,6 +503,8 @@ class _$LoadingImpl implements Loading {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return loading?.call(this);
   }
@@ -492,6 +526,8 @@ class _$LoadingImpl implements Loading {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -587,6 +623,8 @@ class _$SuccessImpl implements Success {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return success(data);
   }
@@ -608,6 +646,8 @@ class _$SuccessImpl implements Success {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return success?.call(data);
   }
@@ -629,6 +669,8 @@ class _$SuccessImpl implements Success {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -655,6 +697,8 @@ class _$SuccessImpl implements Success {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return success(this);
   }
@@ -676,6 +720,8 @@ class _$SuccessImpl implements Success {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return success?.call(this);
   }
@@ -697,6 +743,8 @@ class _$SuccessImpl implements Success {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -800,6 +848,8 @@ class _$ErrorImpl implements Error {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return error(this.error);
   }
@@ -821,6 +871,8 @@ class _$ErrorImpl implements Error {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return error?.call(this.error);
   }
@@ -842,6 +894,8 @@ class _$ErrorImpl implements Error {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -868,6 +922,8 @@ class _$ErrorImpl implements Error {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return error(this);
   }
@@ -889,6 +945,8 @@ class _$ErrorImpl implements Error {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return error?.call(this);
   }
@@ -910,6 +968,8 @@ class _$ErrorImpl implements Error {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -986,6 +1046,8 @@ class _$LoadingUpdateImpl implements LoadingUpdate {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return loadingUpdate();
   }
@@ -1007,6 +1069,8 @@ class _$LoadingUpdateImpl implements LoadingUpdate {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return loadingUpdate?.call();
   }
@@ -1028,6 +1092,8 @@ class _$LoadingUpdateImpl implements LoadingUpdate {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (loadingUpdate != null) {
@@ -1054,6 +1120,8 @@ class _$LoadingUpdateImpl implements LoadingUpdate {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return loadingUpdate(this);
   }
@@ -1075,6 +1143,8 @@ class _$LoadingUpdateImpl implements LoadingUpdate {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return loadingUpdate?.call(this);
   }
@@ -1096,6 +1166,8 @@ class _$LoadingUpdateImpl implements LoadingUpdate {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (loadingUpdate != null) {
@@ -1164,6 +1236,8 @@ class _$UpdateSuccessImpl implements UpdateSuccess {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return updateSuccess();
   }
@@ -1185,6 +1259,8 @@ class _$UpdateSuccessImpl implements UpdateSuccess {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return updateSuccess?.call();
   }
@@ -1206,6 +1282,8 @@ class _$UpdateSuccessImpl implements UpdateSuccess {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (updateSuccess != null) {
@@ -1232,6 +1310,8 @@ class _$UpdateSuccessImpl implements UpdateSuccess {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return updateSuccess(this);
   }
@@ -1253,6 +1333,8 @@ class _$UpdateSuccessImpl implements UpdateSuccess {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return updateSuccess?.call(this);
   }
@@ -1274,6 +1356,8 @@ class _$UpdateSuccessImpl implements UpdateSuccess {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (updateSuccess != null) {
@@ -1369,6 +1453,8 @@ class _$UpdateErrorImpl implements UpdateError {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return updateError(this.error);
   }
@@ -1390,6 +1476,8 @@ class _$UpdateErrorImpl implements UpdateError {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return updateError?.call(this.error);
   }
@@ -1411,6 +1499,8 @@ class _$UpdateErrorImpl implements UpdateError {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (updateError != null) {
@@ -1437,6 +1527,8 @@ class _$UpdateErrorImpl implements UpdateError {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return updateError(this);
   }
@@ -1458,6 +1550,8 @@ class _$UpdateErrorImpl implements UpdateError {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return updateError?.call(this);
   }
@@ -1479,6 +1573,8 @@ class _$UpdateErrorImpl implements UpdateError {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (updateError != null) {
@@ -1555,6 +1651,8 @@ class _$DeleteLoadingImpl implements DeleteLoading {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return deleteLoading();
   }
@@ -1576,6 +1674,8 @@ class _$DeleteLoadingImpl implements DeleteLoading {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return deleteLoading?.call();
   }
@@ -1597,6 +1697,8 @@ class _$DeleteLoadingImpl implements DeleteLoading {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (deleteLoading != null) {
@@ -1623,6 +1725,8 @@ class _$DeleteLoadingImpl implements DeleteLoading {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return deleteLoading(this);
   }
@@ -1644,6 +1748,8 @@ class _$DeleteLoadingImpl implements DeleteLoading {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return deleteLoading?.call(this);
   }
@@ -1665,6 +1771,8 @@ class _$DeleteLoadingImpl implements DeleteLoading {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (deleteLoading != null) {
@@ -1734,6 +1842,8 @@ class _$DeleteGoogleSuccessImpl implements DeleteGoogleSuccess {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return deleteGoogleSuccess();
   }
@@ -1755,6 +1865,8 @@ class _$DeleteGoogleSuccessImpl implements DeleteGoogleSuccess {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return deleteGoogleSuccess?.call();
   }
@@ -1776,6 +1888,8 @@ class _$DeleteGoogleSuccessImpl implements DeleteGoogleSuccess {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (deleteGoogleSuccess != null) {
@@ -1802,6 +1916,8 @@ class _$DeleteGoogleSuccessImpl implements DeleteGoogleSuccess {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return deleteGoogleSuccess(this);
   }
@@ -1823,6 +1939,8 @@ class _$DeleteGoogleSuccessImpl implements DeleteGoogleSuccess {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return deleteGoogleSuccess?.call(this);
   }
@@ -1844,6 +1962,8 @@ class _$DeleteGoogleSuccessImpl implements DeleteGoogleSuccess {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (deleteGoogleSuccess != null) {
@@ -1914,6 +2034,8 @@ class _$DeletePasswordSuccessImpl implements DeletePasswordSuccess {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return deletePasswordSuccess();
   }
@@ -1935,6 +2057,8 @@ class _$DeletePasswordSuccessImpl implements DeletePasswordSuccess {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return deletePasswordSuccess?.call();
   }
@@ -1956,6 +2080,8 @@ class _$DeletePasswordSuccessImpl implements DeletePasswordSuccess {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (deletePasswordSuccess != null) {
@@ -1982,6 +2108,8 @@ class _$DeletePasswordSuccessImpl implements DeletePasswordSuccess {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return deletePasswordSuccess(this);
   }
@@ -2003,6 +2131,8 @@ class _$DeletePasswordSuccessImpl implements DeletePasswordSuccess {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return deletePasswordSuccess?.call(this);
   }
@@ -2024,6 +2154,8 @@ class _$DeletePasswordSuccessImpl implements DeletePasswordSuccess {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (deletePasswordSuccess != null) {
@@ -2119,6 +2251,8 @@ class _$DeleteErrorImpl implements DeleteError {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return deleteError(this.error);
   }
@@ -2140,6 +2274,8 @@ class _$DeleteErrorImpl implements DeleteError {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return deleteError?.call(this.error);
   }
@@ -2161,6 +2297,8 @@ class _$DeleteErrorImpl implements DeleteError {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (deleteError != null) {
@@ -2187,6 +2325,8 @@ class _$DeleteErrorImpl implements DeleteError {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return deleteError(this);
   }
@@ -2208,6 +2348,8 @@ class _$DeleteErrorImpl implements DeleteError {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return deleteError?.call(this);
   }
@@ -2229,6 +2371,8 @@ class _$DeleteErrorImpl implements DeleteError {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (deleteError != null) {
@@ -2305,6 +2449,8 @@ class _$ReAuthLoadingImpl implements ReAuthLoading {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return reAuthLoading();
   }
@@ -2326,6 +2472,8 @@ class _$ReAuthLoadingImpl implements ReAuthLoading {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return reAuthLoading?.call();
   }
@@ -2347,6 +2495,8 @@ class _$ReAuthLoadingImpl implements ReAuthLoading {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (reAuthLoading != null) {
@@ -2373,6 +2523,8 @@ class _$ReAuthLoadingImpl implements ReAuthLoading {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return reAuthLoading(this);
   }
@@ -2394,6 +2546,8 @@ class _$ReAuthLoadingImpl implements ReAuthLoading {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return reAuthLoading?.call(this);
   }
@@ -2415,6 +2569,8 @@ class _$ReAuthLoadingImpl implements ReAuthLoading {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (reAuthLoading != null) {
@@ -2483,6 +2639,8 @@ class _$ReAuthSuccessImpl implements ReAuthSuccess {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return reAuthSuccess();
   }
@@ -2504,6 +2662,8 @@ class _$ReAuthSuccessImpl implements ReAuthSuccess {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return reAuthSuccess?.call();
   }
@@ -2525,6 +2685,8 @@ class _$ReAuthSuccessImpl implements ReAuthSuccess {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (reAuthSuccess != null) {
@@ -2551,6 +2713,8 @@ class _$ReAuthSuccessImpl implements ReAuthSuccess {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return reAuthSuccess(this);
   }
@@ -2572,6 +2736,8 @@ class _$ReAuthSuccessImpl implements ReAuthSuccess {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return reAuthSuccess?.call(this);
   }
@@ -2593,6 +2759,8 @@ class _$ReAuthSuccessImpl implements ReAuthSuccess {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (reAuthSuccess != null) {
@@ -2688,6 +2856,8 @@ class _$ReAuthErrorImpl implements ReAuthError {
     required TResult Function() reAuthLoading,
     required TResult Function() reAuthSuccess,
     required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
   }) {
     return reAuthError(this.error);
   }
@@ -2709,6 +2879,8 @@ class _$ReAuthErrorImpl implements ReAuthError {
     TResult? Function()? reAuthLoading,
     TResult? Function()? reAuthSuccess,
     TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
   }) {
     return reAuthError?.call(this.error);
   }
@@ -2730,6 +2902,8 @@ class _$ReAuthErrorImpl implements ReAuthError {
     TResult Function()? reAuthLoading,
     TResult Function()? reAuthSuccess,
     TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
     required TResult orElse(),
   }) {
     if (reAuthError != null) {
@@ -2756,6 +2930,8 @@ class _$ReAuthErrorImpl implements ReAuthError {
     required TResult Function(ReAuthLoading value) reAuthLoading,
     required TResult Function(ReAuthSuccess value) reAuthSuccess,
     required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
   }) {
     return reAuthError(this);
   }
@@ -2777,6 +2953,8 @@ class _$ReAuthErrorImpl implements ReAuthError {
     TResult? Function(ReAuthLoading value)? reAuthLoading,
     TResult? Function(ReAuthSuccess value)? reAuthSuccess,
     TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
   }) {
     return reAuthError?.call(this);
   }
@@ -2798,6 +2976,8 @@ class _$ReAuthErrorImpl implements ReAuthError {
     TResult Function(ReAuthLoading value)? reAuthLoading,
     TResult Function(ReAuthSuccess value)? reAuthSuccess,
     TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
     required TResult orElse(),
   }) {
     if (reAuthError != null) {
@@ -2816,5 +2996,422 @@ abstract class ReAuthError implements UserState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReAuthErrorImplCopyWith<_$ReAuthErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UploadImageLoadingImplCopyWith<$Res> {
+  factory _$$UploadImageLoadingImplCopyWith(_$UploadImageLoadingImpl value,
+          $Res Function(_$UploadImageLoadingImpl) then) =
+      __$$UploadImageLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UploadImageLoadingImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$UploadImageLoadingImpl>
+    implements _$$UploadImageLoadingImplCopyWith<$Res> {
+  __$$UploadImageLoadingImplCopyWithImpl(_$UploadImageLoadingImpl _value,
+      $Res Function(_$UploadImageLoadingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$UploadImageLoadingImpl implements UploadImageLoading {
+  const _$UploadImageLoadingImpl();
+
+  @override
+  String toString() {
+    return 'UserState.uploadImageLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UploadImageLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(UserModel data) success,
+    required TResult Function(String error) error,
+    required TResult Function() loadingUpdate,
+    required TResult Function() updateSuccess,
+    required TResult Function(String error) updateError,
+    required TResult Function() deleteLoading,
+    required TResult Function() deleteGoogleSuccess,
+    required TResult Function() deletePasswordSuccess,
+    required TResult Function(String error) deleteError,
+    required TResult Function() reAuthLoading,
+    required TResult Function() reAuthSuccess,
+    required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
+  }) {
+    return uploadImageLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(UserModel data)? success,
+    TResult? Function(String error)? error,
+    TResult? Function()? loadingUpdate,
+    TResult? Function()? updateSuccess,
+    TResult? Function(String error)? updateError,
+    TResult? Function()? deleteLoading,
+    TResult? Function()? deleteGoogleSuccess,
+    TResult? Function()? deletePasswordSuccess,
+    TResult? Function(String error)? deleteError,
+    TResult? Function()? reAuthLoading,
+    TResult? Function()? reAuthSuccess,
+    TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
+  }) {
+    return uploadImageLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(UserModel data)? success,
+    TResult Function(String error)? error,
+    TResult Function()? loadingUpdate,
+    TResult Function()? updateSuccess,
+    TResult Function(String error)? updateError,
+    TResult Function()? deleteLoading,
+    TResult Function()? deleteGoogleSuccess,
+    TResult Function()? deletePasswordSuccess,
+    TResult Function(String error)? deleteError,
+    TResult Function()? reAuthLoading,
+    TResult Function()? reAuthSuccess,
+    TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
+    required TResult orElse(),
+  }) {
+    if (uploadImageLoading != null) {
+      return uploadImageLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
+    required TResult Function(LoadingUpdate value) loadingUpdate,
+    required TResult Function(UpdateSuccess value) updateSuccess,
+    required TResult Function(UpdateError value) updateError,
+    required TResult Function(DeleteLoading value) deleteLoading,
+    required TResult Function(DeleteGoogleSuccess value) deleteGoogleSuccess,
+    required TResult Function(DeletePasswordSuccess value)
+        deletePasswordSuccess,
+    required TResult Function(DeleteError value) deleteError,
+    required TResult Function(ReAuthLoading value) reAuthLoading,
+    required TResult Function(ReAuthSuccess value) reAuthSuccess,
+    required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
+  }) {
+    return uploadImageLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
+    TResult? Function(LoadingUpdate value)? loadingUpdate,
+    TResult? Function(UpdateSuccess value)? updateSuccess,
+    TResult? Function(UpdateError value)? updateError,
+    TResult? Function(DeleteLoading value)? deleteLoading,
+    TResult? Function(DeleteGoogleSuccess value)? deleteGoogleSuccess,
+    TResult? Function(DeletePasswordSuccess value)? deletePasswordSuccess,
+    TResult? Function(DeleteError value)? deleteError,
+    TResult? Function(ReAuthLoading value)? reAuthLoading,
+    TResult? Function(ReAuthSuccess value)? reAuthSuccess,
+    TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
+  }) {
+    return uploadImageLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
+    TResult Function(LoadingUpdate value)? loadingUpdate,
+    TResult Function(UpdateSuccess value)? updateSuccess,
+    TResult Function(UpdateError value)? updateError,
+    TResult Function(DeleteLoading value)? deleteLoading,
+    TResult Function(DeleteGoogleSuccess value)? deleteGoogleSuccess,
+    TResult Function(DeletePasswordSuccess value)? deletePasswordSuccess,
+    TResult Function(DeleteError value)? deleteError,
+    TResult Function(ReAuthLoading value)? reAuthLoading,
+    TResult Function(ReAuthSuccess value)? reAuthSuccess,
+    TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
+    required TResult orElse(),
+  }) {
+    if (uploadImageLoading != null) {
+      return uploadImageLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UploadImageLoading implements UserState {
+  const factory UploadImageLoading() = _$UploadImageLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$UploadImageErrorImplCopyWith<$Res> {
+  factory _$$UploadImageErrorImplCopyWith(_$UploadImageErrorImpl value,
+          $Res Function(_$UploadImageErrorImpl) then) =
+      __$$UploadImageErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$UploadImageErrorImplCopyWithImpl<$Res>
+    extends _$UserStateCopyWithImpl<$Res, _$UploadImageErrorImpl>
+    implements _$$UploadImageErrorImplCopyWith<$Res> {
+  __$$UploadImageErrorImplCopyWithImpl(_$UploadImageErrorImpl _value,
+      $Res Function(_$UploadImageErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$UploadImageErrorImpl(
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UploadImageErrorImpl implements UploadImageError {
+  const _$UploadImageErrorImpl({required this.error});
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'UserState.uploadImageError(error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UploadImageErrorImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UploadImageErrorImplCopyWith<_$UploadImageErrorImpl> get copyWith =>
+      __$$UploadImageErrorImplCopyWithImpl<_$UploadImageErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(UserModel data) success,
+    required TResult Function(String error) error,
+    required TResult Function() loadingUpdate,
+    required TResult Function() updateSuccess,
+    required TResult Function(String error) updateError,
+    required TResult Function() deleteLoading,
+    required TResult Function() deleteGoogleSuccess,
+    required TResult Function() deletePasswordSuccess,
+    required TResult Function(String error) deleteError,
+    required TResult Function() reAuthLoading,
+    required TResult Function() reAuthSuccess,
+    required TResult Function(String error) reAuthError,
+    required TResult Function() uploadImageLoading,
+    required TResult Function(String error) uploadImageError,
+  }) {
+    return uploadImageError(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(UserModel data)? success,
+    TResult? Function(String error)? error,
+    TResult? Function()? loadingUpdate,
+    TResult? Function()? updateSuccess,
+    TResult? Function(String error)? updateError,
+    TResult? Function()? deleteLoading,
+    TResult? Function()? deleteGoogleSuccess,
+    TResult? Function()? deletePasswordSuccess,
+    TResult? Function(String error)? deleteError,
+    TResult? Function()? reAuthLoading,
+    TResult? Function()? reAuthSuccess,
+    TResult? Function(String error)? reAuthError,
+    TResult? Function()? uploadImageLoading,
+    TResult? Function(String error)? uploadImageError,
+  }) {
+    return uploadImageError?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(UserModel data)? success,
+    TResult Function(String error)? error,
+    TResult Function()? loadingUpdate,
+    TResult Function()? updateSuccess,
+    TResult Function(String error)? updateError,
+    TResult Function()? deleteLoading,
+    TResult Function()? deleteGoogleSuccess,
+    TResult Function()? deletePasswordSuccess,
+    TResult Function(String error)? deleteError,
+    TResult Function()? reAuthLoading,
+    TResult Function()? reAuthSuccess,
+    TResult Function(String error)? reAuthError,
+    TResult Function()? uploadImageLoading,
+    TResult Function(String error)? uploadImageError,
+    required TResult orElse(),
+  }) {
+    if (uploadImageError != null) {
+      return uploadImageError(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
+    required TResult Function(LoadingUpdate value) loadingUpdate,
+    required TResult Function(UpdateSuccess value) updateSuccess,
+    required TResult Function(UpdateError value) updateError,
+    required TResult Function(DeleteLoading value) deleteLoading,
+    required TResult Function(DeleteGoogleSuccess value) deleteGoogleSuccess,
+    required TResult Function(DeletePasswordSuccess value)
+        deletePasswordSuccess,
+    required TResult Function(DeleteError value) deleteError,
+    required TResult Function(ReAuthLoading value) reAuthLoading,
+    required TResult Function(ReAuthSuccess value) reAuthSuccess,
+    required TResult Function(ReAuthError value) reAuthError,
+    required TResult Function(UploadImageLoading value) uploadImageLoading,
+    required TResult Function(UploadImageError value) uploadImageError,
+  }) {
+    return uploadImageError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
+    TResult? Function(LoadingUpdate value)? loadingUpdate,
+    TResult? Function(UpdateSuccess value)? updateSuccess,
+    TResult? Function(UpdateError value)? updateError,
+    TResult? Function(DeleteLoading value)? deleteLoading,
+    TResult? Function(DeleteGoogleSuccess value)? deleteGoogleSuccess,
+    TResult? Function(DeletePasswordSuccess value)? deletePasswordSuccess,
+    TResult? Function(DeleteError value)? deleteError,
+    TResult? Function(ReAuthLoading value)? reAuthLoading,
+    TResult? Function(ReAuthSuccess value)? reAuthSuccess,
+    TResult? Function(ReAuthError value)? reAuthError,
+    TResult? Function(UploadImageLoading value)? uploadImageLoading,
+    TResult? Function(UploadImageError value)? uploadImageError,
+  }) {
+    return uploadImageError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
+    TResult Function(LoadingUpdate value)? loadingUpdate,
+    TResult Function(UpdateSuccess value)? updateSuccess,
+    TResult Function(UpdateError value)? updateError,
+    TResult Function(DeleteLoading value)? deleteLoading,
+    TResult Function(DeleteGoogleSuccess value)? deleteGoogleSuccess,
+    TResult Function(DeletePasswordSuccess value)? deletePasswordSuccess,
+    TResult Function(DeleteError value)? deleteError,
+    TResult Function(ReAuthLoading value)? reAuthLoading,
+    TResult Function(ReAuthSuccess value)? reAuthSuccess,
+    TResult Function(ReAuthError value)? reAuthError,
+    TResult Function(UploadImageLoading value)? uploadImageLoading,
+    TResult Function(UploadImageError value)? uploadImageError,
+    required TResult orElse(),
+  }) {
+    if (uploadImageError != null) {
+      return uploadImageError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UploadImageError implements UserState {
+  const factory UploadImageError({required final String error}) =
+      _$UploadImageErrorImpl;
+
+  String get error;
+
+  /// Create a copy of UserState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UploadImageErrorImplCopyWith<_$UploadImageErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

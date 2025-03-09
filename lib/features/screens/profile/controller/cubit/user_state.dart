@@ -18,8 +18,10 @@ class UserState with _$UserState {
   const factory UserState.deletePasswordSuccess() = DeletePasswordSuccess;
   const factory UserState.deleteError({required String error}) = DeleteError;
 
-    const factory UserState.reAuthLoading() = ReAuthLoading;
+  const factory UserState.reAuthLoading() = ReAuthLoading;
   const factory UserState.reAuthSuccess() = ReAuthSuccess;
   const factory UserState.reAuthError({required String error}) = ReAuthError;
 
+  const factory UserState.uploadImageLoading() = UploadImageLoading;
+  const factory UserState.uploadImageError({required String error}) = UploadImageError;
 }

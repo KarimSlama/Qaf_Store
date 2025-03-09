@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,6 +9,10 @@ import 'package:qaf_store/features/screens/profile/controller/cubit/user_state.d
 import 'package:qaf_store/features/screens/profile/data/repository/user_repository.dart';
 import 'package:qaf_store/features/screens/sign_up/data/model/user_model.dart';
 import 'package:qaf_store/gen/assets.gen.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:image_picker/image_picker.dart';
+import 'package:crypto/crypto.dart';
 
 class UserCubit extends Cubit<UserState> {
   final UserRepository userRepository;
@@ -29,6 +35,7 @@ class UserCubit extends Cubit<UserState> {
       result.when(
         success: (user) {
           userModel = user;
+        
           initializeNameFields(user.firstName, user.lastName);
           emit(UserState.success(user));
         },
@@ -106,7 +113,7 @@ class UserCubit extends Cubit<UserState> {
           emailController.text.trim(), passwordController.text.trim());
 
       user.when(
-        success: (data) async{
+        success: (data) async {
           await userRepository.deleteUserAccount(userModel.id!);
           emit(UserState.reAuthSuccess());
         },
@@ -116,6 +123,73 @@ class UserCubit extends Cubit<UserState> {
       );
     } catch (error) {
       emit(UserState.reAuthError(error: error.toString()));
+    }
+  }
+
+  Future<File?> uploadUserProfilePicture(context) async {
+    try {
+      emit(UserState.uploadImageLoading());
+      final image = await ImagePicker().pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 70,
+          maxHeight: 512,
+          maxWidth: 512);
+      if (image == null) {
+        emit(UserState.success(userModel));
+        return null;
+      }
+      final imageUrl = await uploadImageToCloudinary(image);
+
+      if (imageUrl != null) {
+        userRepository.updateSingleField({'ProfilePicture': imageUrl});
+        userModel = userModel.copyWith(profilePicture: imageUrl);
+       
+        emit(UserState.success(userModel));
+      } else {
+        emit(UserState.uploadImageError(error: 'Failed to upload image'));
+      }
+    } catch (error) {
+      emit(UserState.uploadImageError(error: error.toString()));
+    }
+    return null;
+  }
+
+  Future<String?> uploadImageToCloudinary(XFile? imageFile) async {
+    try {
+      final String cloudName = "doqriqoig";
+      final String apiKey = "746381528264786";
+      final String apiSecret = "HX5AO_VdKbssfo0o9RH8NnL9Q2I";
+      final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
+      final String folder = "home/profile_image";
+
+      final String stringToSign =
+          "folder=$folder&timestamp=$timestamp$apiSecret";
+      final String signature =
+          sha1.convert(utf8.encode(stringToSign)).toString();
+
+      final uri =
+          Uri.parse("https://api.cloudinary.com/v1_1/$cloudName/image/upload");
+
+      final request = http.MultipartRequest("POST", uri)
+        ..fields['api_key'] = apiKey
+        ..fields['timestamp'] = timestamp
+        ..fields['signature'] = signature
+        ..fields['folder'] = folder
+        ..files.add(await http.MultipartFile.fromPath("file", imageFile!.path));
+
+      final response = await request.send();
+      final responseData = await response.stream.bytesToString();
+      final jsonResponse = json.decode(responseData);
+
+      if (response.statusCode == 200) {
+        return jsonResponse["secure_url"];
+      } else {
+        print("Error uploading image: ${jsonResponse['error']['message']}");
+        return null;
+      }
+    } catch (e) {
+      print("Exception uploading image: $e");
+      return null;
     }
   }
 }

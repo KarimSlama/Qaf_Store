@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qaf_store/features/screens/profile/controller/cubit/user_cubit.dart';
 import 'package:qaf_store/firebase_options.dart';
 import 'package:qaf_store/qaf_app.dart';
 import 'package:qaf_store/utils/constants/constants.dart';
@@ -12,7 +11,7 @@ import 'package:qaf_store/utils/local_storage/shared_preferences.dart';
 import 'package:qaf_store/utils/routings/app_router.dart';
 
 void main() async {
-  await WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
   setupGetIt();
   checkIfUserLoggedIn();

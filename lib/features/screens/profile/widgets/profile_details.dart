@@ -32,11 +32,13 @@ class ProfileDetails extends StatelessWidget {
               spacing: QafSizes.spaceBtwItems / 2,
               children: [
                 CircularImage(
-                    image: Assets.images.content.user.path,
-                    width: 80.w,
-                    height: 80.h),
+                  image: user.profilePicture ?? Assets.images.content.user.path,
+                  width: 80.w,
+                  height: 80.h,
+                ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () =>
+                        context.read<UserCubit>().uploadUserProfilePicture(context),
                     child: Text(QafStrings.changeProfilePicture)),
               ],
             ),
@@ -49,7 +51,7 @@ class ProfileDetails extends StatelessWidget {
               value: user.fullName,
               onTap: () => context.pushNamed(Routes.changeNameScreen)),
           ProfileMenu(
-              title: QafStrings.userName, value: user.userName, onTap: () {}),
+              title: QafStrings.userName, value: user.userName ?? '', onTap: () {}),
           Divider(),
           SectionHeading(
               text: QafStrings.personalInformation, isActionButton: false),

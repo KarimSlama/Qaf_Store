@@ -10,3 +10,5 @@ enum PaymentMethod {
   MASTER_CARD,
   CREDIT_CARD
 }
+
+enum ProductType { single, variable }
