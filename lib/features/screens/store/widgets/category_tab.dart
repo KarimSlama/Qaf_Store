@@ -33,7 +33,7 @@ class CategoryTab extends StatelessWidget {
               ),
               GridViewLayout(
                 itemCount: 4,
-                itemBuilder: (_, index) => VerticalProductCard(),
+                itemBuilder: (_, index) => VerticalProductCard(index: index),
               )
             ],
           ),

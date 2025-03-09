@@ -23,7 +23,7 @@ class UserProfileTile extends StatelessWidget {
             success: (user) {
               return ListTile(
                 leading: CircularImage(
-                  image: Assets.images.content.user.path,
+                  image: user.profilePicture ?? Assets.images.content.user.path,
                   width: 50.w,
                   height: 50.h,
                   padding: 0,

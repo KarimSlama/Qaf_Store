@@ -56,7 +56,8 @@ class StoreScreen extends StatelessWidget {
                         SizedBox(height: QafSizes.spaceBtwSections),
                         SectionHeading(
                           text: QafStrings.featuredBrands,
-                          onPressed: () => context.pushNamed(Routes.allBrandsScreen),
+                          onPressed: () =>
+                              context.pushNamed(Routes.allBrandsScreen),
                         ),
                         SizedBox(height: QafSizes.spaceBtwItems / 1.5),
                         GridViewLayout(

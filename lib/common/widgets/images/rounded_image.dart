@@ -1,4 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:qaf_store/common/widgets/loaders/qaf_shimmer.dart';
 
 class RoundedImage extends StatelessWidget {
   final double? width, height;
@@ -38,13 +41,26 @@ class RoundedImage extends StatelessWidget {
             border: border,
             borderRadius: BorderRadius.circular(borderRadius)),
         child: ClipRRect(
-            borderRadius: applyImageRadius
-                ? BorderRadius.circular(borderRadius)
-                : BorderRadius.zero,
-            child: Image(
-                image: isNetworkImage
-                    ? NetworkImage(imageUrl)
-                    : AssetImage(imageUrl) as ImageProvider)),
+          borderRadius: applyImageRadius
+              ? BorderRadius.circular(borderRadius)
+              : BorderRadius.zero,
+          child: Center(
+            child: isNetworkImage
+                ? CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    fit: fit,
+                    progressIndicatorBuilder: (context, url, progress) =>
+                        QafShimmerEffect(width: double.infinity, height: 190.h),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  )
+                : Image(
+                    fit: fit,
+                    image: isNetworkImage
+                        ? NetworkImage(imageUrl)
+                        : AssetImage(imageUrl) as ImageProvider,
+                  ),
+          ),
+        ),
       ),
     );
   }

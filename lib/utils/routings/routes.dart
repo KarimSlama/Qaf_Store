@@ -21,6 +21,8 @@ class Routes {
   static const String changeNameScreen = 'changeNameScreen';
   static const String userAddressScreen = 'userAddressScreen';
   static const String orderScreen = 'orderScreen';
-  static const String addNewScreen = 'addNewScreen';
+  static const String addNewAddressScreen = 'addNewAddressScreen';
+  static const String uploadDataScreen = 'uploadDataScreen';
   static const String navigationMenu = 'navigationMenu';
+  static const String wishlistScreen = 'wishlistScreen';
 }

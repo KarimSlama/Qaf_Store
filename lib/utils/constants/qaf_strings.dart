@@ -66,15 +66,18 @@ class QafStrings {
   static const String yourAccountCreatedSubTitle =
       'Welcome to Your Ultimate Shopping Destination; Your Account is created, Unleash the Joy of Seamless Online Shopping!';
   static const String congratulations = 'Congratulations!';
-  static const String yourAccountHasBeenCreatedVerifyEmailToContinue = 'Congratulations!';
+  static const String yourAccountHasBeenCreatedVerifyEmailToContinue =
+      'Congratulations!';
   static const String youAreLoggedInPerfectlyNowShopWhteverYouWant =
       'You are logged in perfectly, now shop whtever you want!';
-  static const String yourPasswordResetEmailHasBeenCheckYourEmails = 'Your Password Reset Email has been check your Emails';
+  static const String yourPasswordResetEmailHasBeenCheckYourEmails =
+      'Your Password Reset Email has been check your Emails';
   static const String error = 'Error';
   static const String ohSnap = 'Oh Snap!';
-    static const String acceptPrivacyPolicy = 'Accept Privacy Policy';
-  static const String inOrderToCreateAccountYouHaveToReadAndAcceptThePrivacyTermsOfUse = 'In order to create account, you have to read and accept the Privacy & Terms of Use.';
-
+  static const String acceptPrivacyPolicy = 'Accept Privacy Policy';
+  static const String
+      inOrderToCreateAccountYouHaveToReadAndAcceptThePrivacyTermsOfUse =
+      'In order to create account, you have to read and accept the Privacy & Terms of Use.';
 
   /// Home
   static const String homeAppbarTitle = 'Good day for shopping!';
@@ -182,4 +185,19 @@ class QafStrings {
 
   /// Brand
   static const String brands = 'Brands';
+
+  /// Categories
+  static const String uploadData = 'Upload Data';
+  static const String mainRecord = 'Main Record';
+  static const String uploadCategories = 'Upload Categories';
+  static const String uploadBrands = 'Upload Brands';
+  static const String uploadProducts = 'Upload Products';
+  static const String uploadBanners = 'Upload Banners';
+  static const String relationships = 'Relationships';
+  static const String uploadBrandsAndCategoriesRelationData =
+      'Upload Brands & Categories Relation Data';
+  static const String uploadProductsCategoriesRelationData =
+      'Upload Products Categories Relation Data';
+  static const String makeSureYouHaveAlreadyUploadedAllTheContentAbove =
+      'Make sure you have already uploaded all the content above.';
 }

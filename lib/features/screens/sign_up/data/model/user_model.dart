@@ -1,26 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:qaf_store/features/screens/address/data/model/address_model.dart';
 import 'package:qaf_store/utils/formaters/qaf_formaters.dart';
 
 class UserModel {
   final String? id;
   final String firstName;
   final String lastName;
-  final String userName;
+  final String? userName;
   final String email;
   final String phone;
   final String? password;
-  final String profilePicture;
+  String? profilePicture;
+  // List<AddressModel>? addresses;
 
-  UserModel({
-    required this.firstName,
-    required this.lastName,
-    required this.phone,
-    required this.profilePicture,
-    this.id,
-    this.password,
-    required this.userName,
-    required this.email,
-  });
+  UserModel(
+      {required this.firstName,
+      required this.lastName,
+      required this.phone,
+      required this.profilePicture,
+      this.id,
+      this.password,
+      this.userName,
+      required this.email,
+      // this.addresses,
+      });
 
   UserModel copyWith({
     String? id,
@@ -31,6 +34,7 @@ class UserModel {
     String? phone,
     String? password,
     String? profilePicture,
+    // List<AddressModel>? addresses,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -41,6 +45,7 @@ class UserModel {
       phone: phone ?? this.phone,
       password: password ?? this.password,
       profilePicture: profilePicture ?? this.profilePicture,
+      // addresses: addresses,
     );
   }
 
@@ -78,6 +83,7 @@ class UserModel {
       'Email': email,
       'Phone': phone,
       'ProfilePicture': profilePicture,
+      // 'Addresses': addresses,
     };
   }
 
@@ -93,6 +99,7 @@ class UserModel {
         profilePicture: data['ProfilePicture'] ?? '',
         userName: data['Username'] ?? '',
         email: data['Email'] ?? '',
+        // addresses: data['Addresses'] ?? '',
       );
     } else {
       return UserModel.empty();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/qaf_search_container.dart';
@@ -8,7 +9,6 @@ import 'package:qaf_store/common/widgets/texts/section_heading.dart';
 import 'package:qaf_store/features/screens/home/widgets/horizontal_categories.dart';
 import 'package:qaf_store/features/screens/home/widgets/promo_sliders.dart';
 import 'package:qaf_store/features/screens/home/widgets/qaf_home_appbar.dart';
-import 'package:qaf_store/gen/assets.gen.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
@@ -54,20 +54,15 @@ class HomeScreens extends StatelessWidget {
               child: Column(
                 spacing: 16.h,
                 children: [
-                  PromoSliders(
-                    banners: [
-                      Assets.images.products.promoBanner1.path,
-                      Assets.images.products.promoBanner2.path,
-                      Assets.images.products.promoBanner3.path,
-                    ],
-                  ),
+                  PromoSliders(),
                   SectionHeading(
                       text: QafStrings.popularProducts,
                       onPressed: () =>
                           context.pushNamed(Routes.allProductsScreen)),
                   GridViewLayout(
                     itemCount: 4,
-                    itemBuilder: (_, index) => VerticalProductCard(),
+                    itemBuilder: (_, index) =>
+                        VerticalProductCard(index: index),
                   ),
                 ],
               ),

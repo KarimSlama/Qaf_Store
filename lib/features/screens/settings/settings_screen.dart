@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/primary_header_container.dart';
-import 'package:qaf_store/common/widgets/list_tiles/setting_menu_tile.dart';
+import 'package:qaf_store/common/widgets/list_tiles/settings_menu_tile.dart';
 import 'package:qaf_store/common/widgets/list_tiles/user_profile_tile.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
@@ -46,60 +46,61 @@ class SettingsScreen extends StatelessWidget {
                 children: [
                   SectionHeading(
                       text: QafStrings.accountSettings, isActionButton: false),
-                  SettingMenuTile(
+                  SettingsMenuTile(
                     icon: Iconsax.safe_home,
                     title: QafStrings.myAddress,
                     subTitle: QafStrings.setShoppingDeliverAddress,
                     onTap: () => context.pushNamed(Routes.userAddressScreen),
                   ),
-                  SettingMenuTile(
+                  SettingsMenuTile(
                       icon: Iconsax.shopping_cart,
                       title: QafStrings.myCart,
                       subTitle: QafStrings.addRemoveProductsAndMoveToCheckout),
-                  SettingMenuTile(
+                  SettingsMenuTile(
                     icon: Iconsax.bag_tick,
                     title: QafStrings.myOrders,
                     subTitle: QafStrings.inProgressAndCompletedOrders,
                     onTap: () => context.pushNamed(Routes.orderScreen),
                   ),
-                  SettingMenuTile(
+                  SettingsMenuTile(
                       icon: Iconsax.bank,
                       title: QafStrings.bankAccount,
                       subTitle:
                           QafStrings.withdrawBalanceToRegisterdBankAccount),
-                  SettingMenuTile(
+                  SettingsMenuTile(
                       icon: Iconsax.discount_shape,
                       title: QafStrings.myCoupons,
                       subTitle: QafStrings.listOfAllTheDiscountedCoupons),
-                  SettingMenuTile(
+                  SettingsMenuTile(
                       icon: Iconsax.notification,
                       title: QafStrings.notifications,
                       subTitle: QafStrings.setAnyKindOfNotificationMessage),
-                  SettingMenuTile(
+                  SettingsMenuTile(
                       icon: Iconsax.security_card,
                       title: QafStrings.accountPrivacy,
                       subTitle: QafStrings.manageDataUsageAndConnectedAccounts),
                   SizedBox(height: QafSizes.spaceBtwSections),
                   SectionHeading(
                       text: QafStrings.appSettings, isActionButton: false),
-                  SettingMenuTile(
+                  SettingsMenuTile(
                     icon: Iconsax.document_upload,
                     title: QafStrings.loadData,
                     subTitle: QafStrings.uploadDataToYourCloudFirebase,
+                    onTap: () => context.pushNamed(Routes.uploadDataScreen),
                   ),
-                  SettingMenuTile(
+                  SettingsMenuTile(
                     icon: Iconsax.location,
                     title: QafStrings.geolocation,
                     subTitle: QafStrings.setRecommendationBasedOnLocation,
                     trailing: Switch(value: true, onChanged: (value) {}),
                   ),
-                  SettingMenuTile(
+                  SettingsMenuTile(
                     icon: Iconsax.security_user,
                     title: QafStrings.safeMode,
                     subTitle: QafStrings.searchResultIsSafeForAllAges,
                     trailing: Switch(value: false, onChanged: (value) {}),
                   ),
-                  SettingMenuTile(
+                  SettingsMenuTile(
                     icon: Iconsax.image,
                     title: QafStrings.hDImageQuality,
                     subTitle: QafStrings.setImageQualityToBeSeen,
