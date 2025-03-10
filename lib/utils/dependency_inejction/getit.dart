@@ -9,6 +9,7 @@ import 'package:qaf_store/features/screens/login/controller/cubit/login_cubit.da
 import 'package:qaf_store/features/screens/login/data/repository/login_repository.dart';
 import 'package:qaf_store/features/screens/login/data/repository/login_social_repository.dart';
 import 'package:qaf_store/features/screens/onboarding/controller/cubit/onboarding_cubit.dart';
+import 'package:qaf_store/features/screens/product_details/controller/cubit/product_details_cubit.dart';
 import 'package:qaf_store/features/screens/profile/controller/cubit/user_cubit.dart';
 import 'package:qaf_store/features/screens/profile/data/repository/user_repository.dart';
 import 'package:qaf_store/features/screens/sign_up/controller/cubit/sign_up_cubit.dart';
@@ -73,5 +74,6 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<UserCubit>(() => UserCubit(getIt(), getIt()));
 
   getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt(), getIt(), getIt()));
-  getIt.registerFactory<UploadCubit>(() => UploadCubit(getIt(), getIt()));
+  getIt.registerFactory<ProductDetailsCubit>(() => ProductDetailsCubit());
+  getIt.registerFactory<UploadCubit>(() => UploadCubit(getIt(), getIt() , getIt()));
 }

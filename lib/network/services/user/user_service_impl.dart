@@ -48,7 +48,6 @@ class UserServiceImpl implements UserService {
         return ServerResult.failure("User data not found");
       }
     } catch (error) {
-      print('Error fetching user details: ${error.toString()}');
       return ServerResult.failure(error.toString());
     }
   }
@@ -62,8 +61,6 @@ class UserServiceImpl implements UserService {
           .update(userModel.toJson());
       return ServerResult.success(response);
     } catch (error) {
-      print(
-          'the error with user service imp with update user details is ${error.toString()}');
       return ServerResult.failure(error.toString());
     }
   }
@@ -76,7 +73,6 @@ class UserServiceImpl implements UserService {
           await _firestore.collection('users').doc(userId).update(json);
       return ServerResult.success(response);
     } catch (error) {
-      print('the error with update single user detail is ${error.toString()}');
       return ServerResult.failure(error.toString());
     }
   }
@@ -89,8 +85,6 @@ class UserServiceImpl implements UserService {
           FirebaseAuth.instance.currentUser!.delete();
       return ServerResult.success(response);
     } catch (error) {
-      print(
-          'the error with delete or remove record of user is ${error.toString()}');
       return ServerResult.failure(error.toString());
     }
   }
@@ -105,7 +99,6 @@ class UserServiceImpl implements UserService {
           .reauthenticateWithCredential(authCredential);
       return ServerResult.success(userCredential);
     } catch (error) {
-      print('the error with reauth  is ${error.toString()}');
       return ServerResult.failure(error.toString());
     }
   }

@@ -23,7 +23,6 @@ class RegisterBlocListener extends StatelessWidget {
               Assets.images.animations.a141594AnimationOfDocer,
               context),
           success: (data) {
-            print('the data come with success in sign up bloc listener ${data}');
             context.pop();
             context.pushNamed(Routes.verifyScreen, arguments: data);
           },

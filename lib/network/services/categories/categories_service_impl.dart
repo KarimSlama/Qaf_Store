@@ -23,10 +23,8 @@ class CategoriesServiceImpl implements CategoriesService {
           .where((category) => category.isFeatured && category.parentId.isEmpty)
           .take(8)
           .toList();
-      print('the list in categoreis service impl is ${list.first}');
       return ServerResult.success(categories);
     } catch (error) {
-      print('the error with categoreis service impl is $error');
       return ServerResult.failure(error.toString());
     }
   }

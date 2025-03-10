@@ -11,8 +11,6 @@ class ResetPasswordEmailRepository {
     return response.when(success: (_) {
       return ServerResult.success(_);
     }, failure: (error) {
-      print(
-          'the error with reset password email repository is ${error.toString()}');
       return ServerResult.failure(error);
     });
   }

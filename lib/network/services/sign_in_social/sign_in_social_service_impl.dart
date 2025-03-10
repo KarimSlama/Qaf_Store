@@ -18,7 +18,6 @@ class SignInSocialServiceImpl implements SignInSocialService {
           await FirebaseAuth.instance.signInWithCredential(credentials);
       return ServerResult.success(credential);
     } catch (error) {
-      print('the error with verify email service impl is ${error.toString()}');
       return ServerResult.failure(error.toString());
     }
   }

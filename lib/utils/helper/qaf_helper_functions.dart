@@ -23,6 +23,8 @@ class QafHelperFunctions {
         return Colors.white;
       case 'Black':
         return Colors.black;
+      case 'Brown':
+        return Colors.brown;
 
       default:
         return null;

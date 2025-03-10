@@ -19,7 +19,6 @@ class QafHomeAppbar extends StatelessWidget {
     return BlocBuilder<UserCubit, UserState>(
       buildWhen: (previous, current) => previous != current,
       builder: (context, state) {
-        print('the state is ${state}');
         return QafAppBar(
           title: Column(
             spacing: 7.h,

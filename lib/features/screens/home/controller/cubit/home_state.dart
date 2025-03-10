@@ -22,4 +22,6 @@ class HomeState with _$HomeState {
   const factory HomeState.productsLoading() = ProductsLoading;
   const factory HomeState.productsSuccess(List<ProductModel> products) = ProductsSuccess;
   const factory HomeState.productsError(String error) = ProductsError;
+
+  
 }

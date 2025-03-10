@@ -15,8 +15,11 @@ class PromoSliders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('rebuild');
     return BlocBuilder<HomeCubit, HomeState>(
+      buildWhen: (previous, current) =>
+          current is BannersLoading ||
+          current is BannersSuccess ||
+          current is BannersError,
       builder: (context, state) {
         return state.maybeWhen(
           bannersLoading: () => QafShimmerEffect(width: 120, height: 80),
@@ -32,12 +35,9 @@ class PromoSliders extends StatelessWidget {
                               context.pushNamed(banner.targetScreen),
                         ))
                     .toList(),
-                //banners.map((url) => RoundedImage(imageUrl: url)).toList()
                 options: CarouselOptions(
                   viewportFraction: 1,
                   autoPlay: true,
-                  // onPageChanged: (index, _) =>
-                  //     context.read<HomeCubit>().updateCarouselIndex(index),
                 ),
               ),
               Row(

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BannersModel {
-  final String imageUrl;
+  String imageUrl;
   final bool active;
   final String targetScreen;
 

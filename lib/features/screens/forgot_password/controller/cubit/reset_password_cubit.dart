@@ -30,7 +30,6 @@ class ResetPasswordCubit extends Cubit<ResetPasswordState> {
           emit(ResetPasswordState.success(emailController.text.trim()));
         },
         failure: (error) {
-          print('the error with reset password is ${error.toString()}');
           emit(ResetPasswordState.error(error: error));
         },
       );

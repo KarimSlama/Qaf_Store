@@ -1,10 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qaf_store/features/screens/home/data/models/category_model.dart';
 import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/banners_repository.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/categories_repository.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/products_repository.dart';
-import 'package:qaf_store/utils/constants/enum.dart';
 import 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -17,24 +17,22 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<CategoryModel> categoriesList = [];
   List<ProductModel> productList = [];
+  var selectedOption = 'Name';
   Future<void> fetchAllCategories() async {
     try {
       emit(HomeState.categoryLoading());
-      print('loading');
+
       final categories = await categoriesRepository.fetchAllCategories();
       categories.when(
         success: (category) {
           categoriesList = category;
-          print('the category is ${category[0].name}');
           emit(HomeState.categorySuccess(category));
         },
         failure: (error) {
-          print('the error with failure all categories cateched is $error');
           emit(HomeState.categoryError(error.toString()));
         },
       );
     } catch (error) {
-      print('the error with fetch all categories cateched is $error');
       emit(HomeState.categoryError(error.toString()));
     }
   }
@@ -42,84 +40,98 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> fetchAllBanners() async {
     try {
       emit(HomeState.bannersLoading());
-      print('banners loading');
       final banners = await bannersRepository.fetchAllBanners();
       banners.when(
         success: (banner) {
-          print('the banner is $banner');
           emit(HomeState.bannersSuccess(banner));
         },
         failure: (error) {
-          print('the error with failure all banners cateched is $error');
           emit(HomeState.bannersError(error.toString()));
         },
       );
     } catch (error) {
-      print('the error with fetch all banners cateched is $error');
       emit(HomeState.bannersError(error.toString()));
     }
   }
 
-  Future<void> fetchAllProducts() async {
+  Future<List<ProductModel>> fetchAllProduct() async {
     try {
       emit(HomeState.productsLoading());
       final result = await productsRepository.getAllProducts();
-      result.when(
+      return result.when(
         success: (data) {
           productList = data;
-          print('the length of products list with cubit is ${productList.length}');
-          emit(HomeState.productsSuccess(data));
+          emit(HomeState.productsSuccess(productList));
+          return productList;
         },
         failure: (error) {
-          print('the error with fetch products cubit is $error');
           emit(HomeState.productsError(error.toString()));
+          return [];
         },
       );
     } catch (error) {
-      print('the error with fetch all products cateched is $error');
       emit(HomeState.productsError(error.toString()));
     }
+    return productList;
   }
 
-  String getProductPrice(ProductModel product) {
-    double smallestPrice = double.infinity;
-    double largestPrice = 0.0;
-
-    if (product.productType == ProductType.single.toString()) {
-      return (product.salePrice > 0 ? product.salePrice : product.price)
-          .toString();
-    } else {
-      for (var variant in product.productVariation!) {
-        double priceToConsider =
-            variant.salePrice > 0.0 ? variant.salePrice : variant.price;
-        if (priceToConsider < smallestPrice) {
-          smallestPrice = priceToConsider;
-        }
-        if (priceToConsider > largestPrice) {
-          largestPrice = priceToConsider;
-        }
-      }
-      if (smallestPrice == largestPrice) {
-        return largestPrice.toString();
-      } else {
-        return '$smallestPrice - \$$largestPrice';
-      }
+  Future<List<ProductModel>> fetchProductByQuery(Query? query) async {
+    try {
+      emit(HomeState.productsLoading());
+      final productByQuery =
+          await productsRepository.fetchProductByQuery(query);
+      return productByQuery.when(
+        success: (data) {
+          emit(HomeState.productsSuccess(data));
+          return data;
+        },
+        failure: (error) {
+          emit(HomeState.productsError(error.toString()));
+          return [];
+        },
+      );
+    } catch (error) {
+      emit(HomeState.productsError(error.toString()));
     }
+    return productList;
   }
 
-  String? calculateSalePrecentage(double originalPrice, double? salePrice) {
-    if (salePrice == null || salePrice <= 0.0) return null;
-    if (originalPrice <= 0) return null;
+  void sortProducts(String sortOption) {
+    emit(HomeState.productsLoading());
+    selectedOption = sortOption;
+    switch (sortOption) {
+      case 'Name':
+        productList.sort((a, b) => a.title.compareTo(b.title));
+        break;
+      case 'Higher Price':
+        productList.sort((a, b) => a.price.compareTo(b.price));
+        break;
+      case 'Lower Price':
+        productList.sort((a, b) => a.price.compareTo(b.price));
+        break;
+      case 'Newest':
+        productList.sort((a, b) => a.date!.compareTo(b.date!));
+        break;
+      case 'Sale':
+        productList.sort((a, b) {
+          if (b.salePrice > 0)
+            return b.salePrice.compareTo(a.salePrice);
+          else if (a.salePrice > 0)
+            return -1;
+          else
+            return 1;
+        });
+        break;
 
-    double precentage = ((originalPrice - salePrice) / originalPrice) * 100;
-    return precentage.toStringAsFixed(0);
+      default:
+        productList.sort((a, b) => a.title.compareTo(b.title));
+    }
+    emit(HomeState.productsSuccess(List.from(productList)));
   }
 
-  String getProductStockStatus(int stock) {
-    return stock > 0 ? 'In Stock' : 'Out of Stock';
-  }
-
-  void updateCarouselIndex(int newIndex) {
-    emit(HomeState.carouselChanged(newIndex));
+  void assignProducts(List<ProductModel> products) {
+    productList = products;
+    sortProducts('Name');
+    emit(HomeState.productsSuccess(List.from(productList)));
   }
 }

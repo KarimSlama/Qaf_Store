@@ -152,6 +152,8 @@ class QafStrings {
   static const String showLess = ' Show Less';
   static const String reviews = 'Reviews';
   static const String addToCart = 'Add to Cart';
+  static const String price = 'Price';
+  static const String variation = 'Variation';
 
   /// Reviews and Ratings
   static const String ratingReviews = 'Rating & Reviews';

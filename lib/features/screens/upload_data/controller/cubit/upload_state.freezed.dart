@@ -22,6 +22,9 @@ mixin _$UploadState {
     required TResult Function() categoryLoading,
     required TResult Function() categorySuccess,
     required TResult Function(String error) categoryError,
+    required TResult Function() bannerLoading,
+    required TResult Function() bannerSuccess,
+    required TResult Function(String error) bannerError,
     required TResult Function() productLoading,
     required TResult Function() productSuccess,
     required TResult Function(String error) productryError,
@@ -33,6 +36,9 @@ mixin _$UploadState {
     TResult? Function()? categoryLoading,
     TResult? Function()? categorySuccess,
     TResult? Function(String error)? categoryError,
+    TResult? Function()? bannerLoading,
+    TResult? Function()? bannerSuccess,
+    TResult? Function(String error)? bannerError,
     TResult? Function()? productLoading,
     TResult? Function()? productSuccess,
     TResult? Function(String error)? productryError,
@@ -44,6 +50,9 @@ mixin _$UploadState {
     TResult Function()? categoryLoading,
     TResult Function()? categorySuccess,
     TResult Function(String error)? categoryError,
+    TResult Function()? bannerLoading,
+    TResult Function()? bannerSuccess,
+    TResult Function(String error)? bannerError,
     TResult Function()? productLoading,
     TResult Function()? productSuccess,
     TResult Function(String error)? productryError,
@@ -56,6 +65,9 @@ mixin _$UploadState {
     required TResult Function(CategoryLoading value) categoryLoading,
     required TResult Function(CategorySuccess value) categorySuccess,
     required TResult Function(CategoryError value) categoryError,
+    required TResult Function(BannerLoading value) bannerLoading,
+    required TResult Function(BannerSuccess value) bannerSuccess,
+    required TResult Function(BannerError value) bannerError,
     required TResult Function(ProductLoading value) productLoading,
     required TResult Function(ProductSuccess value) productSuccess,
     required TResult Function(ProductError value) productryError,
@@ -67,6 +79,9 @@ mixin _$UploadState {
     TResult? Function(CategoryLoading value)? categoryLoading,
     TResult? Function(CategorySuccess value)? categorySuccess,
     TResult? Function(CategoryError value)? categoryError,
+    TResult? Function(BannerLoading value)? bannerLoading,
+    TResult? Function(BannerSuccess value)? bannerSuccess,
+    TResult? Function(BannerError value)? bannerError,
     TResult? Function(ProductLoading value)? productLoading,
     TResult? Function(ProductSuccess value)? productSuccess,
     TResult? Function(ProductError value)? productryError,
@@ -78,6 +93,9 @@ mixin _$UploadState {
     TResult Function(CategoryLoading value)? categoryLoading,
     TResult Function(CategorySuccess value)? categorySuccess,
     TResult Function(CategoryError value)? categoryError,
+    TResult Function(BannerLoading value)? bannerLoading,
+    TResult Function(BannerSuccess value)? bannerSuccess,
+    TResult Function(BannerError value)? bannerError,
     TResult Function(ProductLoading value)? productLoading,
     TResult Function(ProductSuccess value)? productSuccess,
     TResult Function(ProductError value)? productryError,
@@ -152,6 +170,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function() categoryLoading,
     required TResult Function() categorySuccess,
     required TResult Function(String error) categoryError,
+    required TResult Function() bannerLoading,
+    required TResult Function() bannerSuccess,
+    required TResult Function(String error) bannerError,
     required TResult Function() productLoading,
     required TResult Function() productSuccess,
     required TResult Function(String error) productryError,
@@ -166,6 +187,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? categoryLoading,
     TResult? Function()? categorySuccess,
     TResult? Function(String error)? categoryError,
+    TResult? Function()? bannerLoading,
+    TResult? Function()? bannerSuccess,
+    TResult? Function(String error)? bannerError,
     TResult? Function()? productLoading,
     TResult? Function()? productSuccess,
     TResult? Function(String error)? productryError,
@@ -180,6 +204,9 @@ class _$InitialImpl implements _Initial {
     TResult Function()? categoryLoading,
     TResult Function()? categorySuccess,
     TResult Function(String error)? categoryError,
+    TResult Function()? bannerLoading,
+    TResult Function()? bannerSuccess,
+    TResult Function(String error)? bannerError,
     TResult Function()? productLoading,
     TResult Function()? productSuccess,
     TResult Function(String error)? productryError,
@@ -198,6 +225,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(CategoryLoading value) categoryLoading,
     required TResult Function(CategorySuccess value) categorySuccess,
     required TResult Function(CategoryError value) categoryError,
+    required TResult Function(BannerLoading value) bannerLoading,
+    required TResult Function(BannerSuccess value) bannerSuccess,
+    required TResult Function(BannerError value) bannerError,
     required TResult Function(ProductLoading value) productLoading,
     required TResult Function(ProductSuccess value) productSuccess,
     required TResult Function(ProductError value) productryError,
@@ -212,6 +242,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(CategoryLoading value)? categoryLoading,
     TResult? Function(CategorySuccess value)? categorySuccess,
     TResult? Function(CategoryError value)? categoryError,
+    TResult? Function(BannerLoading value)? bannerLoading,
+    TResult? Function(BannerSuccess value)? bannerSuccess,
+    TResult? Function(BannerError value)? bannerError,
     TResult? Function(ProductLoading value)? productLoading,
     TResult? Function(ProductSuccess value)? productSuccess,
     TResult? Function(ProductError value)? productryError,
@@ -226,6 +259,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(CategoryLoading value)? categoryLoading,
     TResult Function(CategorySuccess value)? categorySuccess,
     TResult Function(CategoryError value)? categoryError,
+    TResult Function(BannerLoading value)? bannerLoading,
+    TResult Function(BannerSuccess value)? bannerSuccess,
+    TResult Function(BannerError value)? bannerError,
     TResult Function(ProductLoading value)? productLoading,
     TResult Function(ProductSuccess value)? productSuccess,
     TResult Function(ProductError value)? productryError,
@@ -287,6 +323,9 @@ class _$CategoryLoadingImpl implements CategoryLoading {
     required TResult Function() categoryLoading,
     required TResult Function() categorySuccess,
     required TResult Function(String error) categoryError,
+    required TResult Function() bannerLoading,
+    required TResult Function() bannerSuccess,
+    required TResult Function(String error) bannerError,
     required TResult Function() productLoading,
     required TResult Function() productSuccess,
     required TResult Function(String error) productryError,
@@ -301,6 +340,9 @@ class _$CategoryLoadingImpl implements CategoryLoading {
     TResult? Function()? categoryLoading,
     TResult? Function()? categorySuccess,
     TResult? Function(String error)? categoryError,
+    TResult? Function()? bannerLoading,
+    TResult? Function()? bannerSuccess,
+    TResult? Function(String error)? bannerError,
     TResult? Function()? productLoading,
     TResult? Function()? productSuccess,
     TResult? Function(String error)? productryError,
@@ -315,6 +357,9 @@ class _$CategoryLoadingImpl implements CategoryLoading {
     TResult Function()? categoryLoading,
     TResult Function()? categorySuccess,
     TResult Function(String error)? categoryError,
+    TResult Function()? bannerLoading,
+    TResult Function()? bannerSuccess,
+    TResult Function(String error)? bannerError,
     TResult Function()? productLoading,
     TResult Function()? productSuccess,
     TResult Function(String error)? productryError,
@@ -333,6 +378,9 @@ class _$CategoryLoadingImpl implements CategoryLoading {
     required TResult Function(CategoryLoading value) categoryLoading,
     required TResult Function(CategorySuccess value) categorySuccess,
     required TResult Function(CategoryError value) categoryError,
+    required TResult Function(BannerLoading value) bannerLoading,
+    required TResult Function(BannerSuccess value) bannerSuccess,
+    required TResult Function(BannerError value) bannerError,
     required TResult Function(ProductLoading value) productLoading,
     required TResult Function(ProductSuccess value) productSuccess,
     required TResult Function(ProductError value) productryError,
@@ -347,6 +395,9 @@ class _$CategoryLoadingImpl implements CategoryLoading {
     TResult? Function(CategoryLoading value)? categoryLoading,
     TResult? Function(CategorySuccess value)? categorySuccess,
     TResult? Function(CategoryError value)? categoryError,
+    TResult? Function(BannerLoading value)? bannerLoading,
+    TResult? Function(BannerSuccess value)? bannerSuccess,
+    TResult? Function(BannerError value)? bannerError,
     TResult? Function(ProductLoading value)? productLoading,
     TResult? Function(ProductSuccess value)? productSuccess,
     TResult? Function(ProductError value)? productryError,
@@ -361,6 +412,9 @@ class _$CategoryLoadingImpl implements CategoryLoading {
     TResult Function(CategoryLoading value)? categoryLoading,
     TResult Function(CategorySuccess value)? categorySuccess,
     TResult Function(CategoryError value)? categoryError,
+    TResult Function(BannerLoading value)? bannerLoading,
+    TResult Function(BannerSuccess value)? bannerSuccess,
+    TResult Function(BannerError value)? bannerError,
     TResult Function(ProductLoading value)? productLoading,
     TResult Function(ProductSuccess value)? productSuccess,
     TResult Function(ProductError value)? productryError,
@@ -422,6 +476,9 @@ class _$CategorySuccessImpl implements CategorySuccess {
     required TResult Function() categoryLoading,
     required TResult Function() categorySuccess,
     required TResult Function(String error) categoryError,
+    required TResult Function() bannerLoading,
+    required TResult Function() bannerSuccess,
+    required TResult Function(String error) bannerError,
     required TResult Function() productLoading,
     required TResult Function() productSuccess,
     required TResult Function(String error) productryError,
@@ -436,6 +493,9 @@ class _$CategorySuccessImpl implements CategorySuccess {
     TResult? Function()? categoryLoading,
     TResult? Function()? categorySuccess,
     TResult? Function(String error)? categoryError,
+    TResult? Function()? bannerLoading,
+    TResult? Function()? bannerSuccess,
+    TResult? Function(String error)? bannerError,
     TResult? Function()? productLoading,
     TResult? Function()? productSuccess,
     TResult? Function(String error)? productryError,
@@ -450,6 +510,9 @@ class _$CategorySuccessImpl implements CategorySuccess {
     TResult Function()? categoryLoading,
     TResult Function()? categorySuccess,
     TResult Function(String error)? categoryError,
+    TResult Function()? bannerLoading,
+    TResult Function()? bannerSuccess,
+    TResult Function(String error)? bannerError,
     TResult Function()? productLoading,
     TResult Function()? productSuccess,
     TResult Function(String error)? productryError,
@@ -468,6 +531,9 @@ class _$CategorySuccessImpl implements CategorySuccess {
     required TResult Function(CategoryLoading value) categoryLoading,
     required TResult Function(CategorySuccess value) categorySuccess,
     required TResult Function(CategoryError value) categoryError,
+    required TResult Function(BannerLoading value) bannerLoading,
+    required TResult Function(BannerSuccess value) bannerSuccess,
+    required TResult Function(BannerError value) bannerError,
     required TResult Function(ProductLoading value) productLoading,
     required TResult Function(ProductSuccess value) productSuccess,
     required TResult Function(ProductError value) productryError,
@@ -482,6 +548,9 @@ class _$CategorySuccessImpl implements CategorySuccess {
     TResult? Function(CategoryLoading value)? categoryLoading,
     TResult? Function(CategorySuccess value)? categorySuccess,
     TResult? Function(CategoryError value)? categoryError,
+    TResult? Function(BannerLoading value)? bannerLoading,
+    TResult? Function(BannerSuccess value)? bannerSuccess,
+    TResult? Function(BannerError value)? bannerError,
     TResult? Function(ProductLoading value)? productLoading,
     TResult? Function(ProductSuccess value)? productSuccess,
     TResult? Function(ProductError value)? productryError,
@@ -496,6 +565,9 @@ class _$CategorySuccessImpl implements CategorySuccess {
     TResult Function(CategoryLoading value)? categoryLoading,
     TResult Function(CategorySuccess value)? categorySuccess,
     TResult Function(CategoryError value)? categoryError,
+    TResult Function(BannerLoading value)? bannerLoading,
+    TResult Function(BannerSuccess value)? bannerSuccess,
+    TResult Function(BannerError value)? bannerError,
     TResult Function(ProductLoading value)? productLoading,
     TResult Function(ProductSuccess value)? productSuccess,
     TResult Function(ProductError value)? productryError,
@@ -584,6 +656,9 @@ class _$CategoryErrorImpl implements CategoryError {
     required TResult Function() categoryLoading,
     required TResult Function() categorySuccess,
     required TResult Function(String error) categoryError,
+    required TResult Function() bannerLoading,
+    required TResult Function() bannerSuccess,
+    required TResult Function(String error) bannerError,
     required TResult Function() productLoading,
     required TResult Function() productSuccess,
     required TResult Function(String error) productryError,
@@ -598,6 +673,9 @@ class _$CategoryErrorImpl implements CategoryError {
     TResult? Function()? categoryLoading,
     TResult? Function()? categorySuccess,
     TResult? Function(String error)? categoryError,
+    TResult? Function()? bannerLoading,
+    TResult? Function()? bannerSuccess,
+    TResult? Function(String error)? bannerError,
     TResult? Function()? productLoading,
     TResult? Function()? productSuccess,
     TResult? Function(String error)? productryError,
@@ -612,6 +690,9 @@ class _$CategoryErrorImpl implements CategoryError {
     TResult Function()? categoryLoading,
     TResult Function()? categorySuccess,
     TResult Function(String error)? categoryError,
+    TResult Function()? bannerLoading,
+    TResult Function()? bannerSuccess,
+    TResult Function(String error)? bannerError,
     TResult Function()? productLoading,
     TResult Function()? productSuccess,
     TResult Function(String error)? productryError,
@@ -630,6 +711,9 @@ class _$CategoryErrorImpl implements CategoryError {
     required TResult Function(CategoryLoading value) categoryLoading,
     required TResult Function(CategorySuccess value) categorySuccess,
     required TResult Function(CategoryError value) categoryError,
+    required TResult Function(BannerLoading value) bannerLoading,
+    required TResult Function(BannerSuccess value) bannerSuccess,
+    required TResult Function(BannerError value) bannerError,
     required TResult Function(ProductLoading value) productLoading,
     required TResult Function(ProductSuccess value) productSuccess,
     required TResult Function(ProductError value) productryError,
@@ -644,6 +728,9 @@ class _$CategoryErrorImpl implements CategoryError {
     TResult? Function(CategoryLoading value)? categoryLoading,
     TResult? Function(CategorySuccess value)? categorySuccess,
     TResult? Function(CategoryError value)? categoryError,
+    TResult? Function(BannerLoading value)? bannerLoading,
+    TResult? Function(BannerSuccess value)? bannerSuccess,
+    TResult? Function(BannerError value)? bannerError,
     TResult? Function(ProductLoading value)? productLoading,
     TResult? Function(ProductSuccess value)? productSuccess,
     TResult? Function(ProductError value)? productryError,
@@ -658,6 +745,9 @@ class _$CategoryErrorImpl implements CategoryError {
     TResult Function(CategoryLoading value)? categoryLoading,
     TResult Function(CategorySuccess value)? categorySuccess,
     TResult Function(CategoryError value)? categoryError,
+    TResult Function(BannerLoading value)? bannerLoading,
+    TResult Function(BannerSuccess value)? bannerSuccess,
+    TResult Function(BannerError value)? bannerError,
     TResult Function(ProductLoading value)? productLoading,
     TResult Function(ProductSuccess value)? productSuccess,
     TResult Function(ProductError value)? productryError,
@@ -679,6 +769,500 @@ abstract class CategoryError implements UploadState {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CategoryErrorImplCopyWith<_$CategoryErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$BannerLoadingImplCopyWith<$Res> {
+  factory _$$BannerLoadingImplCopyWith(
+          _$BannerLoadingImpl value, $Res Function(_$BannerLoadingImpl) then) =
+      __$$BannerLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BannerLoadingImplCopyWithImpl<$Res>
+    extends _$UploadStateCopyWithImpl<$Res, _$BannerLoadingImpl>
+    implements _$$BannerLoadingImplCopyWith<$Res> {
+  __$$BannerLoadingImplCopyWithImpl(
+      _$BannerLoadingImpl _value, $Res Function(_$BannerLoadingImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UploadState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$BannerLoadingImpl implements BannerLoading {
+  const _$BannerLoadingImpl();
+
+  @override
+  String toString() {
+    return 'UploadState.bannerLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BannerLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() categoryLoading,
+    required TResult Function() categorySuccess,
+    required TResult Function(String error) categoryError,
+    required TResult Function() bannerLoading,
+    required TResult Function() bannerSuccess,
+    required TResult Function(String error) bannerError,
+    required TResult Function() productLoading,
+    required TResult Function() productSuccess,
+    required TResult Function(String error) productryError,
+  }) {
+    return bannerLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? categoryLoading,
+    TResult? Function()? categorySuccess,
+    TResult? Function(String error)? categoryError,
+    TResult? Function()? bannerLoading,
+    TResult? Function()? bannerSuccess,
+    TResult? Function(String error)? bannerError,
+    TResult? Function()? productLoading,
+    TResult? Function()? productSuccess,
+    TResult? Function(String error)? productryError,
+  }) {
+    return bannerLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? categoryLoading,
+    TResult Function()? categorySuccess,
+    TResult Function(String error)? categoryError,
+    TResult Function()? bannerLoading,
+    TResult Function()? bannerSuccess,
+    TResult Function(String error)? bannerError,
+    TResult Function()? productLoading,
+    TResult Function()? productSuccess,
+    TResult Function(String error)? productryError,
+    required TResult orElse(),
+  }) {
+    if (bannerLoading != null) {
+      return bannerLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CategoryLoading value) categoryLoading,
+    required TResult Function(CategorySuccess value) categorySuccess,
+    required TResult Function(CategoryError value) categoryError,
+    required TResult Function(BannerLoading value) bannerLoading,
+    required TResult Function(BannerSuccess value) bannerSuccess,
+    required TResult Function(BannerError value) bannerError,
+    required TResult Function(ProductLoading value) productLoading,
+    required TResult Function(ProductSuccess value) productSuccess,
+    required TResult Function(ProductError value) productryError,
+  }) {
+    return bannerLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CategoryLoading value)? categoryLoading,
+    TResult? Function(CategorySuccess value)? categorySuccess,
+    TResult? Function(CategoryError value)? categoryError,
+    TResult? Function(BannerLoading value)? bannerLoading,
+    TResult? Function(BannerSuccess value)? bannerSuccess,
+    TResult? Function(BannerError value)? bannerError,
+    TResult? Function(ProductLoading value)? productLoading,
+    TResult? Function(ProductSuccess value)? productSuccess,
+    TResult? Function(ProductError value)? productryError,
+  }) {
+    return bannerLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CategoryLoading value)? categoryLoading,
+    TResult Function(CategorySuccess value)? categorySuccess,
+    TResult Function(CategoryError value)? categoryError,
+    TResult Function(BannerLoading value)? bannerLoading,
+    TResult Function(BannerSuccess value)? bannerSuccess,
+    TResult Function(BannerError value)? bannerError,
+    TResult Function(ProductLoading value)? productLoading,
+    TResult Function(ProductSuccess value)? productSuccess,
+    TResult Function(ProductError value)? productryError,
+    required TResult orElse(),
+  }) {
+    if (bannerLoading != null) {
+      return bannerLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BannerLoading implements UploadState {
+  const factory BannerLoading() = _$BannerLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$BannerSuccessImplCopyWith<$Res> {
+  factory _$$BannerSuccessImplCopyWith(
+          _$BannerSuccessImpl value, $Res Function(_$BannerSuccessImpl) then) =
+      __$$BannerSuccessImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$BannerSuccessImplCopyWithImpl<$Res>
+    extends _$UploadStateCopyWithImpl<$Res, _$BannerSuccessImpl>
+    implements _$$BannerSuccessImplCopyWith<$Res> {
+  __$$BannerSuccessImplCopyWithImpl(
+      _$BannerSuccessImpl _value, $Res Function(_$BannerSuccessImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UploadState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$BannerSuccessImpl implements BannerSuccess {
+  const _$BannerSuccessImpl();
+
+  @override
+  String toString() {
+    return 'UploadState.bannerSuccess()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$BannerSuccessImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() categoryLoading,
+    required TResult Function() categorySuccess,
+    required TResult Function(String error) categoryError,
+    required TResult Function() bannerLoading,
+    required TResult Function() bannerSuccess,
+    required TResult Function(String error) bannerError,
+    required TResult Function() productLoading,
+    required TResult Function() productSuccess,
+    required TResult Function(String error) productryError,
+  }) {
+    return bannerSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? categoryLoading,
+    TResult? Function()? categorySuccess,
+    TResult? Function(String error)? categoryError,
+    TResult? Function()? bannerLoading,
+    TResult? Function()? bannerSuccess,
+    TResult? Function(String error)? bannerError,
+    TResult? Function()? productLoading,
+    TResult? Function()? productSuccess,
+    TResult? Function(String error)? productryError,
+  }) {
+    return bannerSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? categoryLoading,
+    TResult Function()? categorySuccess,
+    TResult Function(String error)? categoryError,
+    TResult Function()? bannerLoading,
+    TResult Function()? bannerSuccess,
+    TResult Function(String error)? bannerError,
+    TResult Function()? productLoading,
+    TResult Function()? productSuccess,
+    TResult Function(String error)? productryError,
+    required TResult orElse(),
+  }) {
+    if (bannerSuccess != null) {
+      return bannerSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CategoryLoading value) categoryLoading,
+    required TResult Function(CategorySuccess value) categorySuccess,
+    required TResult Function(CategoryError value) categoryError,
+    required TResult Function(BannerLoading value) bannerLoading,
+    required TResult Function(BannerSuccess value) bannerSuccess,
+    required TResult Function(BannerError value) bannerError,
+    required TResult Function(ProductLoading value) productLoading,
+    required TResult Function(ProductSuccess value) productSuccess,
+    required TResult Function(ProductError value) productryError,
+  }) {
+    return bannerSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CategoryLoading value)? categoryLoading,
+    TResult? Function(CategorySuccess value)? categorySuccess,
+    TResult? Function(CategoryError value)? categoryError,
+    TResult? Function(BannerLoading value)? bannerLoading,
+    TResult? Function(BannerSuccess value)? bannerSuccess,
+    TResult? Function(BannerError value)? bannerError,
+    TResult? Function(ProductLoading value)? productLoading,
+    TResult? Function(ProductSuccess value)? productSuccess,
+    TResult? Function(ProductError value)? productryError,
+  }) {
+    return bannerSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CategoryLoading value)? categoryLoading,
+    TResult Function(CategorySuccess value)? categorySuccess,
+    TResult Function(CategoryError value)? categoryError,
+    TResult Function(BannerLoading value)? bannerLoading,
+    TResult Function(BannerSuccess value)? bannerSuccess,
+    TResult Function(BannerError value)? bannerError,
+    TResult Function(ProductLoading value)? productLoading,
+    TResult Function(ProductSuccess value)? productSuccess,
+    TResult Function(ProductError value)? productryError,
+    required TResult orElse(),
+  }) {
+    if (bannerSuccess != null) {
+      return bannerSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BannerSuccess implements UploadState {
+  const factory BannerSuccess() = _$BannerSuccessImpl;
+}
+
+/// @nodoc
+abstract class _$$BannerErrorImplCopyWith<$Res> {
+  factory _$$BannerErrorImplCopyWith(
+          _$BannerErrorImpl value, $Res Function(_$BannerErrorImpl) then) =
+      __$$BannerErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String error});
+}
+
+/// @nodoc
+class __$$BannerErrorImplCopyWithImpl<$Res>
+    extends _$UploadStateCopyWithImpl<$Res, _$BannerErrorImpl>
+    implements _$$BannerErrorImplCopyWith<$Res> {
+  __$$BannerErrorImplCopyWithImpl(
+      _$BannerErrorImpl _value, $Res Function(_$BannerErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of UploadState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$BannerErrorImpl(
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BannerErrorImpl implements BannerError {
+  const _$BannerErrorImpl(this.error);
+
+  @override
+  final String error;
+
+  @override
+  String toString() {
+    return 'UploadState.bannerError(error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BannerErrorImpl &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, error);
+
+  /// Create a copy of UploadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BannerErrorImplCopyWith<_$BannerErrorImpl> get copyWith =>
+      __$$BannerErrorImplCopyWithImpl<_$BannerErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() categoryLoading,
+    required TResult Function() categorySuccess,
+    required TResult Function(String error) categoryError,
+    required TResult Function() bannerLoading,
+    required TResult Function() bannerSuccess,
+    required TResult Function(String error) bannerError,
+    required TResult Function() productLoading,
+    required TResult Function() productSuccess,
+    required TResult Function(String error) productryError,
+  }) {
+    return bannerError(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? categoryLoading,
+    TResult? Function()? categorySuccess,
+    TResult? Function(String error)? categoryError,
+    TResult? Function()? bannerLoading,
+    TResult? Function()? bannerSuccess,
+    TResult? Function(String error)? bannerError,
+    TResult? Function()? productLoading,
+    TResult? Function()? productSuccess,
+    TResult? Function(String error)? productryError,
+  }) {
+    return bannerError?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? categoryLoading,
+    TResult Function()? categorySuccess,
+    TResult Function(String error)? categoryError,
+    TResult Function()? bannerLoading,
+    TResult Function()? bannerSuccess,
+    TResult Function(String error)? bannerError,
+    TResult Function()? productLoading,
+    TResult Function()? productSuccess,
+    TResult Function(String error)? productryError,
+    required TResult orElse(),
+  }) {
+    if (bannerError != null) {
+      return bannerError(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(CategoryLoading value) categoryLoading,
+    required TResult Function(CategorySuccess value) categorySuccess,
+    required TResult Function(CategoryError value) categoryError,
+    required TResult Function(BannerLoading value) bannerLoading,
+    required TResult Function(BannerSuccess value) bannerSuccess,
+    required TResult Function(BannerError value) bannerError,
+    required TResult Function(ProductLoading value) productLoading,
+    required TResult Function(ProductSuccess value) productSuccess,
+    required TResult Function(ProductError value) productryError,
+  }) {
+    return bannerError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(CategoryLoading value)? categoryLoading,
+    TResult? Function(CategorySuccess value)? categorySuccess,
+    TResult? Function(CategoryError value)? categoryError,
+    TResult? Function(BannerLoading value)? bannerLoading,
+    TResult? Function(BannerSuccess value)? bannerSuccess,
+    TResult? Function(BannerError value)? bannerError,
+    TResult? Function(ProductLoading value)? productLoading,
+    TResult? Function(ProductSuccess value)? productSuccess,
+    TResult? Function(ProductError value)? productryError,
+  }) {
+    return bannerError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(CategoryLoading value)? categoryLoading,
+    TResult Function(CategorySuccess value)? categorySuccess,
+    TResult Function(CategoryError value)? categoryError,
+    TResult Function(BannerLoading value)? bannerLoading,
+    TResult Function(BannerSuccess value)? bannerSuccess,
+    TResult Function(BannerError value)? bannerError,
+    TResult Function(ProductLoading value)? productLoading,
+    TResult Function(ProductSuccess value)? productSuccess,
+    TResult Function(ProductError value)? productryError,
+    required TResult orElse(),
+  }) {
+    if (bannerError != null) {
+      return bannerError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BannerError implements UploadState {
+  const factory BannerError(final String error) = _$BannerErrorImpl;
+
+  String get error;
+
+  /// Create a copy of UploadState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$BannerErrorImplCopyWith<_$BannerErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -727,6 +1311,9 @@ class _$ProductLoadingImpl implements ProductLoading {
     required TResult Function() categoryLoading,
     required TResult Function() categorySuccess,
     required TResult Function(String error) categoryError,
+    required TResult Function() bannerLoading,
+    required TResult Function() bannerSuccess,
+    required TResult Function(String error) bannerError,
     required TResult Function() productLoading,
     required TResult Function() productSuccess,
     required TResult Function(String error) productryError,
@@ -741,6 +1328,9 @@ class _$ProductLoadingImpl implements ProductLoading {
     TResult? Function()? categoryLoading,
     TResult? Function()? categorySuccess,
     TResult? Function(String error)? categoryError,
+    TResult? Function()? bannerLoading,
+    TResult? Function()? bannerSuccess,
+    TResult? Function(String error)? bannerError,
     TResult? Function()? productLoading,
     TResult? Function()? productSuccess,
     TResult? Function(String error)? productryError,
@@ -755,6 +1345,9 @@ class _$ProductLoadingImpl implements ProductLoading {
     TResult Function()? categoryLoading,
     TResult Function()? categorySuccess,
     TResult Function(String error)? categoryError,
+    TResult Function()? bannerLoading,
+    TResult Function()? bannerSuccess,
+    TResult Function(String error)? bannerError,
     TResult Function()? productLoading,
     TResult Function()? productSuccess,
     TResult Function(String error)? productryError,
@@ -773,6 +1366,9 @@ class _$ProductLoadingImpl implements ProductLoading {
     required TResult Function(CategoryLoading value) categoryLoading,
     required TResult Function(CategorySuccess value) categorySuccess,
     required TResult Function(CategoryError value) categoryError,
+    required TResult Function(BannerLoading value) bannerLoading,
+    required TResult Function(BannerSuccess value) bannerSuccess,
+    required TResult Function(BannerError value) bannerError,
     required TResult Function(ProductLoading value) productLoading,
     required TResult Function(ProductSuccess value) productSuccess,
     required TResult Function(ProductError value) productryError,
@@ -787,6 +1383,9 @@ class _$ProductLoadingImpl implements ProductLoading {
     TResult? Function(CategoryLoading value)? categoryLoading,
     TResult? Function(CategorySuccess value)? categorySuccess,
     TResult? Function(CategoryError value)? categoryError,
+    TResult? Function(BannerLoading value)? bannerLoading,
+    TResult? Function(BannerSuccess value)? bannerSuccess,
+    TResult? Function(BannerError value)? bannerError,
     TResult? Function(ProductLoading value)? productLoading,
     TResult? Function(ProductSuccess value)? productSuccess,
     TResult? Function(ProductError value)? productryError,
@@ -801,6 +1400,9 @@ class _$ProductLoadingImpl implements ProductLoading {
     TResult Function(CategoryLoading value)? categoryLoading,
     TResult Function(CategorySuccess value)? categorySuccess,
     TResult Function(CategoryError value)? categoryError,
+    TResult Function(BannerLoading value)? bannerLoading,
+    TResult Function(BannerSuccess value)? bannerSuccess,
+    TResult Function(BannerError value)? bannerError,
     TResult Function(ProductLoading value)? productLoading,
     TResult Function(ProductSuccess value)? productSuccess,
     TResult Function(ProductError value)? productryError,
@@ -862,6 +1464,9 @@ class _$ProductSuccessImpl implements ProductSuccess {
     required TResult Function() categoryLoading,
     required TResult Function() categorySuccess,
     required TResult Function(String error) categoryError,
+    required TResult Function() bannerLoading,
+    required TResult Function() bannerSuccess,
+    required TResult Function(String error) bannerError,
     required TResult Function() productLoading,
     required TResult Function() productSuccess,
     required TResult Function(String error) productryError,
@@ -876,6 +1481,9 @@ class _$ProductSuccessImpl implements ProductSuccess {
     TResult? Function()? categoryLoading,
     TResult? Function()? categorySuccess,
     TResult? Function(String error)? categoryError,
+    TResult? Function()? bannerLoading,
+    TResult? Function()? bannerSuccess,
+    TResult? Function(String error)? bannerError,
     TResult? Function()? productLoading,
     TResult? Function()? productSuccess,
     TResult? Function(String error)? productryError,
@@ -890,6 +1498,9 @@ class _$ProductSuccessImpl implements ProductSuccess {
     TResult Function()? categoryLoading,
     TResult Function()? categorySuccess,
     TResult Function(String error)? categoryError,
+    TResult Function()? bannerLoading,
+    TResult Function()? bannerSuccess,
+    TResult Function(String error)? bannerError,
     TResult Function()? productLoading,
     TResult Function()? productSuccess,
     TResult Function(String error)? productryError,
@@ -908,6 +1519,9 @@ class _$ProductSuccessImpl implements ProductSuccess {
     required TResult Function(CategoryLoading value) categoryLoading,
     required TResult Function(CategorySuccess value) categorySuccess,
     required TResult Function(CategoryError value) categoryError,
+    required TResult Function(BannerLoading value) bannerLoading,
+    required TResult Function(BannerSuccess value) bannerSuccess,
+    required TResult Function(BannerError value) bannerError,
     required TResult Function(ProductLoading value) productLoading,
     required TResult Function(ProductSuccess value) productSuccess,
     required TResult Function(ProductError value) productryError,
@@ -922,6 +1536,9 @@ class _$ProductSuccessImpl implements ProductSuccess {
     TResult? Function(CategoryLoading value)? categoryLoading,
     TResult? Function(CategorySuccess value)? categorySuccess,
     TResult? Function(CategoryError value)? categoryError,
+    TResult? Function(BannerLoading value)? bannerLoading,
+    TResult? Function(BannerSuccess value)? bannerSuccess,
+    TResult? Function(BannerError value)? bannerError,
     TResult? Function(ProductLoading value)? productLoading,
     TResult? Function(ProductSuccess value)? productSuccess,
     TResult? Function(ProductError value)? productryError,
@@ -936,6 +1553,9 @@ class _$ProductSuccessImpl implements ProductSuccess {
     TResult Function(CategoryLoading value)? categoryLoading,
     TResult Function(CategorySuccess value)? categorySuccess,
     TResult Function(CategoryError value)? categoryError,
+    TResult Function(BannerLoading value)? bannerLoading,
+    TResult Function(BannerSuccess value)? bannerSuccess,
+    TResult Function(BannerError value)? bannerError,
     TResult Function(ProductLoading value)? productLoading,
     TResult Function(ProductSuccess value)? productSuccess,
     TResult Function(ProductError value)? productryError,
@@ -1024,6 +1644,9 @@ class _$ProductErrorImpl implements ProductError {
     required TResult Function() categoryLoading,
     required TResult Function() categorySuccess,
     required TResult Function(String error) categoryError,
+    required TResult Function() bannerLoading,
+    required TResult Function() bannerSuccess,
+    required TResult Function(String error) bannerError,
     required TResult Function() productLoading,
     required TResult Function() productSuccess,
     required TResult Function(String error) productryError,
@@ -1038,6 +1661,9 @@ class _$ProductErrorImpl implements ProductError {
     TResult? Function()? categoryLoading,
     TResult? Function()? categorySuccess,
     TResult? Function(String error)? categoryError,
+    TResult? Function()? bannerLoading,
+    TResult? Function()? bannerSuccess,
+    TResult? Function(String error)? bannerError,
     TResult? Function()? productLoading,
     TResult? Function()? productSuccess,
     TResult? Function(String error)? productryError,
@@ -1052,6 +1678,9 @@ class _$ProductErrorImpl implements ProductError {
     TResult Function()? categoryLoading,
     TResult Function()? categorySuccess,
     TResult Function(String error)? categoryError,
+    TResult Function()? bannerLoading,
+    TResult Function()? bannerSuccess,
+    TResult Function(String error)? bannerError,
     TResult Function()? productLoading,
     TResult Function()? productSuccess,
     TResult Function(String error)? productryError,
@@ -1070,6 +1699,9 @@ class _$ProductErrorImpl implements ProductError {
     required TResult Function(CategoryLoading value) categoryLoading,
     required TResult Function(CategorySuccess value) categorySuccess,
     required TResult Function(CategoryError value) categoryError,
+    required TResult Function(BannerLoading value) bannerLoading,
+    required TResult Function(BannerSuccess value) bannerSuccess,
+    required TResult Function(BannerError value) bannerError,
     required TResult Function(ProductLoading value) productLoading,
     required TResult Function(ProductSuccess value) productSuccess,
     required TResult Function(ProductError value) productryError,
@@ -1084,6 +1716,9 @@ class _$ProductErrorImpl implements ProductError {
     TResult? Function(CategoryLoading value)? categoryLoading,
     TResult? Function(CategorySuccess value)? categorySuccess,
     TResult? Function(CategoryError value)? categoryError,
+    TResult? Function(BannerLoading value)? bannerLoading,
+    TResult? Function(BannerSuccess value)? bannerSuccess,
+    TResult? Function(BannerError value)? bannerError,
     TResult? Function(ProductLoading value)? productLoading,
     TResult? Function(ProductSuccess value)? productSuccess,
     TResult? Function(ProductError value)? productryError,
@@ -1098,6 +1733,9 @@ class _$ProductErrorImpl implements ProductError {
     TResult Function(CategoryLoading value)? categoryLoading,
     TResult Function(CategorySuccess value)? categorySuccess,
     TResult Function(CategoryError value)? categoryError,
+    TResult Function(BannerLoading value)? bannerLoading,
+    TResult Function(BannerSuccess value)? bannerSuccess,
+    TResult Function(BannerError value)? bannerError,
     TResult Function(ProductLoading value)? productLoading,
     TResult Function(ProductSuccess value)? productSuccess,
     TResult Function(ProductError value)? productryError,

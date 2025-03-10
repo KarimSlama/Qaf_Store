@@ -33,6 +33,7 @@ class ProfileDetails extends StatelessWidget {
               children: [
                 CircularImage(
                   image: user.profilePicture ?? Assets.images.content.user.path,
+                  isNetworkImage: true,
                   width: 80.w,
                   height: 80.h,
                 ),

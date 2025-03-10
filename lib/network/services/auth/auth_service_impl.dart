@@ -42,8 +42,6 @@ class AuthServiceImpl implements AuthService {
       final response = await firebaseAuth.sendPasswordResetEmail(email: email);
       return ServerResult.success(response);
     } catch (error) {
-      print(
-          'the error with reset password fun in auth impl is ${error.toString()}');
       return ServerResult.failure(error.toString());
     }
   }
