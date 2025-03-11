@@ -40,22 +40,23 @@ class UploadDataScreen extends StatelessWidget {
                 icon: Iconsax.shop,
                 title: QafStrings.uploadBrands,
                 trailing: IconButton(
-                    onPressed: () =>
-                        context.read<UploadCubit>().uploadProducts(),
+                    onPressed: () {},
                     icon: Icon(Iconsax.arrow_up_1, color: QafColors.primary)),
               ),
               UploadMenuTitle(
                 icon: Iconsax.shopping_cart,
                 title: QafStrings.uploadProducts,
                 trailing: IconButton(
-                    onPressed: () {},
+                   onPressed: () =>
+                        context.read<UploadCubit>().uploadProducts(),
                     icon: Icon(Iconsax.arrow_up_1, color: QafColors.primary)),
               ),
               UploadMenuTitle(
                 icon: Iconsax.image,
                 title: QafStrings.uploadBanners,
                 trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () =>
+                        context.read<UploadCubit>().uploadBanners(),
                     icon: Icon(Iconsax.arrow_up_1, color: QafColors.primary)),
               ),
               SizedBox(height: QafSizes.spaceBtwItems),

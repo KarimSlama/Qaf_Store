@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qaf_store/features/screens/home/data/repositories/banners_repository.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/categories_repository.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/products_repository.dart';
 import 'package:qaf_store/features/screens/upload_data/controller/cubit/upload_state.dart';
@@ -7,7 +8,8 @@ import 'package:qaf_store/utils/dummy_data.dart';
 class UploadCubit extends Cubit<UploadState> {
   final CategoriesRepository categoriesRepository;
   final ProductsRepository productsRepository;
-  UploadCubit(this.categoriesRepository, this.productsRepository)
+  final BannersRepository bannersRepository;
+  UploadCubit(this.categoriesRepository, this.productsRepository, this.bannersRepository)
       : super(UploadState.initial());
 
   Future<void> uploadCategories() async {
@@ -20,13 +22,29 @@ class UploadCubit extends Cubit<UploadState> {
           emit(UploadState.categorySuccess());
         },
         failure: (error) {
-          print('the error with upload category is $error');
           emit(UploadState.categoryError(error));
         },
       );
     } catch (error) {
-      print('the error with catch upload category is $error');
       emit(UploadState.categoryError(error.toString()));
+    }
+  }
+
+  Future<void> uploadBanners() async {
+    try {
+      emit(UploadState.bannerLoading());
+      final result =
+          await bannersRepository.uploadBanners(DummyData.banners);
+      result.when(
+        success: (data) {
+          emit(UploadState.bannerSuccess());
+        },
+        failure: (error) {
+          emit(UploadState.bannerError(error));
+        },
+      );
+    } catch (error) {
+      emit(UploadState.bannerError(error.toString()));
     }
   }
 
@@ -40,12 +58,10 @@ class UploadCubit extends Cubit<UploadState> {
           emit(UploadState.productSuccess());
         },
         failure: (error) {
-          print('the error with upload products is $error');
           emit(UploadState.productryError(error));
         },
       );
     } catch (error) {
-      print('the error with catch upload products is $error');
       emit(UploadState.productryError(error.toString()));
     }
   }

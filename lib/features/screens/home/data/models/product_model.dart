@@ -101,4 +101,33 @@ class ProductModel {
           .toList(),
     );
   }
+
+  factory ProductModel.fromQuerySnapshot(
+      QueryDocumentSnapshot<Object?> document) {
+    if (document.data() == null) return ProductModel.empty();
+    final data = document.data() as Map<String, dynamic>;
+    return ProductModel(
+      id: document.id,
+      stock: data['Stock'] ?? 0,
+      sku: data['SKU'] ?? '',
+      price: double.parse((data['Price'] ?? 0.0).toString()),
+      salePrice: double.parse(
+        (data['SalePrice'] ?? 0.0).toString(),
+      ),
+      title: data['Title'],
+      thumbnail: data['Thumbnails'] ?? '',
+      description: data['Description'] ?? '',
+      categoryId: data['CategoryId'] ?? '',
+      productType: data['ProductType'] ?? '',
+      brand: BrandModel.fromJson(data['Brand']),
+      images: data['Images'] != null ? List<String>.from(data['Images']) : [],
+      isFeatured: data['IsFeatured'] ?? false,
+      productAttributes: (data['ProductAttributes'] as List<dynamic>)
+          .map((element) => ProductAttributeModel.fromJson(element))
+          .toList(),
+      productVariation: (data['ProductVariation'] as List<dynamic>)
+          .map((element) => ProductVariationModel.fromJson(element))
+          .toList(),
+    );
+  }
 }

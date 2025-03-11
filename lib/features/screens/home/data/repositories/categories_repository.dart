@@ -12,17 +12,13 @@ class CategoriesRepository {
       final categories = await categoriesService.getAllCategories();
       return categories.when(
         success: (category) {
-          print('the category fetched in category repo is ${category.first}');
           return ServerResult.success(category);
         },
         failure: (error) {
-          print('the error with category repository is ${error.toString()}');
           return ServerResult.failure(error);
         },
       );
     } catch (error) {
-      print(
-          'the error catched with category repository is ${error.toString()}');
       return ServerResult.failure(error.toString());
     }
   }
@@ -33,18 +29,13 @@ class CategoriesRepository {
       final response = await categoriesService.uploadCategories(categories);
       return response.when(
         success: (category) {
-          print('the category uploaded in category repo is');
           return ServerResult.success(category);
         },
         failure: (error) {
-          print(
-              'the error with upload category repository is ${error.toString()}');
           return ServerResult.failure(error);
         },
       );
     } catch (error) {
-      print(
-          'the error catched with upload category repository is ${error.toString()}');
       return ServerResult.failure(error.toString());
     }
   }

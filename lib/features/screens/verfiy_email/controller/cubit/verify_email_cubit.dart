@@ -28,7 +28,6 @@ class VerifyEmailCubit extends Cubit<VerifyEmailState> {
         emit(VerifyEmailState.success());
       },
       failure: (error) {
-        print('the error with verify email cubit is ${error.toString()}');
         emit(VerifyEmailState.error(error: error));
       },
     );

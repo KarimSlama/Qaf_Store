@@ -20,7 +20,6 @@ class NavigationCubit extends Cubit<NavigationState> {
   void changeNavigationScreen(int index) {
     if (currentIndex != index) {
       currentIndex = index;
-      print('current index $currentIndex');
       emit(NavigationState.changed(currentIndex));
     }
   }

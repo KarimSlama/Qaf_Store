@@ -9,6 +9,11 @@ class UploadState with _$UploadState {
       CategorySuccess;
   const factory UploadState.categoryError(String error) = CategoryError;
 
+   const factory UploadState.bannerLoading() = BannerLoading;
+  const factory UploadState.bannerSuccess() =
+      BannerSuccess;
+  const factory UploadState.bannerError(String error) =BannerError;
+
    const factory UploadState.productLoading() = ProductLoading;
   const factory UploadState.productSuccess() =
       ProductSuccess;

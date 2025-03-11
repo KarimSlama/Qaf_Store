@@ -30,7 +30,7 @@ class WishlistScreen extends StatelessWidget {
             children: [
               GridViewLayout(
                 itemCount: 8,
-                itemBuilder: (_, index) => VerticalProductCard(index: index),
+                itemBuilder: (_, index) => VerticalProductCard(index: index, products: [],),
               )
             ],
           ),

@@ -36,7 +36,7 @@ class TermsAndPolicy extends StatelessWidget {
               TextSpan(
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
-                    print('Privacy and Policy');
+                    ///Navigate to privacy screen
                   },
                 text: '${QafStrings.privacyAndPolicy} ',
                 style: Theme.of(context).textTheme.bodyMedium!.apply(

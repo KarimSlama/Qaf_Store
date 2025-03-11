@@ -14,13 +14,14 @@ class HorizontalHomeCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
+      buildWhen: (previous, current) =>
+          current is CategoryLoading ||
+          current is CategorySuccess ||
+          current is CategoryError,
       builder: (context, state) {
-        print('current state in horizontal categories is $state');
-        print('rebild category');
         return state.maybeWhen(
           categoryLoading: () => CategoriesShimmerEffect(itemCount: 2),
           categorySuccess: (categories) {
-            print('rebild category ${categories[0].name}');
             return SizedBox(
               height: 85.h,
               child: ListView.builder(

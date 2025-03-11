@@ -12,16 +12,30 @@ class BannersRepository {
       final banners = await bannersService.fetchBanners();
       return banners.when(
         success: (bannersList) {
-          print('banners list in banners repository is ${bannersList[0].targetScreen}');
+      
           return ServerResult.success(bannersList);
         },
         failure: (error) {
-          print('error with banners repository failure is $error');
           return ServerResult.failure(error.toString());
         },
       );
     } catch (error) {
-      print('error with banners repository catched is $error');
+      return ServerResult.failure(error.toString());
+    }
+  }
+
+  Future<ServerResult<void>> uploadBanners(List<BannersModel> banners) async {
+    try {
+      final response = await bannersService.uploadBanners(banners);
+      return response.when(
+        success: (banner) {
+          return ServerResult.success(banner);
+        },
+        failure: (error) {
+          return ServerResult.failure(error);
+        },
+      );
+    } catch (error) {
       return ServerResult.failure(error.toString());
     }
   }

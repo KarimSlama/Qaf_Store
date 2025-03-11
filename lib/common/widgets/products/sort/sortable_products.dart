@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
+import 'package:qaf_store/common/widgets/loaders/qaf_shimmer.dart';
 import 'package:qaf_store/common/widgets/products/product_cards/vertical_product_card.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/home_cubit.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/home_state.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 
 class SortableProducts extends StatelessWidget {
@@ -9,6 +13,8 @@ class SortableProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeCubit = context.read<HomeCubit>();
+
     return Column(
       spacing: QafSizes.spaceBtwSections,
       children: [
@@ -21,15 +27,31 @@ class SortableProducts extends StatelessWidget {
             'Sale',
             'Newest',
             'Popularity'
-          ]
-              .map((option) =>
-                  DropdownMenuItem(value: option, child: Text(option)))
-              .toList(),
-          onChanged: (value) {},
+          ].map((option) => DropdownMenuItem(value: option, child: Text(option))).toList(),
+          onChanged: (value) {
+            homeCubit.sortProducts(value!);
+          },
+          value: homeCubit.selectedOption,
         ),
-        GridViewLayout(
-          itemCount: 16,
-          itemBuilder: (_, index) => VerticalProductCard(index: index),
+
+        BlocBuilder<HomeCubit, HomeState>(
+          buildWhen: (previous, current) => current is ProductsSuccess || current is ProductsLoading || current is ProductsError,
+          builder: (context, state) {
+            return state.maybeWhen(
+              productsLoading: () => QafShimmerEffect(width: 180, height: 180),
+              productsSuccess: (products) {
+                return GridViewLayout(
+                  itemCount: products.length,
+                  itemBuilder: (_, index) => VerticalProductCard(
+                    index: index,
+                    products: products,
+                  ),
+                );
+              },
+              productsError: (error) => Center(child: Text(error)),
+              orElse: () => SizedBox.shrink(),
+            );
+          },
         ),
       ],
     );

@@ -22,8 +22,6 @@ class UploadBlocListener extends StatelessWidget {
               context),
           categorySuccess: () {
             context.pop();
-            print('successed uploading');
-            // context.pushNamed(Routes.navigationMenu);
           },
           categoryError: (error) {
             Loaders.errorSnackBar(
@@ -31,14 +29,25 @@ class UploadBlocListener extends StatelessWidget {
                 title: QafStrings.ohSnap,
                 message: error.toString());
           },
+          bannerLoading: () => FullScreenLoader.openLoadingDialog(
+              'We are Proccessing your banners Uploading....',
+              Assets.images.animations.a141594AnimationOfDocer,
+              context),
+          bannerSuccess: () {
+            context.pop();
+          },
+          bannerError: (error) {
+            Loaders.errorSnackBar(
+                context: context,
+                title: QafStrings.ohSnap,
+                message: error.toString());
+          },
           productLoading: () => FullScreenLoader.openLoadingDialog(
-              'We are Proccessing your Category Uploading....',
+              'We are Proccessing your product Uploading....',
               Assets.images.animations.a141594AnimationOfDocer,
               context),
           productSuccess: () {
             context.pop();
-            print('successed uploading');
-            // context.pushNamed(Routes.navigationMenu);
           },
           productryError: (error) {
             Loaders.errorSnackBar(

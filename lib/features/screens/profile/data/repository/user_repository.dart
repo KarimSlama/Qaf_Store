@@ -12,16 +12,13 @@ class UserRepository {
       final result = await userService.fetchUserDetails();
       return result.when(
         success: (user) {
-          print('the user with user repo is ${user.email}');
           return ServerResult.success(user);
         },
         failure: (error) {
-          print('the error with user repo is $error');
           return ServerResult.failure(error);
         },
       );
     } catch (error) {
-      print('the error with user repo is $error');
       return ServerResult.failure(error.toString());
     }
   }
@@ -34,12 +31,10 @@ class UserRepository {
           return ServerResult.success(data);
         },
         failure: (error) {
-          print('the error with update single field is ${error.toString()}');
           return ServerResult.failure(error);
         },
       );
     } catch (error) {
-      print('the error with update single field is ${error.toString()}');
       return ServerResult.failure(error.toString());
     }
   }
@@ -52,12 +47,10 @@ class UserRepository {
           return ServerResult.success(data);
         },
         failure: (error) {
-          print('the error with remove field is ${error.toString()}');
           return ServerResult.failure(error);
         },
       );
     } catch (error) {
-      print('the error with remve  field is ${error.toString()}');
       return ServerResult.failure(error.toString());
     }
   }
@@ -72,12 +65,10 @@ class UserRepository {
           return ServerResult.success(data);
         },
         failure: (error) {
-          print('the error with reauth is ${error.toString()}');
           return ServerResult.failure(error);
         },
       );
     } catch (error) {
-      print('the error with reauth  is ${error.toString()}');
       return ServerResult.failure(error.toString());
     }
   }

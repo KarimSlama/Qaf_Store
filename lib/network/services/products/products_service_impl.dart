@@ -20,15 +20,12 @@ class ProductsServiceImpl implements ProductsService {
       final snapshot = await _firestore
           .collection('Products')
           .where('IsFeatured', isEqualTo: true)
-          .limit(4)
           .get();
       final list = snapshot.docs
           .map((document) => ProductModel.fromSnapshot(document))
           .toList();
-      print('the list in Product service impl is ${list.first}');
       return ServerResult.success(list);
     } catch (error) {
-      print('the error with Products service impl is $error');
       return ServerResult.failure(error.toString());
     }
   }
@@ -126,6 +123,21 @@ class ProductsServiceImpl implements ProductsService {
     } catch (e) {
       print("Exception uploading image: $e");
       return null;
+    }
+  }
+
+  @override
+  Future<ServerResult<List<ProductModel>>> fetchProductByQuery(
+      Query<Object?> query) async {
+    try {
+      final querySnapshot = await query.get();
+      final List<ProductModel> productList = querySnapshot.docs
+          .map((doc) => ProductModel.fromQuerySnapshot(doc))
+          .toList();
+      return ServerResult.success(productList);
+    } catch (error) {
+      print('Exception with catch fetch product by query is $error');
+      return ServerResult.failure(error.toString());
     }
   }
 }

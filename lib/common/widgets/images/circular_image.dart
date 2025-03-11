@@ -23,7 +23,7 @@ class CircularImage extends StatelessWidget {
     this.overlayColor,
     required this.image,
     this.fit = BoxFit.cover,
-    this.isNetworkImage = true,
+    this.isNetworkImage = false,
   });
 
   @override
@@ -51,9 +51,7 @@ class CircularImage extends StatelessWidget {
                 )
               : Image(
                   fit: fit,
-                  image: isNetworkImage
-                      ? NetworkImage(image)
-                      : AssetImage(image) as ImageProvider,
+                  image: AssetImage(image),
                   color: overlayColor,
                 ),
         ),

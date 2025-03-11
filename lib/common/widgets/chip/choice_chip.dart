@@ -24,14 +24,13 @@ class QafChoiceChip extends StatelessWidget {
       onSelected: onSelected,
       avatar: isColor
           ? CircularContainter(
-              width: 50.w,
-              height: 50.h,
+              width: 60.w,
+              height: 60.h,
               backgroundColor: QafHelperFunctions.getColor(text)!)
           : null,
       backgroundColor: isColor ? QafHelperFunctions.getColor(text)! : null,
       labelPadding: isColor ? EdgeInsetsDirectional.all(0) : null,
       padding: isColor ? EdgeInsetsDirectional.all(0) : null,
-      // selectedColor: Colors.green,
       shape: isColor ? CircleBorder() : null,
     );
   }

@@ -19,7 +19,8 @@ class NavigationMenu extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<HomeCubit>()
         ..fetchAllCategories()
-        ..fetchAllBanners(),
+        ..fetchAllBanners()
+        ..fetchAllProduct(),
       child: Scaffold(
         bottomNavigationBar: BlocBuilder<NavigationCubit, NavigationState>(
           builder: (context, state) {
