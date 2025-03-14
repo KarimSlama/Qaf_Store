@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/home_cubit.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/home_state.dart';
-import 'package:qaf_store/features/screens/home/widgets/categories_shimmer_effect.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_state.dart';
+import 'package:qaf_store/common/widgets/shimmer/categories_shimmer_effect.dart';
 import 'package:qaf_store/features/screens/home/widgets/vertical_popular_category_image_text.dart';
 import 'package:qaf_store/utils/helper/extensions.dart';
 import 'package:qaf_store/utils/routings/routes.dart';
@@ -13,7 +13,7 @@ class HorizontalHomeCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<ProductCubit, ProductState>(
       buildWhen: (previous, current) =>
           current is CategoryLoading ||
           current is CategorySuccess ||

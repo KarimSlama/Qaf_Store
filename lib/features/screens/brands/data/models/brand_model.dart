@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class BrandModel {
   final String id;
   final String name;
-  final String image;
+  String image;
   final bool? isFeatured;
   final int? productsCount;
 
@@ -20,7 +22,7 @@ class BrandModel {
       'Id': id,
       'Name': name,
       'Image': image,
-      'ProductsCount': productsCount,
+      'ProductCount': productsCount,
       'IsFeatured': isFeatured,
     };
   }
@@ -29,11 +31,26 @@ class BrandModel {
     final data = document;
     if (data.isEmpty) return BrandModel.empty();
     return BrandModel(
-      id: data['Id'],
-      name: data['Name'],
-      image: data['Image'],
-      isFeatured: data['IsFeatured'],
-      productsCount: data['ProductsCount'],
+      id: data['Id'] ?? '',
+      name: data['Name'] ?? '',
+      image: data['Image'] ?? '',
+      isFeatured: data['IsFeatured'] ?? false,
+      productsCount: int.parse((data['ProductCount'] ?? 0).toString()),
     );
+  }
+
+  factory BrandModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
+    if (document.data() != null) {
+      final data = document.data()!;
+      return BrandModel(
+        id: document.id,
+        name: data['Name'] ?? '',
+        image: data['Image'] ?? '',
+        isFeatured: data['IsFeatured'] ?? false,
+        productsCount: data['ProductCount'] ?? '',
+      );
+    } else
+      return BrandModel.empty();
   }
 }

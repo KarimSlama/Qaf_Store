@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/appbar/tabbar.dart';
 import 'package:qaf_store/common/widgets/cards/brand_card.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/qaf_search_container.dart';
 import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
+import 'package:qaf_store/common/widgets/loaders/qaf_shimmer.dart';
 import 'package:qaf_store/common/widgets/products/cart/cart_counter_icon.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
+import 'package:qaf_store/features/screens/brands/controller/cubit/brand_cubit.dart';
+import 'package:qaf_store/features/screens/brands/controller/cubit/brand_state.dart';
 import 'package:qaf_store/features/screens/store/widgets/category_tab.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
@@ -38,50 +42,75 @@ class StoreScreen extends StatelessWidget {
           headerSliverBuilder: (_, innerBoxIsScrolled) {
             return [
               SliverAppBar(
-                  automaticallyImplyLeading: false,
-                  pinned: true,
-                  floating: true,
-                  backgroundColor: dark ? QafColors.black : QafColors.white,
-                  expandedHeight: 440.h,
-                  flexibleSpace: Padding(
-                    padding: EdgeInsetsDirectional.all(QafSizes.defaultSpace),
-                    child: ListView(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      children: [
-                        QafSearchContainer(
-                          text: QafStrings.searchInStore,
-                          padding: EdgeInsetsDirectional.zero,
-                        ),
-                        SizedBox(height: QafSizes.spaceBtwSections),
-                        SectionHeading(
-                          text: QafStrings.featuredBrands,
-                          onPressed: () =>
-                              context.pushNamed(Routes.allBrandsScreen),
-                        ),
-                        SizedBox(height: QafSizes.spaceBtwItems / 1.5),
-                        GridViewLayout(
-                            mainAxisExtent: 70,
-                            itemCount: 4,
-                            itemBuilder: (_, index) =>
-                                BrandCard(showBorder: true)),
-                      ],
-                    ),
-                  ),
-                  bottom: QafTabBar(
-                    tabs: const [
-                      Tab(child: Text('Sports')),
-                      Tab(child: Text('Furnitures')),
-                      Tab(child: Text('Electronics')),
-                      Tab(child: Text('Clothes')),
-                      Tab(child: Text('Cosmetics')),
+                automaticallyImplyLeading: false,
+                pinned: true,
+                floating: true,
+                backgroundColor: dark ? QafColors.black : QafColors.white,
+                expandedHeight: 440.h,
+                flexibleSpace: Padding(
+                  padding: EdgeInsetsDirectional.all(QafSizes.defaultSpace),
+                  child: ListView(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      QafSearchContainer(
+                        text: QafStrings.searchInStore,
+                        padding: EdgeInsetsDirectional.zero,
+                      ),
+                      SizedBox(height: QafSizes.spaceBtwSections),
+                      BlocBuilder<BrandCubit, BrandState>(
+                        builder: (context, state) {
+                          return state.maybeWhen(
+                            loading: () =>
+                                QafShimmerEffect(width: 180, height: 180),
+                            loaded: (brands) {
+                              return Column(
+                                children: [
+                                  SectionHeading(
+                                    text: QafStrings.featuredBrands,
+                                    onPressed: () {
+                                      context.pushNamed(Routes.allBrandsScreen,
+                                          arguments: brands);
+                                    },
+                                  ),
+                                  SizedBox(
+                                      height: QafSizes.spaceBtwItems / 1.5),
+                                  GridViewLayout(
+                                    mainAxisExtent: 70,
+                                    itemCount: 4,
+                                    itemBuilder: (_, index) => BrandCard(
+                                      showBorder: true,
+                                      brands: brands[index],
+                                      onTap: () => context.pushNamed(
+                                          Routes.brandProductsScreen,
+                                          arguments: brands[index]),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                            error: (error) => Text(error),
+                            orElse: () => SizedBox.shrink(),
+                          );
+                        },
+                      )
                     ],
-                  )),
+                  ),
+                ),
+                bottom: QafTabBar(
+                  tabs: const [
+                    Tab(child: Text('Sports')),
+                    Tab(child: Text('Furnitures')),
+                    Tab(child: Text('Electronics')),
+                    Tab(child: Text('Clothes')),
+                    Tab(child: Text('Cosmetics')),
+                  ],
+                ),
+              ),
             ];
           },
           body: TabBarView(
             children: [
-              /// Will Modify it later..
               CategoryTab(),
               CategoryTab(),
               CategoryTab(),

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:qaf_store/common/widgets/images/circular_image.dart';
 import 'package:qaf_store/common/widgets/texts/brand_title_text_with_verification_icon.dart';
-import 'package:qaf_store/gen/assets.gen.dart';
+import 'package:qaf_store/features/screens/brands/data/models/brand_model.dart';
 import 'package:qaf_store/utils/constants/enum.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
@@ -12,7 +12,9 @@ import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
 class BrandCard extends StatelessWidget {
   final bool showBorder;
   final void Function()? onTap;
-  const BrandCard({super.key, required this.showBorder, this.onTap});
+  final BrandModel brands;
+  const BrandCard(
+      {super.key, required this.showBorder, this.onTap, required this.brands});
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +30,8 @@ class BrandCard extends StatelessWidget {
           children: [
             Flexible(
               child: CircularImage(
-                image: Assets.icons.brands.nike.path,
-                isNetworkImage: false,
+                image: brands.image,
+                isNetworkImage: true,
                 backgroundColor: Colors.transparent,
                 overlayColor: isDark ? QafColors.white : QafColors.black,
               ),
@@ -41,17 +43,17 @@ class BrandCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   BrandTitleTextWithVerificationIcon(
-                    title: 'Nike',
+                    title: brands.name,
                     brandTextSize: TextSizes.LARGE,
                   ),
                   Text(
-                    '265 Products',
+                    '${brands.productsCount} Products',
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -4,8 +4,8 @@ import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
 import 'package:qaf_store/common/widgets/loaders/qaf_shimmer.dart';
 import 'package:qaf_store/common/widgets/products/product_cards/vertical_product_card.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/home_cubit.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/home_state.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_state.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 
 class SortableProducts extends StatelessWidget {
@@ -13,7 +13,7 @@ class SortableProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeCubit = context.read<HomeCubit>();
+    final homeCubit = context.read<ProductCubit>();
 
     return Column(
       spacing: QafSizes.spaceBtwSections,
@@ -27,15 +27,20 @@ class SortableProducts extends StatelessWidget {
             'Sale',
             'Newest',
             'Popularity'
-          ].map((option) => DropdownMenuItem(value: option, child: Text(option))).toList(),
+          ]
+              .map((option) =>
+                  DropdownMenuItem(value: option, child: Text(option)))
+              .toList(),
           onChanged: (value) {
             homeCubit.sortProducts(value!);
           },
           value: homeCubit.selectedOption,
         ),
-
-        BlocBuilder<HomeCubit, HomeState>(
-          buildWhen: (previous, current) => current is ProductsSuccess || current is ProductsLoading || current is ProductsError,
+        BlocBuilder<ProductCubit, ProductState>(
+          buildWhen: (previous, current) =>
+              current is ProductsSuccess ||
+              current is ProductsLoading ||
+              current is ProductsError,
           builder: (context, state) {
             return state.maybeWhen(
               productsLoading: () => QafShimmerEffect(width: 180, height: 180),

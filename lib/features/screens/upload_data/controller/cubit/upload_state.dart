@@ -18,4 +18,8 @@ class UploadState with _$UploadState {
   const factory UploadState.productSuccess() =
       ProductSuccess;
   const factory UploadState.productryError(String error) = ProductError;
+
+  const factory UploadState.brandsLoading() = BrandsLoading;
+  const factory UploadState.brandsSuccess() = BrandsSuccess;
+  const factory UploadState.brandsError(String error) = BrandsError;
 }

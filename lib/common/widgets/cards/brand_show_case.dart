@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qaf_store/common/widgets/cards/brand_card.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/rounded_container.dart';
+import 'package:qaf_store/features/screens/brands/data/models/brand_model.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
@@ -20,7 +21,7 @@ class BrandShowCase extends StatelessWidget {
       padding: const EdgeInsetsDirectional.all(QafSizes.md),
       child: Column(
         children: [
-          BrandCard(showBorder: false),
+          BrandCard(showBorder: false, brands: BrandModel.empty(),),
           Row(
             children: images
                 .map((image) => brandTopProductImageWidget(image, context))

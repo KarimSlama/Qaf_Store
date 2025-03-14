@@ -5,13 +5,15 @@ import 'package:qaf_store/features/screens/address/add_new_address_screen.dart';
 import 'package:qaf_store/features/screens/address/user_address_screen.dart';
 import 'package:qaf_store/features/screens/all_products/all_products_screen.dart';
 import 'package:qaf_store/features/screens/brands/all_brands_screen.dart';
-import 'package:qaf_store/features/screens/brands/brand_products.dart';
+import 'package:qaf_store/features/screens/brands/brand_products_screen.dart';
+import 'package:qaf_store/features/screens/brands/controller/cubit/brand_cubit.dart';
+import 'package:qaf_store/features/screens/brands/data/models/brand_model.dart';
 import 'package:qaf_store/features/screens/cart/cart_screen.dart';
 import 'package:qaf_store/features/screens/change_name/change_name_screen.dart';
 import 'package:qaf_store/features/screens/checkout/checkout_screen.dart';
 import 'package:qaf_store/features/screens/forgot_password/controller/cubit/reset_password_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/forgot_password_screen.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/home_cubit.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
 import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
 import 'package:qaf_store/features/screens/login/controller/cubit/login_cubit.dart';
 import 'package:qaf_store/features/screens/login/login_screen.dart';
@@ -119,14 +121,14 @@ class AppRouter {
       case Routes.allProductsScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider.value(
-            value: getIt<HomeCubit>(),
+            value: getIt<ProductCubit>(),
             child: AllProductsScreen(
                 title: 'Popular Products',
                 query: FirebaseFirestore.instance
                     .collection('Products')
                     .where('IsFeatured', isEqualTo: true)
                     .limit(6),
-                futureMethod: getIt<HomeCubit>().fetchAllProduct()),
+                futureMethod: getIt<ProductCubit>().fetchAllProduct()),
           ),
         );
 
@@ -150,13 +152,22 @@ class AppRouter {
         );
 
       case Routes.brandProductsScreen:
+        final brands = settings.arguments as BrandModel;
+
         return MaterialPageRoute(
-          builder: (_) => BrandProductsScreen(),
+          builder: (_) => BlocProvider.value(
+            value: getIt<ProductCubit>(),
+            child: BrandProductsScreen(brands: brands),
+          ),
         );
 
       case Routes.allBrandsScreen:
+        final brands = settings.arguments as List<BrandModel>;
         return MaterialPageRoute(
-          builder: (_) => AllBrandsScreen(),
+          builder: (_) => BlocProvider.value(
+            value: getIt<BrandCubit>(),
+            child: AllBrandsScreen(brands: brands),
+          ),
         );
 
       case Routes.userAddressScreen:

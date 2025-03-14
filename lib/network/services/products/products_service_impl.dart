@@ -31,6 +31,29 @@ class ProductsServiceImpl implements ProductsService {
   }
 
   @override
+  Future<ServerResult<List<ProductModel>>> getProductsByBrand(
+      {required String brandId, int limit = -1}) async {
+    try {
+      final querySnapshot = limit == -1
+          ? await _firestore
+              .collection('Products')
+              .where('Brand.Id', isEqualTo: brandId)
+              .get()
+          : await _firestore
+              .collection('Products')
+              .where('Brand.Id', isEqualTo: brandId)
+              .limit(limit)
+              .get();
+      final products = querySnapshot.docs
+          .map((doc) => ProductModel.fromSnapshot(doc))
+          .toList();
+      return ServerResult.success(products);
+    } catch (error) {
+      return ServerResult.failure(error.toString());
+    }
+  }
+
+  @override
   Future<ServerResult<void>> uploadProducts(List<ProductModel> products) async {
     try {
       List<Future<void>> uploadTasks = [];
@@ -114,14 +137,11 @@ class ProductsServiceImpl implements ProductsService {
       final jsonResponse = json.decode(responseData);
 
       if (response.statusCode == 200) {
-        print('Uploaded successfully: ${jsonResponse["secure_url"]}');
         return jsonResponse["secure_url"];
       } else {
-        print("Error uploading image: ${jsonResponse['error']['message']}");
         return null;
       }
     } catch (e) {
-      print("Exception uploading image: $e");
       return null;
     }
   }
@@ -136,7 +156,6 @@ class ProductsServiceImpl implements ProductsService {
           .toList();
       return ServerResult.success(productList);
     } catch (error) {
-      print('Exception with catch fetch product by query is $error');
       return ServerResult.failure(error.toString());
     }
   }

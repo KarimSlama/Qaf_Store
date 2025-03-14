@@ -5,99 +5,122 @@ import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/banners_repository.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/categories_repository.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/products_repository.dart';
-import 'home_state.dart';
+import 'product_state.dart';
 
-class HomeCubit extends Cubit<HomeState> {
+class ProductCubit extends Cubit<ProductState> {
   final CategoriesRepository categoriesRepository;
   final BannersRepository bannersRepository;
   final ProductsRepository productsRepository;
-  HomeCubit(this.categoriesRepository, this.bannersRepository,
+  ProductCubit(this.categoriesRepository, this.bannersRepository,
       this.productsRepository)
-      : super(HomeState.initial());
+      : super(ProductState.initial());
 
   List<CategoryModel> categoriesList = [];
   List<ProductModel> productList = [];
   var selectedOption = 'Name';
   Future<void> fetchAllCategories() async {
     try {
-      emit(HomeState.categoryLoading());
+      emit(ProductState.categoryLoading());
 
       final categories = await categoriesRepository.fetchAllCategories();
       categories.when(
         success: (category) {
           categoriesList = category;
-          emit(HomeState.categorySuccess(category));
+          emit(ProductState.categorySuccess(category));
         },
         failure: (error) {
-          emit(HomeState.categoryError(error.toString()));
+          emit(ProductState.categoryError(error.toString()));
         },
       );
     } catch (error) {
-      emit(HomeState.categoryError(error.toString()));
+      emit(ProductState.categoryError(error.toString()));
     }
   }
 
   Future<void> fetchAllBanners() async {
     try {
-      emit(HomeState.bannersLoading());
+      emit(ProductState.bannersLoading());
       final banners = await bannersRepository.fetchAllBanners();
       banners.when(
         success: (banner) {
-          emit(HomeState.bannersSuccess(banner));
+          emit(ProductState.bannersSuccess(banner));
         },
         failure: (error) {
-          emit(HomeState.bannersError(error.toString()));
+          emit(ProductState.bannersError(error.toString()));
         },
       );
     } catch (error) {
-      emit(HomeState.bannersError(error.toString()));
+      emit(ProductState.bannersError(error.toString()));
     }
   }
 
   Future<List<ProductModel>> fetchAllProduct() async {
     try {
-      emit(HomeState.productsLoading());
+      emit(ProductState.productsLoading());
       final result = await productsRepository.getAllProducts();
       return result.when(
         success: (data) {
           productList = data;
-          emit(HomeState.productsSuccess(productList));
+          emit(ProductState.productsSuccess(productList));
           return productList;
         },
         failure: (error) {
-          emit(HomeState.productsError(error.toString()));
+          emit(ProductState.productsError(error.toString()));
           return [];
         },
       );
     } catch (error) {
-      emit(HomeState.productsError(error.toString()));
+      emit(ProductState.productsError(error.toString()));
     }
     return productList;
   }
 
   Future<List<ProductModel>> fetchProductByQuery(Query? query) async {
     try {
-      emit(HomeState.productsLoading());
+      emit(ProductState.productsLoading());
       final productByQuery =
           await productsRepository.fetchProductByQuery(query);
       return productByQuery.when(
         success: (data) {
-          emit(HomeState.productsSuccess(data));
+          emit(ProductState.productsSuccess(data));
           return data;
         },
         failure: (error) {
-          emit(HomeState.productsError(error.toString()));
+          emit(ProductState.productsError(error.toString()));
           return [];
         },
       );
     } catch (error) {
-      emit(HomeState.productsError(error.toString()));
+      emit(ProductState.productsError(error.toString()));
+    }
+    return productList;
+  }
+
+  Future<List<ProductModel>> getProductsByBrand(
+      {required String brandId}) async {
+    try {
+      emit(ProductState.productsLoading());
+      final products =
+          await productsRepository.getBrandProducts(brandId: brandId);
+      return products.when(
+        success: (products) {
+          productList = products;
+          emit(ProductState.productsSuccess(products));
+          return productList;
+        },
+        failure: (error) {
+          emit(ProductState.productsError(error));
+          return [];
+        },
+      );
+    } catch (error) {
+      emit(ProductState.errorProductsByBrand(error.toString()));
     }
     return productList;
   }
 
   void sortProducts(String sortOption) {
-    emit(HomeState.productsLoading());
+    emit(ProductState.productsLoading());
     selectedOption = sortOption;
     switch (sortOption) {
       case 'Name':
@@ -126,12 +149,12 @@ class HomeCubit extends Cubit<HomeState> {
       default:
         productList.sort((a, b) => a.title.compareTo(b.title));
     }
-    emit(HomeState.productsSuccess(List.from(productList)));
+    emit(ProductState.productsSuccess(List.from(productList)));
   }
 
   void assignProducts(List<ProductModel> products) {
     productList = products;
     sortProducts('Name');
-    emit(HomeState.productsSuccess(List.from(productList)));
+    emit(ProductState.productsSuccess(List.from(productList)));
   }
 }

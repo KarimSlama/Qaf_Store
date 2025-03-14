@@ -4,12 +4,14 @@ import 'package:qaf_store/features/screens/home/data/repositories/categories_rep
 import 'package:qaf_store/features/screens/home/data/repositories/products_repository.dart';
 import 'package:qaf_store/features/screens/upload_data/controller/cubit/upload_state.dart';
 import 'package:qaf_store/utils/dummy_data.dart';
+import 'package:qaf_store/features/screens/brands/data/repository/brands_repository.dart';
 
 class UploadCubit extends Cubit<UploadState> {
   final CategoriesRepository categoriesRepository;
   final ProductsRepository productsRepository;
   final BannersRepository bannersRepository;
-  UploadCubit(this.categoriesRepository, this.productsRepository, this.bannersRepository)
+  final BrandsRepository brandsRepository;
+  UploadCubit(this.categoriesRepository, this.productsRepository, this.bannersRepository, this.brandsRepository)
       : super(UploadState.initial());
 
   Future<void> uploadCategories() async {
@@ -63,6 +65,24 @@ class UploadCubit extends Cubit<UploadState> {
       );
     } catch (error) {
       emit(UploadState.productryError(error.toString()));
+    }
+  }
+
+  Future<void> uploadBrands() async {
+    try {
+      emit(UploadState.brandsLoading());
+      final result =
+          await brandsRepository.uploadBrands(DummyData.brands);
+      result.when(
+        success: (data) {
+          emit(UploadState.brandsSuccess());
+        },
+        failure: (error) {
+          emit(UploadState.brandsError(error));
+        },
+      );
+    } catch (error) {
+      emit(UploadState.brandsError(error.toString()));
     }
   }
 }

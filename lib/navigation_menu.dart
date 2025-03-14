@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/home_cubit.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
 import 'package:qaf_store/features/screens/navigation_menu/cubit/navigation_cubit.dart';
 import 'package:qaf_store/features/screens/navigation_menu/cubit/navigation_state.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
@@ -17,7 +17,7 @@ class NavigationMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = QafHelperFunctions.isDark(context);
     return BlocProvider(
-      create: (context) => getIt<HomeCubit>()
+      create: (context) => getIt<ProductCubit>()
         ..fetchAllCategories()
         ..fetchAllBanners()
         ..fetchAllProduct(),
