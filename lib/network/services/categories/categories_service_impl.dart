@@ -93,14 +93,11 @@ class CategoriesServiceImpl implements CategoriesService {
       final jsonResponse = json.decode(responseData);
 
       if (response.statusCode == 200) {
-        print('Uploaded successfully: ${jsonResponse["secure_url"]}');
         return jsonResponse["secure_url"];
       } else {
-        print("Error uploading image: ${jsonResponse['error']['message']}");
         return null;
       }
     } catch (e) {
-      print("Exception uploading image: $e");
       return null;
     }
   }

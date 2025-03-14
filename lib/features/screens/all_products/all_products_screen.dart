@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/products/sort/sortable_products.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/home_cubit.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
 import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
-import 'package:qaf_store/features/screens/home/widgets/product_shimmer_effect.dart';
+import 'package:qaf_store/common/widgets/shimmer/product_shimmer_effect.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
+import 'package:qaf_store/utils/helper/cloud_helper_function.dart';
 
 class AllProductsScreen extends StatelessWidget {
   final String title;
@@ -27,29 +28,16 @@ class AllProductsScreen extends StatelessWidget {
           padding: EdgeInsetsDirectional.all(QafSizes.defaultSpace),
           child: FutureBuilder(
               future: futureMethod ??
-                  context.read<HomeCubit>().fetchProductByQuery(query),
+                  context.read<ProductCubit>().fetchProductByQuery(query),
               builder: (context, snapshot) {
                 final loader = ProductShimmerEffect();
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return loader;
-                }
-                if (!snapshot.hasData ||
-                    snapshot.data == null ||
-                    snapshot.data!.isEmpty) {
-                  return const Center(
-                    child: Text('No data found!'),
-                  );
-                }
-
-                if (snapshot.hasError) {
-                  return Center(
-                    child: Text('Something went wrong!'),
-                  );
-                }
+                final widget = CloudHelperFunction.checkMultiRecordState(
+                    snapshot: snapshot, loading: loader);
+                if (widget != null) return widget;
                 final products = snapshot.data!;
 
                 WidgetsBinding.instance.addPostFrameCallback((_) {
-                  context.read<HomeCubit>().assignProducts(products);
+                  context.read<ProductCubit>().assignProducts(products);
                 });
                 return SortableProducts();
               }),

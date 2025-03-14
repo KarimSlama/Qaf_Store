@@ -5,5 +5,7 @@ import 'package:qaf_store/network/services/server_result.dart';
 abstract class ProductsService {
   Future<ServerResult<List<ProductModel>>> getAllProducts();
   Future<ServerResult<List<ProductModel>>> fetchProductByQuery(Query query);
-  Future<ServerResult<void>> uploadProducts(List<ProductModel> products); 
+  Future<ServerResult<List<ProductModel>>> getProductsByBrand(
+      {required String brandId, int limit = -1});
+  Future<ServerResult<void>> uploadProducts(List<ProductModel> products);
 }

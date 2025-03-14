@@ -184,11 +184,9 @@ class UserCubit extends Cubit<UserState> {
       if (response.statusCode == 200) {
         return jsonResponse["secure_url"];
       } else {
-        print("Error uploading image: ${jsonResponse['error']['message']}");
         return null;
       }
     } catch (e) {
-      print("Exception uploading image: $e");
       return null;
     }
   }

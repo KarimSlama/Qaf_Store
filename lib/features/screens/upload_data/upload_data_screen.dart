@@ -40,7 +40,7 @@ class UploadDataScreen extends StatelessWidget {
                 icon: Iconsax.shop,
                 title: QafStrings.uploadBrands,
                 trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () => context.read<UploadCubit>().uploadBrands(),
                     icon: Icon(Iconsax.arrow_up_1, color: QafColors.primary)),
               ),
               UploadMenuTitle(

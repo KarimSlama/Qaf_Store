@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/circular_containter.dart';
 import 'package:qaf_store/common/widgets/images/rounded_image.dart';
 import 'package:qaf_store/common/widgets/loaders/qaf_shimmer.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/home_cubit.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/home_state.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_state.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/helper/extensions.dart';
 
@@ -15,7 +15,7 @@ class PromoSliders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HomeCubit, HomeState>(
+    return BlocBuilder<ProductCubit, ProductState>(
       buildWhen: (previous, current) =>
           current is BannersLoading ||
           current is BannersSuccess ||

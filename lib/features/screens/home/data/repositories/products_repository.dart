@@ -24,6 +24,24 @@ class ProductsRepository {
     }
   }
 
+  Future<ServerResult<List<ProductModel>>> getBrandProducts(
+      {required String brandId}) async {
+    
+    try{
+      final product = await productsService.getProductsByBrand(brandId: brandId);
+    return product.when(
+        success: (products) {
+          return ServerResult.success(products);
+        },
+        failure: (error) {
+          return ServerResult.failure(error);
+        },
+      );
+    } catch (error) {
+      return ServerResult.failure(error.toString());
+    }
+  }
+
   Future<ServerResult<void>> uploadProducts(List<ProductModel> products) async {
     try {
       final productResponse = await productsService.uploadProducts(products);

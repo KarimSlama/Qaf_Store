@@ -25,7 +25,6 @@ class ProductAttribute extends StatelessWidget {
     return Column(
       spacing: QafSizes.spaceBtwItems,
       children: [
-        // if (productCubit.productVariationModel.id.isNotEmpty)
         RoundedContainer(
           padding: EdgeInsetsDirectional.all(QafSizes.sm),
           backgroundColor: dark ? QafColors.darkerGrey : QafColors.grey,

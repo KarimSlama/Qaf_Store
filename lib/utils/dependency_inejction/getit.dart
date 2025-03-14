@@ -1,7 +1,9 @@
 import 'package:get_it/get_it.dart';
+import 'package:qaf_store/features/screens/brands/controller/cubit/brand_cubit.dart';
+import 'package:qaf_store/features/screens/brands/data/repository/brands_repository.dart';
 import 'package:qaf_store/features/screens/forgot_password/controller/cubit/reset_password_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/data/repository/reset_password_email_repository.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/home_cubit.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/banners_repository.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/categories_repository.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/products_repository.dart';
@@ -22,6 +24,8 @@ import 'package:qaf_store/network/services/auth/auth_service.dart';
 import 'package:qaf_store/network/services/auth/auth_service_impl.dart';
 import 'package:qaf_store/network/services/banners/banners_service.dart';
 import 'package:qaf_store/network/services/banners/banners_service_impl.dart';
+import 'package:qaf_store/network/services/brands/brands_service.dart';
+import 'package:qaf_store/network/services/brands/brands_service_impl.dart';
 import 'package:qaf_store/network/services/categories/categories_service.dart';
 import 'package:qaf_store/network/services/categories/categories_service_impl.dart';
 import 'package:qaf_store/network/services/products/products_service.dart';
@@ -45,6 +49,7 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<CategoriesService>(() => CategoriesServiceImpl());
   getIt.registerLazySingleton<BannersService>(() => BannersServiceImpl());
   getIt.registerLazySingleton<ProductsService>(() => ProductsServiceImpl());
+  getIt.registerLazySingleton<BrandsService>(() => BrandsServiceImpl());
 
   getIt.registerLazySingleton<RegisterRepository>(
       () => RegisterRepository(getIt(), getIt()));
@@ -55,7 +60,6 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<VerifyEmailRepository>(
       () => VerifyEmailRepository(getIt()));
   getIt.registerLazySingleton<LoginRepository>(() => LoginRepository(getIt()));
-
   getIt.registerLazySingleton<UserRepository>(() => UserRepository(getIt()));
   getIt.registerLazySingleton<CategoriesRepository>(
       () => CategoriesRepository(getIt()));
@@ -63,6 +67,8 @@ Future<void> setupGetIt() async {
       () => BannersRepository(getIt()));
   getIt.registerLazySingleton<ProductsRepository>(
       () => ProductsRepository(getIt()));
+  getIt
+      .registerLazySingleton<BrandsRepository>(() => BrandsRepository(getIt()));
 
   getIt.registerFactory<OnboardingCubit>(() => OnboardingCubit());
   getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt()));
@@ -73,7 +79,10 @@ Future<void> setupGetIt() async {
 
   getIt.registerFactory<UserCubit>(() => UserCubit(getIt(), getIt()));
 
-  getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt(), getIt(), getIt()));
+  getIt.registerFactory<ProductCubit>(
+      () => ProductCubit(getIt(), getIt(), getIt()));
   getIt.registerFactory<ProductDetailsCubit>(() => ProductDetailsCubit());
-  getIt.registerFactory<UploadCubit>(() => UploadCubit(getIt(), getIt() , getIt()));
+  getIt.registerFactory<BrandCubit>(() => BrandCubit(getIt()));
+  getIt.registerFactory<UploadCubit>(
+      () => UploadCubit(getIt(), getIt(), getIt(), getIt()));
 }

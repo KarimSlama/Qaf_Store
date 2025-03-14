@@ -7,8 +7,8 @@ import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
 import 'package:qaf_store/common/widgets/loaders/qaf_shimmer.dart';
 import 'package:qaf_store/common/widgets/products/product_cards/vertical_product_card.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/home_cubit.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/home_state.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_state.dart';
 import 'package:qaf_store/features/screens/home/widgets/horizontal_categories.dart';
 import 'package:qaf_store/features/screens/home/widgets/promo_sliders.dart';
 import 'package:qaf_store/features/screens/home/widgets/qaf_home_appbar.dart';
@@ -62,15 +62,14 @@ class HomeScreens extends StatelessWidget {
                       text: QafStrings.popularProducts,
                       onPressed: () =>
                           context.pushNamed(Routes.allProductsScreen)),
-                  BlocBuilder<HomeCubit, HomeState>(
+                  BlocBuilder<ProductCubit, ProductState>(
                     builder: (context, state) {
                       return state.maybeWhen(
                         productsLoading: () =>
                             QafShimmerEffect(width: 180, height: 180),
                         productsSuccess: (products) {
                           return GridViewLayout(
-                            itemCount:
-                               products.length,
+                            itemCount: products.length,
                             itemBuilder: (_, index) => VerticalProductCard(
                               index: index,
                               products: products,
