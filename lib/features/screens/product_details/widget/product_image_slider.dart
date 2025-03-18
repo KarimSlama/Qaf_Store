@@ -2,16 +2,17 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/curved_edges/curved_edge_widget.dart';
-import 'package:qaf_store/common/widgets/icons/circular_icon.dart';
 import 'package:qaf_store/common/widgets/images/rounded_image.dart';
+import 'package:qaf_store/common/widgets/products/favorite_icon.dart';
 import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
 import 'package:qaf_store/features/screens/product_details/controller/cubit/product_details_cubit.dart';
 import 'package:qaf_store/features/screens/product_details/controller/cubit/product_details_state.dart';
+import 'package:qaf_store/features/screens/wishlist/controller/cubit/favorite_cubit.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
+import 'package:qaf_store/utils/dependency_inejction/getit.dart';
 import 'package:qaf_store/utils/helper/extensions.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
 
@@ -92,10 +93,13 @@ class ProductImageSlider extends StatelessWidget {
                     ),
                   ),
                 ),
-                const QafAppBar(
+                QafAppBar(
                   showBackArrow: true,
                   actions: [
-                    CircularIcon(icon: Iconsax.heart, color: Colors.red)
+                    BlocProvider.value(
+                      value: getIt<FavoriteCubit>(),
+                      child: FavoriteIcon(productId: product.id),
+                    ),
                   ],
                 ),
               ],

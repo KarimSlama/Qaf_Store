@@ -47,6 +47,25 @@ class CategoriesServiceImpl implements CategoriesService {
     }
   }
 
+  @override
+  Future<ServerResult<List<CategoryModel>>> getSubCategories(
+      String categoryId) async {
+    try {
+      final category = await _firestore
+          .collection('Categories')
+          .where('ParentId', isEqualTo: categoryId)
+          .get();
+
+      final result = category.docs
+          .map((category) => CategoryModel.fromSnapshot(category))
+          .toList();
+
+      return ServerResult.success(result);
+    } catch (error) {
+      return ServerResult.failure(error.toString());
+    }
+  }
+
   Future<void> _uploadSingleCategory(CategoryModel category) async {
     final file = await Constants.getImageFromAssets(category.image);
     final url = await uploadCategoryImage(file);

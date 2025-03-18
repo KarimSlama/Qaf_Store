@@ -14,6 +14,7 @@ import 'package:qaf_store/features/screens/checkout/checkout_screen.dart';
 import 'package:qaf_store/features/screens/forgot_password/controller/cubit/reset_password_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/forgot_password_screen.dart';
 import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
+import 'package:qaf_store/features/screens/home/data/models/category_model.dart';
 import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
 import 'package:qaf_store/features/screens/login/controller/cubit/login_cubit.dart';
 import 'package:qaf_store/features/screens/login/login_screen.dart';
@@ -22,6 +23,7 @@ import 'package:qaf_store/features/screens/onboarding/onboarding_screen.dart';
 import 'package:qaf_store/features/screens/order/order_screen.dart';
 import 'package:qaf_store/features/screens/product_details/controller/cubit/product_details_cubit.dart';
 import 'package:qaf_store/features/screens/product_details/product_details_screen.dart';
+import 'package:qaf_store/features/screens/product_reivews/product_reviews_screen.dart';
 import 'package:qaf_store/features/screens/profile/profile_screen.dart';
 import 'package:qaf_store/features/screens/profile/widgets/reauth_form.dart';
 import 'package:qaf_store/features/screens/reset_password/reset_password_screen.dart';
@@ -114,8 +116,9 @@ class AppRouter {
         );
 
       case Routes.subCategoryScreen:
+      final category = settings.arguments as CategoryModel;
         return MaterialPageRoute(
-          builder: (_) => SubCategoryScreen(),
+          builder: (_) => SubCategoryScreen(category: category),
         );
 
       case Routes.allProductsScreen:
@@ -141,6 +144,10 @@ class AppRouter {
           ),
         );
 
+      case Routes.productReviewScreen:
+        return MaterialPageRoute(
+          builder: (_) => ProductReviewsScreen(),
+        );
       case Routes.checkoutScreen:
         return MaterialPageRoute(
           builder: (_) => CheckoutScreen(),

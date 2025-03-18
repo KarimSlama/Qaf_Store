@@ -24,6 +24,23 @@ class BrandsRepository {
     }
   }
 
+  Future<ServerResult<List<BrandModel>>> getBrandForCategory(
+      String categoryId) async {
+    try {
+      final brand = await _brandsService.getBrandForCategory(categoryId);
+      return brand.when(
+        success: (brands) {
+          return ServerResult.success(brands);
+        },
+        failure: (error) {
+          return ServerResult.failure(error);
+        },
+      );
+    } catch (error) {
+      return ServerResult.failure(error.toString());
+    }
+  }
+
   Future<ServerResult<void>> uploadBrands(List<BrandModel> brands) async {
     try {
       final response = await _brandsService.uploadBrands(brands);

@@ -6,7 +6,7 @@ import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
 part 'product_state.freezed.dart';
 
 @freezed
-class ProductState with _$HomeState {
+class ProductState<T> with _$ProductState<T> {
   const factory ProductState.initial() = _Initial;
 
   const factory ProductState.carouselChanged(int carouselCurrentIndex) =
@@ -27,10 +27,18 @@ class ProductState with _$HomeState {
       ProductsSuccess;
   const factory ProductState.productsError(String error) = ProductsError;
 
+  const factory ProductState.categoryProductsLoading() = CategoryProductsLoading;
+  const factory ProductState.categoryProductsSuccess(List<ProductModel> products) = CategoryProductsSuccess;
+  const factory ProductState.categoryProductsError(String error) = CategoryProductsError;
+
   const factory ProductState.loadingProductsByBrand() = LoadingProductsByBrand;
 
   const factory ProductState.loadedProductsByBrand(
       List<ProductModel> products) = LoadedProductsByBrand;
   const factory ProductState.errorProductsByBrand(String error) =
       ErrorProductsByBrand;
+      // const factory ProductState.favoriteProductChanged(String productId) =
+      // FavoriteProductChanged;
+      // const factory ProductState.favoriteProductRemoved(String productId) =
+      // FavoriteProductRemoved;
 }

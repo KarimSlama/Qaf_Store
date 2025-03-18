@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:qaf_store/features/screens/home/data/models/banners_model.dart';
 import 'package:qaf_store/features/screens/home/data/models/category_model.dart';
 import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/banners_repository.dart';
@@ -16,8 +17,20 @@ class ProductCubit extends Cubit<ProductState> {
       : super(ProductState.initial());
 
   List<CategoryModel> categoriesList = [];
+  List<BannersModel> bannersList = [];
   List<ProductModel> productList = [];
+
+  List<String> tabsTitle = [
+    'Sports',
+    'Electronics',
+    'Clothes',
+    'Animals',
+    'Furnitures',
+    'Shoes',
+    'Cosmetics'
+  ];
   var selectedOption = 'Name';
+
   Future<void> fetchAllCategories() async {
     try {
       emit(ProductState.categoryLoading());
@@ -26,7 +39,27 @@ class ProductCubit extends Cubit<ProductState> {
       categories.when(
         success: (category) {
           categoriesList = category;
-          emit(ProductState.categorySuccess(category));
+          emit(ProductState.categorySuccess(categoriesList));
+        },
+        failure: (error) {
+          emit(ProductState.categoryError(error.toString()));
+        },
+      );
+    } catch (error) {
+      emit(ProductState.categoryError(error.toString()));
+    }
+  }
+
+  Future<void> fetchSubCategories(String categoryId) async {
+    try {
+      emit(ProductState.categoryLoading());
+
+      final categories =
+          await categoriesRepository.fetchSubCategories(categoryId);
+      categories.when(
+        success: (category) {
+          categoriesList = category;
+          emit(ProductState.categorySuccess(categoriesList));
         },
         failure: (error) {
           emit(ProductState.categoryError(error.toString()));
@@ -43,6 +76,7 @@ class ProductCubit extends Cubit<ProductState> {
       final banners = await bannersRepository.fetchAllBanners();
       banners.when(
         success: (banner) {
+          bannersList = banner;
           emit(ProductState.bannersSuccess(banner));
         },
         failure: (error) {
@@ -96,27 +130,44 @@ class ProductCubit extends Cubit<ProductState> {
     return productList;
   }
 
-  Future<List<ProductModel>> getProductsByBrand(
-      {required String brandId}) async {
+  Future<void> fetchProductForCategory(String categoryId) async {
     try {
-      emit(ProductState.productsLoading());
-      final products =
-          await productsRepository.getBrandProducts(brandId: brandId);
-      return products.when(
-        success: (products) {
-          productList = products;
-          emit(ProductState.productsSuccess(products));
-          return productList;
+      emit(ProductState.categoryProductsLoading());
+      final productForCategory = await productsRepository
+          .fetchProductForCategory(categoryId: categoryId);
+      productForCategory.when(
+        success: (data) {
+          productList = data;
+          emit(ProductState.categoryProductsSuccess(data));
+          return data;
         },
         failure: (error) {
-          emit(ProductState.productsError(error));
+          emit(ProductState.categoryProductsError(error.toString()));
           return [];
         },
       );
     } catch (error) {
-      emit(ProductState.errorProductsByBrand(error.toString()));
+      emit(ProductState.categoryProductsError(error.toString()));
     }
-    return productList;
+  }
+
+  Future<void> getProductsByBrand({required String brandId}) async {
+    try {
+      emit(ProductState.productsLoading());
+      final products =
+          await productsRepository.getBrandProducts(brandId: brandId);
+      products.when(
+        success: (products) {
+          productList = products;
+          emit(ProductState.productsSuccess(products));
+        },
+        failure: (error) {
+          emit(ProductState.productsError(error));
+        },
+      );
+    } catch (error) {
+      emit(ProductState.productsError(error.toString()));
+    }
   }
 
   void sortProducts(String sortOption) {

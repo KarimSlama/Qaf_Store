@@ -17,10 +17,14 @@ class LoginBlocListener extends StatelessWidget {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
         state.whenOrNull(
-          loading: () => FullScreenLoader.openLoadingDialog(
+          loading: () {
+            FullScreenLoader.openLoadingDialog(
               'We are Proccessing your information....',
               Assets.images.animations.a141594AnimationOfDocer,
-              context),
+              context);
+                          context.pop();
+
+          } ,
           success: (data) {
             context.pop();
             context.pushNamed(Routes.navigationMenu);

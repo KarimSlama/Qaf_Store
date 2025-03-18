@@ -22,16 +22,17 @@ class HorizontalHomeCategories extends StatelessWidget {
         return state.maybeWhen(
           categoryLoading: () => CategoriesShimmerEffect(itemCount: 2),
           categorySuccess: (categories) {
+            final category = context.read<ProductCubit>().categoriesList;
             return SizedBox(
               height: 85.h,
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: categories.length,
+                itemCount: category.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (_, index) => VerticalPopularCategoryImageText(
-                    onTap: () => context.pushNamed(Routes.subCategoryScreen),
-                    image: categories[index].image,
-                    title: categories[index].name),
+                    onTap: () => context.pushNamed(Routes.subCategoryScreen, arguments: categories[index]),
+                    image: category[index].image,
+                    title: category[index].name),
               ),
             );
           },

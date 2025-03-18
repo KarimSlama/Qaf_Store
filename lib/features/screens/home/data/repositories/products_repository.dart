@@ -24,12 +24,30 @@ class ProductsRepository {
     }
   }
 
+  Future<ServerResult<List<ProductModel>>> fetchProductForCategory(
+      {required String categoryId, int limit = 4}) async {
+    try {
+      final product = await productsService.fetchProductForCategory(
+          categoryId: categoryId, limit: limit);
+      return product.when(
+        success: (products) {
+          return ServerResult.success(products);
+        },
+        failure: (error) {
+          return ServerResult.failure(error);
+        },
+      );
+    } catch (error) {
+      return ServerResult.failure(error.toString());
+    }
+  }
+
   Future<ServerResult<List<ProductModel>>> getBrandProducts(
       {required String brandId}) async {
-    
-    try{
-      final product = await productsService.getProductsByBrand(brandId: brandId);
-    return product.when(
+    try {
+      final product =
+          await productsService.getProductsByBrand(brandId: brandId);
+      return product.when(
         success: (products) {
           return ServerResult.success(products);
         },
@@ -70,6 +88,23 @@ class ProductsRepository {
           failure: (error) {
             return ServerResult.failure(error.toString());
           });
+    } catch (error) {
+      return ServerResult.failure(error.toString());
+    }
+  }
+
+  Future<ServerResult<List<ProductModel>>> fetchFavoriteProducts(
+      List<String> productIds) async {
+    try {
+      final product = await productsService.favoriteProducts(productIds);
+      return product.when(
+        success: (data) {
+          return ServerResult.success(data);
+        },
+        failure: (error) {
+          return ServerResult.failure(error);
+        },
+      );
     } catch (error) {
       return ServerResult.failure(error.toString());
     }
