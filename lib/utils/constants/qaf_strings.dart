@@ -94,6 +94,7 @@ class QafStrings {
   static const String profile = 'Profile';
   static const String cart = 'Cart';
   static const String apply = 'Apply';
+  static const String products = 'Products';
 
   /// Settings
   static const String account = 'Account';

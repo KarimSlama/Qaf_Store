@@ -3,5 +3,6 @@ import 'package:qaf_store/network/services/server_result.dart';
 
 abstract class CategoriesService {
   Future<ServerResult<List<CategoryModel>>> getAllCategories();
+  Future<ServerResult<List<CategoryModel>>> getSubCategories(String categoryId);
   Future<ServerResult<void>> uploadCategories(List<CategoryModel> categories); 
 }

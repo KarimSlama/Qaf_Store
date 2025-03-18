@@ -16,25 +16,27 @@ class NavigationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = QafHelperFunctions.isDark(context);
+
     return BlocProvider(
       create: (context) => getIt<ProductCubit>()
         ..fetchAllCategories()
-        ..fetchAllBanners()
         ..fetchAllProduct(),
       child: Scaffold(
-        bottomNavigationBar: BlocBuilder<NavigationCubit, NavigationState>(
-          builder: (context, state) {
+        bottomNavigationBar:
+            BlocSelector<NavigationCubit, NavigationState, int>(
+          selector: (state) => state is Changed ? state.index : 0,
+          builder: (context, currentIndex) {
             return NavigationBar(
               elevation: 0,
               height: 80.h,
-              selectedIndex: context.read<NavigationCubit>().currentIndex,
+              selectedIndex: currentIndex,
               onDestinationSelected: (index) =>
                   context.read<NavigationCubit>().changeNavigationScreen(index),
               backgroundColor: dark ? QafColors.black : QafColors.white,
               indicatorColor: dark
                   ? QafColors.white.withValues(alpha: .1)
                   : QafColors.black.withValues(alpha: .1),
-              destinations: [
+              destinations: const [
                 NavigationDestination(
                     icon: Icon(Iconsax.home), label: QafStrings.home),
                 NavigationDestination(
@@ -47,11 +49,13 @@ class NavigationMenu extends StatelessWidget {
             );
           },
         ),
-        body: BlocBuilder<NavigationCubit, NavigationState>(
-          builder: (context, state) {
-            return context
-                .read<NavigationCubit>()
-                .screens[context.read<NavigationCubit>().currentIndex];
+        body: BlocSelector<NavigationCubit, NavigationState, Widget>(
+          selector: (state) {
+            final cubit = context.read<NavigationCubit>();
+            return cubit.screens[cubit.currentIndex];
+          },
+          builder: (context, screen) {
+            return screen;
           },
         ),
       ),

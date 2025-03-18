@@ -20,6 +20,7 @@ import 'package:qaf_store/features/screens/upload_data/controller/cubit/upload_c
 import 'package:qaf_store/features/screens/verfiy_email/controller/cubit/verify_email_cubit.dart';
 import 'package:qaf_store/features/screens/verfiy_email/data/repository/verify_email_repository.dart';
 import 'package:qaf_store/features/screens/navigation_menu/cubit/navigation_cubit.dart';
+import 'package:qaf_store/features/screens/wishlist/controller/cubit/favorite_cubit.dart';
 import 'package:qaf_store/network/services/auth/auth_service.dart';
 import 'package:qaf_store/network/services/auth/auth_service_impl.dart';
 import 'package:qaf_store/network/services/banners/banners_service.dart';
@@ -85,4 +86,7 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<BrandCubit>(() => BrandCubit(getIt()));
   getIt.registerFactory<UploadCubit>(
       () => UploadCubit(getIt(), getIt(), getIt(), getIt()));
+  getIt.registerFactory<FavoriteCubit>(
+      () => FavoriteCubit(getIt()));
+
 }

@@ -8,6 +8,7 @@ import 'package:qaf_store/common/widgets/loaders/qaf_shimmer.dart';
 import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
 import 'package:qaf_store/features/screens/home/controller/cubit/product_state.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
+import 'package:qaf_store/utils/dependency_inejction/getit.dart';
 import 'package:qaf_store/utils/helper/extensions.dart';
 
 class PromoSliders extends StatelessWidget {
@@ -16,11 +17,13 @@ class PromoSliders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductCubit, ProductState>(
+      bloc: getIt<ProductCubit>()..fetchAllBanners(),
       buildWhen: (previous, current) =>
           current is BannersLoading ||
           current is BannersSuccess ||
           current is BannersError,
       builder: (context, state) {
+
         return state.maybeWhen(
           bannersLoading: () => QafShimmerEffect(width: 120, height: 80),
           bannersSuccess: (banners) => Column(

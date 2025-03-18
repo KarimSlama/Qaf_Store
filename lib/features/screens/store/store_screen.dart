@@ -3,21 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/appbar/tabbar.dart';
-import 'package:qaf_store/common/widgets/cards/brand_card.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/qaf_search_container.dart';
-import 'package:qaf_store/common/widgets/layout/grid_view_layout.dart';
-import 'package:qaf_store/common/widgets/loaders/qaf_shimmer.dart';
 import 'package:qaf_store/common/widgets/products/cart/cart_counter_icon.dart';
-import 'package:qaf_store/common/widgets/texts/section_heading.dart';
-import 'package:qaf_store/features/screens/brands/controller/cubit/brand_cubit.dart';
-import 'package:qaf_store/features/screens/brands/controller/cubit/brand_state.dart';
+import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
 import 'package:qaf_store/features/screens/store/widgets/category_tab.dart';
+import 'package:qaf_store/features/screens/store/widgets/store_bloc_builder.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
-import 'package:qaf_store/utils/helper/extensions.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
-import 'package:qaf_store/utils/routings/routes.dart';
 
 class StoreScreen extends StatelessWidget {
   const StoreScreen({super.key});
@@ -26,7 +20,7 @@ class StoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = QafHelperFunctions.isDark(context);
     return DefaultTabController(
-      length: 5,
+      length: 7,
       child: Scaffold(
         appBar: QafAppBar(
           title: Text(QafStrings.store,
@@ -58,66 +52,26 @@ class StoreScreen extends StatelessWidget {
                         padding: EdgeInsetsDirectional.zero,
                       ),
                       SizedBox(height: QafSizes.spaceBtwSections),
-                      BlocBuilder<BrandCubit, BrandState>(
-                        builder: (context, state) {
-                          return state.maybeWhen(
-                            loading: () =>
-                                QafShimmerEffect(width: 180, height: 180),
-                            loaded: (brands) {
-                              return Column(
-                                children: [
-                                  SectionHeading(
-                                    text: QafStrings.featuredBrands,
-                                    onPressed: () {
-                                      context.pushNamed(Routes.allBrandsScreen,
-                                          arguments: brands);
-                                    },
-                                  ),
-                                  SizedBox(
-                                      height: QafSizes.spaceBtwItems / 1.5),
-                                  GridViewLayout(
-                                    mainAxisExtent: 70,
-                                    itemCount: 4,
-                                    itemBuilder: (_, index) => BrandCard(
-                                      showBorder: true,
-                                      brands: brands[index],
-                                      onTap: () => context.pushNamed(
-                                          Routes.brandProductsScreen,
-                                          arguments: brands[index]),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                            error: (error) => Text(error),
-                            orElse: () => SizedBox.shrink(),
-                          );
-                        },
-                      )
+                      StoreBlocBuilder(),
                     ],
                   ),
                 ),
                 bottom: QafTabBar(
-                  tabs: const [
-                    Tab(child: Text('Sports')),
-                    Tab(child: Text('Furnitures')),
-                    Tab(child: Text('Electronics')),
-                    Tab(child: Text('Clothes')),
-                    Tab(child: Text('Cosmetics')),
-                  ],
+                  tabs: context
+                      .read<ProductCubit>()
+                      .tabsTitle
+                      .map((title) => Tab(child: Text(title)))
+                      .toList(),
                 ),
               ),
             ];
           },
           body: TabBarView(
-            children: [
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-              CategoryTab(),
-            ],
-          ),
+              children: context
+                  .read<ProductCubit>()
+                  .categoriesList
+                  .map((category) => CategoryTab(categoryModel: category))
+                  .toList()),
         ),
       ),
     );

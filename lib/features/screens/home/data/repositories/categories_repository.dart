@@ -23,6 +23,23 @@ class CategoriesRepository {
     }
   }
 
+  Future<ServerResult<List<CategoryModel>>> fetchSubCategories(
+      String categoryId) async {
+    try {
+      final category = await categoriesService.getSubCategories(categoryId);
+      return category.when(
+        success: (category) {
+          return ServerResult.success(category);
+        },
+        failure: (error) {
+          return ServerResult.failure(error);
+        },
+      );
+    } catch (error) {
+      return ServerResult.failure(error.toString());
+    }
+  }
+
   Future<ServerResult<void>> uploadCategories(
       List<CategoryModel> categories) async {
     try {

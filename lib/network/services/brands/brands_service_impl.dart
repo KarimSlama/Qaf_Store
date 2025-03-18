@@ -29,6 +29,30 @@ class BrandsServiceImpl implements BrandsService {
   }
 
   @override
+  Future<ServerResult<List<BrandModel>>> getBrandForCategory(
+      String categoryId) async {
+    try {
+      final brandCategoryQuery = await _firestore
+          .collection('BrandCategory')
+          .where('categoryId', isEqualTo: categoryId)
+          .get();
+
+      final List<String> brandId = brandCategoryQuery.docs
+          .map((doc) => doc['brandId'] as String)
+          .toList();
+      final brandQuery = await _firestore
+          .collection('Brands')
+          .where(FieldPath.documentId, whereIn: brandId)
+          .get();
+      final List<BrandModel> brands =
+          brandQuery.docs.map((doc) => BrandModel.fromSnapshot(doc)).toList();
+      return ServerResult.success(brands);
+    } catch (error) {
+      return ServerResult.failure(error.toString());
+    }
+  }
+
+  @override
   Future<ServerResult<void>> uploadBrands(List<BrandModel> brands) async {
     try {
       List<Future<void>> uploadBrands = [];

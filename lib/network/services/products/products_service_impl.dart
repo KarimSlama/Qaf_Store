@@ -31,6 +31,36 @@ class ProductsServiceImpl implements ProductsService {
   }
 
   @override
+  Future<ServerResult<List<ProductModel>>> fetchProductForCategory(
+      {required String categoryId, int limit = 4}) async {
+    try {
+      final productCategory = limit == -1
+          ? await _firestore
+              .collection('ProductCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .get()
+          : await _firestore
+              .collection('ProductCategory')
+              .where('categoryId', isEqualTo: categoryId)
+              .limit(limit)
+              .get();
+      List<String> productIds = productCategory.docs
+          .map((doc) => doc['productId'] as String)
+          .toList();
+      final productQuery = await _firestore
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+      List<ProductModel> productList = productQuery.docs
+          .map((doc) => ProductModel.fromQuerySnapshot(doc))
+          .toList();
+      return ServerResult.success(productList);
+    } catch (error) {
+      return ServerResult.failure(error.toString());
+    }
+  }
+
+  @override
   Future<ServerResult<List<ProductModel>>> getProductsByBrand(
       {required String brandId, int limit = -1}) async {
     try {
@@ -155,6 +185,24 @@ class ProductsServiceImpl implements ProductsService {
           .map((doc) => ProductModel.fromQuerySnapshot(doc))
           .toList();
       return ServerResult.success(productList);
+    } catch (error) {
+      return ServerResult.failure(error.toString());
+    }
+  }
+
+  @override
+  Future<ServerResult<List<ProductModel>>> favoriteProducts(
+      List<String> productIds) async {
+    try {
+      final snapshot = await _firestore
+          .collection('Products')
+          .where(FieldPath.documentId, whereIn: productIds)
+          .get();
+
+      final product = snapshot.docs
+          .map((product) => ProductModel.fromSnapshot(product))
+          .toList();
+      return ServerResult.success(product);
     } catch (error) {
       return ServerResult.failure(error.toString());
     }

@@ -9,11 +9,14 @@ import 'package:qaf_store/features/screens/home/controller/cubit/product_state.d
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 
 class SortableProducts extends StatelessWidget {
-  const SortableProducts({super.key});
+  final String? id;
+  const SortableProducts({super.key, this.id});
 
   @override
   Widget build(BuildContext context) {
     final homeCubit = context.read<ProductCubit>();
+
+    context.read<ProductCubit>().getProductsByBrand(brandId: id ?? '1');
 
     return Column(
       spacing: QafSizes.spaceBtwSections,
@@ -49,12 +52,12 @@ class SortableProducts extends StatelessWidget {
                   itemCount: products.length,
                   itemBuilder: (_, index) => VerticalProductCard(
                     index: index,
-                    products: products,
+                                  products: products,
                   ),
                 );
               },
               productsError: (error) => Center(child: Text(error)),
-              orElse: () => SizedBox.shrink(),
+              orElse: () => Text('Empty'),
             );
           },
         ),
