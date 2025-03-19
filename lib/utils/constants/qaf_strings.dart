@@ -65,7 +65,7 @@ class QafStrings {
       'Your Account successfully created';
   static const String yourAccountCreatedSubTitle =
       'Welcome to Your Ultimate Shopping Destination; Your Account is created, Unleash the Joy of Seamless Online Shopping!';
-  static const String congratulations = 'Congratulations!';
+  static const String congratulations = 'Congratulations! 🎉';
   static const String yourAccountHasBeenCreatedVerifyEmailToContinue =
       'Congratulations!';
   static const String youAreLoggedInPerfectlyNowShopWhteverYouWant =

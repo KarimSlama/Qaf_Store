@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:qaf_store/features/screens/address/controller/cubit/addresses_cubit.dart';
+import 'package:qaf_store/features/screens/address/data/repository/address_repository.dart';
 import 'package:qaf_store/features/screens/brands/controller/cubit/brand_cubit.dart';
 import 'package:qaf_store/features/screens/brands/data/repository/brands_repository.dart';
 import 'package:qaf_store/features/screens/forgot_password/controller/cubit/reset_password_cubit.dart';
@@ -21,6 +23,8 @@ import 'package:qaf_store/features/screens/verfiy_email/controller/cubit/verify_
 import 'package:qaf_store/features/screens/verfiy_email/data/repository/verify_email_repository.dart';
 import 'package:qaf_store/features/screens/navigation_menu/cubit/navigation_cubit.dart';
 import 'package:qaf_store/features/screens/wishlist/controller/cubit/favorite_cubit.dart';
+import 'package:qaf_store/network/services/addresses/address_service.dart';
+import 'package:qaf_store/network/services/addresses/address_service_impl.dart';
 import 'package:qaf_store/network/services/auth/auth_service.dart';
 import 'package:qaf_store/network/services/auth/auth_service_impl.dart';
 import 'package:qaf_store/network/services/banners/banners_service.dart';
@@ -51,6 +55,7 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<BannersService>(() => BannersServiceImpl());
   getIt.registerLazySingleton<ProductsService>(() => ProductsServiceImpl());
   getIt.registerLazySingleton<BrandsService>(() => BrandsServiceImpl());
+  getIt.registerLazySingleton<AddressService>(() => AddressServiceImpl());
 
   getIt.registerLazySingleton<RegisterRepository>(
       () => RegisterRepository(getIt(), getIt()));
@@ -70,6 +75,8 @@ Future<void> setupGetIt() async {
       () => ProductsRepository(getIt()));
   getIt
       .registerLazySingleton<BrandsRepository>(() => BrandsRepository(getIt()));
+  getIt
+      .registerLazySingleton<AddressRepository>(() => AddressRepository(getIt()));
 
   getIt.registerFactory<OnboardingCubit>(() => OnboardingCubit());
   getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt()));
@@ -88,5 +95,7 @@ Future<void> setupGetIt() async {
       () => UploadCubit(getIt(), getIt(), getIt(), getIt()));
   getIt.registerFactory<FavoriteCubit>(
       () => FavoriteCubit(getIt()));
+  getIt.registerFactory<AddressesCubit>(
+      () => AddressesCubit(getIt()));
 
 }

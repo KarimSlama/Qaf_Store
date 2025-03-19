@@ -37,8 +37,4 @@ class ProductState<T> with _$ProductState<T> {
       List<ProductModel> products) = LoadedProductsByBrand;
   const factory ProductState.errorProductsByBrand(String error) =
       ErrorProductsByBrand;
-      // const factory ProductState.favoriteProductChanged(String productId) =
-      // FavoriteProductChanged;
-      // const factory ProductState.favoriteProductRemoved(String productId) =
-      // FavoriteProductRemoved;
 }

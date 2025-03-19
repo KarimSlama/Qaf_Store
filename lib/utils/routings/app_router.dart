@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qaf_store/features/screens/address/add_new_address_screen.dart';
+import 'package:qaf_store/features/screens/address/controller/cubit/addresses_cubit.dart';
 import 'package:qaf_store/features/screens/address/user_address_screen.dart';
 import 'package:qaf_store/features/screens/all_products/all_products_screen.dart';
 import 'package:qaf_store/features/screens/brands/all_brands_screen.dart';
@@ -116,7 +117,7 @@ class AppRouter {
         );
 
       case Routes.subCategoryScreen:
-      final category = settings.arguments as CategoryModel;
+        final category = settings.arguments as CategoryModel;
         return MaterialPageRoute(
           builder: (_) => SubCategoryScreen(category: category),
         );
@@ -179,12 +180,18 @@ class AppRouter {
 
       case Routes.userAddressScreen:
         return MaterialPageRoute(
-          builder: (_) => UserAddressScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<AddressesCubit>()..fetchAllUserAddress(),
+            child: UserAddressScreen(),
+          ),
         );
 
       case Routes.addNewAddressScreen:
         return MaterialPageRoute(
-          builder: (_) => AddNewAddressScreen(),
+          builder: (_) => BlocProvider.value(
+            value: getIt<AddressesCubit>(),
+            child: AddNewAddressScreen(),
+          ),
         );
 
       case Routes.uploadDataScreen:
