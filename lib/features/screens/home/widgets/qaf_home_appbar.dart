@@ -8,8 +8,6 @@ import 'package:qaf_store/features/screens/profile/controller/cubit/user_cubit.d
 import 'package:qaf_store/features/screens/profile/controller/cubit/user_state.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
-import 'package:qaf_store/utils/helper/extensions.dart';
-import 'package:qaf_store/utils/routings/routes.dart';
 
 class QafHomeAppbar extends StatelessWidget {
   const QafHomeAppbar({super.key});
@@ -46,10 +44,7 @@ class QafHomeAppbar extends StatelessWidget {
             ],
           ),
           actions: [
-            CartCounterIcon(
-              iconColor: QafColors.white,
-              onPressed: () => context.pushNamed(Routes.cartScreen),
-            ),
+            CartCounterIcon(iconColor: QafColors.white),
           ],
         );
       },

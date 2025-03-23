@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:qaf_store/common/widgets/images/rounded_image.dart';
 import 'package:qaf_store/common/widgets/products/favorite_icon.dart';
+import 'package:qaf_store/common/widgets/products/product_cards/product_card_add_to_cart_button.dart';
 import 'package:qaf_store/common/widgets/texts/brand_title_text_with_verification_icon.dart';
 import 'package:qaf_store/common/widgets/texts/product_price_text.dart';
 import 'package:qaf_store/common/widgets/texts/product_title_text.dart';
+import 'package:qaf_store/features/screens/cart/controller/cubit/cart_cubit.dart';
 import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
 import 'package:qaf_store/features/screens/wishlist/controller/cubit/favorite_cubit.dart';
 import 'package:qaf_store/utils/constants/constants.dart';
@@ -28,8 +29,15 @@ class HorizontalProductCard extends StatelessWidget {
             '0';
 
     final dark = QafHelperFunctions.isDark(context);
-    return BlocProvider.value(
-      value: getIt<FavoriteCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider.value(
+          value: getIt<FavoriteCubit>(),
+        ),
+          BlocProvider.value(
+          value: getIt<CartCubit>(),
+        ),
+      ],
       child: Container(
         width: 320.w,
         padding: EdgeInsets.all(1),
@@ -129,24 +137,7 @@ class HorizontalProductCard extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Container(
-                          decoration: BoxDecoration(
-                            color: QafColors.dark,
-                            borderRadius: BorderRadiusDirectional.only(
-                              topStart:
-                                  Radius.circular(QafSizes.borderRadiusLg),
-                              bottomEnd:
-                                  Radius.circular(QafSizes.productImageRadius),
-                            ),
-                          ),
-                          child: Center(
-                            child: SizedBox(
-                                width: QafSizes.iconLg * 1.2,
-                                height: QafSizes.iconLg * 1.2,
-                                child:
-                                    Icon(Iconsax.add, color: QafColors.white)),
-                          ),
-                        ),
+                        ProductCardAddToCartButton(product: product),
                       ],
                     ),
                   ],

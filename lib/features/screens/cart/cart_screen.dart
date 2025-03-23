@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
+import 'package:qaf_store/common/widgets/loaders/animation_loader.dart';
+import 'package:qaf_store/features/screens/cart/controller/cubit/cart_cubit.dart';
+import 'package:qaf_store/features/screens/cart/controller/cubit/cart_state.dart';
 import 'package:qaf_store/features/screens/cart/widgets/cart_items.dart';
+import 'package:qaf_store/gen/assets.gen.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
 import 'package:qaf_store/utils/helper/extensions.dart';
@@ -11,25 +16,49 @@ class CartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: QafAppBar(
-        title: Text(QafStrings.cart,
-            style: Theme.of(context).textTheme.headlineSmall),
-        showBackArrow: true,
-      ),
-      body: Padding(
-        padding: EdgeInsetsDirectional.all(QafSizes.defaultSpace),
-        child: CartItems(),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsetsDirectional.only(
-            start: QafSizes.defaultSpace,
-            end: QafSizes.defaultSpace,
-            bottom: QafSizes.defaultSpace),
-        child: ElevatedButton(
-            onPressed: () => context.pushNamed(Routes.checkoutScreen),
-            child: Text('${QafStrings.checkout}  \$240')),
-      ),
+    final emptyWidget = AnimationLoaderWidget(
+      text: 'Whoops! Cart is Empty',
+      animation: Assets.images.animations.ladyAddingProductInCartAnimation,
+      showAction: true,
+      actionText: 'Let\'s fill the Cart!',
+      onActionPressed: () => context.pushNamed(Routes.navigationMenu),
     );
+    return Scaffold(
+        appBar: QafAppBar(
+          title: Text(QafStrings.cart,
+              style: Theme.of(context).textTheme.headlineSmall),
+          showBackArrow: true,
+        ),
+        body: BlocBuilder<CartCubit, CartState>(
+          buildWhen: (previous, current) =>
+              current is CartUpdated || current is CartLoaded,
+          builder: (context, state) {
+            return context.read<CartCubit>().cartItem.isEmpty
+                ? emptyWidget
+                : SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.all(QafSizes.defaultSpace),
+                      child: CartItems(),
+                    ),
+                  );
+          },
+        ),
+        bottomNavigationBar: BlocBuilder<CartCubit, CartState>(
+          builder: (context, state) {
+            return context.read<CartCubit>().cartItem.isNotEmpty
+                ? Padding(
+                    padding: const EdgeInsetsDirectional.only(
+                        start: QafSizes.defaultSpace,
+                        end: QafSizes.defaultSpace,
+                        bottom: QafSizes.defaultSpace),
+                    child: ElevatedButton(
+                      onPressed: () => context.pushNamed(Routes.checkoutScreen),
+                      child: Text(
+                          '${QafStrings.checkout}  \$${context.read<CartCubit>().totalCartPrice}'),
+                    ),
+                  )
+                : SizedBox();
+          },
+        ));
   }
 }

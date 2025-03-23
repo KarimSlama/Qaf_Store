@@ -7,7 +7,10 @@ import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
 
 class ProductQuantityWithAddRemoveButton extends StatelessWidget {
-  const ProductQuantityWithAddRemoveButton({super.key});
+  final int quantity;
+  final VoidCallback? add, remove;
+  const ProductQuantityWithAddRemoveButton(
+      {super.key, required this.quantity, this.add, this.remove});
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +26,16 @@ class ProductQuantityWithAddRemoveButton extends StatelessWidget {
           width: 40.w,
           height: 40.h,
           color: dark ? QafColors.white : QafColors.black,
+          onPressed: remove,
         ),
-        Text('2', style: Theme.of(context).textTheme.titleSmall),
+        Text('$quantity', style: Theme.of(context).textTheme.titleSmall),
         CircularIcon(
           icon: Iconsax.add,
           backgroundColor: QafColors.primary,
           width: 40.w,
           height: 40.h,
           color: QafColors.white,
+          onPressed: add,
         ),
       ],
     );

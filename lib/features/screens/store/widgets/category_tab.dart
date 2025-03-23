@@ -28,8 +28,8 @@ class CategoryTab extends StatelessWidget {
             children: [
               CategoryBrandShowCaseWidget(categoryModel: categoryModel),
               BlocBuilder<ProductCubit, ProductState>(
-                bloc: getIt<ProductCubit>()
-                  ..fetchProductForCategory(categoryModel.id),
+                 bloc: getIt<ProductCubit>()
+                  ..fetchProductsForCategory(categoryId: categoryModel.id),
                 builder: (context, state) {
                   return state.maybeWhen(
                     orElse: () => SizedBox(),

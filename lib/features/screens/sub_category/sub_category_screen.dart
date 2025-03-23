@@ -19,7 +19,6 @@ class SubCategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    getIt<ProductCubit>().fetchSubCategories(category.id);
     return Scaffold(
       appBar: QafAppBar(
         title: Text(category.name,
@@ -27,7 +26,8 @@ class SubCategoryScreen extends StatelessWidget {
         showBackArrow: true,
       ),
       body: BlocBuilder<ProductCubit, ProductState>(
-        bloc: getIt<ProductCubit>()..fetchProductForCategory(category.id),
+        bloc: getIt<ProductCubit>()
+          ..fetchProductsForCategory(categoryId: category.id),
         builder: (context, state) {
           return state.maybeWhen(
             categoryProductsLoading: () => ProductShimmerEffect(),

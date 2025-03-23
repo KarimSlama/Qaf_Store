@@ -26,7 +26,7 @@ class CategoryBrandShowCaseWidget extends StatelessWidget {
                 final brand = brands[index];
                 return BlocBuilder<ProductCubit, ProductState>(
                   bloc: getIt<ProductCubit>()
-                    ..getProductsByBrand(brandId: brand.id),
+                    ..fetchAllProducts(brandId: brand.id),
                   builder: (context, state) {
                     return state.maybeWhen(
                       productsLoading: () => ListTitleShimmerEffect(),

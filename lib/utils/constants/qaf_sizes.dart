@@ -43,9 +43,9 @@ class QafSizes {
   static const double borderRadiusLg = 12;
 
   /// Product Item Dimensions
-  static double productImageSize = 120.w;
-  static double productImageRadius = 16.r;
-  static double productImageHeight = 160.h;
+  static double productImageSize = 120;
+  static const double productImageRadius = 16;
+  static const double productImageHeight = 160;
 
   /// Input Fields
   static double inputFieldRadius = 12.r;

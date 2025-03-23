@@ -26,10 +26,7 @@ class StoreScreen extends StatelessWidget {
           title: Text(QafStrings.store,
               style: Theme.of(context).textTheme.headlineMedium),
           actions: [
-            CartCounterIcon(
-              iconColor: dark ? QafColors.white : QafColors.dark,
-              onPressed: () {},
-            ),
+            CartCounterIcon(iconColor: dark ? QafColors.white : QafColors.dark),
           ],
         ),
         body: NestedScrollView(

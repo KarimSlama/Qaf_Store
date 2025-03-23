@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qaf_store/features/screens/home/data/models/banners_model.dart';
 import 'package:qaf_store/features/screens/home/data/models/category_model.dart';
 import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
 import 'package:qaf_store/features/screens/home/data/repositories/banners_repository.dart';
@@ -12,13 +11,15 @@ class ProductCubit extends Cubit<ProductState> {
   final CategoriesRepository categoriesRepository;
   final BannersRepository bannersRepository;
   final ProductsRepository productsRepository;
-  ProductCubit(this.categoriesRepository, this.bannersRepository,
-      this.productsRepository)
-      : super(ProductState.initial());
+
+  ProductCubit(
+    this.categoriesRepository,
+    this.bannersRepository,
+    this.productsRepository,
+  ) : super(const ProductState.initial());
 
   List<CategoryModel> categoriesList = [];
-  List<BannersModel> bannersList = [];
-  List<ProductModel> productList = [];
+  var selectedOption = 'Name';
 
   List<String> tabsTitle = [
     'Sports',
@@ -29,17 +30,17 @@ class ProductCubit extends Cubit<ProductState> {
     'Shoes',
     'Cosmetics'
   ];
-  var selectedOption = 'Name';
 
-  Future<void> fetchAllCategories() async {
+  Future<void> fetchCategories() async {
     try {
-      emit(ProductState.categoryLoading());
+      emit(const ProductState.categoryLoading());
 
       final categories = await categoriesRepository.fetchAllCategories();
+
       categories.when(
         success: (category) {
-          categoriesList = category;
-          emit(ProductState.categorySuccess(categoriesList));
+          categoriesList  =category;
+          emit(ProductState.categorySuccess(category));
         },
         failure: (error) {
           emit(ProductState.categoryError(error.toString()));
@@ -50,33 +51,32 @@ class ProductCubit extends Cubit<ProductState> {
     }
   }
 
-  Future<void> fetchSubCategories(String categoryId) async {
+  Future<void> fetchProductsForCategory({required String categoryId}) async {
     try {
-      emit(ProductState.categoryLoading());
+      emit(const ProductState.categoryProductsLoading());
 
-      final categories =
-          await categoriesRepository.fetchSubCategories(categoryId);
-      categories.when(
-        success: (category) {
-          categoriesList = category;
-          emit(ProductState.categorySuccess(categoriesList));
+      final products = await productsRepository.fetchProductForCategory(
+          categoryId: categoryId);
+      products.when(
+        success: (data) {
+          emit(ProductState.categoryProductsSuccess(data));
         },
         failure: (error) {
-          emit(ProductState.categoryError(error.toString()));
+          emit(ProductState.categoryProductsError(error.toString()));
         },
       );
     } catch (error) {
-      emit(ProductState.categoryError(error.toString()));
+      emit(ProductState.categoryProductsError(error.toString()));
     }
   }
 
   Future<void> fetchAllBanners() async {
     try {
-      emit(ProductState.bannersLoading());
+      emit(const ProductState.bannersLoading());
+
       final banners = await bannersRepository.fetchAllBanners();
       banners.when(
         success: (banner) {
-          bannersList = banner;
           emit(ProductState.bannersSuccess(banner));
         },
         failure: (error) {
@@ -88,81 +88,53 @@ class ProductCubit extends Cubit<ProductState> {
     }
   }
 
-  Future<List<ProductModel>> fetchAllProduct() async {
+  Future<void> fetchAllProducts({String? brandId}) async {
     try {
-      emit(ProductState.productsLoading());
-      final result = await productsRepository.getAllProducts();
-      return result.when(
-        success: (data) {
-          productList = data;
-          emit(ProductState.productsSuccess(productList));
-          return productList;
-        },
-        failure: (error) {
-          emit(ProductState.productsError(error.toString()));
-          return [];
-        },
-      );
+      emit(const ProductState.productsLoading());
+
+      if (brandId != null) {
+        final brandProducts =
+            await productsRepository.getBrandProducts(brandId: brandId);
+        brandProducts.when(
+          success: (products) {
+            emit(ProductState.productsSuccess(products));
+          },
+          failure: (error) {
+            emit(ProductState.productsError(error.toString()));
+          },
+        );
+      } else {
+        final allProducts = await productsRepository.getAllProducts();
+        allProducts.when(
+          success: (products) {
+            emit(ProductState.productsSuccess(products));
+          },
+          failure: (error) {
+            emit(ProductState.productsError(error.toString()));
+          },
+        );
+      }
     } catch (error) {
       emit(ProductState.productsError(error.toString()));
     }
-    return productList;
   }
 
-  Future<List<ProductModel>> fetchProductByQuery(Query? query) async {
+  Future<void> fetchProductByQuery(Query? query) async {
+    final currentState = state;
+    if (currentState is ProductsSuccess && currentState.products.isNotEmpty) {
+      return;
+    }
     try {
-      emit(ProductState.productsLoading());
+      emit(const ProductState.productsLoading());
+
       final productByQuery =
           await productsRepository.fetchProductByQuery(query);
-      return productByQuery.when(
+      productByQuery.when(
         success: (data) {
           emit(ProductState.productsSuccess(data));
-          return data;
         },
         failure: (error) {
           emit(ProductState.productsError(error.toString()));
-          return [];
-        },
-      );
-    } catch (error) {
-      emit(ProductState.productsError(error.toString()));
-    }
-    return productList;
-  }
-
-  Future<void> fetchProductForCategory(String categoryId) async {
-    try {
-      emit(ProductState.categoryProductsLoading());
-      final productForCategory = await productsRepository
-          .fetchProductForCategory(categoryId: categoryId);
-      productForCategory.when(
-        success: (data) {
-          productList = data;
-          emit(ProductState.categoryProductsSuccess(data));
-          return data;
-        },
-        failure: (error) {
-          emit(ProductState.categoryProductsError(error.toString()));
-          return [];
-        },
-      );
-    } catch (error) {
-      emit(ProductState.categoryProductsError(error.toString()));
-    }
-  }
-
-  Future<void> getProductsByBrand({required String brandId}) async {
-    try {
-      emit(ProductState.productsLoading());
-      final products =
-          await productsRepository.getBrandProducts(brandId: brandId);
-      products.when(
-        success: (products) {
-          productList = products;
-          emit(ProductState.productsSuccess(products));
-        },
-        failure: (error) {
-          emit(ProductState.productsError(error));
         },
       );
     } catch (error) {
@@ -171,41 +143,35 @@ class ProductCubit extends Cubit<ProductState> {
   }
 
   void sortProducts(String sortOption) {
-    emit(ProductState.productsLoading());
-    selectedOption = sortOption;
+    final currentState = state;
+    if (currentState is! ProductsSuccess) return;
+
+    List<ProductModel> sortedProducts = List.from(currentState.products);
+
     switch (sortOption) {
       case 'Name':
-        productList.sort((a, b) => a.title.compareTo(b.title));
+        sortedProducts.sort((a, b) => a.title.compareTo(b.title));
         break;
       case 'Higher Price':
-        productList.sort((a, b) => a.price.compareTo(b.price));
+        sortedProducts.sort((a, b) => b.price.compareTo(a.price));
         break;
       case 'Lower Price':
-        productList.sort((a, b) => a.price.compareTo(b.price));
+        sortedProducts.sort((a, b) => a.price.compareTo(b.price));
         break;
       case 'Newest':
-        productList.sort((a, b) => a.date!.compareTo(b.date!));
+        sortedProducts.sort((a, b) => b.date!.compareTo(a.date!));
         break;
       case 'Sale':
-        productList.sort((a, b) {
-          if (b.salePrice > 0)
-            return b.salePrice.compareTo(a.salePrice);
-          else if (a.salePrice > 0)
-            return -1;
-          else
-            return 1;
+        sortedProducts.sort((a, b) {
+          if (b.salePrice > 0) return b.salePrice.compareTo(a.salePrice);
+          if (a.salePrice > 0) return -1;
+          return 1;
         });
         break;
-
       default:
-        productList.sort((a, b) => a.title.compareTo(b.title));
+        sortedProducts.sort((a, b) => a.title.compareTo(b.title));
     }
-    emit(ProductState.productsSuccess(List.from(productList)));
-  }
 
-  void assignProducts(List<ProductModel> products) {
-    productList = products;
-    sortProducts('Name');
-    emit(ProductState.productsSuccess(List.from(productList)));
+    emit(ProductState.productsSuccess(sortedProducts));
   }
 }
