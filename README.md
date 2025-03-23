@@ -13,8 +13,9 @@ Qaf Store is a robust and scalable e-commerce application designed to provide a 
 
 ## 🛠️ Tech Stack
 - **Frontend:** Flutter (Dart)
-- **Database:** PostgreSQL / Firebase
-- **State Management:** GetX
+- **Database:** SharePreference / Storage / Firebase Realtime.
+- **CI CD:** Firebase App Distribution / GitHub actions
+- **State Management:** Cubit
 - **APIs:** RESTful APIs, Retrofit with Dio for seamless communication
 
 ## 🚀 Future Enhancements
