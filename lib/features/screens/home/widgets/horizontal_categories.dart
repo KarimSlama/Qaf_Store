@@ -5,6 +5,7 @@ import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.d
 import 'package:qaf_store/features/screens/home/controller/cubit/product_state.dart';
 import 'package:qaf_store/common/widgets/shimmer/categories_shimmer_effect.dart';
 import 'package:qaf_store/features/screens/home/widgets/vertical_popular_category_image_text.dart';
+import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/helper/extensions.dart';
 import 'package:qaf_store/utils/routings/routes.dart';
 
@@ -20,24 +21,23 @@ class HorizontalHomeCategories extends StatelessWidget {
           current is CategoryError,
       builder: (context, state) {
         return state.maybeWhen(
-          categoryLoading: () => CategoriesShimmerEffect(itemCount: 2),
+          categoryLoading: () => CategoriesShimmerEffect(itemCount: 5),
           categorySuccess: (categories) {
-            final category = context.read<ProductCubit>().categoriesList;
             return SizedBox(
               height: 85.h,
               child: ListView.builder(
                 shrinkWrap: true,
-                itemCount: category.length,
+                itemCount: categories.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (_, index) => VerticalPopularCategoryImageText(
                     onTap: () => context.pushNamed(Routes.subCategoryScreen, arguments: categories[index]),
-                    image: category[index].image,
-                    title: category[index].name),
+                    image: categories[index].image,
+                    title: categories[index].name),
               ),
             );
           },
           categoryError: (error) => Text(error),
-          orElse: () => SizedBox.shrink(),
+          orElse: () => Container(color: QafColors.dark),
         );
       },
     );

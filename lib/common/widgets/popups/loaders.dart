@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 
@@ -76,7 +77,7 @@ class Loaders {
     );
   }
 
-static void errorSnackBar({
+  static void errorSnackBar({
     required BuildContext context,
     required String title,
     String message = '',
@@ -94,7 +95,8 @@ static void errorSnackBar({
                 children: [
                   Text(title, style: const TextStyle(color: QafColors.white)),
                   if (message.isNotEmpty)
-                    Text(message, style: const TextStyle(color: QafColors.white)),
+                    Text(message,
+                        style: const TextStyle(color: QafColors.white)),
                 ],
               ),
             ),
@@ -111,4 +113,13 @@ static void errorSnackBar({
     );
   }
 
+  static void qafToast({
+    required String message,
+  }) {
+    Fluttertoast.showToast(
+      msg: message,
+      backgroundColor: Colors.transparent,
+      toastLength: Toast.LENGTH_SHORT,
+    );
+  }
 }

@@ -50,6 +50,44 @@ class ProductModel {
       categoryId: '',
       productType: '');
 
+  ProductModel copyWith({
+    String? id,
+    int? stock,
+    String? sku,
+    double? price,
+    String? title,
+    DateTime? date,
+    double? salePrice,
+    String? thumbnail,
+    bool? isFeatured,
+    BrandModel? brand,
+    String? description,
+    String? categoryId,
+    List<String>? images,
+    String? productType,
+    List<ProductAttributeModel>? productAttributes,
+    List<ProductVariationModel>? productVariation,
+  }) {
+    return ProductModel(
+      id: id ?? this.id,
+      stock: stock ?? this.stock,
+      sku: sku ?? this.sku,
+      price: price ?? this.price,
+      title: title ?? this.title,
+      date: date ?? this.date,
+      salePrice: salePrice ?? this.salePrice,
+      thumbnail: thumbnail ?? this.thumbnail,
+      isFeatured: isFeatured ?? this.isFeatured,
+      brand: brand ?? this.brand,
+      description: description ?? this.description,
+      categoryId: categoryId ?? this.categoryId,
+      images: images ?? this.images,
+      productType: productType ?? this.productType,
+      productAttributes: productAttributes ?? this.productAttributes,
+      productVariation: productVariation ?? this.productVariation,
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'SKU': sku,

@@ -28,7 +28,7 @@ class WishlistScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineMedium),
           actions: [
             IconButton(
-                onPressed: () => context.pushNamed(Routes.homeScreen),
+                onPressed: () => context.pushNamed(Routes.navigationMenu),
                 icon: Icon(Iconsax.add))
           ],
         ),

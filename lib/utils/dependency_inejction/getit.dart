@@ -3,6 +3,7 @@ import 'package:qaf_store/features/screens/address/controller/cubit/addresses_cu
 import 'package:qaf_store/features/screens/address/data/repository/address_repository.dart';
 import 'package:qaf_store/features/screens/brands/controller/cubit/brand_cubit.dart';
 import 'package:qaf_store/features/screens/brands/data/repository/brands_repository.dart';
+import 'package:qaf_store/features/screens/cart/controller/cubit/cart_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/controller/cubit/reset_password_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/data/repository/reset_password_email_repository.dart';
 import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
@@ -97,5 +98,7 @@ Future<void> setupGetIt() async {
       () => FavoriteCubit(getIt()));
   getIt.registerFactory<AddressesCubit>(
       () => AddressesCubit(getIt()));
+  getIt.registerFactory<CartCubit>(
+      () => CartCubit());
 
 }
