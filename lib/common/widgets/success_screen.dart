@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:qaf_store/common/styles/qaf_spacing_style.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
@@ -23,7 +24,7 @@ class SuccessScreen extends StatelessWidget {
           child: Column(
             spacing: QafSizes.spaceBtwItems,
             children: [
-              Image.asset(
+              Lottie.asset(
                   width: QafHelperFunctions.screenWidth(context) * .6, image),
               Text(
                 title,

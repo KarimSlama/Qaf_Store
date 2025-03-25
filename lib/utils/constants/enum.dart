@@ -1,6 +1,6 @@
 enum TextSizes { SMALL, MEDIUM, LARGE }
 
-enum OrderStatus { PROCESSING, SHIPPED, DELIVERED, CANCELLED }
+enum OrderStatus { PROCESSING, SHIPPED, DELIVERED, CANCELLED, PENDING }
 
 enum PaymentMethod {
   PAYPAL,

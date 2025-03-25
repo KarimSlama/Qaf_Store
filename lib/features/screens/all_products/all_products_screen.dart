@@ -27,7 +27,6 @@ class AllProductsScreen extends StatelessWidget {
           child: BlocBuilder<ProductCubit, ProductState>(
             bloc: getIt<ProductCubit>()..fetchProductByQuery(query),
             builder: (context, state) {
-              print(state);
               if (state is ProductsLoading) {
                 
                 return ProductShimmerEffect();

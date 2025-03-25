@@ -4,6 +4,7 @@ import 'package:qaf_store/features/screens/address/data/repository/address_repos
 import 'package:qaf_store/features/screens/brands/controller/cubit/brand_cubit.dart';
 import 'package:qaf_store/features/screens/brands/data/repository/brands_repository.dart';
 import 'package:qaf_store/features/screens/cart/controller/cubit/cart_cubit.dart';
+import 'package:qaf_store/features/screens/checkout/controller/cubit/checkout_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/controller/cubit/reset_password_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/data/repository/reset_password_email_repository.dart';
 import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
@@ -14,6 +15,8 @@ import 'package:qaf_store/features/screens/login/controller/cubit/login_cubit.da
 import 'package:qaf_store/features/screens/login/data/repository/login_repository.dart';
 import 'package:qaf_store/features/screens/login/data/repository/login_social_repository.dart';
 import 'package:qaf_store/features/screens/onboarding/controller/cubit/onboarding_cubit.dart';
+import 'package:qaf_store/features/screens/order/controller/cubit/order_cubit.dart';
+import 'package:qaf_store/features/screens/order/data/repository/order_repository.dart';
 import 'package:qaf_store/features/screens/product_details/controller/cubit/product_details_cubit.dart';
 import 'package:qaf_store/features/screens/profile/controller/cubit/user_cubit.dart';
 import 'package:qaf_store/features/screens/profile/data/repository/user_repository.dart';
@@ -34,6 +37,8 @@ import 'package:qaf_store/network/services/brands/brands_service.dart';
 import 'package:qaf_store/network/services/brands/brands_service_impl.dart';
 import 'package:qaf_store/network/services/categories/categories_service.dart';
 import 'package:qaf_store/network/services/categories/categories_service_impl.dart';
+import 'package:qaf_store/network/services/order/order_service.dart';
+import 'package:qaf_store/network/services/order/order_service_impl.dart';
 import 'package:qaf_store/network/services/products/products_service.dart';
 import 'package:qaf_store/network/services/products/products_service_impl.dart';
 import 'package:qaf_store/network/services/sign_in_social/sign_in_social_service.dart';
@@ -57,6 +62,7 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<ProductsService>(() => ProductsServiceImpl());
   getIt.registerLazySingleton<BrandsService>(() => BrandsServiceImpl());
   getIt.registerLazySingleton<AddressService>(() => AddressServiceImpl());
+  getIt.registerLazySingleton<OrderService>(() => OrderServiceImpl());
 
   getIt.registerLazySingleton<RegisterRepository>(
       () => RegisterRepository(getIt(), getIt()));
@@ -78,6 +84,8 @@ Future<void> setupGetIt() async {
       .registerLazySingleton<BrandsRepository>(() => BrandsRepository(getIt()));
   getIt
       .registerLazySingleton<AddressRepository>(() => AddressRepository(getIt()));
+  getIt
+      .registerLazySingleton<OrderRepository>(() => OrderRepository(getIt()));
 
   getIt.registerFactory<OnboardingCubit>(() => OnboardingCubit());
   getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt()));
@@ -100,5 +108,9 @@ Future<void> setupGetIt() async {
       () => AddressesCubit(getIt()));
   getIt.registerFactory<CartCubit>(
       () => CartCubit());
+  getIt.registerFactory<CheckoutCubit>(
+      () => CheckoutCubit());
+  getIt.registerFactory<OrderCubit>(
+      () => OrderCubit(getIt()));
 
 }

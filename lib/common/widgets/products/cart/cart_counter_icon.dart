@@ -19,12 +19,6 @@ class CartCounterIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = QafHelperFunctions.isDark(context);
     return BlocBuilder<CartCubit, CartState>(
-      buildWhen: (previous, current) {
-        return current.maybeWhen(
-          cartUpdated: (cartItems) => true,
-          orElse: () => false,
-        );
-      },
       builder: (context, state) {
         return Stack(
           children: [
@@ -42,7 +36,7 @@ class CartCounterIcon extends StatelessWidget {
                         (dark ? QafColors.white : QafColors.black)),
                 child: Center(
                     child: Text(
-                  '${context.read<CartCubit>().noOfCartItems}',
+                  '${state.noOfCartItems}',
                   style: Theme.of(context).textTheme.labelLarge!.apply(
                       color: dark ? QafColors.black : QafColors.white,
                       fontSizeFactor: .8),

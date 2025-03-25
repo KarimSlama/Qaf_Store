@@ -13,6 +13,7 @@ import 'package:qaf_store/features/screens/cart/cart_screen.dart';
 import 'package:qaf_store/features/screens/cart/controller/cubit/cart_cubit.dart';
 import 'package:qaf_store/features/screens/change_name/change_name_screen.dart';
 import 'package:qaf_store/features/screens/checkout/checkout_screen.dart';
+import 'package:qaf_store/features/screens/checkout/controller/cubit/checkout_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/controller/cubit/reset_password_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/forgot_password_screen.dart';
 import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
@@ -22,6 +23,7 @@ import 'package:qaf_store/features/screens/login/controller/cubit/login_cubit.da
 import 'package:qaf_store/features/screens/login/login_screen.dart';
 import 'package:qaf_store/features/screens/onboarding/controller/cubit/onboarding_cubit.dart';
 import 'package:qaf_store/features/screens/onboarding/onboarding_screen.dart';
+import 'package:qaf_store/features/screens/order/controller/cubit/order_cubit.dart';
 import 'package:qaf_store/features/screens/order/order_screen.dart';
 import 'package:qaf_store/features/screens/product_details/controller/cubit/product_details_cubit.dart';
 import 'package:qaf_store/features/screens/product_details/product_details_screen.dart';
@@ -152,14 +154,34 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => ProductReviewsScreen(),
         );
+
       case Routes.checkoutScreen:
         return MaterialPageRoute(
-          builder: (_) => CheckoutScreen(),
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (_) => getIt<CheckoutCubit>(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<OrderCubit>(),
+              ),
+              BlocProvider(
+                create: (_) => getIt<AddressesCubit>(),
+              ),
+              BlocProvider.value(
+                value: getIt<CartCubit>(),
+              ),
+            ],
+            child: CheckoutScreen(),
+          ),
         );
 
       case Routes.orderScreen:
         return MaterialPageRoute(
-          builder: (_) => OrderScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<OrderCubit>()..fetchUserOrders(),
+            child: OrderScreen(),
+          ),
         );
 
       case Routes.brandProductsScreen:
