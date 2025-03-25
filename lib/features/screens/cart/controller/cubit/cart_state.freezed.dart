@@ -16,55 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CartState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<CartItemModel> cartItem) cartUpdated,
-    required TResult Function(List<CartItemModel> cartItem) cartLoaded,
-  }) =>
+  List<CartItemModel> get cartItems => throw _privateConstructorUsedError;
+  int get noOfCartItems => throw _privateConstructorUsedError;
+  double get totalCartPrice => throw _privateConstructorUsedError;
+  int get productQuantityInCart => throw _privateConstructorUsedError;
+  Map<String, dynamic> get selectedAttributes =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<CartItemModel> cartItem)? cartUpdated,
-    TResult? Function(List<CartItemModel> cartItem)? cartLoaded,
-  }) =>
+  String get variationStockStatus => throw _privateConstructorUsedError;
+  ProductVariationModel get productVariationModel =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<CartItemModel> cartItem)? cartUpdated,
-    TResult Function(List<CartItemModel> cartItem)? cartLoaded,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(CartUpdated value) cartUpdated,
-    required TResult Function(CartLoaded value) cartLoaded,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(CartUpdated value)? cartUpdated,
-    TResult? Function(CartLoaded value)? cartLoaded,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(CartUpdated value)? cartUpdated,
-    TResult Function(CartLoaded value)? cartLoaded,
-    required TResult orElse(),
-  }) =>
+
+  /// Create a copy of CartState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $CartStateCopyWith<CartState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -72,6 +37,15 @@ mixin _$CartState {
 abstract class $CartStateCopyWith<$Res> {
   factory $CartStateCopyWith(CartState value, $Res Function(CartState) then) =
       _$CartStateCopyWithImpl<$Res, CartState>;
+  @useResult
+  $Res call(
+      {List<CartItemModel> cartItems,
+      int noOfCartItems,
+      double totalCartPrice,
+      int productQuantityInCart,
+      Map<String, dynamic> selectedAttributes,
+      String variationStockStatus,
+      ProductVariationModel productVariationModel});
 }
 
 /// @nodoc
@@ -86,257 +60,74 @@ class _$CartStateCopyWithImpl<$Res, $Val extends CartState>
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? cartItems = null,
+    Object? noOfCartItems = null,
+    Object? totalCartPrice = null,
+    Object? productQuantityInCart = null,
+    Object? selectedAttributes = null,
+    Object? variationStockStatus = null,
+    Object? productVariationModel = null,
+  }) {
+    return _then(_value.copyWith(
+      cartItems: null == cartItems
+          ? _value.cartItems
+          : cartItems // ignore: cast_nullable_to_non_nullable
+              as List<CartItemModel>,
+      noOfCartItems: null == noOfCartItems
+          ? _value.noOfCartItems
+          : noOfCartItems // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalCartPrice: null == totalCartPrice
+          ? _value.totalCartPrice
+          : totalCartPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      productQuantityInCart: null == productQuantityInCart
+          ? _value.productQuantityInCart
+          : productQuantityInCart // ignore: cast_nullable_to_non_nullable
+              as int,
+      selectedAttributes: null == selectedAttributes
+          ? _value.selectedAttributes
+          : selectedAttributes // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+      variationStockStatus: null == variationStockStatus
+          ? _value.variationStockStatus
+          : variationStockStatus // ignore: cast_nullable_to_non_nullable
+              as String,
+      productVariationModel: null == productVariationModel
+          ? _value.productVariationModel
+          : productVariationModel // ignore: cast_nullable_to_non_nullable
+              as ProductVariationModel,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CartState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
+abstract class _$$CartStateImplCopyWith<$Res>
+    implements $CartStateCopyWith<$Res> {
+  factory _$$CartStateImplCopyWith(
+          _$CartStateImpl value, $Res Function(_$CartStateImpl) then) =
+      __$$CartStateImplCopyWithImpl<$Res>;
   @override
-  String toString() {
-    return 'CartState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<CartItemModel> cartItem) cartUpdated,
-    required TResult Function(List<CartItemModel> cartItem) cartLoaded,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<CartItemModel> cartItem)? cartUpdated,
-    TResult? Function(List<CartItemModel> cartItem)? cartLoaded,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<CartItemModel> cartItem)? cartUpdated,
-    TResult Function(List<CartItemModel> cartItem)? cartLoaded,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(CartUpdated value) cartUpdated,
-    required TResult Function(CartLoaded value) cartLoaded,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(CartUpdated value)? cartUpdated,
-    TResult? Function(CartLoaded value)? cartLoaded,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(CartUpdated value)? cartUpdated,
-    TResult Function(CartLoaded value)? cartLoaded,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements CartState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CartState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$LoadingImpl implements Loading {
-  const _$LoadingImpl();
-
-  @override
-  String toString() {
-    return 'CartState.loading()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadingImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<CartItemModel> cartItem) cartUpdated,
-    required TResult Function(List<CartItemModel> cartItem) cartLoaded,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<CartItemModel> cartItem)? cartUpdated,
-    TResult? Function(List<CartItemModel> cartItem)? cartLoaded,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<CartItemModel> cartItem)? cartUpdated,
-    TResult Function(List<CartItemModel> cartItem)? cartLoaded,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(CartUpdated value) cartUpdated,
-    required TResult Function(CartLoaded value) cartLoaded,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(CartUpdated value)? cartUpdated,
-    TResult? Function(CartLoaded value)? cartLoaded,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(CartUpdated value)? cartUpdated,
-    TResult Function(CartLoaded value)? cartLoaded,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Loading implements CartState {
-  const factory Loading() = _$LoadingImpl;
-}
-
-/// @nodoc
-abstract class _$$CartUpdatedImplCopyWith<$Res> {
-  factory _$$CartUpdatedImplCopyWith(
-          _$CartUpdatedImpl value, $Res Function(_$CartUpdatedImpl) then) =
-      __$$CartUpdatedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<CartItemModel> cartItem});
+  $Res call(
+      {List<CartItemModel> cartItems,
+      int noOfCartItems,
+      double totalCartPrice,
+      int productQuantityInCart,
+      Map<String, dynamic> selectedAttributes,
+      String variationStockStatus,
+      ProductVariationModel productVariationModel});
 }
 
 /// @nodoc
-class __$$CartUpdatedImplCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$CartUpdatedImpl>
-    implements _$$CartUpdatedImplCopyWith<$Res> {
-  __$$CartUpdatedImplCopyWithImpl(
-      _$CartUpdatedImpl _value, $Res Function(_$CartUpdatedImpl) _then)
+class __$$CartStateImplCopyWithImpl<$Res>
+    extends _$CartStateCopyWithImpl<$Res, _$CartStateImpl>
+    implements _$$CartStateImplCopyWith<$Res> {
+  __$$CartStateImplCopyWithImpl(
+      _$CartStateImpl _value, $Res Function(_$CartStateImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of CartState
@@ -344,300 +135,165 @@ class __$$CartUpdatedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? cartItem = null,
+    Object? cartItems = null,
+    Object? noOfCartItems = null,
+    Object? totalCartPrice = null,
+    Object? productQuantityInCart = null,
+    Object? selectedAttributes = null,
+    Object? variationStockStatus = null,
+    Object? productVariationModel = null,
   }) {
-    return _then(_$CartUpdatedImpl(
-      null == cartItem
-          ? _value._cartItem
-          : cartItem // ignore: cast_nullable_to_non_nullable
+    return _then(_$CartStateImpl(
+      cartItems: null == cartItems
+          ? _value._cartItems
+          : cartItems // ignore: cast_nullable_to_non_nullable
               as List<CartItemModel>,
+      noOfCartItems: null == noOfCartItems
+          ? _value.noOfCartItems
+          : noOfCartItems // ignore: cast_nullable_to_non_nullable
+              as int,
+      totalCartPrice: null == totalCartPrice
+          ? _value.totalCartPrice
+          : totalCartPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      productQuantityInCart: null == productQuantityInCart
+          ? _value.productQuantityInCart
+          : productQuantityInCart // ignore: cast_nullable_to_non_nullable
+              as int,
+      selectedAttributes: null == selectedAttributes
+          ? _value._selectedAttributes
+          : selectedAttributes // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
+      variationStockStatus: null == variationStockStatus
+          ? _value.variationStockStatus
+          : variationStockStatus // ignore: cast_nullable_to_non_nullable
+              as String,
+      productVariationModel: null == productVariationModel
+          ? _value.productVariationModel
+          : productVariationModel // ignore: cast_nullable_to_non_nullable
+              as ProductVariationModel,
     ));
   }
 }
 
 /// @nodoc
 
-class _$CartUpdatedImpl implements CartUpdated {
-  const _$CartUpdatedImpl(final List<CartItemModel> cartItem)
-      : _cartItem = cartItem;
+class _$CartStateImpl implements _CartState {
+  const _$CartStateImpl(
+      {required final List<CartItemModel> cartItems,
+      required this.noOfCartItems,
+      required this.totalCartPrice,
+      required this.productQuantityInCart,
+      required final Map<String, dynamic> selectedAttributes,
+      required this.variationStockStatus,
+      required this.productVariationModel})
+      : _cartItems = cartItems,
+        _selectedAttributes = selectedAttributes;
 
-  final List<CartItemModel> _cartItem;
+  final List<CartItemModel> _cartItems;
   @override
-  List<CartItemModel> get cartItem {
-    if (_cartItem is EqualUnmodifiableListView) return _cartItem;
+  List<CartItemModel> get cartItems {
+    if (_cartItems is EqualUnmodifiableListView) return _cartItems;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_cartItem);
+    return EqualUnmodifiableListView(_cartItems);
   }
 
   @override
+  final int noOfCartItems;
+  @override
+  final double totalCartPrice;
+  @override
+  final int productQuantityInCart;
+  final Map<String, dynamic> _selectedAttributes;
+  @override
+  Map<String, dynamic> get selectedAttributes {
+    if (_selectedAttributes is EqualUnmodifiableMapView)
+      return _selectedAttributes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_selectedAttributes);
+  }
+
+  @override
+  final String variationStockStatus;
+  @override
+  final ProductVariationModel productVariationModel;
+
+  @override
   String toString() {
-    return 'CartState.cartUpdated(cartItem: $cartItem)';
+    return 'CartState(cartItems: $cartItems, noOfCartItems: $noOfCartItems, totalCartPrice: $totalCartPrice, productQuantityInCart: $productQuantityInCart, selectedAttributes: $selectedAttributes, variationStockStatus: $variationStockStatus, productVariationModel: $productVariationModel)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CartUpdatedImpl &&
-            const DeepCollectionEquality().equals(other._cartItem, _cartItem));
+            other is _$CartStateImpl &&
+            const DeepCollectionEquality()
+                .equals(other._cartItems, _cartItems) &&
+            (identical(other.noOfCartItems, noOfCartItems) ||
+                other.noOfCartItems == noOfCartItems) &&
+            (identical(other.totalCartPrice, totalCartPrice) ||
+                other.totalCartPrice == totalCartPrice) &&
+            (identical(other.productQuantityInCart, productQuantityInCart) ||
+                other.productQuantityInCart == productQuantityInCart) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedAttributes, _selectedAttributes) &&
+            (identical(other.variationStockStatus, variationStockStatus) ||
+                other.variationStockStatus == variationStockStatus) &&
+            (identical(other.productVariationModel, productVariationModel) ||
+                other.productVariationModel == productVariationModel));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_cartItem));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_cartItems),
+      noOfCartItems,
+      totalCartPrice,
+      productQuantityInCart,
+      const DeepCollectionEquality().hash(_selectedAttributes),
+      variationStockStatus,
+      productVariationModel);
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CartUpdatedImplCopyWith<_$CartUpdatedImpl> get copyWith =>
-      __$$CartUpdatedImplCopyWithImpl<_$CartUpdatedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<CartItemModel> cartItem) cartUpdated,
-    required TResult Function(List<CartItemModel> cartItem) cartLoaded,
-  }) {
-    return cartUpdated(cartItem);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<CartItemModel> cartItem)? cartUpdated,
-    TResult? Function(List<CartItemModel> cartItem)? cartLoaded,
-  }) {
-    return cartUpdated?.call(cartItem);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<CartItemModel> cartItem)? cartUpdated,
-    TResult Function(List<CartItemModel> cartItem)? cartLoaded,
-    required TResult orElse(),
-  }) {
-    if (cartUpdated != null) {
-      return cartUpdated(cartItem);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(CartUpdated value) cartUpdated,
-    required TResult Function(CartLoaded value) cartLoaded,
-  }) {
-    return cartUpdated(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(CartUpdated value)? cartUpdated,
-    TResult? Function(CartLoaded value)? cartLoaded,
-  }) {
-    return cartUpdated?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(CartUpdated value)? cartUpdated,
-    TResult Function(CartLoaded value)? cartLoaded,
-    required TResult orElse(),
-  }) {
-    if (cartUpdated != null) {
-      return cartUpdated(this);
-    }
-    return orElse();
-  }
+  _$$CartStateImplCopyWith<_$CartStateImpl> get copyWith =>
+      __$$CartStateImplCopyWithImpl<_$CartStateImpl>(this, _$identity);
 }
 
-abstract class CartUpdated implements CartState {
-  const factory CartUpdated(final List<CartItemModel> cartItem) =
-      _$CartUpdatedImpl;
+abstract class _CartState implements CartState {
+  const factory _CartState(
+          {required final List<CartItemModel> cartItems,
+          required final int noOfCartItems,
+          required final double totalCartPrice,
+          required final int productQuantityInCart,
+          required final Map<String, dynamic> selectedAttributes,
+          required final String variationStockStatus,
+          required final ProductVariationModel productVariationModel}) =
+      _$CartStateImpl;
 
-  List<CartItemModel> get cartItem;
+  @override
+  List<CartItemModel> get cartItems;
+  @override
+  int get noOfCartItems;
+  @override
+  double get totalCartPrice;
+  @override
+  int get productQuantityInCart;
+  @override
+  Map<String, dynamic> get selectedAttributes;
+  @override
+  String get variationStockStatus;
+  @override
+  ProductVariationModel get productVariationModel;
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CartUpdatedImplCopyWith<_$CartUpdatedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$CartLoadedImplCopyWith<$Res> {
-  factory _$$CartLoadedImplCopyWith(
-          _$CartLoadedImpl value, $Res Function(_$CartLoadedImpl) then) =
-      __$$CartLoadedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<CartItemModel> cartItem});
-}
-
-/// @nodoc
-class __$$CartLoadedImplCopyWithImpl<$Res>
-    extends _$CartStateCopyWithImpl<$Res, _$CartLoadedImpl>
-    implements _$$CartLoadedImplCopyWith<$Res> {
-  __$$CartLoadedImplCopyWithImpl(
-      _$CartLoadedImpl _value, $Res Function(_$CartLoadedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CartState
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? cartItem = null,
-  }) {
-    return _then(_$CartLoadedImpl(
-      null == cartItem
-          ? _value._cartItem
-          : cartItem // ignore: cast_nullable_to_non_nullable
-              as List<CartItemModel>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$CartLoadedImpl implements CartLoaded {
-  const _$CartLoadedImpl(final List<CartItemModel> cartItem)
-      : _cartItem = cartItem;
-
-  final List<CartItemModel> _cartItem;
-  @override
-  List<CartItemModel> get cartItem {
-    if (_cartItem is EqualUnmodifiableListView) return _cartItem;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_cartItem);
-  }
-
-  @override
-  String toString() {
-    return 'CartState.cartLoaded(cartItem: $cartItem)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CartLoadedImpl &&
-            const DeepCollectionEquality().equals(other._cartItem, _cartItem));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_cartItem));
-
-  /// Create a copy of CartState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CartLoadedImplCopyWith<_$CartLoadedImpl> get copyWith =>
-      __$$CartLoadedImplCopyWithImpl<_$CartLoadedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<CartItemModel> cartItem) cartUpdated,
-    required TResult Function(List<CartItemModel> cartItem) cartLoaded,
-  }) {
-    return cartLoaded(cartItem);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(List<CartItemModel> cartItem)? cartUpdated,
-    TResult? Function(List<CartItemModel> cartItem)? cartLoaded,
-  }) {
-    return cartLoaded?.call(cartItem);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<CartItemModel> cartItem)? cartUpdated,
-    TResult Function(List<CartItemModel> cartItem)? cartLoaded,
-    required TResult orElse(),
-  }) {
-    if (cartLoaded != null) {
-      return cartLoaded(cartItem);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(CartUpdated value) cartUpdated,
-    required TResult Function(CartLoaded value) cartLoaded,
-  }) {
-    return cartLoaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(CartUpdated value)? cartUpdated,
-    TResult? Function(CartLoaded value)? cartLoaded,
-  }) {
-    return cartLoaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(CartUpdated value)? cartUpdated,
-    TResult Function(CartLoaded value)? cartLoaded,
-    required TResult orElse(),
-  }) {
-    if (cartLoaded != null) {
-      return cartLoaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class CartLoaded implements CartState {
-  const factory CartLoaded(final List<CartItemModel> cartItem) =
-      _$CartLoadedImpl;
-
-  List<CartItemModel> get cartItem;
-
-  /// Create a copy of CartState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CartLoadedImplCopyWith<_$CartLoadedImpl> get copyWith =>
+  _$$CartStateImplCopyWith<_$CartStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

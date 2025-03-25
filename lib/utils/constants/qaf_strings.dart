@@ -164,6 +164,7 @@ class QafStrings {
 
   /// Address
   static const String addNewAddress = 'Add New Address';
+  static const String selectAddress = 'Select Address';
 
   /// Coupon
   static const String haveAPromoCodeEnterHere = 'Have a promo code? Enter here';
@@ -180,6 +181,9 @@ class QafStrings {
   static const String shippingAddress = 'Shipping Address';
   static const String change = 'Change';
   static const String paypal = 'Paypal';
+  static const String emptyCart = 'Empty Cart';
+  static const String addItemsInTheCartInOrderToProceed = 'Add Items in The Cart in Order to Proceed!';
+  static const String checkoutSuccess = 'Checkout Success!';
 
   /// Orders
   static const String processing = 'Processing';

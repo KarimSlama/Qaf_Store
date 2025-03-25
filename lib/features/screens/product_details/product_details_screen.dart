@@ -42,7 +42,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: () {}, child: Text(QafStrings.checkout)),
+                        onPressed: () => context.pushNamed(Routes.checkoutScreen), child: Text(QafStrings.checkout)),
                   ),
                   SizedBox(height: QafSizes.spaceBtwItems),
                   SectionHeading(

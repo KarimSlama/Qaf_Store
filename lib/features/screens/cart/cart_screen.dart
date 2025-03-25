@@ -30,10 +30,8 @@ class CartScreen extends StatelessWidget {
           showBackArrow: true,
         ),
         body: BlocBuilder<CartCubit, CartState>(
-          buildWhen: (previous, current) =>
-              current is CartUpdated || current is CartLoaded,
           builder: (context, state) {
-            return context.read<CartCubit>().cartItem.isEmpty
+            return state.cartItems.isEmpty
                 ? emptyWidget
                 : SingleChildScrollView(
                     child: Padding(
@@ -45,7 +43,7 @@ class CartScreen extends StatelessWidget {
         ),
         bottomNavigationBar: BlocBuilder<CartCubit, CartState>(
           builder: (context, state) {
-            return context.read<CartCubit>().cartItem.isNotEmpty
+            return  state.cartItems.isNotEmpty
                 ? Padding(
                     padding: const EdgeInsetsDirectional.only(
                         start: QafSizes.defaultSpace,
@@ -54,7 +52,7 @@ class CartScreen extends StatelessWidget {
                     child: ElevatedButton(
                       onPressed: () => context.pushNamed(Routes.checkoutScreen),
                       child: Text(
-                          '${QafStrings.checkout}  \$${context.read<CartCubit>().totalCartPrice}'),
+                          '${QafStrings.checkout}  \$${state.totalCartPrice}'),
                     ),
                   )
                 : SizedBox();

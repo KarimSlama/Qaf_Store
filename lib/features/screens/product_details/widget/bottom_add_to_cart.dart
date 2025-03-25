@@ -46,12 +46,12 @@ class BottomAddToCart extends StatelessWidget {
                         height: 40.h,
                         color: QafColors.white,
                         onPressed: () {
-                          if (cartCubit.productQuantityInCart > 0) {
+                          if (state.productQuantityInCart > 0) {
                             cartCubit.updateProductQuantity(
-                                cartCubit.productQuantityInCart - 1);
+                                state.productQuantityInCart - 1);
                           }
                         }),
-                    Text('${cartCubit.productQuantityInCart}',
+                    Text('${state.productQuantityInCart}',
                         style: Theme.of(context).textTheme.titleSmall),
                     CircularIcon(
                       icon: Iconsax.add,
@@ -60,12 +60,12 @@ class BottomAddToCart extends StatelessWidget {
                       height: 40.h,
                       color: QafColors.white,
                       onPressed: () => cartCubit.updateProductQuantity(
-                          cartCubit.productQuantityInCart + 1),
+                          state.productQuantityInCart + 1),
                     ),
                   ],
                 ),
                 ElevatedButton(
-                    onPressed: cartCubit.productQuantityInCart < 1
+                    onPressed: state.productQuantityInCart < 1
                         ? null
                         : () => cartCubit.addToCart(productModel, context),
                     style: ElevatedButton.styleFrom(

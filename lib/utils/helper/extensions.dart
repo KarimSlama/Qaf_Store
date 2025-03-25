@@ -16,7 +16,7 @@ extension Navigation on BuildContext {
         .pushNamedAndRemoveUntil(routeName, predicate, arguments: arguments);
   }
 
-  void pop() => Navigator.of(this).pop();
+  void pop({dynamic paymentMethodModel}) => Navigator.of(this).pop(paymentMethodModel);
 }
 
 extension StringExtension on String? {

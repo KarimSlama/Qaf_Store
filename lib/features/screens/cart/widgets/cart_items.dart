@@ -15,15 +15,14 @@ class CartItems extends StatelessWidget {
   Widget build(BuildContext context) {
     final cartCubit = context.read<CartCubit>();
     return BlocBuilder<CartCubit, CartState>(
-      buildWhen: (previous, current) => current is CartUpdated || current is CartLoaded,
       builder: (context, state) {
         return ListView.separated(
           shrinkWrap: true,
           separatorBuilder: (_, __) =>
               SizedBox(height: QafSizes.spaceBtwSections),
-          itemCount: cartCubit.cartItem.length,
+          itemCount: state.cartItems.length,
           itemBuilder: (_, index) {
-            final item = cartCubit.cartItem[index];
+            final item = state.cartItems[index];
             return Column(
               spacing: QafSizes.md,
               children: [
@@ -43,8 +42,8 @@ class CartItems extends StatelessWidget {
                         ],
                       ),
                       ProductPriceText(
-                          price:
-                              (item.price * item.quantity).toStringAsFixed(1)),
+                          price: (item.price * item.quantity)
+                              .toStringAsFixed(1)),
                     ],
                   ),
               ],
