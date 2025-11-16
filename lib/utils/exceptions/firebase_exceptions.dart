@@ -1,100 +1,159 @@
-/// Custom exception class to handle various Firebase-related errors.
-class TFirebaseException implements Exception {
-  /// The error code associated with the exception.
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/services.dart';
+
+/// Unified Exception Handler for Firebase, Auth, Platform, and Format errors.
+class QafExceptionHandler implements Exception {
   final String code;
+  final String? customMessage;
 
-  /// Constructor that takes an error code.
-  TFirebaseException(this.code);
+  QafExceptionHandler(this.code, [this.customMessage]);
 
-  /// Get the corresponding error message based on the error code.
+  /// Main message getter
   String get message {
-    switch (code) {
-      case 'unknown':
-        return 'An unknown Firebase error occurred. Please try again.';
-      case 'invalid-custom-token':
-        return 'The custom token format is incorrect. Please check your custom token.';
-      case 'custom-token-mismatch':
-        return 'The custom token corresponds to a different audience.';
-      case 'user-disabled':
-        return 'The user account has been disabled.';
-      case 'user-not-found':
-        return 'No user found for the given email or UID.';
-      case 'invalid-email':
-        return 'The email address provided is invalid. Please enter a valid email.';
-      case 'email-already-in-use':
-        return 'The email address is already registered. Please use a different email.';
-      case 'wrong-password':
-        return 'Incorrect password. Please check your password and try again.';
-      case 'weak-password':
-        return 'The password is too weak. Please choose a stronger password.';
-      case 'provider-already-linked':
-        return 'The account is already linked with another provider.';
-      case 'operation-not-allowed':
-        return 'This operation is not allowed. Contact support for assistance.';
-      case 'invalid-credential':
-        return 'The supplied credential is malformed or has expired.';
-      case 'invalid-verification-code':
-        return 'Invalid verification code. Please enter a valid code.';
-      case 'invalid-verification-id':
-        return 'Invalid verification ID. Please request a new verification code.';
-      case 'captcha-check-failed':
-        return 'The reCAPTCHA response is invalid. Please try again.';
-      case 'app-not-authorized':
-        return 'The app is not authorized to use Firebase Authentication with the provided API key.';
-      case 'keychain-error':
-        return 'A keychain error occurred. Please check the keychain and try again.';
-      case 'internal-error':
-        return 'An internal authentication error occurred. Please try again later.';
-      case 'invalid-app-credential':
-        return 'The app credential is invalid. Please provide a valid app credential.';
-      case 'user-mismatch':
-        return 'The supplied credentials do not correspond to the previously signed-in user.';
-      case 'requires-recent-login':
-        return 'This operation is sensitive and requires recent authentication. Please log in again.';
-      case 'quota-exceeded':
-        return 'Quota exceeded. Please try again later.';
-      case 'account-exists-with-different-credential':
-        return 'An account already exists with the same email but different sign-in credentials.';
-      case 'missing-iframe-start':
-        return 'The email template is missing the iframe start tag.';
-      case 'missing-iframe-end':
-        return 'The email template is missing the iframe end tag.';
-      case 'missing-iframe-src':
-        return 'The email template is missing the iframe src attribute.';
-      case 'auth-domain-config-required':
-        return 'The authDomain configuration is required for the action code verification link.';
-      case 'missing-app-credential':
-        return 'The app credential is missing. Please provide valid app credentials.';
-      case 'session-cookie-expired':
-        return 'The Firebase session cookie has expired. Please sign in again.';
-      case 'uid-already-exists':
-        return 'The provided user ID is already in use by another user.';
-      case 'web-storage-unsupported':
-        return 'Web storage is not supported or is disabled.';
-      case 'app-deleted':
-        return 'This instance of FirebaseApp has been deleted.';
-      case 'user-token-mismatch':
-        return 'The provided user\'s token has a mismatch with the authenticated user\'s user ID.';
-      case 'invalid-message-payload':
-        return 'The email template verification message payload is invalid.';
-      case 'invalid-sender':
-        return 'The email template sender is invalid. Please verify the sender\'s email.';
-      case 'invalid-recipient-email':
-        return 'The recipient email address is invalid. Please provide a valid recipient email.';
-      case 'missing-action-code':
-        return 'The action code is missing. Please provide a valid action code.';
-      case 'user-token-expired':
-        return 'The user\'s token has expired, and authentication is required. Please sign in again.';
-      case 'INVALID_LOGIN_CREDENTIALS':
-        return 'Invalid login credentials.';
-      case 'expired-action-code':
-        return 'The action code has expired. Please request a new action code.';
-      case 'invalid-action-code':
-        return 'The action code is invalid. Please check the code and try again.';
-      case 'credential-already-in-use':
-        return 'This credential is already associated with a different user account.';
-      default:
-        return 'An unexpected Firebase error occurred. Please try again.';
+    if (customMessage != null && customMessage!.isNotEmpty) {
+      return customMessage!;
+    }
+
+    // 🔹 Try Firebase Auth Errors First
+    final firebaseAuthMsg = _firebaseAuthErrors[code];
+    if (firebaseAuthMsg != null) return firebaseAuthMsg;
+
+    // 🔹 Try Firebase General Errors
+    final firebaseMsg = _firebaseErrors[code];
+    if (firebaseMsg != null) return firebaseMsg;
+
+    // 🔹 Try Platform Errors
+    final platformMsg = _platformErrors[code];
+    if (platformMsg != null) return platformMsg;
+
+    // 🔹 Try Format Errors
+    final formatMsg = _formatErrors[code];
+    if (formatMsg != null) return formatMsg;
+
+    // 🔹 Default fallback
+    return 'An unexpected error occurred. Please try again.';
+  }
+
+  // ----------------------------
+  // 🔸 Firebase Auth Error Messages
+  // ----------------------------
+  static const Map<String, String> _firebaseAuthErrors = {
+    'invalid-credential':
+        'The email or password is incorrect. Please check your credentials and try again.',
+    'email-already-in-use':
+        'The email address is already registered. Please use a different email.',
+    'invalid-email':
+        'The email address provided is invalid. Please enter a valid email.',
+    'weak-password':
+        'The password is too weak. Please choose a stronger password.',
+    'user-disabled':
+        'This user account has been disabled. Please contact support.',
+    'user-not-found':
+        'Invalid login details. User not found.',
+    'wrong-password':
+        'Incorrect password. Please check your password and try again.',
+    'account-exists-with-different-credential':
+        'An account already exists with the same email but different sign-in credentials.',
+    'requires-recent-login':
+        'This operation is sensitive and requires recent authentication. Please log in again.',
+    'credential-already-in-use':
+        'This credential is already associated with another user account.',
+    'quota-exceeded':
+        'Quota exceeded. Please try again later.',
+    'internal-error':
+        'An internal authentication error occurred. Please try again later.',
+    'INVALID_LOGIN_CREDENTIALS':
+        'Invalid login credentials. Please double-check your information.',
+  };
+
+  // ----------------------------
+  // 🔸 General Firebase Errors
+  // ----------------------------
+  static const Map<String, String> _firebaseErrors = {
+    'unknown': 'An unknown Firebase error occurred.',
+    'user-disabled': 'The user account has been disabled.',
+    'user-mismatch': 'The supplied credentials do not match the signed-in user.',
+    'invalid-verification-code':
+        'Invalid verification code. Please enter a valid code.',
+    'invalid-verification-id':
+        'Invalid verification ID. Please request a new verification code.',
+    'expired-action-code':
+        'The action code has expired. Please request a new one.',
+    'app-not-authorized':
+        'The app is not authorized to use Firebase Authentication.',
+    'app-deleted':
+        'This instance of FirebaseApp has been deleted.',
+    'web-storage-unsupported':
+        'Web storage is not supported or disabled.',
+    'requires-recent-login':
+        'This operation requires recent login. Please sign in again.',
+  };
+
+  // ----------------------------
+  // 🔸 Platform Errors
+  // ----------------------------
+  static const Map<String, String> _platformErrors = {
+    'INVALID_LOGIN_CREDENTIALS':
+        'Invalid login credentials. Please double-check your information.',
+    'too-many-requests':
+        'Too many requests. Please try again later.',
+    'invalid-argument':
+        'Invalid argument provided to the authentication method.',
+    'invalid-phone-number':
+        'The provided phone number is invalid.',
+    'operation-not-allowed':
+        'The sign-in provider is disabled for your Firebase project.',
+    'session-cookie-expired':
+        'The session cookie has expired. Please sign in again.',
+    'network-request-failed':
+        'Network request failed. Please check your internet connection.',
+    'internal-error':
+        'Internal error. Please try again later.',
+    'quota-exceeded':
+        'Quota exceeded. Please try again later.',
+  };
+
+  // ----------------------------
+  // 🔸 Format Errors
+  // ----------------------------
+  static const Map<String, String> _formatErrors = {
+    'invalid-email-format':
+        'The email address format is invalid. Please enter a valid email.',
+    'invalid-phone-number-format':
+        'The phone number format is invalid. Please enter a valid number.',
+    'invalid-date-format':
+        'The date format is invalid. Please enter a valid date.',
+    'invalid-url-format':
+        'The URL format is invalid. Please enter a valid URL.',
+    'invalid-credit-card-format':
+        'The credit card format is invalid. Please enter a valid card number.',
+    'invalid-numeric-format':
+        'The input should be a valid numeric format.',
+  };
+
+  // ----------------------------
+  // 🔸 Factory method for catching any error type easily
+  // ----------------------------
+  static QafExceptionHandler from(dynamic error) {
+    if (error == null) {
+      return QafExceptionHandler('unknown');
+    }
+
+    if (error is FirebaseAuthException) {
+      return QafExceptionHandler(error.code);
+    } else if (error is FirebaseException) {
+      return QafExceptionHandler(error.code);
+    } else if (error is PlatformException) {
+      return QafExceptionHandler(error.code);
+    } else if (error is FormatException) {
+      return QafExceptionHandler('invalid-format', error.message);
+    } else if (error is QafExceptionHandler) {
+      return error;
+    } else {
+      return QafExceptionHandler('unknown', error.toString());
     }
   }
+
+  @override
+  String toString() => message;
 }

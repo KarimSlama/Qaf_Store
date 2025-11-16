@@ -27,7 +27,12 @@ class VerifyEmailBlocListener extends StatelessWidget {
               'We are Proccessing your information....',
               Assets.images.animations.a141594AnimationOfDocer,
               context),
-          success: () {},
+          success: () {
+            Loaders.successSnackBar(
+                context: context,
+                title: 'Email Sent!',
+                message: 'Please Check your emails and verify your account.');
+          },
           verificationSuccess: () => Navigator.push(
             context,
             MaterialPageRoute(

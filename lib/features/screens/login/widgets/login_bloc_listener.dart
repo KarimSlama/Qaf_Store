@@ -19,17 +19,22 @@ class LoginBlocListener extends StatelessWidget {
         state.whenOrNull(
           loading: () {
             FullScreenLoader.openLoadingDialog(
-              'We are Proccessing your information....',
-              Assets.images.animations.a141594AnimationOfDocer,
-              context);
-                          context.pop();
-
-          } ,
+                'We are Proccessing your information....',
+                Assets.images.animations.a141594AnimationOfDocer,
+                context);
+          },
           success: (data) {
-            context.pop();
+            FullScreenLoader.stopLoading(context);
+            Loaders.successSnackBar(
+                context: context,
+                title: QafStrings.congratulations,
+                message:
+                    QafStrings.youAreLoggedInPerfectlyNowShopWhteverYouWant);
+             
             context.pushNamed(Routes.navigationMenu);
           },
           error: (error) {
+            FullScreenLoader.stopLoading(context);
             Loaders.errorSnackBar(
                 context: context,
                 title: QafStrings.ohSnap,

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/cards/brand_card.dart';
-import 'package:qaf_store/common/widgets/products/sort/sortable_products.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
 import 'package:qaf_store/features/screens/brands/data/models/brand_model.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
+
+import '../../../common/widgets/products/sort/sortable_products.dart';
 
 class BrandProductsScreen extends StatelessWidget {
   final BrandModel brands;

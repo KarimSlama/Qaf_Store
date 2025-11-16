@@ -1,193 +1,162 @@
 import 'dart:io';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qaf_store/common/widgets/popups/full_screen_loader.dart';
 import 'package:qaf_store/features/screens/login/data/repository/login_social_repository.dart';
 import 'package:qaf_store/features/screens/profile/controller/cubit/user_state.dart';
 import 'package:qaf_store/features/screens/profile/data/repository/user_repository.dart';
 import 'package:qaf_store/features/screens/sign_up/data/model/user_model.dart';
-import 'package:qaf_store/gen/assets.gen.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:image_picker/image_picker.dart';
-import 'package:crypto/crypto.dart';
 
 class UserCubit extends Cubit<UserState> {
-  final UserRepository userRepository;
-  final LoginSocialRepository loginSocialRepository;
-  UserCubit(this.userRepository, this.loginSocialRepository)
+  final UserRepository _userRepository;
+  final LoginSocialRepository _loginSocialRepository;
+
+  UserCubit(this._userRepository, this._loginSocialRepository)
       : super(UserState.initial());
 
-  final nameFormKey = GlobalKey<FormState>();
-  final authFormKey = GlobalKey<FormState>();
-  final TextEditingController firstNameController = TextEditingController();
-  final TextEditingController lastNameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  UserModel? _currentUser;
+  UserModel? get currentUser => _currentUser;
 
-  UserModel userModel = UserModel.empty();
   Future<void> fetchUserDetails() async {
-    try {
-      emit(UserState.loading());
-      final result = await userRepository.fetchUserDetails();
-      result.when(
-        success: (user) {
-          userModel = user;
-        
-          initializeNameFields(user.firstName, user.lastName);
-          emit(UserState.success(user));
-        },
-        failure: (error) {
-          emit(UserState.error(error: error));
-        },
-      );
-    } catch (error) {
-      emit(UserState.error(error: error.toString()));
+    emit(UserState.loading());
+
+    final result = await _userRepository.fetchUserDetails();
+
+    result.when(
+      success: (user) {
+        _currentUser = user;
+        emit(UserState.success(user));
+      },
+      failure: (error) {
+        emit(UserState.error(error: error));
+      },
+    );
+  }
+
+  Future<void> updateName(String firstName, String lastName) async {
+    if (firstName.trim().isEmpty || lastName.trim().isEmpty) {
+      emit(UserState.updateError(error: 'Name fields cannot be empty'));
+      return;
     }
-  }
 
-  void initializeNameFields(firstName, lastName) {
-    firstNameController.text = firstName;
-    lastNameController.text = lastName;
-  }
-
-  Future<void> updateName() async {
-    if (!nameFormKey.currentState!.validate()) return;
     emit(UserState.loadingUpdate());
 
-    try {
-      final Map<String, dynamic> name = {
-        'FirstName': firstNameController.text.trim(),
-        'LastName': lastNameController.text.trim()
-      };
-      final result = await userRepository.updateSingleField(name);
+    final Map<String, dynamic> name = {
+      'FirstName': firstName.trim(),
+      'LastName': lastName.trim(),
+    };
+
+    final result = await _userRepository.updateSingleField(name);
+
+    result.when(
+      success: (_) {
+        _currentUser = _currentUser?.copyWith(
+          firstName: firstName.trim(),
+          lastName: lastName.trim(),
+        );
+        emit(UserState.updateSuccess());
+      },
+      failure: (error) {
+        emit(UserState.updateError(error: error));
+      },
+    );
+  }
+
+  Future<void> uploadProfilePicture() async {
+    emit(UserState.uploadImageLoading());
+
+    final imageResult = await _userRepository.pickProfileImage();
+
+    File? imageFile;
+    imageResult.when(
+      success: (image) => imageFile = image,
+      failure: (error) {
+        emit(UserState.uploadImageError(error: error));
+        return;
+      },
+    );
+
+    if (imageFile == null) {
+      if (_currentUser != null) {
+        emit(UserState.success(_currentUser!));
+      } else {
+        await fetchUserDetails();
+      }
+      return;
+    }
+
+    final uploadResult = await _userRepository.uploadAndUpdateProfilePicture(
+      imageFile!,
+      _currentUser?.id ?? '',
+    );
+
+    uploadResult.when(
+      success: (imageUrl) {
+        _currentUser = _currentUser?.copyWith(profilePicture: imageUrl);
+        emit(UserState.success(_currentUser!));
+      },
+      failure: (error) {
+        emit(UserState.uploadImageError(error: error));
+      },
+    );
+  }
+
+  Future<void> deleteUserAccount() async {
+    emit(UserState.deleteLoading());
+
+    final provider = FirebaseAuth.instance.currentUser?.providerData
+        .map((row) => row.providerId)
+        .firstOrNull;
+
+    if (provider == null || provider.isEmpty) {
+      emit(UserState.deleteError(error: 'No authentication provider found'));
+      return;
+    }
+
+    if (provider == 'google.com') {
+      await _loginSocialRepository.loginWithGoogle();
+
+      final result =
+          await _userRepository.deleteUserAccount(_currentUser?.id ?? '');
+
       result.when(
-        success: (data) {
-          emit(UserState.updateSuccess());
-        },
-        failure: (error) {
-          emit(UserState.updateError(error: error));
-        },
+        success: (_) => emit(UserState.deleteGoogleSuccess()),
+        failure: (error) => emit(UserState.deleteError(error: error)),
       );
-    } catch (error) {
-      emit(UserState.updateError(error: error.toString()));
+    } else if (provider == 'password') {
+      emit(UserState.deletePasswordSuccess());
+    } else {
+      emit(UserState.deleteError(error: 'Unsupported authentication provider'));
     }
   }
 
-  void deleteUserAccount(context) async {
-    try {
-      emit(UserState.deleteLoading());
-      FullScreenLoader.openLoadingDialog(
-          'We are Proccessing your information....',
-          Assets.images.animations.a141594AnimationOfDocer,
-          context);
-      final provider = FirebaseAuth.instance.currentUser!.providerData
-          .map((row) => row.providerId)
-          .first;
-      if (provider.isNotEmpty) {
-        if (provider == 'google.com') {
-          await loginSocialRepository.loginWithSocial();
-          await userRepository.deleteUserAccount(userModel.id!);
-          FullScreenLoader.stopLoading(context);
-          emit(UserState.deleteGoogleSuccess());
-          return;
-        } else if (provider == 'password') {
-          FullScreenLoader.stopLoading(context);
-          emit(UserState.deletePasswordSuccess());
-          return;
-        }
-      }
-      emit(UserState.deleteError(error: 'no item found to delete'));
-    } catch (error) {
-      emit(UserState.deleteError(error: error.toString()));
+  Future<void> reAuthenticateAndDelete(String email, String password) async {
+    emit(UserState.reAuthLoading());
+
+    if (email.trim().isEmpty || password.trim().isEmpty) {
+      emit(UserState.reAuthError(error: 'Email and password are required'));
+      return;
     }
-  }
 
-  Future<void> reAuthenticateEmailAndPassword() async {
-    try {
-      emit(UserState.reAuthLoading());
-      if (!authFormKey.currentState!.validate()) return;
-      final user = await userRepository.reAuthenticateEmailAndPassword(
-          emailController.text.trim(), passwordController.text.trim());
+    final authResult = await _userRepository.reAuthenticateEmailAndPassword(
+      email.trim(),
+      password.trim(),
+    );
 
-      user.when(
-        success: (data) async {
-          await userRepository.deleteUserAccount(userModel.id!);
-          emit(UserState.reAuthSuccess());
-        },
-        failure: (error) {
-          emit(UserState.reAuthError(error: error.toString()));
-        },
-      );
-    } catch (error) {
-      emit(UserState.reAuthError(error: error.toString()));
-    }
-  }
+    await authResult.when(
+      success: (_) async {
+        final deleteResult = await _userRepository.deleteUserAccount(
+          _currentUser?.id ?? '',
+        );
 
-  Future<File?> uploadUserProfilePicture(context) async {
-    try {
-      emit(UserState.uploadImageLoading());
-      final image = await ImagePicker().pickImage(
-          source: ImageSource.gallery,
-          imageQuality: 70,
-          maxHeight: 512,
-          maxWidth: 512);
-      if (image == null) {
-        emit(UserState.success(userModel));
-        return null;
-      }
-      final imageUrl = await uploadImageToCloudinary(image);
-
-      if (imageUrl != null) {
-        userRepository.updateSingleField({'ProfilePicture': imageUrl});
-        userModel = userModel.copyWith(profilePicture: imageUrl);
-       
-        emit(UserState.success(userModel));
-      } else {
-        emit(UserState.uploadImageError(error: 'Failed to upload image'));
-      }
-    } catch (error) {
-      emit(UserState.uploadImageError(error: error.toString()));
-    }
-    return null;
-  }
-
-  Future<String?> uploadImageToCloudinary(XFile? imageFile) async {
-    try {
-      final String cloudName = "doqriqoig";
-      final String apiKey = "746381528264786";
-      final String apiSecret = "HX5AO_VdKbssfo0o9RH8NnL9Q2I";
-      final String timestamp = DateTime.now().millisecondsSinceEpoch.toString();
-      final String folder = "home/profile_image";
-
-      final String stringToSign =
-          "folder=$folder&timestamp=$timestamp$apiSecret";
-      final String signature =
-          sha1.convert(utf8.encode(stringToSign)).toString();
-
-      final uri =
-          Uri.parse("https://api.cloudinary.com/v1_1/$cloudName/image/upload");
-
-      final request = http.MultipartRequest("POST", uri)
-        ..fields['api_key'] = apiKey
-        ..fields['timestamp'] = timestamp
-        ..fields['signature'] = signature
-        ..fields['folder'] = folder
-        ..files.add(await http.MultipartFile.fromPath("file", imageFile!.path));
-
-      final response = await request.send();
-      final responseData = await response.stream.bytesToString();
-      final jsonResponse = json.decode(responseData);
-
-      if (response.statusCode == 200) {
-        return jsonResponse["secure_url"];
-      } else {
-        return null;
-      }
-    } catch (e) {
-      return null;
-    }
+        deleteResult.when(
+          success: (_) => emit(UserState.reAuthSuccess()),
+          failure: (error) => emit(UserState.reAuthError(error: error)),
+        );
+      },
+      failure: (error) {
+        emit(UserState.reAuthError(error: error));
+      },
+    );
   }
 }

@@ -4,8 +4,6 @@ import 'package:qaf_store/common/widgets/cards/brand_show_case.dart';
 import 'package:qaf_store/common/widgets/shimmer/list_title_shimmer.dart';
 import 'package:qaf_store/features/screens/brands/controller/cubit/brand_cubit.dart';
 import 'package:qaf_store/features/screens/brands/controller/cubit/brand_state.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
-import 'package:qaf_store/features/screens/home/controller/cubit/product_state.dart';
 import 'package:qaf_store/features/screens/home/data/models/category_model.dart';
 import 'package:qaf_store/utils/dependency_inejction/getit.dart';
 
@@ -19,36 +17,26 @@ class CategoryBrandShowCaseWidget extends StatelessWidget {
       bloc: getIt<BrandCubit>()..fetchBrandForCategory(categoryModel.id),
       builder: (context, state) {
         return state.maybeWhen(
-          brandsForCategoryLoading: () => ListTitleShimmerEffect(),
+          brandsForCategoryLoading: () => const ListTitleShimmerEffect(),
           brandsForCategoryLoaded: (brands) {
+            if (brands.isEmpty) {
+              return const SizedBox.shrink();
+            }
+            
             return ListView.builder(
-              itemBuilder: (_, index) {
-                final brand = brands[index];
-                return BlocBuilder<ProductCubit, ProductState>(
-                  bloc: getIt<ProductCubit>()
-                    ..fetchAllProducts(brandId: brand.id),
-                  builder: (context, state) {
-                    return state.maybeWhen(
-                      productsLoading: () => ListTitleShimmerEffect(),
-                      productsSuccess: (products) {
-                        return BrandShowCase(
-                          images: products
-                              .map((product) => product.thumbnail)
-                              .toList(),
-                          brandModel: brand,
-                        );
-                      },
-                      productsError: (error) => Text(error.toString()),
-                      orElse: () => const SizedBox.shrink(),
-                    );
-                  },
-                );
-              },
               itemCount: brands.length,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (_, index) {
+                final brand = brands[index];
+                return BrandShowCase(
+                  images: const [],
+                  brandModel: brand,
+                );
+              },
             );
           },
+          error: (error) => Text(error.toString()),
           orElse: () => const SizedBox.shrink(),
         );
       },

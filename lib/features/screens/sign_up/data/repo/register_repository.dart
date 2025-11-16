@@ -3,24 +3,31 @@ import 'package:qaf_store/network/services/auth/auth_service.dart';
 import 'package:qaf_store/network/services/server_result.dart';
 import 'package:qaf_store/network/services/user/user_service.dart';
 
+import '../../../../../utils/exceptions/firebase_exceptions.dart';
+
 class RegisterRepository {
-  final AuthService registerService;
-  final UserService userService;
-  RegisterRepository(this.registerService, this.userService);
+  final AuthService _authService;
+  final UserService _userService;
+
+  RegisterRepository(this._authService, this._userService);
 
   Future<ServerResult<String?>> signUp(UserModel userModel) async {
     try {
-      final result = await registerService.signUp(userModel);
+      // Sign up with Firebase Auth
+      final uId = await _authService.signUp(userModel);
 
-      return result.when(success: (uId) async {
-        userModel = userModel.copyWith(id: uId);
-        await userService.createUser(userModel);
-        return ServerResult.success(uId);
-      }, failure: (error) {
-        return ServerResult.failure(error);
-      });
+      if (uId == null) {
+        return ServerResult.failure("Failed to create user account");
+      }
+
+      // Create user document in Firestore
+      final updatedUserModel = userModel.copyWith(id: uId);
+      await _userService.createUser(updatedUserModel);
+
+      return ServerResult.success(uId);
     } catch (error) {
-      return ServerResult.failure(error.toString());
+      return ServerResult.failure(
+          QafExceptionHandler.from(error.toString()).message);
     }
   }
 }

@@ -1,8 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="Qaf Store"
+        android:label="com.store_e_commerce.qafStore"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"

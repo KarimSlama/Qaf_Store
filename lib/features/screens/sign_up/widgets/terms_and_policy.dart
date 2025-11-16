@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:qaf_store/features/screens/sign_up/controller/cubit/sign_up_cubit.dart';
+import 'package:qaf_store/utils/constants/constants.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
@@ -36,7 +37,8 @@ class TermsAndPolicy extends StatelessWidget {
               TextSpan(
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
-                    ///Navigate to privacy screen
+                    Constants.launchMyUrl(
+                        "https://www.termsfeed.com/live/bd0b6b83-80e6-4439-95f3-a2964ded534f");
                   },
                 text: '${QafStrings.privacyAndPolicy} ',
                 style: Theme.of(context).textTheme.bodyMedium!.apply(

@@ -7,11 +7,12 @@ class ResetPasswordEmailRepository {
   ResetPasswordEmailRepository(this.authService);
 
   Future<ServerResult<void>> resetPasswordEmail(String email) async {
-    final response = await authService.sendPasswordResetEmail(email);
-    return response.when(success: (_) {
-      return ServerResult.success(_);
-    }, failure: (error) {
-      return ServerResult.failure(error);
-    });
+    try {
+      await authService.sendPasswordResetEmail(email);
+      return ServerResult.success(null);
+    } catch (error) {
+      return ServerResult.failure(
+          'Failed to send reset email: ${error.toString()}');
+    }
   }
 }

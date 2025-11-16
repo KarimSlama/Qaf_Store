@@ -17,13 +17,19 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -46,31 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDWCecKa7Z31FB9fsU2t4zJRpyjCXsnAFI',
-    appId: '1:1091430793832:web:42f21c7b07d27278a431dd',
-    messagingSenderId: '1091430793832',
-    projectId: 'qaf-store',
-    authDomain: 'qaf-store.firebaseapp.com',
-    storageBucket: 'qaf-store.firebasestorage.app',
-    measurementId: 'G-FPE0H60GS9',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyC6GCuaafFymFMiliMMT9qdRaERwuib388',
-    appId: '1:1091430793832:android:814e9a1d4a1c0a03a431dd',
-    messagingSenderId: '1091430793832',
-    projectId: 'qaf-store',
-    storageBucket: 'qaf-store.firebasestorage.app',
+    apiKey: 'AIzaSyBY7puDQ5oGTMfFHJUKVsBOZCRYWddZ4Ic',
+    appId: '1:171726759509:android:4bf239f3c08bffebad96dc',
+    messagingSenderId: '171726759509',
+    projectId: 'qaf-store-b9620',
+    storageBucket: 'qaf-store-b9620.firebasestorage.app',
   );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC-LNZH8rjzhsKGNzMeAcs0wqwoJkO0EJw',
-    appId: '1:1091430793832:ios:feb377d52f8d19eca431dd',
-    messagingSenderId: '1091430793832',
-    projectId: 'qaf-store',
-    storageBucket: 'qaf-store.firebasestorage.app',
-    iosBundleId: 'com.example.qafStore',
-  );
-
 }

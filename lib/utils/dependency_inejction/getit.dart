@@ -5,6 +5,9 @@ import 'package:qaf_store/features/screens/brands/controller/cubit/brand_cubit.d
 import 'package:qaf_store/features/screens/brands/data/repository/brands_repository.dart';
 import 'package:qaf_store/features/screens/cart/controller/cubit/cart_cubit.dart';
 import 'package:qaf_store/features/screens/checkout/controller/cubit/checkout_cubit.dart';
+import 'package:qaf_store/features/screens/customer_service/cubit/customer_service_cubit.dart';
+import 'package:qaf_store/features/screens/customer_service/data/network/customer_service.dart';
+import 'package:qaf_store/features/screens/customer_service/data/repository/customer_service_repository.dart';
 import 'package:qaf_store/features/screens/forgot_password/controller/cubit/reset_password_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/data/repository/reset_password_email_repository.dart';
 import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
@@ -14,6 +17,7 @@ import 'package:qaf_store/features/screens/home/data/repositories/products_repos
 import 'package:qaf_store/features/screens/login/controller/cubit/login_cubit.dart';
 import 'package:qaf_store/features/screens/login/data/repository/login_repository.dart';
 import 'package:qaf_store/features/screens/login/data/repository/login_social_repository.dart';
+import 'package:qaf_store/features/screens/navigation_menu/cubit/navigation_cubit.dart';
 import 'package:qaf_store/features/screens/onboarding/controller/cubit/onboarding_cubit.dart';
 import 'package:qaf_store/features/screens/order/controller/cubit/order_cubit.dart';
 import 'package:qaf_store/features/screens/order/data/repository/order_repository.dart';
@@ -25,7 +29,6 @@ import 'package:qaf_store/features/screens/sign_up/data/repo/register_repository
 import 'package:qaf_store/features/screens/upload_data/controller/cubit/upload_cubit.dart';
 import 'package:qaf_store/features/screens/verfiy_email/controller/cubit/verify_email_cubit.dart';
 import 'package:qaf_store/features/screens/verfiy_email/data/repository/verify_email_repository.dart';
-import 'package:qaf_store/features/screens/navigation_menu/cubit/navigation_cubit.dart';
 import 'package:qaf_store/features/screens/wishlist/controller/cubit/favorite_cubit.dart';
 import 'package:qaf_store/network/services/addresses/address_service.dart';
 import 'package:qaf_store/network/services/addresses/address_service_impl.dart';
@@ -43,6 +46,8 @@ import 'package:qaf_store/network/services/products/products_service.dart';
 import 'package:qaf_store/network/services/products/products_service_impl.dart';
 import 'package:qaf_store/network/services/sign_in_social/sign_in_social_service.dart';
 import 'package:qaf_store/network/services/sign_in_social/sign_in_social_service_impl.dart';
+import 'package:qaf_store/network/services/user/cloudinary_image_upload_service_impl.dart';
+import 'package:qaf_store/network/services/user/image_upload_service.dart';
 import 'package:qaf_store/network/services/user/user_service.dart';
 import 'package:qaf_store/network/services/user/user_service_impl.dart';
 import 'package:qaf_store/network/services/verify_email/verify_email_service.dart';
@@ -52,9 +57,9 @@ final getIt = GetIt.instance;
 
 Future<void> setupGetIt() async {
   getIt.registerLazySingleton<AuthService>(() => AuthServiceImpl());
-  getIt.registerLazySingleton<SignInSocialService>(
-      () => SignInSocialServiceImpl());
   getIt.registerLazySingleton<UserService>(() => UserServiceImpl());
+  getIt.registerLazySingleton<SignInSocialService>(
+      () => SignInSocialServiceImpl(getIt()));
   getIt.registerLazySingleton<VerifyEmailService>(
       () => VerifyEmailServiceImpl());
   getIt.registerLazySingleton<CategoriesService>(() => CategoriesServiceImpl());
@@ -63,6 +68,14 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<BrandsService>(() => BrandsServiceImpl());
   getIt.registerLazySingleton<AddressService>(() => AddressServiceImpl());
   getIt.registerLazySingleton<OrderService>(() => OrderServiceImpl());
+  getIt.registerLazySingleton<ImageUploadService>(() => CloudinaryImageService(
+        cloudName: "doqriqoig",
+        apiKey: "746381528264786",
+        apiSecret: "HX5AO_VdKbssfo0o9RH8NnL9Q2I",
+        folder: "home/profile_image",
+      ));
+
+  getIt.registerLazySingleton<CustomerService>(() => CustomerService());
 
   getIt.registerLazySingleton<RegisterRepository>(
       () => RegisterRepository(getIt(), getIt()));
@@ -73,7 +86,8 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<VerifyEmailRepository>(
       () => VerifyEmailRepository(getIt()));
   getIt.registerLazySingleton<LoginRepository>(() => LoginRepository(getIt()));
-  getIt.registerLazySingleton<UserRepository>(() => UserRepository(getIt()));
+  getIt.registerLazySingleton<UserRepository>(
+      () => UserRepository(getIt(), getIt()));
   getIt.registerLazySingleton<CategoriesRepository>(
       () => CategoriesRepository(getIt()));
   getIt.registerLazySingleton<BannersRepository>(
@@ -82,10 +96,11 @@ Future<void> setupGetIt() async {
       () => ProductsRepository(getIt()));
   getIt
       .registerLazySingleton<BrandsRepository>(() => BrandsRepository(getIt()));
-  getIt
-      .registerLazySingleton<AddressRepository>(() => AddressRepository(getIt()));
-  getIt
-      .registerLazySingleton<OrderRepository>(() => OrderRepository(getIt()));
+  getIt.registerLazySingleton<AddressRepository>(
+      () => AddressRepository(getIt()));
+  getIt.registerLazySingleton<OrderRepository>(() => OrderRepository(getIt()));
+  getIt.registerLazySingleton<CustomerServiceRepository>(
+      () => CustomerServiceRepository(getIt(), getIt()));
 
   getIt.registerFactory<OnboardingCubit>(() => OnboardingCubit());
   getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt()));
@@ -102,15 +117,11 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<BrandCubit>(() => BrandCubit(getIt()));
   getIt.registerFactory<UploadCubit>(
       () => UploadCubit(getIt(), getIt(), getIt(), getIt()));
-  getIt.registerFactory<FavoriteCubit>(
-      () => FavoriteCubit(getIt()));
-  getIt.registerFactory<AddressesCubit>(
-      () => AddressesCubit(getIt()));
-  getIt.registerFactory<CartCubit>(
-      () => CartCubit());
-  getIt.registerFactory<CheckoutCubit>(
-      () => CheckoutCubit());
-  getIt.registerFactory<OrderCubit>(
-      () => OrderCubit(getIt()));
-
+  getIt.registerFactory<FavoriteCubit>(() => FavoriteCubit(getIt()));
+  getIt.registerFactory<AddressesCubit>(() => AddressesCubit(getIt()));
+  getIt.registerLazySingleton<CartCubit>(() => CartCubit());
+  getIt.registerFactory<CheckoutCubit>(() => CheckoutCubit());
+  getIt.registerFactory<OrderCubit>(() => OrderCubit(getIt()));
+  getIt.registerFactory<CustomerServiceCubit>(
+      () => CustomerServiceCubit(getIt()));
 }

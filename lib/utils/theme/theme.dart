@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:qaf_store/utils/theme/custom_themes/qaf_appbar_theme.dart';
 import 'package:qaf_store/utils/theme/custom_themes/qaf_bottom_sheet.dart';
 import 'package:qaf_store/utils/theme/custom_themes/qaf_check_box_theme.dart';
@@ -13,7 +14,7 @@ class QafTheme {
 
   static ThemeData lightTheme = ThemeData(
       useMaterial3: true,
-      fontFamily: 'Poppins',
+      fontFamily: GoogleFonts.poppins.toString(),
       brightness: Brightness.light,
       primaryColor: Colors.blue,
       scaffoldBackgroundColor: Colors.white,
@@ -28,8 +29,8 @@ class QafTheme {
 
   static ThemeData darkTheme = ThemeData(
       useMaterial3: true,
-      fontFamily: 'Poppins',
       brightness: Brightness.dark,
+      fontFamily: GoogleFonts.poppins.toString(),
       primaryColor: Colors.blue,
       scaffoldBackgroundColor: Colors.black,
       textTheme: QafTextTheme.darkTextTheme,

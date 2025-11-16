@@ -67,6 +67,7 @@ class SharedPreference {
   }
 
   /// Save The [Key] and the [Value] in Flutter Secure Storage
+
   static setSecureString(key, value) async {
     const flutterSecureStorage = FlutterSecureStorage();
     debugPrint('SharedPrefHelper : saveSecureString with key : $key');
@@ -75,7 +76,13 @@ class SharedPreference {
 
   static getSecureString(key) async {
     const flutterSecureStorage = FlutterSecureStorage();
-    debugPrint('SharedPrefHelper : saveSecureString with key : $key');
-    await flutterSecureStorage.read(key: key);
+    debugPrint('SharedPrefHelper : getSecureString with key : $key');
+    return await flutterSecureStorage.read(key: key);
+  }
+
+  static removeSecureString(key) async {
+    const flutterSecureStorage = FlutterSecureStorage();
+    debugPrint('SharedPrefHelper : removeSecureString with key : $key');
+    await flutterSecureStorage.delete(key: key);
   }
 }

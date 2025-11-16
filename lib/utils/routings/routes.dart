@@ -25,4 +25,5 @@ class Routes {
   static const String uploadDataScreen = 'uploadDataScreen';
   static const String navigationMenu = 'navigationMenu';
   static const String wishlistScreen = 'wishlistScreen';
+  static const String customerServiceScreen = 'customerServiceScreen';
 }

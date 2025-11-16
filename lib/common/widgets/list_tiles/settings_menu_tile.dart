@@ -7,6 +7,7 @@ class SettingsMenuTile extends StatelessWidget {
   final String? subTitle;
   final Widget? trailing;
   final VoidCallback? onTap;
+  final bool? absorbing;
 
   const SettingsMenuTile(
       {super.key,
@@ -14,13 +15,24 @@ class SettingsMenuTile extends StatelessWidget {
       required this.title,
       this.subTitle,
       this.trailing,
+      this.absorbing = false,
       this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Icon(icon, size: 28, color: QafColors.primary),
-      title: Text(title, style: Theme.of(context).textTheme.titleMedium),
+      leading: Icon(icon,
+          size: 28,
+          color: absorbing == true
+              ? QafColors.primary.withValues(alpha: .5)
+              : QafColors.primary),
+      title: Text(
+        title,
+        style: Theme.of(context).textTheme.titleMedium!.apply(
+            color: absorbing == true
+                ? QafColors.primary.withValues(alpha: .5)
+                : null),
+      ),
       subtitle:
           Text(subTitle ?? '', style: Theme.of(context).textTheme.labelMedium),
       trailing: trailing,

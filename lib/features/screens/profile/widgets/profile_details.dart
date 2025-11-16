@@ -32,14 +32,14 @@ class ProfileDetails extends StatelessWidget {
               spacing: QafSizes.spaceBtwItems / 2,
               children: [
                 CircularImage(
-                  image: user.profilePicture ?? Assets.images.content.user.path,
+                  image: user.profilePicture ?? Assets.images.content.userImg.path,
                   isNetworkImage: true,
                   width: 80.w,
                   height: 80.h,
                 ),
                 TextButton(
                     onPressed: () =>
-                        context.read<UserCubit>().uploadUserProfilePicture(context),
+                        context.read<UserCubit>().uploadProfilePicture(),
                     child: Text(QafStrings.changeProfilePicture)),
               ],
             ),
@@ -52,7 +52,9 @@ class ProfileDetails extends StatelessWidget {
               value: user.fullName,
               onTap: () => context.pushNamed(Routes.changeNameScreen)),
           ProfileMenu(
-              title: QafStrings.userName, value: user.userName ?? '', onTap: () {}),
+              title: QafStrings.userName,
+              value: user.userName ?? '',
+              onTap: () {}),
           Divider(),
           SectionHeading(
               text: QafStrings.personalInformation, isActionButton: false),
@@ -77,9 +79,8 @@ class ProfileDetails extends StatelessWidget {
                     context: context,
                     builder: (context) {
                       return CloseAccountAlertDialog(
-                        onPressed: () => context
-                            .read<UserCubit>()
-                            .deleteUserAccount(context),
+                        onPressed: () =>
+                            context.read<UserCubit>().deleteUserAccount(),
                       );
                     },
                   );

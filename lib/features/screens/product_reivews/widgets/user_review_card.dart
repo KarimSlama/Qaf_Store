@@ -25,8 +25,8 @@ class UserReviewCard extends StatelessWidget {
               spacing: QafSizes.spaceBtwItems,
               children: [
                 CircleAvatar(
-                    backgroundImage: AssetImage(
-                        Assets.images.reviews.reviewProfileImage2.path)),
+                    backgroundImage: NetworkImage(
+                        'https://avatars.githubusercontent.com/u/96607967?s=48&v=4')),
                 Text('Karim Slama',
                     style: Theme.of(context).textTheme.titleLarge),
               ],

@@ -14,6 +14,7 @@ import 'package:qaf_store/features/screens/cart/controller/cubit/cart_cubit.dart
 import 'package:qaf_store/features/screens/change_name/change_name_screen.dart';
 import 'package:qaf_store/features/screens/checkout/checkout_screen.dart';
 import 'package:qaf_store/features/screens/checkout/controller/cubit/checkout_cubit.dart';
+import 'package:qaf_store/features/screens/customer_service/cubit/customer_service_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/controller/cubit/reset_password_cubit.dart';
 import 'package:qaf_store/features/screens/forgot_password/forgot_password_screen.dart';
 import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
@@ -42,6 +43,8 @@ import 'package:qaf_store/features/screens/navigation_menu/cubit/navigation_cubi
 import 'package:qaf_store/navigation_menu.dart';
 import 'package:qaf_store/utils/dependency_inejction/getit.dart';
 import 'package:qaf_store/utils/routings/routes.dart';
+
+import '../../features/screens/customer_service/customer_service_screen.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -125,7 +128,11 @@ class AppRouter {
       case Routes.subCategoryScreen:
         final category = settings.arguments as CategoryModel;
         return MaterialPageRoute(
-          builder: (_) => SubCategoryScreen(category: category),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<ProductCubit>()
+              ..fetchProductsForCategory(categoryId: category.id),
+            child: SubCategoryScreen(category: category),
+          ),
         );
 
       case Routes.allProductsScreen:
@@ -224,6 +231,14 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => getIt<UploadCubit>(),
             child: UploadDataScreen(),
+          ),
+        );
+
+      case Routes.customerServiceScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<CustomerServiceCubit>(),
+            child: const CustomerServiceScreen(),
           ),
         );
 

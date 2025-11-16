@@ -27,6 +27,18 @@ class ProductCardAddToCartButton extends StatelessWidget {
         }
       },
       child: BlocBuilder<CartCubit, CartState>(
+        buildWhen: (previous, current) {
+          if (previous.cartItems.length != current.cartItems.length) {
+            return true;
+          }
+          final prevQuantity = previous.cartItems
+              .where((item) => item.productId == product.id)
+              .fold(0, (sum, item) => sum + item.quantity);
+          final currQuantity = current.cartItems
+              .where((item) => item.productId == product.id)
+              .fold(0, (sum, item) => sum + item.quantity);
+          return prevQuantity != currQuantity;
+        },
         builder: (context, state) {
           final productQuantityInCart =
               context.read<CartCubit>().getProductQuantityInCart(product.id);

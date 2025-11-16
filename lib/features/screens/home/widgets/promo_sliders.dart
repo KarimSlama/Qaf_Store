@@ -8,7 +8,6 @@ import 'package:qaf_store/common/widgets/loaders/qaf_shimmer.dart';
 import 'package:qaf_store/features/screens/home/controller/cubit/product_cubit.dart';
 import 'package:qaf_store/features/screens/home/controller/cubit/product_state.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
-import 'package:qaf_store/utils/dependency_inejction/getit.dart';
 import 'package:qaf_store/utils/helper/extensions.dart';
 
 class PromoSliders extends StatelessWidget {
@@ -17,49 +16,59 @@ class PromoSliders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductCubit, ProductState>(
-      bloc: getIt<ProductCubit>()..fetchAllBanners(),
-      buildWhen: (previous, current) =>
-          current is BannersLoading ||
-          current is BannersSuccess ||
-          current is BannersError,
+      buildWhen: (previous, current) {
+        if (previous is! ProductDataState || current is! ProductDataState) {
+          return true;
+        }
+        return previous.banners != current.banners ||
+            previous.isBannersLoading != current.isBannersLoading ||
+            previous.bannersError != current.bannersError;
+      },
       builder: (context, state) {
+        if (state is! ProductDataState) return const SizedBox.shrink();
 
-        return state.maybeWhen(
-          bannersLoading: () => QafShimmerEffect(width: 120, height: 80),
-          bannersSuccess: (banners) => Column(
-            spacing: 20.h,
-            children: [
-              CarouselSlider(
-                items: banners
-                    .map((banner) => RoundedImage(
-                          imageUrl: banner.imageUrl,
-                          isNetworkImage: true,
-                          onPressed: () =>
-                              context.pushNamed(banner.targetScreen),
-                        ))
-                    .toList(),
-                options: CarouselOptions(
-                  viewportFraction: 1,
-                  autoPlay: true,
-                ),
+        if (state.isBannersLoading) {
+          return const QafShimmerEffect(width: 120, height: 80);
+        }
+
+        if (state.bannersError != null) {
+          return Text(state.bannersError!);
+        }
+
+        if (state.banners == null || state.banners!.isEmpty) {
+          return const SizedBox.shrink();
+        }
+
+        return Column(
+          spacing: 20.h,
+          children: [
+            CarouselSlider(
+              items: state.banners!
+                  .map((banner) => RoundedImage(
+                        imageUrl: banner.imageUrl,
+                        isNetworkImage: true,
+                        onPressed: () => context.pushNamed(banner.targetScreen),
+                      ))
+                  .toList(),
+              options: CarouselOptions(
+                viewportFraction: 1,
+                autoPlay: true,
               ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  for (int i = 0; i < banners.length; i++)
-                    CircularContainter(
-                        width: 20.w,
-                        height: 3.h,
-                        margin: EdgeInsetsDirectional.only(start: 5),
-                        backgroundColor: banners.length == i
-                            ? QafColors.primary
-                            : QafColors.light),
-                ],
-              ),
-            ],
-          ),
-          bannersError: (error) => Text(error),
-          orElse: () => SizedBox.shrink(),
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                for (int i = 0; i < state.banners!.length; i++)
+                  CircularContainter(
+                      width: 20.w,
+                      height: 3.h,
+                      margin: const EdgeInsetsDirectional.only(start: 5),
+                      backgroundColor: i == state.banners!.length - 1
+                          ? QafColors.primary
+                          : QafColors.light),
+              ],
+            ),
+          ],
         );
       },
     );

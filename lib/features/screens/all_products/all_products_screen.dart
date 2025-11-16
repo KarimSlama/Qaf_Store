@@ -27,15 +27,16 @@ class AllProductsScreen extends StatelessWidget {
           child: BlocBuilder<ProductCubit, ProductState>(
             bloc: getIt<ProductCubit>()..fetchProductByQuery(query),
             builder: (context, state) {
-              if (state is ProductsLoading) {
+              // if (state is ProductsLoading) {
                 
-                return ProductShimmerEffect();
-              } else if (state is ProductsSuccess) {
-                final products = state.products;
-                return SortableProducts(products: products);
-              } else if (state is ProductsError) {
-                return Center(child: Text('error all products screen'));
-              }
+              //   return ProductShimmerEffect();
+              // } else if (state is ProductsSuccess) {
+              //   final products = state.products;
+              //   return SizedBox();
+              //   // SortableProducts(products: products);
+              // } else if (state is ProductsError) {
+              //   return Center(child: Text('error all products screen'));
+              // }
               return Container();
             },
           ),

@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qaf_store/common/widgets/popups/loaders.dart';
 import 'package:qaf_store/features/screens/verfiy_email/controller/cubit/verify_email_state.dart';
 import 'package:qaf_store/features/screens/verfiy_email/data/repository/verify_email_repository.dart';
 
@@ -14,17 +12,11 @@ class VerifyEmailCubit extends Cubit<VerifyEmailState> {
     setTimerForAutoRedirect();
   }
 
-  Future<void> sendVerifyEmail([BuildContext? context]) async {
+  Future<void> sendVerifyEmail() async {
     final result = await verifyEmailRepository.verifyEmail();
 
     result.when(
       success: (data) {
-        if (context != null) {
-          Loaders.successSnackBar(
-              context: context,
-              title: 'Email Sent!',
-              message: 'Please Check your emails and verify your account.');
-        }
         emit(VerifyEmailState.success());
       },
       failure: (error) {

@@ -16,7 +16,7 @@ class ProductCubit extends Cubit<ProductState> {
     this.categoriesRepository,
     this.bannersRepository,
     this.productsRepository,
-  ) : super(const ProductState.initial());
+  ) : super(const ProductDataState());
 
   List<CategoryModel> categoriesList = [];
   var selectedOption = 'Name';
@@ -31,122 +31,149 @@ class ProductCubit extends Cubit<ProductState> {
     'Cosmetics'
   ];
 
-  Future<void> fetchCategories() async {
-    try {
-      emit(const ProductState.categoryLoading());
-
-      final categories = await categoriesRepository.fetchAllCategories();
-
-      categories.when(
-        success: (category) {
-          categoriesList  =category;
-          emit(ProductState.categorySuccess(category));
-        },
-        failure: (error) {
-          emit(ProductState.categoryError(error.toString()));
-        },
-      );
-    } catch (error) {
-      emit(ProductState.categoryError(error.toString()));
-    }
+  ProductDataState get _currentState {
+    final current = state;
+    if (current is ProductDataState) return current;
+    return const ProductDataState();
   }
 
-  Future<void> fetchProductsForCategory({required String categoryId}) async {
-    try {
-      emit(const ProductState.categoryProductsLoading());
-
-      final products = await productsRepository.fetchProductForCategory(
-          categoryId: categoryId);
-      products.when(
-        success: (data) {
-          emit(ProductState.categoryProductsSuccess(data));
-        },
-        failure: (error) {
-          emit(ProductState.categoryProductsError(error.toString()));
-        },
-      );
-    } catch (error) {
-      emit(ProductState.categoryProductsError(error.toString()));
+  Future<void> fetchCategories() async {
+    if (_currentState.categories != null &&
+        _currentState.categories!.isNotEmpty) {
+      return;
     }
+
+    emit(_currentState.copyWith(isCategoriesLoading: true));
+
+    final categories = await categoriesRepository.fetchAllCategories();
+
+    categories.when(
+      success: (category) {
+        categoriesList = category;
+        emit(_currentState.copyWith(
+          categories: category,
+          isCategoriesLoading: false,
+        ));
+      },
+      failure: (error) {
+        emit(_currentState.copyWith(
+          isCategoriesLoading: false,
+          categoriesError: error.toString(),
+        ));
+      },
+    );
   }
 
   Future<void> fetchAllBanners() async {
-    try {
-      emit(const ProductState.bannersLoading());
-
-      final banners = await bannersRepository.fetchAllBanners();
-      banners.when(
-        success: (banner) {
-          emit(ProductState.bannersSuccess(banner));
-        },
-        failure: (error) {
-          emit(ProductState.bannersError(error.toString()));
-        },
-      );
-    } catch (error) {
-      emit(ProductState.bannersError(error.toString()));
+    if (_currentState.banners != null && _currentState.banners!.isNotEmpty) {
+      return;
     }
+
+    emit(_currentState.copyWith(isBannersLoading: true));
+
+    final banners = await bannersRepository.fetchAllBanners();
+    banners.when(
+      success: (banner) {
+        emit(_currentState.copyWith(
+          banners: banner,
+          isBannersLoading: false,
+        ));
+      },
+      failure: (error) {
+        emit(_currentState.copyWith(
+          isBannersLoading: false,
+          bannersError: error.toString(),
+        ));
+      },
+    );
   }
 
   Future<void> fetchAllProducts({String? brandId}) async {
-    try {
-      emit(const ProductState.productsLoading());
-
-      if (brandId != null) {
-        final brandProducts =
-            await productsRepository.getBrandProducts(brandId: brandId);
-        brandProducts.when(
-          success: (products) {
-            emit(ProductState.productsSuccess(products));
-          },
-          failure: (error) {
-            emit(ProductState.productsError(error.toString()));
-          },
-        );
-      } else {
-        final allProducts = await productsRepository.getAllProducts();
-        allProducts.when(
-          success: (products) {
-            emit(ProductState.productsSuccess(products));
-          },
-          failure: (error) {
-            emit(ProductState.productsError(error.toString()));
-          },
-        );
-      }
-    } catch (error) {
-      emit(ProductState.productsError(error.toString()));
+    if (brandId == null &&
+        _currentState.products != null &&
+        _currentState.products!.isNotEmpty) {
+      return;
     }
+
+    emit(_currentState.copyWith(isProductsLoading: true));
+
+    final result = brandId != null
+        ? await productsRepository.getBrandProducts(brandId: brandId)
+        : await productsRepository.getAllProducts();
+
+    result.when(
+      success: (products) {
+        if (products.isEmpty) {
+          emit(_currentState.copyWith(
+            isProductsLoading: false,
+            productsError: 'لا توجد منتجات',
+          ));
+        } else {
+          emit(_currentState.copyWith(
+            products: products,
+            isProductsLoading: false,
+          ));
+        }
+      },
+      failure: (error) {
+        print('❌ Error fetching products: $error');
+        emit(_currentState.copyWith(
+          isProductsLoading: false,
+          productsError: error,
+        ));
+      },
+    );
+  }
+
+  Future<void> fetchProductsForCategory({required String categoryId}) async {
+    emit(_currentState.copyWith(isCategoryProductsLoading: true));
+
+    final products = await productsRepository.fetchProductForCategory(
+        categoryId: categoryId);
+    products.when(
+      success: (products) {
+        emit(_currentState.copyWith(
+          categoryProducts: products,
+          isCategoryProductsLoading: false,
+        ));
+      },
+      failure: (error) {
+        emit(_currentState.copyWith(
+          isCategoryProductsLoading: false,
+          categoryProductsError: error.toString(),
+        ));
+      },
+    );
   }
 
   Future<void> fetchProductByQuery(Query? query) async {
-    final currentState = state;
-    if (currentState is ProductsSuccess && currentState.products.isNotEmpty) {
+    if (_currentState.products != null && _currentState.products!.isNotEmpty) {
       return;
     }
-    try {
-      emit(const ProductState.productsLoading());
 
-      final productByQuery =
-          await productsRepository.fetchProductByQuery(query);
-      productByQuery.when(
-        success: (data) {
-          emit(ProductState.productsSuccess(data));
-        },
-        failure: (error) {
-          emit(ProductState.productsError(error.toString()));
-        },
-      );
-    } catch (error) {
-      emit(ProductState.productsError(error.toString()));
-    }
+    emit(_currentState.copyWith(isProductsLoading: true));
+
+    final productByQuery = await productsRepository.fetchProductByQuery(query);
+    productByQuery.when(
+      success: (data) {
+        emit(_currentState.copyWith(
+          products: data,
+          isProductsLoading: false,
+        ));
+      },
+      failure: (error) {
+        emit(_currentState.copyWith(
+          isProductsLoading: false,
+          productsError: error.toString(),
+        ));
+      },
+    );
   }
 
   void sortProducts(String sortOption) {
-    final currentState = state;
-    if (currentState is! ProductsSuccess) return;
+    if (_currentState.products == null) return;
 
-    List<ProductModel> sortedProducts = List.from(currentState.products);
+    List<ProductModel> sortedProducts = List.from(_currentState.products!);
 
     switch (sortOption) {
       case 'Name':
@@ -172,6 +199,6 @@ class ProductCubit extends Cubit<ProductState> {
         sortedProducts.sort((a, b) => a.title.compareTo(b.title));
     }
 
-    emit(ProductState.productsSuccess(sortedProducts));
+    emit(_currentState.copyWith(products: sortedProducts));
   }
 }

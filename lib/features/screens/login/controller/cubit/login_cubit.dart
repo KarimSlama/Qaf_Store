@@ -1,17 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/services.dart';
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:qaf_store/common/widgets/popups/loaders.dart';
 import 'package:qaf_store/features/screens/login/controller/cubit/login_state.dart';
 import 'package:qaf_store/features/screens/login/data/repository/login_repository.dart';
 import 'package:qaf_store/features/screens/login/data/repository/login_social_repository.dart';
-import 'package:qaf_store/utils/constants/qaf_strings.dart';
-import 'package:qaf_store/utils/constants/shared_preference_keys.dart';
-import 'package:qaf_store/utils/exceptions/firebase_auth_exceptions.dart';
-import 'package:qaf_store/utils/exceptions/format_exceptions.dart';
-import 'package:qaf_store/utils/exceptions/platform_exceptions.dart';
-import 'package:qaf_store/utils/local_storage/shared_preferences.dart';
+
+import '../../../../../utils/constants/constants.dart';
+import '../../../../../utils/constants/shared_preference_keys.dart';
+import '../../data/model/login_request_model.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepository loginRepository;
@@ -27,68 +24,36 @@ class LoginCubit extends Cubit<LoginState> {
   bool rememberMe = false;
 
   Future<void> login(context) async {
-    try {
-      emit(LoginState.loading());
-      await Future.delayed(const Duration(seconds: 2));
-      final respone = await loginRepository.login(
-        emailController.text.trim(),
-        passwordController.text.trim(),
-      );
+    emit(LoginState.loading());
+    final respone = await loginRepository.login(
+      LoginRequestModel(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      ),
+    );
 
-      respone.when(
-        success: (uId) {
-          Loaders.successSnackBar(
-              context: context,
-              title: QafStrings.congratulations,
-              message: QafStrings.youAreLoggedInPerfectlyNowShopWhteverYouWant);
-          if (rememberMe == true) {
-            saveUserUid(uId!);
-          }
-          emit(LoginState.success(uId));
-        },
-        failure: (error) => emit(LoginState.error(error: error)),
-      );
-    } on FirebaseAuthException catch (error) {
-      final errorMessage = QafFirebaseAuthException(error.code).message;
-      emit(LoginState.error(error: errorMessage));
-      Loaders.errorSnackBar(
-          context: context, title: QafStrings.error, message: errorMessage);
-    } on FirebaseException catch (error) {
-      final errorMessage = QafFirebaseAuthException(error.code).message;
-      emit(LoginState.error(error: errorMessage));
-      Loaders.errorSnackBar(
-          context: context, title: QafStrings.error, message: errorMessage);
-    } on FormatException catch (_) {
-      final errorMessage = QafFormatException().message;
-      emit(LoginState.error(error: errorMessage));
-      Loaders.errorSnackBar(
-          context: context, title: QafStrings.error, message: errorMessage);
-    } on PlatformException catch (error) {
-      final errorMessage = QafPlatformException(error.code).message;
-      emit(LoginState.error(error: errorMessage));
-      Loaders.errorSnackBar(
-          context: context, title: QafStrings.error, message: errorMessage);
-    } catch (error) {
-      emit(LoginState.error(error: error.toString()));
-      Loaders.errorSnackBar(
-          context: context, title: QafStrings.error, message: error.toString());
-    }
+    respone.when(success: (uId) {
+      if (rememberMe == true) {
+        Constants.saveUserUid(uId!);
+        isLoggedUser = true;
+      }
+      emit(LoginState.success(uId));
+    }, failure: (error) {
+      print('error is $error');
+      emit(LoginState.error(error: error));
+    });
   }
 
   Future<void> signInWithGoogle(context) async {
     emit(LoginState.loading());
-    await Future.delayed(const Duration(seconds: 2));
-    final respone = await loginSocialRepository.loginWithSocial();
+    final respone = await loginSocialRepository.loginWithGoogle();
     respone.when(
       success: (userCredential) async {
-        Loaders.successSnackBar(
-            context: context,
-            title: QafStrings.congratulations,
-            message: QafStrings.youAreLoggedInPerfectlyNowShopWhteverYouWant);
-        saveUserUid(userCredential.user!.uid);
+        Constants.saveUserUid(userCredential.user!.uid);
         emit(LoginState.success(userCredential));
       },
       failure: (error) {
+        print('the error is $error');
         emit(LoginState.error(error: error));
       },
     );
@@ -102,9 +67,5 @@ class LoginCubit extends Cubit<LoginState> {
   rememberMeIcon(bool isChanged) {
     rememberMe = isChanged;
     emit(LoginState.rememberMeChanged(isCheck: rememberMe));
-  }
-
-  Future<void> saveUserUid(String uId) async {
-    await SharedPreference.setData(SharedPreferenceKey.userUidKey, uId);
   }
 }
