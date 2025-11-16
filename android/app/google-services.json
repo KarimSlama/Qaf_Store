@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "1091430793832",
-    "project_id": "qaf-store",
-    "storage_bucket": "qaf-store.firebasestorage.app"
+    "project_number": "171726759509",
+    "project_id": "qaf-store-b9620",
+    "storage_bucket": "qaf-store-b9620.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1091430793832:android:814e9a1d4a1c0a03a431dd",
+        "mobilesdk_app_id": "1:171726759509:android:4bf239f3c08bffebad96dc",
         "android_client_info": {
-          "package_name": "com.example.qaf_store"
+          "package_name": "com.store_e_commerce.qafStore"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC6GCuaafFymFMiliMMT9qdRaERwuib388"
+          "current_key": "AIzaSyBY7puDQ5oGTMfFHJUKVsBOZCRYWddZ4Ic"
         }
       ],
       "services": {

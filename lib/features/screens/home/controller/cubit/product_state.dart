@@ -1,26 +1,78 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:qaf_store/features/screens/home/data/models/banners_model.dart';
 import 'package:qaf_store/features/screens/home/data/models/category_model.dart';
 import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
 
-part 'product_state.freezed.dart';
+sealed class ProductState {
+  const ProductState();
+}
 
-@freezed
-class ProductState with _$ProductState {
-  const factory ProductState.initial() = _Initial;
-  const factory ProductState.categoryLoading() = CategoryLoading;
-  const factory ProductState.categorySuccess(List<CategoryModel> categories) = CategorySuccess;
-  const factory ProductState.categoryError(String errorMessage) = CategoryError;
+class ProductInitial extends ProductState {
+  const ProductInitial();
+}
 
-  const factory ProductState.bannersLoading() = BannersLoading;
-  const factory ProductState.bannersSuccess(List<BannersModel> banners) = BannersSuccess;
-  const factory ProductState.bannersError(String errorMessage) = BannersError;
+class InitialLoading extends ProductState {
+  const InitialLoading();
+}
 
-  const factory ProductState.productsLoading() = ProductsLoading;
-  const factory ProductState.productsSuccess(List<ProductModel> products) = ProductsSuccess;
-  const factory ProductState.productsError(String errorMessage) = ProductsError;
+class ProductDataState extends ProductState {
+  final List<CategoryModel>? categories;
+  final List<BannersModel>? banners;
+  final List<ProductModel>? products;
+  final List<ProductModel>? categoryProducts;
 
-  const factory ProductState.categoryProductsLoading() = CategoryProductsLoading;
-  const factory ProductState.categoryProductsSuccess(List<ProductModel> products) = CategoryProductsSuccess;
-  const factory ProductState.categoryProductsError(String errorMessage) = CategoryProductsError;
+  final bool isCategoriesLoading;
+  final bool isBannersLoading;
+  final bool isProductsLoading;
+  final bool isCategoryProductsLoading;
+
+  final String? categoriesError;
+  final String? bannersError;
+  final String? productsError;
+  final String? categoryProductsError;
+
+  const ProductDataState({
+    this.categories,
+    this.banners,
+    this.products,
+    this.categoryProducts,
+    this.isCategoriesLoading = false,
+    this.isBannersLoading = false,
+    this.isProductsLoading = false,
+    this.isCategoryProductsLoading = false,
+    this.categoriesError,
+    this.bannersError,
+    this.productsError,
+    this.categoryProductsError,
+  });
+
+  ProductDataState copyWith({
+    List<CategoryModel>? categories,
+    List<BannersModel>? banners,
+    List<ProductModel>? products,
+    List<ProductModel>? categoryProducts,
+    bool? isCategoriesLoading,
+    bool? isBannersLoading,
+    bool? isProductsLoading,
+    bool? isCategoryProductsLoading,
+    String? categoriesError,
+    String? bannersError,
+    String? productsError,
+    String? categoryProductsError,
+  }) {
+    return ProductDataState(
+      categories: categories ?? this.categories,
+      banners: banners ?? this.banners,
+      products: products ?? this.products,
+      categoryProducts: categoryProducts ?? this.categoryProducts,
+      isCategoriesLoading: isCategoriesLoading ?? this.isCategoriesLoading,
+      isBannersLoading: isBannersLoading ?? this.isBannersLoading,
+      isProductsLoading: isProductsLoading ?? this.isProductsLoading,
+      isCategoryProductsLoading:
+          isCategoryProductsLoading ?? this.isCategoryProductsLoading,
+      categoriesError: categoriesError,
+      bannersError: bannersError,
+      productsError: productsError,
+      categoryProductsError: categoryProductsError,
+    );
+  }
 }

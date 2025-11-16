@@ -6,14 +6,46 @@ import 'package:qaf_store/common/widgets/icons/circular_icon.dart';
 import 'package:qaf_store/features/screens/cart/controller/cubit/cart_cubit.dart';
 import 'package:qaf_store/features/screens/cart/controller/cubit/cart_state.dart';
 import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
+import 'package:qaf_store/utils/constants/enum.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
 import 'package:qaf_store/utils/dependency_inejction/getit.dart';
 
-class BottomAddToCart extends StatelessWidget {
+class BottomAddToCart extends StatefulWidget {
   final ProductModel productModel;
   const BottomAddToCart({super.key, required this.productModel});
+
+  @override
+  State<BottomAddToCart> createState() => _BottomAddToCartState();
+}
+
+class _BottomAddToCartState extends State<BottomAddToCart> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final cartCubit = getIt<CartCubit>();
+      if (widget.productModel.productType == ProductType.single.toString()) {
+        cartCubit.resetSelectedAttributes();
+      }
+      cartCubit.updateAlreadyAddedProductCount(widget.productModel);
+    });
+  }
+
+  @override
+  void didUpdateWidget(BottomAddToCart oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.productModel.id != widget.productModel.id) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final cartCubit = getIt<CartCubit>();
+        if (widget.productModel.productType == ProductType.single.toString()) {
+          cartCubit.resetSelectedAttributes();
+        }
+        cartCubit.updateAlreadyAddedProductCount(widget.productModel);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +62,10 @@ class BottomAddToCart extends StatelessWidget {
           ),
         ),
         child: BlocBuilder<CartCubit, CartState>(
+          buildWhen: (previous, current) =>
+              previous.productQuantityInCart != current.productQuantityInCart,
           builder: (context, state) {
-            final cartCubit = context.watch<CartCubit>();
-            cartCubit.updateAlreadyAddedProductCount(productModel);
+            final cartCubit = context.read<CartCubit>();
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -67,11 +100,18 @@ class BottomAddToCart extends StatelessWidget {
                 ElevatedButton(
                     onPressed: state.productQuantityInCart < 1
                         ? null
-                        : () => cartCubit.addToCart(productModel, context),
+                        : () =>
+                            cartCubit.addToCart(widget.productModel, context),
                     style: ElevatedButton.styleFrom(
                         padding: const EdgeInsetsDirectional.all(QafSizes.md),
-                        backgroundColor: QafColors.black,
-                        side: const BorderSide(color: QafColors.black)),
+                        backgroundColor: QafColors.primary,
+                        disabledBackgroundColor: QafColors.buttonDisabled,
+                        foregroundColor: QafColors.white,
+                        disabledForegroundColor: QafColors.white,
+                        side: BorderSide(
+                            color: state.productQuantityInCart < 1
+                                ? QafColors.buttonDisabled
+                                : QafColors.primary)),
                     child: Text(QafStrings.addToCart)),
               ],
             );

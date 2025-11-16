@@ -61,9 +61,10 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                    onPressed: ()=>  context
+                    onPressed: () => context
                         .read<VerifyEmailCubit>()
-                        .sendVerifyEmail(context), child: Text(QafStrings.resendEmail)),
+                        .sendVerifyEmail(),
+                    child: Text(QafStrings.resendEmail)),
               ),
               VerifyEmailBlocListener(),
             ],

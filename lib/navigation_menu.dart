@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/features/screens/cart/controller/cubit/cart_cubit.dart';
@@ -9,7 +10,6 @@ import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
 import 'package:qaf_store/utils/dependency_inejction/getit.dart';
 import 'package:qaf_store/utils/helper/qaf_helper_functions.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NavigationMenu extends StatelessWidget {
   const NavigationMenu({super.key});
@@ -23,10 +23,12 @@ class NavigationMenu extends StatelessWidget {
         BlocProvider(
           create: (context) => getIt<ProductCubit>()
             ..fetchCategories()
+            ..fetchAllBanners()
             ..fetchAllProducts(),
+          lazy: false,
         ),
-        BlocProvider(
-          create: (context) => getIt<CartCubit>(),
+        BlocProvider.value(
+          value: getIt<CartCubit>(),
         ),
       ],
       child: Scaffold(

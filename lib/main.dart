@@ -6,7 +6,6 @@ import 'package:qaf_store/qaf_app.dart';
 import 'package:qaf_store/utils/constants/constants.dart';
 import 'package:qaf_store/utils/constants/shared_preference_keys.dart';
 import 'package:qaf_store/utils/dependency_inejction/getit.dart';
-import 'package:qaf_store/utils/helper/extensions.dart';
 import 'package:qaf_store/utils/local_storage/shared_preferences.dart';
 import 'package:qaf_store/utils/routings/app_router.dart';
 
@@ -23,10 +22,10 @@ void main() async {
 }
 
 checkIfUserLoggedIn() async {
-  Constants.userKey =
-      await SharedPreference.getString(SharedPreferenceKey.userUidKey);
-  if (!Constants.userKey.isNullOrEmpty()) {
+  final userKey = await SharedPreference.getSecureString(Constants.USER_KEY);
+  if (userKey != null && userKey.isNotEmpty) {
     isLoggedUser = true;
-  } else
+  } else {
     isLoggedUser = false;
+  }
 }

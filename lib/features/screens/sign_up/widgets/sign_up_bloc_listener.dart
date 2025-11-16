@@ -6,7 +6,9 @@ import 'package:qaf_store/features/screens/sign_up/controller/cubit/sign_up_cubi
 import 'package:qaf_store/features/screens/sign_up/controller/cubit/sign_up_state.dart';
 import 'package:qaf_store/gen/assets.gen.dart';
 import 'package:qaf_store/utils/helper/extensions.dart';
-import 'package:qaf_store/utils/routings/routes.dart';
+
+import '../../../../utils/constants/qaf_strings.dart';
+import '../../../../utils/routings/routes.dart';
 
 class RegisterBlocListener extends StatelessWidget {
   const RegisterBlocListener({super.key});
@@ -23,10 +25,17 @@ class RegisterBlocListener extends StatelessWidget {
               Assets.images.animations.a141594AnimationOfDocer,
               context),
           success: (data) {
-            context.pop();
+            FullScreenLoader.stopLoading(context);
+            Loaders.successSnackBar(
+                context: context,
+                title: QafStrings.congratulations,
+                message:
+                    QafStrings.youAreLoggedInPerfectlyNowShopWhteverYouWant);
+
             context.pushNamed(Routes.verifyScreen, arguments: data);
           },
           error: (error) {
+            FullScreenLoader.stopLoading(context);
             Loaders.errorSnackBar(context: context, title: error.toString());
           },
         );

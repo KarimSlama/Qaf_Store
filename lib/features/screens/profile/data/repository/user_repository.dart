@@ -1,75 +1,95 @@
+import 'dart:io';
 import 'package:qaf_store/features/screens/sign_up/data/model/user_model.dart';
 import 'package:qaf_store/network/services/server_result.dart';
 import 'package:qaf_store/network/services/user/user_service.dart';
+import 'package:qaf_store/utils/exceptions/firebase_exceptions.dart';
+
+import '../../../../../network/services/user/image_upload_service.dart';
 
 class UserRepository {
-  final UserService userService;
+  final UserService _userService;
+  final ImageUploadService _imageUploadService;
 
-  UserRepository(this.userService);
+  UserRepository(this._userService, this._imageUploadService);
 
   Future<ServerResult<UserModel>> fetchUserDetails() async {
     try {
-      final result = await userService.fetchUserDetails();
-      return result.when(
-        success: (user) {
-          return ServerResult.success(user);
-        },
-        failure: (error) {
-          return ServerResult.failure(error);
-        },
-      );
+      final user = await _userService.fetchUserDetails();
+      return ServerResult.success(user);
     } catch (error) {
-      return ServerResult.failure(error.toString());
+      return ServerResult.failure(
+          QafExceptionHandler.from(error.toString()).message);
     }
   }
 
   Future<ServerResult<void>> updateSingleField(Map<String, dynamic> map) async {
     try {
-      final result = await userService.updateSingleField(map);
-      return result.when(
-        success: (data) {
-          return ServerResult.success(data);
-        },
-        failure: (error) {
-          return ServerResult.failure(error);
-        },
-      );
+      await _userService.updateSingleField(map);
+      return ServerResult.success(null);
     } catch (error) {
-      return ServerResult.failure(error.toString());
+      return ServerResult.failure(
+          'Failed to update field: ${error.toString()}');
     }
   }
 
   Future<ServerResult<void>> deleteUserAccount(String uId) async {
     try {
-      final result = await userService.removeUserRecord(uId);
-      return result.when(
-        success: (data) {
-          return ServerResult.success(data);
-        },
-        failure: (error) {
-          return ServerResult.failure(error);
-        },
-      );
+      await _userService.removeUserRecord(uId);
+      return ServerResult.success(null);
     } catch (error) {
-      return ServerResult.failure(error.toString());
+      return ServerResult.failure(
+          'Failed to delete account: ${error.toString()}');
     }
   }
 
   Future<ServerResult<void>> reAuthenticateEmailAndPassword(
-      email, password) async {
+      String email, String password) async {
     try {
-      final user =
-          await userService.reAuthenticateEmailAndPassword(email, password);
-      return user.when(
-        success: (data) {
-          return ServerResult.success(data);
-        },
-        failure: (error) {
-          return ServerResult.failure(error);
-        },
-      );
+      await _userService.reAuthenticateEmailAndPassword(email, password);
+      return ServerResult.success(null);
     } catch (error) {
-      return ServerResult.failure(error.toString());
+      return ServerResult.failure(
+          'Failed to re-authenticate: ${error.toString()}');
+    }
+  }
+
+  Future<ServerResult<bool>> userExists(String userId) async {
+    try {
+      final exists = await _userService.userExists(userId);
+      return ServerResult.success(exists);
+    } catch (error) {
+      return ServerResult.failure(
+          'Failed to check user existence: ${error.toString()}');
+    }
+  }
+
+  // New methods for image handling
+  Future<ServerResult<File?>> pickProfileImage() async {
+    try {
+      final image = await _imageUploadService.pickImage();
+      return ServerResult.success(image);
+    } catch (error) {
+      return ServerResult.failure('Failed to pick image: ${error.toString()}');
+    }
+  }
+
+  Future<ServerResult<String>> uploadAndUpdateProfilePicture(
+      File imageFile, String userId) async {
+    try {
+      // Upload image
+      final imageUrl = await _imageUploadService.uploadImage(imageFile);
+
+      if (imageUrl == null) {
+        return ServerResult.failure('Failed to upload image');
+      }
+
+      // Update user profile
+      await _userService.updateSingleField({'ProfilePicture': imageUrl});
+
+      return ServerResult.success(imageUrl);
+    } catch (error) {
+      return ServerResult.failure(
+          'Failed to upload profile picture: ${error.toString()}');
     }
   }
 }

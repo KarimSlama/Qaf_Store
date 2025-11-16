@@ -19,40 +19,65 @@ class CategoryTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       children: [
         Padding(
-          padding: EdgeInsetsDirectional.all(QafSizes.defaultSpace),
+          padding: const EdgeInsetsDirectional.all(QafSizes.defaultSpace),
           child: Column(
             spacing: QafSizes.spaceBtwItems,
             children: [
               CategoryBrandShowCaseWidget(categoryModel: categoryModel),
               BlocBuilder<ProductCubit, ProductState>(
-                 bloc: getIt<ProductCubit>()
+                bloc: getIt<ProductCubit>()
                   ..fetchProductsForCategory(categoryId: categoryModel.id),
+                buildWhen: (previous, current) {
+                  if (previous is! ProductDataState ||
+                      current is! ProductDataState) {
+                    return true;
+                  }
+                  return previous.categoryProducts !=
+                          current.categoryProducts ||
+                      previous.isCategoryProductsLoading !=
+                          current.isCategoryProductsLoading ||
+                      previous.categoryProductsError !=
+                          current.categoryProductsError;
+                },
                 builder: (context, state) {
-                  return state.maybeWhen(
-                    orElse: () => SizedBox(),
-                    categoryProductsLoading: () => ProductShimmerEffect(),
-                    categoryProductsSuccess: (products) {
-                      return Column(
-                        spacing: QafSizes.spaceBtwItems,
-                        children: [
-                          SectionHeading(
-                            text: QafStrings.youMightLike,
-                            onPressed: () {},
-                          ),
-                          GridViewLayout(
-                            itemCount: products.length,
-                            itemBuilder: (_, index) => VerticalProductCard(
-                              index: index,
-                              products: products,
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                    categoryError: (error) => Text(error.toString()),
+                  if (state is! ProductDataState) {
+                    return const SizedBox.shrink();
+                  }
+
+                  // Loading
+                  if (state.isCategoryProductsLoading) {
+                    return const ProductShimmerEffect();
+                  }
+
+                  // Error
+                  if (state.categoryProductsError != null) {
+                    return Text(state.categoryProductsError!);
+                  }
+
+                  // Success
+                  if (state.categoryProducts == null ||
+                      state.categoryProducts!.isEmpty) {
+                    return const SizedBox.shrink();
+                  }
+
+                  return Column(
+                    spacing: QafSizes.spaceBtwItems,
+                    children: [
+                      SectionHeading(
+                        text: QafStrings.youMightLike,
+                        onPressed: () {},
+                      ),
+                      GridViewLayout(
+                        itemCount: state.categoryProducts?.length ?? 0,
+                        itemBuilder: (_, index) => VerticalProductCard(
+                          index: index,
+                          products: state.categoryProducts!,
+                        ),
+                      ),
+                    ],
                   );
                 },
               )

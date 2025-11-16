@@ -2,17 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
-import 'package:qaf_store/common/widgets/popups/full_screen_loader.dart';
-import 'package:qaf_store/common/widgets/popups/loaders.dart';
 import 'package:qaf_store/features/screens/profile/controller/cubit/user_cubit.dart';
-import 'package:qaf_store/features/screens/profile/controller/cubit/user_state.dart';
-import 'package:qaf_store/gen/assets.gen.dart';
+import 'package:qaf_store/features/screens/profile/widgets/re_auth_bloc_listener.dart';
+
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
-import 'package:qaf_store/utils/constants/shared_preference_keys.dart';
-import 'package:qaf_store/utils/helper/extensions.dart';
-import 'package:qaf_store/utils/local_storage/shared_preferences.dart';
-import 'package:qaf_store/utils/routings/routes.dart';
+
 import 'package:qaf_store/utils/validation/validator.dart';
 
 class ReAuthForm extends StatelessWidget {
@@ -20,39 +15,21 @@ class ReAuthForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authFormKey = GlobalKey<FormState>();
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
+
     final userCubit = context.read<UserCubit>();
     return Scaffold(
       appBar: QafAppBar(
         showBackArrow: true,
         title: Text('Re Authenticate Email and Password'),
       ),
-      body: BlocListener<UserCubit, UserState>(
-        listenWhen: (previous, current) => current != previous,
-        listener: (context, state) {
-          state.maybeWhen(
-            reAuthLoading: () {
-              FullScreenLoader.openLoadingDialog(
-                  'We are Proccessing your information....',
-                  Assets.images.animations.a141594AnimationOfDocer,
-                  context);
-              context.pop();
-            },
-            reAuthSuccess: () {
-              Loaders.successSnackBar(
-                  context: context,
-                  title: QafStrings.congratulations,
-                  message: 'Your name is successfully updated');
-                  SharedPreference.removeData(SharedPreferenceKey.userUidKey);
-              context.pushNamed(Routes.loginScreen);
-            },
-            error: (error) => Text(error),
-            orElse: () => Text('no data found'),
-          );
-        },
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsetsDirectional.all(QafSizes.defaultSpace),
           child: Form(
-            key: userCubit.authFormKey,
+            key: authFormKey,
             child: Column(
               spacing: QafSizes.spaceBtwSections,
               children: [
@@ -61,7 +38,7 @@ class ReAuthForm extends StatelessWidget {
                   style: Theme.of(context).textTheme.labelMedium,
                 ),
                 TextFormField(
-                  controller: userCubit.emailController,
+                  controller: emailController,
                   validator: (value) => Validator.validateEmail(value),
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
@@ -70,22 +47,46 @@ class ReAuthForm extends StatelessWidget {
                   ),
                 ),
                 TextFormField(
-                  controller: userCubit.passwordController,
+                  controller: passwordController,
                   validator: (value) => Validator.validatePassword(value),
                   decoration: InputDecoration(
                     prefixIcon: Icon(Iconsax.password_check),
                     labelText: QafStrings.password,
                   ),
                 ),
+                //  TextFormField(
+                //   controller: userCubit.passwordController,
+                //   obscureText: isPassword,
+                //   validator: (value) => Validator.validatePassword(value),
+                //   decoration: InputDecoration(
+                //     prefixIcon: Icon(Iconsax.password_check),
+                //     suffixIcon: IconButton(
+                //       onPressed: () => userCubit.d(),
+                //       icon: loginCubit.isPassword
+                //           ? Icon(
+                //               Iconsax.eye_slash,
+                //             )
+                //           : Icon(
+                //               Iconsax.eye3,
+                //             ),
+                //     ),
+                //     labelText: QafStrings.password,
+                //   ),
+                // ),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      userCubit.reAuthenticateEmailAndPassword();
+                      if (authFormKey.currentState!.validate()) {
+                        userCubit.reAuthenticateAndDelete(
+                            emailController.text.trim(),
+                            passwordController.text.trim());
+                      }
                     },
                     child: Text(QafStrings.submit),
                   ),
                 ),
+                ReAuthBlocListener(),
               ],
             ),
           ),

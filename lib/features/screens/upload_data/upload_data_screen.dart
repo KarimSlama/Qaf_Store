@@ -4,11 +4,12 @@ import 'package:iconsax/iconsax.dart';
 import 'package:qaf_store/common/widgets/appbar/appbar.dart';
 import 'package:qaf_store/common/widgets/list_tiles/upload_menu_title.dart';
 import 'package:qaf_store/common/widgets/texts/section_heading.dart';
-import 'package:qaf_store/features/screens/upload_data/controller/cubit/upload_cubit.dart';
 import 'package:qaf_store/features/screens/upload_data/widget/upload_bloc_listener.dart';
 import 'package:qaf_store/utils/constants/qaf_colors.dart';
 import 'package:qaf_store/utils/constants/qaf_sizes.dart';
 import 'package:qaf_store/utils/constants/qaf_strings.dart';
+
+import 'controller/cubit/upload_cubit.dart';
 
 class UploadDataScreen extends StatelessWidget {
   const UploadDataScreen({super.key});
@@ -32,31 +33,35 @@ class UploadDataScreen extends StatelessWidget {
                 icon: Iconsax.category,
                 title: QafStrings.uploadCategories,
                 trailing: IconButton(
-                    onPressed: () =>
-                        context.read<UploadCubit>().uploadCategories(),
+                  onPressed: (){},
+                    // onPressed: () =>
+                    //     context.read<UploadCubit>().uploadCategories(),
                     icon: Icon(Iconsax.arrow_up_1, color: QafColors.primary)),
               ),
               UploadMenuTitle(
                 icon: Iconsax.shop,
                 title: QafStrings.uploadBrands,
                 trailing: IconButton(
-                    onPressed: () => context.read<UploadCubit>().uploadBrands(),
+                  onPressed: () {},
+                    // onPressed: () => context.read<UploadCubit>().uploadBrands(),
                     icon: Icon(Iconsax.arrow_up_1, color: QafColors.primary)),
               ),
               UploadMenuTitle(
                 icon: Iconsax.shopping_cart,
                 title: QafStrings.uploadProducts,
                 trailing: IconButton(
-                   onPressed: () =>
-                        context.read<UploadCubit>().uploadProducts(),
+                  onPressed: () {},
+                  //  onPressed: () =>
+                  //       context.read<UploadCubit>().uploadProducts(),
                     icon: Icon(Iconsax.arrow_up_1, color: QafColors.primary)),
               ),
               UploadMenuTitle(
                 icon: Iconsax.image,
                 title: QafStrings.uploadBanners,
                 trailing: IconButton(
-                    onPressed: () =>
-                        context.read<UploadCubit>().uploadBanners(),
+                  onPressed: () {},
+                    // onPressed: () =>
+                    //     context.read<UploadCubit>().uploadBanners(),
                     icon: Icon(Iconsax.arrow_up_1, color: QafColors.primary)),
               ),
               SizedBox(height: QafSizes.spaceBtwItems),

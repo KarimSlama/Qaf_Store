@@ -58,7 +58,7 @@ class QafStrings {
       'Your Account Security is Our Prioruty! We\'ve sent you a Secure Link to Safely Change Your Password and Keep Your Account Protected,';
   static const String confirmEmail = 'Verify your email address!';
   static const String confirmEmailSubTitle =
-      'Congratulations! Your Account Awaits: Verify Your Email to Start Shopping and Experience a World of Unrivaled Deals and Personalized Offers.';
+      'Congratulations! Your Account Awaits: Check your Emails to verify Your Email so that you can Start Shopping and Experience a World of Unrivaled Deals and Personalized Offers.';
   static const String emailNotRecieveMessage =
       'Didn\'nt get the email? Check your junk/spam or resent it again!';
   static const String yourAccountCreatedTitle =
@@ -75,6 +75,7 @@ class QafStrings {
   static const String error = 'Error';
   static const String ohSnap = 'Oh Snap!';
   static const String acceptPrivacyPolicy = 'Accept Privacy Policy';
+  static const String weAreProccessingYourInformation = 'We are Proccessing your information....';
   static const String
       inOrderToCreateAccountYouHaveToReadAndAcceptThePrivacyTermsOfUse =
       'In order to create account, you have to read and accept the Privacy & Terms of Use.';
@@ -182,7 +183,8 @@ class QafStrings {
   static const String change = 'Change';
   static const String paypal = 'Paypal';
   static const String emptyCart = 'Empty Cart';
-  static const String addItemsInTheCartInOrderToProceed = 'Add Items in The Cart in Order to Proceed!';
+  static const String addItemsInTheCartInOrderToProceed =
+      'Add Items in The Cart in Order to Proceed!';
   static const String checkoutSuccess = 'Checkout Success!';
 
   /// Orders

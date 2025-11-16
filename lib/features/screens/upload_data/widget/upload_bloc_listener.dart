@@ -33,9 +33,9 @@ class UploadBlocListener extends StatelessWidget {
               'We are Proccessing your banners Uploading....',
               Assets.images.animations.a141594AnimationOfDocer,
               context),
-          bannerSuccess: () {
-            context.pop();
-          },
+          // bannerSuccess: () {
+          //   context.pop();
+          // },
           bannerError: (error) {
             Loaders.errorSnackBar(
                 context: context,

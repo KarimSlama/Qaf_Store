@@ -12,20 +12,35 @@ class ProductCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductCubit, ProductState>(
+      buildWhen: (previous, current) {
+        if (previous is! ProductDataState || current is! ProductDataState) {
+          return true;
+        }
+        return previous.products != current.products ||
+            previous.isProductsLoading != current.isProductsLoading ||
+            previous.productsError != current.productsError;
+      },
       builder: (context, state) {
-        return state.maybeWhen(
-          productsLoading: () => QafShimmerEffect(width: 180, height: 180),
-          productsSuccess: (products) {
-            return GridViewLayout(
-              itemCount: 4,
-              itemBuilder: (_, index) => VerticalProductCard(
-                index: index,
-                products: products,
-              ),
-            );
-          },
-          productsError: (error) => Text(error),
-          orElse: () => Text(''),
+        if (state is! ProductDataState) return const SizedBox.shrink();
+
+        if (state.isProductsLoading) {
+          return const QafShimmerEffect(width: 180, height: 180);
+        }
+
+        if (state.productsError != null) {
+          return Text(state.productsError!);
+        }
+
+        if (state.products == null || state.products!.isEmpty) {
+          return const SizedBox.shrink();
+        }
+
+        return GridViewLayout(
+          itemCount: 4,
+          itemBuilder: (_, index) => VerticalProductCard(
+            index: index,
+            products: state.products!,
+          ),
         );
       },
     );

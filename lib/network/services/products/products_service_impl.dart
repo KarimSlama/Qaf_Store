@@ -5,7 +5,6 @@ import 'package:crypto/crypto.dart';
 import 'package:flutter/services.dart';
 import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
 import 'package:qaf_store/network/services/products/products_service.dart';
-import 'package:qaf_store/network/services/server_result.dart';
 import 'package:qaf_store/utils/constants/constants.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
@@ -15,89 +14,66 @@ class ProductsServiceImpl implements ProductsService {
   final _firestore = FirebaseFirestore.instance;
 
   @override
-  Future<ServerResult<List<ProductModel>>> getAllProducts() async {
-    try {
-      final snapshot = await _firestore
-          .collection('Products')
-          .where('IsFeatured', isEqualTo: true)
-          .get();
-      final list = snapshot.docs
-          .map((document) => ProductModel.fromSnapshot(document))
-          .toList();
-      return ServerResult.success(list);
-    } catch (error) {
-      return ServerResult.failure(error.toString());
-    }
+  Future<List<ProductModel>> getAllProducts() async {
+    final snapshot = await _firestore
+        .collection('Products')
+        .where('IsFeatured', isEqualTo: true)
+        .get();
+
+    return snapshot.docs
+        .map((document) => ProductModel.fromSnapshot(document))
+        .toList();
   }
 
   @override
-  Future<ServerResult<List<ProductModel>>> fetchProductForCategory(
-      {required String categoryId, int limit = 4}) async {
-    try {
-      final productCategory = limit == -1
-          ? await _firestore
-              .collection('ProductCategory')
-              .where('categoryId', isEqualTo: categoryId)
-              .get()
-          : await _firestore
-              .collection('ProductCategory')
-              .where('categoryId', isEqualTo: categoryId)
-              .limit(limit)
-              .get();
-      List<String> productIds = productCategory.docs
-          .map((doc) => doc['productId'] as String)
-          .toList();
-      final productQuery = await _firestore
-          .collection('Products')
-          .where(FieldPath.documentId, whereIn: productIds)
-          .get();
-      List<ProductModel> productList = productQuery.docs
-          .map((doc) => ProductModel.fromQuerySnapshot(doc))
-          .toList();
-      return ServerResult.success(productList);
-    } catch (error) {
-      return ServerResult.failure(error.toString());
-    }
+  Future<List<ProductModel>> fetchProductForCategory({
+    required String categoryId,
+    int limit = 4,
+  }) async {
+    final query = limit == -1
+        ? _firestore
+            .collection('Products')
+            .where('CategoryId', isEqualTo: categoryId)
+        : _firestore
+            .collection('Products')
+            .where('CategoryId', isEqualTo: categoryId)
+            .limit(limit);
+
+    final snapshot = await query.get();
+
+    return snapshot.docs.map((doc) => ProductModel.fromSnapshot(doc)).toList();
   }
 
   @override
-  Future<ServerResult<List<ProductModel>>> getProductsByBrand(
-      {required String brandId, int limit = -1}) async {
-    try {
-      final querySnapshot = limit == -1
-          ? await _firestore
-              .collection('Products')
-              .where('Brand.Id', isEqualTo: brandId)
-              .get()
-          : await _firestore
-              .collection('Products')
-              .where('Brand.Id', isEqualTo: brandId)
-              .limit(limit)
-              .get();
-      final products = querySnapshot.docs
-          .map((doc) => ProductModel.fromSnapshot(doc))
-          .toList();
-      return ServerResult.success(products);
-    } catch (error) {
-      return ServerResult.failure(error.toString());
-    }
+  Future<List<ProductModel>> getProductsByBrand({
+    required String brandId,
+    int limit = -1,
+  }) async {
+    final query = limit == -1
+        ? _firestore
+            .collection('Products')
+            .where('Brand.Id', isEqualTo: brandId)
+        : _firestore
+            .collection('Products')
+            .where('Brand.Id', isEqualTo: brandId)
+            .limit(limit);
+
+    final querySnapshot = await query.get();
+
+    return querySnapshot.docs
+        .map((doc) => ProductModel.fromSnapshot(doc))
+        .toList();
   }
 
   @override
-  Future<ServerResult<void>> uploadProducts(List<ProductModel> products) async {
-    try {
-      List<Future<void>> uploadTasks = [];
+  Future<void> uploadProducts(List<ProductModel> products) async {
+    List<Future<void>> uploadTasks = [];
 
-      for (var product in products) {
-        uploadTasks.add(_uploadSingleProduct(product));
-      }
-
-      await Future.wait(uploadTasks);
-
-      return ServerResult.success(null);
-    } catch (error) {
-      return ServerResult.failure(error.toString());
+    for (var product in products) {
+      uploadTasks.add(_uploadSingleProduct(product));
     }
+
+    await Future.wait(uploadTasks);
   }
 
   Future<void> _uploadSingleProduct(ProductModel product) async {
@@ -177,34 +153,31 @@ class ProductsServiceImpl implements ProductsService {
   }
 
   @override
-  Future<ServerResult<List<ProductModel>>> fetchProductByQuery(
-      Query<Object?> query) async {
-    try {
-      final querySnapshot = await query.get();
-      final List<ProductModel> productList = querySnapshot.docs
-          .map((doc) => ProductModel.fromQuerySnapshot(doc))
-          .toList();
-      return ServerResult.success(productList);
-    } catch (error) {
-      return ServerResult.failure(error.toString());
-    }
+  Future<List<ProductModel>> fetchProductByQuery(Query<Object?> query) async {
+    final querySnapshot = await query.get();
+
+    return querySnapshot.docs
+        .map((doc) => ProductModel.fromQuerySnapshot(doc))
+        .toList();
   }
 
   @override
-  Future<ServerResult<List<ProductModel>>> favoriteProducts(
-      List<String> productIds) async {
-    try {
-      final snapshot = await _firestore
-          .collection('Products')
-          .where(FieldPath.documentId, whereIn: productIds)
-          .get();
-
-      final product = snapshot.docs
-          .map((product) => ProductModel.fromSnapshot(product))
-          .toList();
-      return ServerResult.success(product);
-    } catch (error) {
-      return ServerResult.failure(error.toString());
+  Future<List<ProductModel>> favoriteProducts(List<String> productIds) async {
+    if (productIds.isEmpty) {
+      return [];
     }
+
+    if (productIds.length > 10) {
+      productIds = productIds.take(10).toList();
+    }
+
+    final snapshot = await _firestore
+        .collection('Products')
+        .where(FieldPath.documentId, whereIn: productIds)
+        .get();
+
+    return snapshot.docs
+        .map((product) => ProductModel.fromSnapshot(product))
+        .toList();
   }
 }

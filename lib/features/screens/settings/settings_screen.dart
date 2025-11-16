@@ -82,11 +82,15 @@ class SettingsScreen extends StatelessWidget {
                   SizedBox(height: QafSizes.spaceBtwSections),
                   SectionHeading(
                       text: QafStrings.appSettings, isActionButton: false),
-                  SettingsMenuTile(
-                    icon: Iconsax.document_upload,
-                    title: QafStrings.loadData,
-                    subTitle: QafStrings.uploadDataToYourCloudFirebase,
-                    onTap: () => context.pushNamed(Routes.uploadDataScreen),
+                  AbsorbPointer(
+                    absorbing: true,
+                    child: SettingsMenuTile(
+                      absorbing: true,
+                      icon: Iconsax.document_upload,
+                      title: QafStrings.loadData,
+                      subTitle: QafStrings.uploadDataToYourCloudFirebase,
+                      onTap: () => context.pushNamed(Routes.uploadDataScreen),
+                    ),
                   ),
                   SettingsMenuTile(
                     icon: Iconsax.location,

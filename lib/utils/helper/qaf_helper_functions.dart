@@ -99,4 +99,8 @@ class QafHelperFunctions {
     }
     return wrappedList;
   }
+
+  static String formatTime(DateTime timestamp) {
+    return DateFormat('hh:mm a').format(timestamp);
+  }
 }

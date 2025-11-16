@@ -1,0 +1,18 @@
+default_platform(:android)
+
+platform :android do
+  desc "Lane for Android Firebase App Distribution"
+  
+  lane :distribute do
+    sh "flutter clean"
+    sh "flutter build apk --release --target lib/main.dart --no-tree-shake-icons"
+    firebase_app_distribution(
+      app: '1:1091430793832:android:814e9a1d4a1c0a03a431dd',
+      firebase_cli_token: ENV["FIREBASE_CLI_TOKEN"],
+      android_artifact_type: "APK",
+      android_artifact_path: "../build/app/outputs/flutter-apk/app-release.apk",
+      testers: "kslama499@gmail.com",
+      release_notes: "Some Features in Live for Qaf Store",
+  )
+  end
+end

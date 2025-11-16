@@ -1,13 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:crypto/crypto.dart';
-import 'package:qaf_store/features/screens/brands/data/models/brand_model.dart';
-import 'package:qaf_store/network/services/brands/brands_service.dart';
-import 'package:qaf_store/network/services/server_result.dart';
-import 'package:http/http.dart' as http;
-import 'package:http_parser/http_parser.dart';
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:crypto/crypto.dart';
+import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
+import 'package:qaf_store/features/screens/brands/data/models/brand_model.dart';
+import 'package:qaf_store/network/services/brands/brands_service.dart';
+import 'package:qaf_store/network/services/server_result.dart';
 import 'package:qaf_store/utils/constants/constants.dart';
 
 class BrandsServiceImpl implements BrandsService {
@@ -40,6 +40,11 @@ class BrandsServiceImpl implements BrandsService {
       final List<String> brandId = brandCategoryQuery.docs
           .map((doc) => doc['brandId'] as String)
           .toList();
+
+      if (brandId.isEmpty) {
+        return ServerResult.success([]);
+      }
+
       final brandQuery = await _firestore
           .collection('Brands')
           .where(FieldPath.documentId, whereIn: brandId)

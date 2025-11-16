@@ -48,11 +48,15 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   }
 
   Future<void> initFavorites() async {
-    final json = await SharedPreference.getString('favorites');
-    if (null != json) {
-      final favoriteStored = jsonDecode(json) as Map<String, dynamic>;
-      favorites.addAll(
-          favoriteStored.map((key, value) => MapEntry(key, value as bool)));
+    try {
+      final json = await SharedPreference.getString('favorites');
+      if (json != null && json.isNotEmpty) {
+        final favoriteStored = jsonDecode(json) as Map<String, dynamic>;
+        favorites.addAll(
+            favoriteStored.map((key, value) => MapEntry(key, value as bool)));
+      }
+    } catch (e) {
+      favorites.clear();
     }
   }
 
@@ -64,7 +68,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
         return;
       }
       final result = await productsRepository
-        .fetchFavoriteProducts(favorites.keys.toList());
+          .fetchFavoriteProducts(favorites.keys.toList());
 
       result.when(success: (data) {
         emit(FavoriteState.favoriteSuccess(data));

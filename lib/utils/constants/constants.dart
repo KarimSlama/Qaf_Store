@@ -1,9 +1,12 @@
 import 'package:flutter/services.dart';
 import 'package:qaf_store/features/screens/home/data/models/product_model.dart';
 import 'package:qaf_store/utils/constants/enum.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../local_storage/shared_preferences.dart';
 
 class Constants {
-  static String? userKey;
+  static const String USER_KEY = 'USERKEY';
 
   static Future<Uint8List> getImageFromAssets(String path) async {
     try {
@@ -13,6 +16,13 @@ class Constants {
       return imageData;
     } catch (error) {
       throw 'Error loading image data $error';
+    }
+  }
+
+  static Future<void> launchMyUrl(String urlString) async {
+    final Uri url = Uri.parse(urlString);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
     }
   }
 
@@ -53,5 +63,9 @@ class Constants {
 
   static String getProductStockStatus(int stock) {
     return stock > 0 ? 'In Stock' : 'Out of Stock';
+  }
+
+  static Future<void> saveUserUid(String uId) async {
+    await SharedPreference.setSecureString(Constants.USER_KEY, uId);
   }
 }

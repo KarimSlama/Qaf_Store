@@ -18,9 +18,8 @@ class OrderCubit extends Cubit<OrderState> {
       final orders = await orderRepository.fetchUserOrders();
       orders.when(
         success: (data) => emit(OrderState.success(data)),
-        failure: (error) {
-          emit(OrderState.error(error: error));
-        },
+        failure: (error) => 
+          emit(OrderState.error(error: error)),
       );
     } catch (error) {
       emit(OrderState.error(error: error.toString()));
